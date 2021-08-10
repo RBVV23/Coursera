@@ -1,5 +1,5 @@
 # PYTHON LVL 0
-# Чтение данных из файлов
+
 
 import codecs
 
@@ -13,13 +13,13 @@ for line in file:
 file.close()
 
 file = codecs.open('to_read.txt', 'r', encoding='utf-8')
-list = []
+list_1 = []
 list_2 = []
-list = file.readlines()
+list_1 = file.readlines()
 file.close()
 
-print(list)
-for line in list:
+print(list_1)
+for line in list_1:
     print(line.strip())
     list_2.append(line.strip())
 
@@ -37,8 +37,6 @@ file_2.close()
 
 
 list_3 = [x**2 for x in range(101) if (x % 2 == 0) and (x % 3 == 0)]
-# print(list_3)
-numbers = [1, 3, 5]
-list_4 = [ map(lambda x: x**3, numbers) ]
-print(type(list_4))
+print(list_3)
+list_4 = list(map(lambda x: int(x**(0.5)), list_3))
 print(list_4)
