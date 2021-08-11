@@ -7,6 +7,7 @@ from scipy import interpolate
 from scipy import linalg
 import matplotlib.pyplot as plt
 
+
 # print(pd.__version__)
 print(np.__version__)
 
@@ -122,7 +123,7 @@ plt.show()
 x = np.arange(0, 10, 2)
 # y = np.exp(-x/3.0)
 y = np.exp(-x/3.0) + np.random.randn(len(x)) * 0.1
-\
+
 print(x[:5])
 print(y[:5])
 
@@ -135,3 +136,42 @@ ynew = f(xnew)
 
 plt.plot(xnew, ynew, '-', x, y, 'o')
 plt.show()
+
+def f(x):
+    return .5*(1 - x[0])**2 + ((x[1] - x[0]**2))**2
+
+print(f([1, 1]))
+
+## x = np.arange(-5, 5, 0.5)
+## y = x**2
+#
+## plt.plot(x, y)
+## plt.show()
+
+# result = optimize.brute(f, ((-5, 5), (-5, 5)))
+# print(result)
+#
+# result = optimize.differential_evolution(f, ((-5, 5), (-5, 5)))
+# print(result)
+
+def g(x):
+    return np.array((-2*.5*(1-x[0]) - 4*x[0]*(x[1] - x[0]**2), 2*(x[1] - x[0]**2  )))
+
+print(optimize.check_grad(f, g, [2, 2]))
+##print(g([3, 4]))
+
+# print(optimize.fmin_bfgs(f, [2,2], fprime=g))
+
+print(optimize.minimize(f, [2,2]))
+# print(optimize.minimize(f, [2,2], method='BFGS'))
+print(optimize.minimize(f, [2,2], method='BFGS', jac=g))
+
+
+d = np.array([3, 0, 8, 9, -10])
+print('Вектор d:', d)
+print('Его размерность:', d.shape)
+
+print ('Вектор d с newaxis --> вектор-строка:\n', d[np.newaxis, :])
+print ('Полученная размерность:', d[np.newaxis, :].shape)
+print ('Вектор d с newaxis --> вектор-столбец:\n', d[:, np.newaxis])
+print ('Полученная размерность:', d[:, np.newaxis].shape)
