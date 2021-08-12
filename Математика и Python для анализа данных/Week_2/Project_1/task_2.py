@@ -11,8 +11,8 @@ x = np.arange(0, 15.05, 0.05)
 y = f(x)
 # print(y)
 
-# plt.plot(x, y)
-# plt.show()
+plt.plot(x, y)
+plt.show()
 
 x_sol = np.array([1., 15.])
 y_sol = f(x_sol)
@@ -55,18 +55,42 @@ A = np.array([ [1, x_sol[0], x_sol[0]**2],
                [1, x_sol[1], x_sol[1]**2],
                [1, x_sol[2], x_sol[2]**2] ])
 
-b = np.array([y_sol[0], y_sol[1], y_sol[2]])
+b = np.array(y_sol)
 W=np.array(linalg.solve(A, b))
 print('W:')
 print(W[0], W[1], W[2])
 
-def f2_pol(inp, W_matr):
-    w_0 = W_matr[0]
-    w_1 = W_matr[1]
-    w_2 = W_matr[2]
-    return w_2*inp*inp + w_1*inp + w_0
+def f_pol(inp, W_matr):
+    res = 0
+    w = []
+    print()
+    for i in range(len(W_matr)):
+        w.append(W_matr[i])
+        res += w[i]*inp**(i)
+        print(str(w[i]) + ' * x^' + str(i))
+    return res
 
-y_2 = f2_pol(x, W)
+y_2 = f_pol(x, W)
 plt.plot(x, y, x, y_2, x_sol, y_sol, 'o')
 plt.show()
 
+x_sol = np.array([1.,4., 10., 15.])
+y_sol = f(x_sol)
+
+myA = []
+for var in x_sol:
+    A_str = []
+    for n in range(len(x_sol)):
+        A_str.append(var**n)
+    myA.append(A_str)
+my_A = np.array(myA)
+
+
+b = np.array(y_sol)
+W=np.array(linalg.solve(my_A, b))
+
+y_3 = f_pol(x, W)
+plt.plot(x, y, x, y_3, x_sol, y_sol, 'o')
+plt.show()
+
+print('Коэффициенты для аппроксимации (до сотых):\n\t', np.round(W, 2))
