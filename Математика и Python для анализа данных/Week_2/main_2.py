@@ -190,6 +190,8 @@ print(v)
 w = v.reshape((2,3))
 print(w)
 
+# e = np.arange(1, 13, 2).reshape((3, 2))
+
 a = np.array([[1, 0], [0, 1]])
 b = np.array([[4, 1], [2, 2]])
 r1 = np.dot(a, b)
