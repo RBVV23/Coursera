@@ -26,9 +26,9 @@ plt.show()
 
 
 # параметры по умолчанию
-# x_start = 1 + 30*np.random.rand(10)
-# x_start = np.round(x_start, 1)
-x_start = np.array([3.8, 17.2])
+x_start = 1 + 30*np.random.rand(10)
+x_start = np.round(x_start, 1)
+# x_start = np.array([3.8, 17.2])
 # print(x_start)
 
 for i in range(len(x_start)):
