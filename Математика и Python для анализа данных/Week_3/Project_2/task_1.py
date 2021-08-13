@@ -20,8 +20,8 @@ def report(start_x, results):
 x = np.arange(1, 30.05, 0.05)
 # print(x)
 y = f(x)
-# plt.plot(x, y)
-# plt.show()
+plt.plot(x, y)
+plt.show()
 
 
 
@@ -37,5 +37,10 @@ for i in range(len(x_start)):
 
 # метод Бройдена — Флетчера — Гольдфарба — Шанно (BFGS), начальное приближение x=2
 res = optimize.minimize(f, 2, method='BFGS')
-print(res)
+# print(res)
 report(2, res)
+
+# метод Бройдена — Флетчера — Гольдфарба — Шанно (BFGS), начальное приближение x=30
+res = optimize.minimize(f, 30, method='BFGS')
+# print(res)
+report(30, res)
