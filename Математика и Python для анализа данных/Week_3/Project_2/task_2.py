@@ -20,8 +20,8 @@ def report(results):
 x = np.arange(1, 30.05, 0.05)
 # print(x)
 y = f(x)
-# plt.plot(x, y)
-# plt.show()
+plt.plot(x, y)
+plt.show()
 
 # res = optimize.minimize(f, x_start[i])
 
