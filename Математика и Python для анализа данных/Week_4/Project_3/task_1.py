@@ -8,4 +8,5 @@ y=x**2
 plt.plot(x, y)
 plt.title('123')
 plt.ylabel('yyyy')
+plt.xlabel('xxxx')
 plt.show()
