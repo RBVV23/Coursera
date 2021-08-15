@@ -25,7 +25,7 @@ print(T)
 
 x = np.linspace(-4,4,100)
 pdf = sts.norm(0,1).pdf(x)
-plt.plot(x, pdf, label='theoretical PDF')
+plt.plot(x, pdf, label='Theoretical PDF')
 
 plt.ylabel('$f(x)$')
 plt.xlabel('$x$')
@@ -33,12 +33,12 @@ plt.legend(loc='upper left')
 plt.show()
 
 plt.hist(T, density=True)
-plt.ylabel('fraction of samples')
+plt.ylabel('Fraction of samples')
 plt.xlabel('$x$')
 plt.show()
 
 plt.hist(T, bins=3, density=True)
-plt.ylabel('fraction of samples')
+plt.ylabel('Fraction of samples')
 plt.xlabel('$x$')
 plt.show()
 
