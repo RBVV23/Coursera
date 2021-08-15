@@ -24,7 +24,8 @@ Y = []
 X = []
 for i in range(10):
     Y.append(Bars[0][i]/1000)
-    X.append(Bars[1][i])
+    X.append(Bars[2][i])
+print(X)
 # N_x = plt.hist(sample_mean, label='n=5')[1]
 plt.bar(X, Y, width=1)
 pdf = sts.norm.pdf(x, loc=mn, scale=SKO)
