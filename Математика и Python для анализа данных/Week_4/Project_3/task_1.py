@@ -24,10 +24,10 @@ Y = []
 X = []
 for i in range(10):
     Y.append(Bars[0][i]/1000)
-    X.append(Bars[2][i])
+    X.append(Bars[1][i])
 print(X)
 # N_x = plt.hist(sample_mean, label='n=5')[1]
-plt.bar(X, Y, width=1)
+plt.bar([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], Y, width=1)
 pdf = sts.norm.pdf(x, loc=mn, scale=SKO)
 plt.plot(x, pdf, label='Нормальное распределение',  linewidth=3 )
 plt.ylabel('Распределение выборочных средних')
