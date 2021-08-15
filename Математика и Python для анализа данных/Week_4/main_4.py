@@ -24,8 +24,9 @@ T = sts.norm(1,10).rvs(100)
 print(T)
 
 x = np.linspace(-4,4,100)
-cdf = sts.norm(0,1).cdf(x)
-plt.plot(x, cdf, label='theoretical CDF')
+pdf = sts.norm(0,1).pdf(x)
+plt.plot(x, pdf, label='theoretical PDF')
+
 plt.ylabel('$f(x)$')
 plt.xlabel('$x$')
 plt.legend(loc='upper left')
@@ -40,5 +41,6 @@ plt.hist(T, bins=3, density=True)
 plt.ylabel('fraction of samples')
 plt.xlabel('$x$')
 plt.show()
+
 
 
