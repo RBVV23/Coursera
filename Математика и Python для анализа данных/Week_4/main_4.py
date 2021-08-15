@@ -1,7 +1,7 @@
 import numpy as np
 print(np.__version__)
 import matplotlib.pyplot as plt
-# print(plt.__version__)
+print(plt.__version__)
 import scipy.stats as sts
 import pandas as pd
 print(pd.__version__)
