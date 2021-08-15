@@ -18,7 +18,15 @@ for i in range(1000):
 #     print(T_n)
     sample_mean.append(np.mean(T_n))
 # print(sample_mean)
-plt.hist(sample_mean, label='n=5')
+Bars = plt.hist(sample_mean, label='n=5')
+plt.show()
+Y = []
+X = []
+for i in range(10):
+    Y.append(Bars[0][i]/1000)
+    X.append(Bars[1][i])
+# N_x = plt.hist(sample_mean, label='n=5')[1]
+plt.bar(X, Y, width=1)
 pdf = sts.norm.pdf(x, loc=mn, scale=SKO)
 plt.plot(x, pdf, label='Нормальное распределение',  linewidth=3 )
 plt.ylabel('Распределение выборочных средних')
