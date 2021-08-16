@@ -1,7 +1,22 @@
-import numpy as np
-np.__version__
-import scipy.stats as sts
 import matplotlib.pyplot as plt
+import scipy.stats as sts
+import numpy as np
+from math import sqrt
+
+
+
+T = sts.trapezoid(0.15, 0.35).rvs(1000)
+x = np.linspace(0,1,100)
+T_2 = sts.trapezoid(0.15, 0.35).pdf(x)
+# print(T)
+
+
+plt.hist(T, density=True, stacked=True, label='Выборка')
+plt.plot(x, T_2, linewidth=3, label='Теор. график')
+plt.ylabel('Трапецеидальное распределение')
+plt.xlabel('$x$')
+plt.legend(loc='upper right')
+
 
 mn = sts.trapezoid.mean(c=0.15, d=0.35, loc=0, scale=1)
 print('Теоретическое матожидание составляет: ', mn)
@@ -9,8 +24,8 @@ disp = sts.trapezoid.var(c=0.15, d=0.35, loc=0, scale=1)
 print('Теоретическая дисперсия составляет: ', disp)
 SKO = disp**(0.5)
 print('Теоретическое СКО составляет: ', SKO)
-plt.show()
-x = np.linspace(0,1)
+
+x = np.linspace(0,1, 1000)
 n = 5
 sample_mean = []
 for i in range(1000):
@@ -18,23 +33,37 @@ for i in range(1000):
 #     print(T_n)
     sample_mean.append(np.mean(T_n))
 # print(sample_mean)
-Bars = plt.hist(sample_mean, label='n=5')
-plt.show()
-Y = []
-X = []
-for i in range(10):
-    Y.append(Bars[0][i]/1000)
-    X.append(Bars[1][i])
-print(X)
-# N_x = plt.hist(sample_mean, label='n=5')[1]
-plt.bar([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], Y, width=1)
-# pdf = sts.norm.pdf(x, loc=mn, scale=SKO)
-# plt.plot(x, pdf, label='Нормальное распределение',  linewidth=3 )
+sample_mean = sample_mean
+plt.hist(sample_mean, density=True, stacked = True, label='n=5') #, label='Выборка')
+pdf = sts.norm.pdf(x, loc=mn, scale=SKO/sqrt(n))
+plt.plot(x, pdf, label='Нормальное распределение',  linewidth=3 )
 plt.ylabel('Распределение выборочных средних')
 plt.xlabel('$x_{cp}$')
 plt.legend(loc='upper right')
 plt.show()
 
-# A = [10, 3, 6, 30, 49, 4, 4, 6, 90, 7]
-# N = plt.hist(A, label='n=5') #, label='Выборка')
-# plt.show()
+n = 10
+sample_mean = []
+for i in range(1000):
+    T_n = sts.trapezoid(0.15, 0.35).rvs(n)
+    sample_mean.append(np.mean(T_n))
+plt.hist(sample_mean, density=True, stacked = True, label='n=10') #, label='Выборка')
+pdf = sts.norm.pdf(x, loc=mn, scale=SKO/sqrt(n))
+plt.plot(x, pdf, label='theoretical PDF')
+plt.ylabel('Распределение выборочных средних')
+plt.xlabel('$x_{cp}$')
+plt.legend(loc='upper right')
+plt.show()
+
+n = 50
+sample_mean = []
+for i in range(1000):
+    T_n = sts.trapezoid(0.15, 0.35).rvs(n)
+    sample_mean.append(np.mean(T_n))
+plt.hist(sample_mean, density=True, stacked = True, label='n=50')
+pdf = sts.norm.pdf(x, loc=mn, scale=SKO/sqrt(n))
+plt.plot(x, pdf, label='theoretical PDF')
+plt.ylabel('Распределение выборочных средних')
+plt.xlabel('$x_{cp}$')
+plt.legend(loc='upper right')
+plt.show()
