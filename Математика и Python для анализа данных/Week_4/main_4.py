@@ -1,11 +1,12 @@
 import numpy as np
 print(np.__version__)
 import matplotlib.pyplot as plt
-print(plt.__version__)
+
 import scipy.stats as sts
 import pandas as pd
 print(pd.__version__)
 from collections import Counter
+import math as m
 
 T = np.random.choice([1, 2, 3, 4, 5, 6], 100)
 print(T)
@@ -42,5 +43,12 @@ plt.ylabel('Fraction of samples')
 plt.xlabel('$x$')
 plt.show()
 
+lmbd = 3
+Pois = []
+for k in range(5):
+    new= m.exp(-lmbd)*lmbd**k/m.factorial(k)
+    Pois.append(new)
+    print(str(k) + ': ', str(new))
+print(1-sum(Pois))
 
 
