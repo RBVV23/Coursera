@@ -12,7 +12,7 @@ data = pd.read_csv('weights_heights.csv',  index_col='Index')
 
 print(data.head())
 # print(data.shape)
-# print(data.info())
+print(data.info())
 
 data.plot(y='Height', kind='hist', color='red', title='Распределние роста подростков (дюймы)')
 plt.show()
