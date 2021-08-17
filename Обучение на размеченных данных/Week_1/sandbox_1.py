@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 # sns.__version__
 import numpy as np
-# np.__version__
+np.__version__
 import matplotlib.pyplot as plt
 # plt.__version__
 
