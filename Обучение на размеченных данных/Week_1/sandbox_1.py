@@ -76,7 +76,7 @@ print('pre', my_error(60, 0.05))
 
 X = np.linspace(0, 200, 25000)
 Y = data['Height']
-w_0 = 5
+w_0 = 50
 w_1 = []
 dw = 0.01
 Er = []
