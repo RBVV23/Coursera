@@ -60,7 +60,6 @@ Y = data['Height']
 print(len(Y))
 # print(Y[1])
 X = np.linspace(0, 200, 25000)
-print('START')
 
 def my_error(w0, w1):
     sum = 0
