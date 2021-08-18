@@ -65,11 +65,7 @@ print('START')
 def my_error(w0, w1):
     sum = 0
     for i in range(1, len(Y)):
-        # print('\tX = ' + str(X[i]))
-        # print('\t' + 'myX = ' + str(w0 + w1*X[i]))
-        # print('\tY = ' + str(Y[i]))
         er = (Y[i] - (w0 + w1*X[i]))**2
-        # print('\t\tError = ' + str(er))
         sum += er
     return sum
 print('pre', my_error(60, 0.05))
