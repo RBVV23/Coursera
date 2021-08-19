@@ -26,6 +26,12 @@ def weight_category(weight):
         cat = 3
     return cat
 
+def my_error(w0, w1):
+    sum = 0
+    for i in range(1, len(Y)):
+        er = (Y[i] - (w0 + w1*X[i]))**2
+        sum += er
+    return sum
 
 # data = pd.read_csv('weights_heights.csv')
 data = pd.read_csv('weights_heights.csv',  index_col='Index')
@@ -63,22 +69,15 @@ print(len(Y))
 # print(Y[1])
 X = np.linspace(0, 200, 25000)
 
-def my_error(w0, w1):
-    sum = 0
-    for i in range(1, len(Y)):
-        er = (Y[i] - (w0 + w1*X[i]))**2
-        sum += er
-    return sum
-print('pre', my_error(60, 0.05))
 
-X = np.linspace(0, 200, 25000)
+
 Y = data['Height']
 w_0 = 50
 w_1 = []
-dw = 0.01
+dw = 0.05
 Er = []
-## for i in range(100):
-##     w_1.append(dw*i)
+## for i in range(201):
+##     w_1.append(-5 + dw*i)
 ##     # print(w_1[i])
 ##     Er.append(my_error(w_0, w_1[i]))
 ## plt.plot(w_1, Er)
@@ -101,3 +100,17 @@ data.plot(x='Weight', y='Height', kind='scatter')
 plt.plot(X, Y)
 plt.grid()
 plt.show()
+
+# fig = plt.figure
+# ax = plt.gca(projection='3d')
+# W_0 = np.arange(-100, 100, 1)
+# W_1 = np.arange(-5, 5, 0.01)
+#
+# W_0, W_1 = np.meshgrid(W_0, W_1)
+# E = my_error(W_0, W_1)
+#
+# surf = ax.plot_surface(W_0, W_1, E)
+# ax.set_xlabel('Intercept')
+# ax.set_ylabel('Slope')
+# ax.set_zlabel('Error')
+# plt.show()
