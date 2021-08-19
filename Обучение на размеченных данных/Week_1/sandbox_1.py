@@ -40,7 +40,7 @@ print(data.head())
 # print(data.shape)
 # print(data.info())
 
-## data.plot(y='Height', kind='hist', color='red', title='Распределние роста подростков (дюймы)')
+data.plot(y='Height', kind='hist', color='red', title='Распределние роста подростков (дюймы)')
 
 data['BMI'] = make_bmi(data['Height'], data['Weight']) # Саня, здесь я применил свою функцию к столбцам "в лоб" и питон сам все сделал
 # data['weight_cat'] = weight_category(data['Weight']) # Почему тогда здесь не прокатил аналогичный способ?
@@ -67,7 +67,7 @@ plt.show()
 Y = data['Height']
 print(len(Y))
 # print(Y[1])
-X = np.linspace(0, 200, 25000)
+X = data['Weight']
 
 
 
@@ -116,7 +116,7 @@ ax.set_zlabel('Error')
 plt.show()
 
 
-X = np.linspace(0, 200, 25000)
+X = data['Weight']
 Y = data['Height']
 
 def my_error_v(W):
