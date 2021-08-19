@@ -6,6 +6,8 @@ import numpy as np
 np.__version__
 import matplotlib.pyplot as plt
 # plt.__version__
+from mpl_toolkits.mplot3d import Axes3D
+from scipy import optimize
 
 def make_bmi(height, weight):
     METER_TO_INCH = 39.37
@@ -75,9 +77,27 @@ w_0 = 50
 w_1 = []
 dw = 0.01
 Er = []
-for i in range(100):
-    w_1.append(dw*i)
-    # print(w_1[i])
-    Er.append(my_error(w_0, w_1[i]))
-plt.plot(w_1, Er)
+## for i in range(100):
+##     w_1.append(dw*i)
+##     # print(w_1[i])
+##     Er.append(my_error(w_0, w_1[i]))
+## plt.plot(w_1, Er)
+## plt.grid()
+## plt.show()
+
+
+def f(x):
+    return my_error(50, x)
+
+opt = optimize.minimize_scalar(f, [-5,5])
+print(opt)
+w_opt = opt['x']
+
+X = np.linspace(0, 200, 1000)
+w_0 = 50
+w_1 = w_opt
+Y = w_0 + w_1*X
+data.plot(x='Weight', y='Height', kind='scatter')
+plt.plot(X, Y)
+plt.grid()
 plt.show()
