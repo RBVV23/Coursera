@@ -51,18 +51,18 @@ data['weight_cat'] = data['Weight'].apply(weight_category) # здесь я ис�
 print(data.head())
 
 # sns_plot = sns.pairplot(data)
-## sns_plot = sns.pairplot(data[['Height', 'Weight', 'BMI']])
+sns_plot = sns.pairplot(data[['Height', 'Weight', 'BMI']])
 # sns_plot.savefig('pairplot.png')
-## plt.show()
+plt.show()
 
 
-## boxplot = sns.boxplot(y='Height', x='weight_cat', data=data, orient='v')
-## boxplot.set_xlabel('Весовая категория')
-## boxplot.set_ylabel('Рост')
-## plt.show()
+boxplot = sns.boxplot(y='Height', x='weight_cat', data=data, orient='v')
+boxplot.set_xlabel('Весовая категория')
+boxplot.set_ylabel('Рост')
+plt.show()
 
-## data.plot(x='Weight', y='Height', kind='scatter')
-## plt.show()
+data.plot(x='Weight', y='Height', kind='scatter')
+plt.show()
 
 Y = data['Height']
 print(len(Y))
@@ -76,13 +76,13 @@ w_0 = 50
 w_1 = []
 dw = 0.05
 Er = []
-## for i in range(201):
-##     w_1.append(-5 + dw*i)
-##     # print(w_1[i])
-##     Er.append(my_error(w_0, w_1[i]))
-## plt.plot(w_1, Er)
-## plt.grid()
-## plt.show()
+for i in range(201):
+    w_1.append(-5 + dw*i)
+    # print(w_1[i])
+    Er.append(my_error(w_0, w_1[i]))
+plt.plot(w_1, Er)
+plt.grid()
+plt.show()
 
 
 def f(x):
@@ -101,16 +101,41 @@ plt.plot(X, Y)
 plt.grid()
 plt.show()
 
-# fig = plt.figure
-# ax = plt.gca(projection='3d')
-# W_0 = np.arange(-100, 100, 1)
-# W_1 = np.arange(-5, 5, 0.01)
-#
-# W_0, W_1 = np.meshgrid(W_0, W_1)
-# E = my_error(W_0, W_1)
-#
-# surf = ax.plot_surface(W_0, W_1, E)
-# ax.set_xlabel('Intercept')
-# ax.set_ylabel('Slope')
-# ax.set_zlabel('Error')
-# plt.show()
+fig = plt.figure
+ax = plt.gca(projection='3d')
+W_0 = np.arange(-100, 100, 1)
+W_1 = np.arange(-5, 5, 0.01)
+
+W_0, W_1 = np.meshgrid(W_0, W_1)
+E = my_error(W_0, W_1)
+
+surf = ax.plot_surface(W_0, W_1, E)
+ax.set_xlabel('Intercept')
+ax.set_ylabel('Slope')
+ax.set_zlabel('Error')
+plt.show()
+
+
+X = np.linspace(0, 200, 25000)
+Y = data['Height']
+
+def my_error_v(W):
+    sum = 0
+    for i in range(1, len(Y)):
+        er = (Y[i] - (W[0] + W[1]*X[i]))**2
+        sum += er
+    return sum
+
+x0 = np.array([0, 1])
+
+res = optimize.minimize(my_error_v, x0, method='L-BFGS-B', bounds=[(-100,100), (-5,5)])
+W_opt = res['x']
+print(res)
+
+X = np.linspace(0, 200, 1000)
+
+Y_opt = W_opt[0] + W_opt[1]*X
+data.plot(x='Weight', y='Height', kind='scatter')
+
+plt.plot(X, Y_opt)
+plt.show()
