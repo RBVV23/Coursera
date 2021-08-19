@@ -21,11 +21,13 @@ stds = np.std(X, axis=0) # Ваш код здесь
 # print(stds)
 X = X /stds
 
-y = np.array([1, 1, 1, 1, 1])
-y_pred = np.array([1.2, 0.8, 1, 1, 1.8])
+y = [1, 1, 1, 1, 1]
+y_pred = [1.2, 0.8, 1, 1, 1.8]
 
 
 def mserror(y, y_pred):
+    y = np.array(y)
+    y_pred = np.array(y_pred)
     return np.mean((y - y_pred)**2)
 
 print(mserror(y, y_pred))
