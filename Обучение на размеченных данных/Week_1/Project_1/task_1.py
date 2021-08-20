@@ -8,7 +8,7 @@ adver_data = pd.read_csv('advertising.csv')
 print(adver_data.head())
 print(adver_data.info())
 
-adver_data = adver_data.head()
+# adver_data = adver_data.head()
 X = np.array([adver_data['TV'], adver_data['Radio'], adver_data['Newspaper']]) # Ваш код здесь
 X = X.T
 y = np.array(adver_data['Sales']) # Ваш код здесь
