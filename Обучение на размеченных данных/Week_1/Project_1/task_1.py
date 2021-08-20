@@ -21,7 +21,8 @@ stds = np.std(X, axis=0) # Ваш код здесь
 # print(stds)
 X = X /stds
 
-y = [22.1, 10.4,  9.3, 18.5, 12.9]
+y = np.array(adver_data['Sales'])
+N = X.shape[0]
 med = np.median(np.array(adver_data['Sales']))
 y_pred = np.ones((N))*med
 
