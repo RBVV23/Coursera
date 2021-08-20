@@ -52,8 +52,8 @@ print(np.dot(A,Bv))
 # X * w = y
 # w = X-1 * y
 
-# def normal_equation(X, y):
-#     Xobr = np.linalg.inv(X)
-#     return np.dot(Xobr,y)  # Ваш код здесь
+def normal_equation(X, y):
+    Xobr = np.linalg.inv(X)
+    return np.dot(Xobr,y)  # Ваш код здесь
 
-# print(normal_equation(X, y))
+print(normal_equation(X, y))
