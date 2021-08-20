@@ -3,6 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 
+# def mserror(y, y_pred):
+#     y = np.array(y)
+#     y_pred = np.array(y_pred)
+#     return np.mean((y - y_pred)**2)
 
 # adver_data = pd.read_csv('advertising.csv')
 # print(adver_data.head())
@@ -27,10 +31,6 @@ from scipy import optimize
 # y_pred = np.ones((N))*med
 #
 #
-# def mserror(y, y_pred):
-#     y = np.array(y)
-#     y_pred = np.array(y_pred)
-#     return np.mean((y - y_pred)**2)
 #
 # print(mserror(y, y_pred))
 #
@@ -40,20 +40,17 @@ from scipy import optimize
 
 
 
-X = np.array([[-5, 7], [9, 8]])
-y = np.array([[29], [-11]])
 
-A = np.array([[2, 4, 0],
-              [-2, 1, 3],
-              [-1, 0, 1]])
-Bv = np.array([1, 2, -1])
-print(np.dot(A,Bv))
 
 # X * w = y
 # w = X-1 * y
 
-def normal_equation(X, y):
-    Xobr = np.linalg.inv(X)
-    return np.dot(Xobr,y)  # Ваш код здесь
 
-print(normal_equation(X, y))
+def normal_equation(X, y):
+    X_t = X.transpose()
+    X_obr = np.dot(X_t, X)
+    X_obr = np.linalg.inv(X_obr)
+    Sol = np.dot(X_obr, X_t)
+    return np.dot(Sol,y)  # Ваш код здесь
+
+# print(normal_equation(X, y))

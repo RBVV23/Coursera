@@ -139,3 +139,14 @@ data.plot(x='Weight', y='Height', kind='scatter')
 
 plt.plot(X, Y_opt)
 plt.show()
+
+
+X = np.array([[-5, 7], [9, 8]])
+y = np.array([[29], [-11]])
+
+A = np.array([[2, 4, 0],
+              [-2, 1, 3],
+              [-1, 0, 1]])
+print(A.transpose())
+Bv = np.array([1, 2, -1])
+print(np.dot(A,Bv))
