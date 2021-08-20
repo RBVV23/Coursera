@@ -8,7 +8,7 @@ adver_data = pd.read_csv('advertising.csv')
 print(adver_data.head())
 print(adver_data.info())
 
-# adver_data = adver_data.head()
+adver_data = adver_data.head()
 X = np.array([adver_data['TV'], adver_data['Radio'], adver_data['Newspaper']]) # Ваш код здесь
 X = X.T
 y = np.array(adver_data['Sales']) # Ваш код здесь
@@ -22,7 +22,8 @@ stds = np.std(X, axis=0) # Ваш код здесь
 X = X /stds
 
 y = [22.1, 10.4,  9.3, 18.5, 12.9]
-y_pred = [12.9, 12.9, 12.9, 12.9, 12.9]
+med = np.median(np.array(adver_data['Sales']))
+y_pred = np.ones((N))*med
 
 
 def mserror(y, y_pred):
