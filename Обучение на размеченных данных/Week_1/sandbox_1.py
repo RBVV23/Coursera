@@ -150,3 +150,4 @@ A = np.array([[2, 4, 0],
 print(A.transpose())
 Bv = np.array([1, 2, -1])
 print(np.dot(A,Bv))
+# 1
