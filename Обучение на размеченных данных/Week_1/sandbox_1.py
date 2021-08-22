@@ -151,3 +151,14 @@ print(A.transpose())
 Bv = np.array([1, 2, -1])
 print(np.dot(A,Bv))
 # 1
+
+X = np.array([[3, 5, 6],
+            [1, 3, 8],
+            [5, 7, 4]])
+
+means = np.mean(X, axis=0)
+# print(means)
+X = X - means
+stds = np.std(X, axis=0) # Ваш код здесь
+# print(stds)
+print(X)
