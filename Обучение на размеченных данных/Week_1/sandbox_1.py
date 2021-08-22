@@ -161,4 +161,5 @@ means = np.mean(X, axis=0)
 X = X - means
 stds = np.std(X, axis=0) # Ваш код здесь
 # print(stds)
+X = X /stds
 print(X)
