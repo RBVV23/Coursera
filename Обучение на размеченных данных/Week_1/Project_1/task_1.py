@@ -57,4 +57,46 @@ def linear_prediction(X, w):
 
 # print(normal_equation(X, y))
 
-print(np.random.randint(0, 199, 1))
+def stochastic_gradient_step(X, y, w, train_ind, eta=0.01):
+  #     j = np.randint(0, N-1, 1)
+    grad0 = 2 * (X[train_ind][0]*w[0] - y[train_ind]) * X[train_ind][0] # Ваш код здесь
+    grad1 = 2 * (X[train_ind][1]*w[1] - y[train_ind]) * X[train_ind][1] # Ваш код здесь
+    grad2 = 2 * (X[train_ind][2]*w[2] - y[train_ind]) * X[train_ind][2] # Ваш код здесь
+    grad3 = 2 * (X[train_ind][3]*w[3] - y[train_ind]) * X[train_ind][3] # Ваш код здесь
+    return  w - eta * np.array([grad0, grad1, grad2, grad3])
+
+
+def stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4,
+                                min_weight_dist=1e-8, seed=42, verbose=False):
+    # Инициализируем расстояние между векторами весов на соседних
+    # итерациях большим числом.
+    weight_dist = np.inf
+    # Инициализируем вектор весов
+    w = w_init
+    # Сюда будем записывать ошибки на каждой итерации
+    errors = []
+    # Счетчик итераций
+    iter_num = 0
+    # Будем порождать псевдослучайные числа
+    # (номер объекта, который будет менять веса), а для воспроизводимости
+    # этой последовательности псевдослучайных чисел используем seed.
+    np.random.seed(seed)
+
+    # Основной цикл
+    while weight_dist > min_weight_dist and iter_num < max_iter:
+        # порождаем псевдослучайный
+        # индекс объекта обучающей выборки
+        random_ind = np.random.randint(X.shape[0])
+        # Ваш код здесь
+        dw = stochastic_gradient_step(X, y, w, train_ind=random_ind, eta=eta)
+        w_new = w - eta * dw
+        weight_dist = ((w - w_new) ^ 2) / (w.shape[1])
+        y = y[random_ind]
+        y_pred = linear_prediction(X, new_w)
+        errors.append(mserror(y, y_pred))
+    return w, errors
+
+
+w_init = np.array([0, 0, 0, 0])
+print( stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4, min_weight_dist=1e-8,
+                            seed=42, verbose=False) )
