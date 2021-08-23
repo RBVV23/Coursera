@@ -33,6 +33,15 @@ def my_error(w0, w1):
         sum += er
     return sum
 
+def stochastic_gradient_step(X, y, w, train_ind, eta=0.01):
+  #     j = np.randint(0, N-1, 1)
+    grad0 = 2 * (X[train_ind][0]*w[0] - y[train_ind]) * X[train_ind][0] # Ваш код здесь
+    grad1 = 2 * (X[train_ind][1]*w[1] - y[train_ind]) * X[train_ind][1] # Ваш код здесь
+    grad2 = 2 * (X[train_ind][2]*w[2] - y[train_ind]) * X[train_ind][2] # Ваш код здесь
+    grad3 = 2 * (X[train_ind][3]*w[3] - y[train_ind]) * X[train_ind][3] # Ваш код здесь
+    return  w - eta * np.array([grad0, grad1, grad2, grad3])
+
+
 # data = pd.read_csv('weights_heights.csv')
 data = pd.read_csv('weights_heights.csv',  index_col='Index')
 
