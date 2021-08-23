@@ -100,3 +100,5 @@ def stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4,
 w_init = np.array([0, 0, 0, 0])
 print( stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4, min_weight_dist=1e-8,
                             seed=42, verbose=False) )
+
+#123
