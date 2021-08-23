@@ -8,6 +8,17 @@ from scipy import optimize
 #     y_pred = np.array(y_pred)
 #     return np.mean((y - y_pred)**2)
 
+def normal_equation(X, y):
+    X_t = X.transpose()
+    X_obr = np.dot(X_t, X)
+    X_obr = np.linalg.inv(X_obr)
+    Sol = np.dot(X_obr, X_t)
+    return np.dot(Sol,y)  # Ваш код здесь
+
+def linear_prediction(X, w):
+    return np.dot(X,w)
+
+
 # adver_data = pd.read_csv('advertising.csv')
 # print(adver_data.head())
 # print(adver_data.info())
@@ -32,11 +43,7 @@ from scipy import optimize
 #
 #
 #
-# print(mserror(y, y_pred))
-#
-#
-# # def normal_equation(X, y):
-# #     return np.linalg.inv(Xt)  # Ваш код здесь
+
 
 
 
@@ -46,11 +53,8 @@ from scipy import optimize
 # w = X-1 * y
 
 
-def normal_equation(X, y):
-    X_t = X.transpose()
-    X_obr = np.dot(X_t, X)
-    X_obr = np.linalg.inv(X_obr)
-    Sol = np.dot(X_obr, X_t)
-    return np.dot(Sol,y)  # Ваш код здесь
+
 
 # print(normal_equation(X, y))
+
+print(np.random.randint(0, 199, 1))
