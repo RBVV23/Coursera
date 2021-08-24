@@ -181,3 +181,10 @@ stds = np.std(X, axis=0) # Ваш код здесь
 # print(stds)
 X = X /stds
 print(X)
+
+Xpr = np.array([[1, 2, 3, 0],
+                [4, 5, 6, 0],
+                [7, 8, 9, 0]])
+w = np.array([1, 0.1, 10, 5])
+Xpr * w
+np.sum(Xpr*w, axis=0)

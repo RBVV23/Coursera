@@ -109,7 +109,7 @@ y = np.array(adver_data['Sales'])
 # print(y_pred, y)
 answer1 =  mserror(y, y_pred)
 print('answer1 = ', round(answer1, 3))
-# answer1 = 28.34575
+# answer1 = 28.346
 
 norm_eq_weights = normal_equation(X, y)
 print(norm_eq_weights)
