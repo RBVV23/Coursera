@@ -35,6 +35,15 @@ def my_error(w0, w1):
 
 def stochastic_gradient_step(X, y, w, train_ind, eta=0.01):
   #     j = np.randint(0, N-1, 1)
+    print('X[train_ind][0] = ', X[train_ind][0])
+    print('X[train_ind][1] = ', X[train_ind][1])
+    print('X[train_ind][2] = ', X[train_ind][2])
+    print('X[train_ind][3] = ', X[train_ind][3])
+    print('y[train_ind] = ', y[train_ind])
+    print('w[0] = ', w[0])
+    print('w[1] = ', w[1])
+    print('w[2] = ', w[2])
+    print('w[3] = ', w[3])
     grad0 = 2 * (X[train_ind][0]*w[0] - y[train_ind]) * X[train_ind][0] # Ваш код здесь
     grad1 = 2 * (X[train_ind][1]*w[1] - y[train_ind]) * X[train_ind][1] # Ваш код здесь
     grad2 = 2 * (X[train_ind][2]*w[2] - y[train_ind]) * X[train_ind][2] # Ваш код здесь
