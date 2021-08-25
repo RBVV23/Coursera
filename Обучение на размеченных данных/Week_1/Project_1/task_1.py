@@ -22,6 +22,7 @@ def linear_prediction(X, w):
 
 
 def gradient_step(X, y, w, eta=0.01):
+    L = X.shape[0]
     grad0 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 0], axis=0)
     grad1 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 1], axis=0)
     grad2 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 2], axis=0)
@@ -171,30 +172,32 @@ print('answer3 = ', round(answer3, 3))
 
 w_init = np.array([0, 0, 0, 0])
 
-w, errors =stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4, min_weight_dist=1e-8,
-                            seed=42, verbose=True)
+# w, errors =stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4, min_weight_dist=1e-8,
+#                             seed=42, verbose=False)
+
+w, errors = gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4, min_weight_dist=1e-8, verbose=False)
 print('w = ', w)
 print('errors[0] = ', errors[0])
 print('errors[-1] = ', errors[-1])
 print('mean.errors[-1] = ', np.mean(errors))
 
-stoch_grad_desc_weights, stoch_errors_by_iter = stochastic_gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e5, min_weight_dist=1e-8,
-                            seed=42)
+grad_desc_weights, errors_by_iter = gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e5, min_weight_dist=1e-8)
 
-plt.plot(range(50), stoch_errors_by_iter[:50])
+plt.plot(range(50), errors_by_iter[:50])
 plt.xlabel('Iteration number')
 plt.ylabel('MSE')
 plt.show()
 
-plt.plot(range(len(stoch_errors_by_iter)), stoch_errors_by_iter)
+plt.plot(range(len(errors_by_iter)), errors_by_iter)
 plt.xlabel('Iteration number')
 plt.ylabel('MSE')
 plt.show()
 
-print('stoch_grad_desc_weights = ', stoch_grad_desc_weights)
-print('stoch_errors_by_iter[-1]', stoch_errors_by_iter[-1])
+print('stoch_grad_desc_weights = ', grad_desc_weights)
+print('stoch_errors_by_iter[-1]', errors_by_iter[-1])
 
-y_pred = linear_prediction(X, stoch_grad_desc_weights)
+y_pred = linear_prediction(X, grad_desc_weights)
+# y_pred = linear_prediction(X, stoch_grad_desc_weights)
 y = np.array(adver_data['Sales'])
 answer4 =  mserror(y, y_pred)
 print('answer4 = ', round(answer4, 3))
