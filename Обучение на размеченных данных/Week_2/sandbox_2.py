@@ -15,4 +15,6 @@ colors = ListedColormap(['red', 'yellow'])
 # colors = ListedColormap(['red', 'blue'])
 
 plt.figure(figsize=(8,8))
-plt.scatter(map(lambda x: x[0], circles[0]), map(lambda x: x[1], circles[0]), c=circles[1], cmap=colors)
+# plt.figure(figsize=(5,5))
+plt.scatter(list(map(lambda x: x[0], circles[0])), list(map(lambda x: x[1], circles[0])), c=circles[1], cmap=colors)
+plt.show()
