@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 
+
+
 def mserror(y, y_pred):
     y = np.array(y)
     y_pred = np.array(y_pred)
@@ -17,6 +19,43 @@ def normal_equation(X, y):
 
 def linear_prediction(X, w):
     return np.dot(X,w)
+
+
+def gradient_step(X, y, w, eta=0.01):
+    grad0 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 0], axis=0)
+    grad1 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 1], axis=0)
+    grad2 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 2], axis=0)
+    grad3 = 2. / L * np.sum((np.sum(X * w, axis=1) - y) * X[:, 3], axis=0)
+    return w - eta * np.array([grad0, grad1, grad2, grad3])
+
+def gradient_descent(X, y, w_init, eta=1e-2, max_iter=1e4,
+                     min_weight_dist=1e-8, verbose=False):
+    # Инициализируем расстояние между векторами весов на соседних
+    # итерациях большим числом.
+    weight_dist = np.inf
+    # Инициализируем вектор весов
+    w = w_init
+    # Сюда будем записывать ошибки на каждой итерации
+    errors = []
+    # Счетчик итераций
+    iter_num = 0
+
+    # Основной цикл
+    while weight_dist > min_weight_dist and iter_num < max_iter:
+        # Ваш код здесь
+        w_new = gradient_step(X=X, y=y, w=w, eta=eta)
+        weight_dist = (sum((w - w_new) ** 2)) ** 0.5
+        y_pred = linear_prediction(X, w_new)
+        error = mserror(y, y_pred)
+        errors.append(error)
+        w = w_new
+        iter_num += 1
+        if (iter_num % 100) == 0 and verbose == True:
+            print('iter_num = ', iter_num)
+            print('\tweight_dist = ', weight_dist)
+            print('\terror = ', error)
+    return w, errors
+
 
 def stochastic_gradient_step(X, y, w, train_ind, eta=0.01):
   #     j = np.randint(0, N-1, 1)
