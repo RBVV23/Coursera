@@ -2,18 +2,18 @@ from matplotlib.colors import ListedColormap
 from sklearn import model_selection, datasets, linear_model, metrics
 
 import matplotlib.pyplot as plt
-import numpy as np
+# import numpy as np
 
 blobs = datasets.make_blobs(centers=2, cluster_std=5.5, random_state=1)
 colors = ListedColormap(['red', 'blue'])
 
-plt.figure(figsize=(6,6))
+plt.figure(figsize=(6, 6))
 plt.scatter([x[0] for x in blobs[0]], [x[1] for x in blobs[0]], c=blobs[1], cmap=colors)
 # plt.scatter(list(map(lambda x: x[0], blobs[0])), list(map(lambda x: x[1], blobs[0])), c=blobs[1], cmap=colors)
 plt.show()
 
 train_data, test_data, train_labels, test_labels = model_selection.train_test_split(blobs[0], blobs[1],
-                                                                                  test_size=0.3, random_state=1)
+                                                                                    test_size=0.3, random_state=1)
 
 # Линейная классификация
 
@@ -50,7 +50,7 @@ print(ans)
 ridge_scoring = model_selection.cross_val_score(ridge_classifer, blobs[0], blobs[1],
                                                 scoring='accuracy', cv=10)
 log_scoring = model_selection.cross_val_score(log_regressor, blobs[0], blobs[1],
-                                                scoring='accuracy', cv=10)
+                                              scoring='accuracy', cv=10)
 
 print('ridge_scoring = ', ridge_scoring)
 print('Ridge mean: {}, max: {}, min: {}, std: {}'.format(ridge_scoring.mean(), ridge_scoring.max(),
@@ -58,7 +58,7 @@ print('Ridge mean: {}, max: {}, min: {}, std: {}'.format(ridge_scoring.mean(), r
 
 print('log_scoring = ', log_scoring)
 print('Log mean: {}, max: {}, min: {}, std: {}'.format(log_scoring.mean(), log_scoring.max(),
-                                                         log_scoring.min(), log_scoring.std()))
+                                                       log_scoring.min(), log_scoring.std()))
 
 scorer = metrics.make_scorer(metrics.accuracy_score)
 cv_strategy = model_selection.StratifiedShuffleSplit(n_splits=20, test_size=0.3, random_state=2)
@@ -67,7 +67,7 @@ cv_strategy.get_n_splits(blobs[1])
 ridge_scoring = model_selection.cross_val_score(ridge_classifer, blobs[0], blobs[1],
                                                 scoring=scorer, cv=cv_strategy)
 log_scoring = model_selection.cross_val_score(log_regressor, blobs[0], blobs[1],
-                                                scoring=scorer, cv=cv_strategy)
+                                              scoring=scorer, cv=cv_strategy)
 
 # print('ridge_scoring = ', ridge_scoring)
 print('Ridge mean: {}, max: {}, min: {}, std: {}'.format(ridge_scoring.mean(), ridge_scoring.max(),
@@ -75,4 +75,4 @@ print('Ridge mean: {}, max: {}, min: {}, std: {}'.format(ridge_scoring.mean(), r
 
 # print('log_scoring = ', log_scoring)
 print('Log mean: {}, max: {}, min: {}, std: {}'.format(log_scoring.mean(), log_scoring.max(),
-                                                         log_scoring.min(), log_scoring.std()))
+                                                       log_scoring.min(), log_scoring.std()))
