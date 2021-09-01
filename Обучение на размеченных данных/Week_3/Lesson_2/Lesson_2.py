@@ -5,15 +5,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+import warnings
+warnings.filterwarnings('ignore')
+
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_rows', 250)
 pd.set_option('display.max_columns', 100)
 
 raw_data = pd.read_csv('bike_sharing_demand.csv', header=0, sep=',')
-# print(raw_data.head())
-# print(raw_data.shape)
-# print(raw_data.isnull().values.any())
-# print(raw_data.info())
+print(raw_data.head())
+print(raw_data.shape)
+print(raw_data.isnull().values.any())
+print(raw_data.info())
 
 # Описание признаков
 # datetime - hourly date + timestamp
@@ -38,7 +41,7 @@ raw_data.datetime = raw_data.datetime.apply(pd.to_datetime)
 raw_data['month'] = raw_data.datetime.apply(lambda x: x.month)
 raw_data['hour'] = raw_data.datetime.apply(lambda x: x.hour)
 
-# print(raw_data.head())
+print(raw_data.head())
 
 train_data = raw_data.iloc[:-1000, :]
 hold_out_test_data = raw_data.iloc[-1000:, :]
@@ -62,7 +65,7 @@ plt.title('train data')
 plt.subplot(1, 2, 2)
 plt.hist(test_labels)
 plt.title('test data')
-# plt.show()
+plt.show()
 
 numeric_columns = ['temp', 'atemp', 'humidity', 'windspeed', 'casual', 'registered', 'month', 'hour']
 train_data = train_data[numeric_columns]
@@ -116,3 +119,41 @@ print(metrics.mean_absolute_error(test_labels, pipeline.predict((test_data))))
 print()
 print("pipeline.get_params().keys()")
 print(pipeline.get_params().keys())
+
+parameters_grid = { 'regression__loss': ['huber', 'epsilon_insensitive', 'squared_loss'],
+                    'regression__max_iter': [3, 5, 10, 50],
+                    'regression__penalty': ['l1', 'l2', 'none'],
+                    'regression__alpha': [0.0001, 0.01],
+                    'scaling__with_mean': [0., 0.5]}
+
+grid_cv = model_selection.GridSearchCV(pipeline, parameters_grid,
+                                       scoring='neg_mean_absolute_error', cv=4)
+grid_cv.fit(train_data, train_labels)
+
+print('grid_cv.best_score_ = ', grid_cv.best_score_)
+print('grid_cv.best_params_ = ', grid_cv.best_params_)
+
+print(metrics.mean_absolute_error(test_labels, grid_cv.best_estimator_.predict(test_data)))
+print('np.mean(test_labels)', np.mean(test_labels))
+
+test_predictions = grid_cv.best_estimator_.predict(test_data)
+print(test_labels[:10])
+print(test_predictions[:10])
+
+plt.figure(figsize=(16,6))
+plt.subplot(1, 2, 1)
+plt.grid(True)
+plt.scatter(train_labels, pipeline.predict(train_data), alpha=0.5, color='red')
+plt.scatter(test_labels, pipeline.predict(test_data), alpha=0.5, color='blue')
+plt.title('no parameters setting')
+plt.xlim(-100,1100)
+plt.ylim(-100,1100)
+
+plt.subplot(1, 2, 2)
+plt.grid(True)
+plt.scatter(train_labels, grid_cv.best_estimator_.predict(train_data), alpha=0.5, color='red')
+plt.scatter(test_labels, grid_cv.best_estimator_.predict(test_data), alpha=0.5, color='blue')
+plt.title('grid search')
+plt.xlim(-100,1100)
+plt.ylim(-100,1100)
+plt.show()
