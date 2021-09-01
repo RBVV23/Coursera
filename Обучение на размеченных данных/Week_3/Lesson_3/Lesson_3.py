@@ -1,5 +1,5 @@
 from sklearn import model_selection, linear_model, metrics, pipeline, preprocessing
-
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -54,5 +54,49 @@ print(numeric_data_indices)
 regressor = linear_model.SGDRegressor(random_state=0, max_iter=3, loss='squared_loss', penalty='l2')
 
 estimator = pipeline.Pipeline(steps=[
-    ('feature_processing')
-])
+    ('feature_processing', pipeline.FeatureUnion(transformer_list=[
+        ('binary_variable_processing', preprocessing.FunctionTransformer(lambda data: data.iloc[:, binary_data_indices])),
+        ('numeric_variable_processing', pipeline.Pipeline(steps=[
+            ('selecting', preprocessing.FunctionTransformer(lambda data: data.iloc[:, numeric_data_indices])),
+            ('scaling', preprocessing.StandardScaler(with_mean=0))
+        ])),
+        ('categorical_variable_processing', pipeline.Pipeline(steps=[
+            ('selecting', preprocessing.FunctionTransformer(lambda data: data.iloc[:, categorical_data_indices])),
+            ('hot_encoding', preprocessing.OneHotEncoder(handle_unknown='ignore'))
+        ])),
+    ])),
+    ('model_fitting', regressor)
+    ]
+)
+
+estimator.fit(train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, estimator.predict(test_data)))
+
+print()
+print('estimator.get_params().keys():')
+print(estimator.get_params().keys())
+
+parameters_grid = {
+    'model_fitting__alpha' : [0.0001, 0.001, 0.1],
+    'model_fitting__eta0' : [0.001, 0.05]
+}
+
+grid_cv = model_selection.GridSearchCV(estimator, parameters_grid, scoring='neg_mean_absolute_error', cv=4)
+grid_cv.fit(train_data, train_labels)
+
+print('grid_cv.best_score_ = ', grid_cv.best_score_)
+print('grid_cv.best_params_ = ', grid_cv.best_params_)
+
+test_predictions = grid_cv.best_estimator_.predict(test_data)
+print(metrics.mean_absolute_error(test_labels, test_predictions))
+
+print(test_labels[:20])
+print(test_predictions[:20])
+
+plt.figure(figsize=(16,6))
+plt.grid(True)
+plt.scatter(train_labels, grid_cv.best_estimator_.predict(train_data), alpha=0.5, color='red')
+plt.scatter(test_labels, grid_cv.best_estimator_.predict(test_data), alpha=0.5, color='blue')
+plt.xlim(-100,1100)
+plt.ylim(-100,1100)
+plt.show()
