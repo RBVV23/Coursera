@@ -1,4 +1,6 @@
 from sklearn import model_selection, linear_model, metrics
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -60,7 +62,7 @@ plt.title('train data')
 plt.subplot(1, 2, 2)
 plt.hist(test_labels)
 plt.title('test data')
-plt.show()
+# plt.show()
 
 numeric_columns = ['temp', 'atemp', 'humidity', 'windspeed', 'casual', 'registered', 'month', 'hour']
 train_data = train_data[numeric_columns]
@@ -69,3 +71,48 @@ test_data = test_data[numeric_columns]
 print(train_data.head())
 print(test_data.head())
 
+regressor = linear_model.SGDRegressor(random_state=0, max_iter=5)
+regressor.fit(train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, regressor.predict(test_data)))
+
+print(test_labels[:10])
+print(regressor.predict(test_data)[:10])
+print('regressor.coef_ = ', regressor.coef_)
+
+scaler = StandardScaler()
+scaler.fit(train_data, train_labels)
+scaled_train_data = scaler.transform(train_data)
+scaled_test_data = scaler.transform(test_data)
+
+regressor.fit(scaled_train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, regressor.predict(scaled_test_data)))
+
+print(test_labels[:10])
+print(regressor.predict(scaled_test_data)[:10])
+
+print('regressor.coef_ = ', regressor.coef_)
+print('regressor.coef_ = ', list(map(lambda x: round(x,2), regressor.coef_)))
+
+print(train_data.head())
+flag = np.all(train_data.registered + train_data.casual == train_labels)
+print(flag)
+
+train_data.drop(['registered', 'casual'], axis=1, inplace=True)
+test_data.drop(['registered', 'casual'], axis=1, inplace=True)
+
+scaler.fit(train_data, train_labels)
+scaled_train_data = scaler.transform(train_data)
+scaled_test_data = scaler.transform(test_data)
+
+regressor.fit(scaled_train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, regressor.predict((scaled_test_data))))
+
+print('regressor.coef_ = ', list(map(lambda x: round(x,2), regressor.coef_)))
+
+pipeline = Pipeline(steps=[('scaling', scaler), ('regression', regressor)])
+pipeline.fit(train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, pipeline.predict((test_data))))
+
+print()
+print("pipeline.get_params().keys()")
+print(pipeline.get_params().keys())
