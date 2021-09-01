@@ -1,4 +1,5 @@
 from sklearn import model_selection, linear_model, metrics, pipeline, preprocessing
+from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -93,10 +94,53 @@ print(metrics.mean_absolute_error(test_labels, test_predictions))
 print(test_labels[:20])
 print(test_predictions[:20])
 
-plt.figure(figsize=(16,6))
+plt.figure(figsize=(8,6))
 plt.grid(True)
 plt.scatter(train_labels, grid_cv.best_estimator_.predict(train_data), alpha=0.5, color='red')
 plt.scatter(test_labels, grid_cv.best_estimator_.predict(test_data), alpha=0.5, color='blue')
 plt.xlim(-100,1100)
 plt.ylim(-100,1100)
+plt.show()
+
+regressor = RandomForestRegressor(random_state=0, max_depth=20, n_estimators=50)
+
+estimator = pipeline.Pipeline(steps=[
+    ('feature_processing', pipeline.FeatureUnion(transformer_list=[
+        ('binary_variable_processing', preprocessing.FunctionTransformer(lambda data: data.iloc[:, binary_data_indices])),
+        ('numeric_variable_processing', pipeline.Pipeline(steps=[
+            ('selecting', preprocessing.FunctionTransformer(lambda data: data.iloc[:, numeric_data_indices])),
+            ('scaling', preprocessing.StandardScaler(with_mean=0))
+        ])),
+        ('categorical_variable_processing', pipeline.Pipeline(steps=[
+            ('selecting', preprocessing.FunctionTransformer(lambda data: data.iloc[:, categorical_data_indices])),
+            ('hot_encoding', preprocessing.OneHotEncoder(handle_unknown='ignore'))
+        ])),
+    ])),
+    ('model_fitting', regressor)
+    ]
+)
+
+estimator.fit(train_data, train_labels)
+print(metrics.mean_absolute_error(test_labels, estimator.predict(test_data)))
+
+print(test_labels[:10])
+print(estimator.predict(test_data[:10]))
+
+plt.figure(figsize=(8,6))
+
+plt.subplot(1,2,1)
+plt.grid(True)
+plt.scatter(train_labels, grid_cv.best_estimator_.predict(train_data), alpha=0.5, color='red')
+plt.scatter(test_labels, grid_cv.best_estimator_.predict(test_data), alpha=0.5, color='blue')
+plt.xlim(-100,1100)
+plt.ylim(-100,1100)
+plt.title('linear model')
+
+plt.subplot(1,2,2)
+plt.grid(True)
+plt.scatter(train_labels, estimator.predict(train_data), alpha=0.5, color='red')
+plt.scatter(test_labels, estimator.predict(test_data), alpha=0.5, color='blue')
+plt.xlim(-100,1100)
+plt.ylim(-100,1100)
+plt.title('random forest model')
 plt.show()
