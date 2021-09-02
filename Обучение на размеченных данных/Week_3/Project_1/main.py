@@ -27,3 +27,8 @@ pd.set_option('display.max_columns', 100)
 
 data = pd.read_csv('data.csv')
 print(data.shape)
+
+print(data.head(100))
+
+
+
