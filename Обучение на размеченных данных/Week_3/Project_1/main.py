@@ -4,6 +4,9 @@ import matplotlib
 from matplotlib import pyplot as plt
 # matplotlib.style.use('ggplot')
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import roc_auc_score
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -33,5 +36,6 @@ print(data.head(100))
 
 
 
+roc_auc_score
 
 
