@@ -4,6 +4,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 from sklearn.linear_model import LogisticRegression as LR
 from sklearn.feature_extraction import DictVectorizer as DV
+from sklearn.model_selection import train_test_split
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -97,3 +98,17 @@ print(encoded_data)
 
 encoder = DV(sparse = False)
 X_cat_oh = encoder.fit_transform(X_cat.T.to_dict().values())
+
+(X_train_real_zeros,
+ X_test_real_zeros,
+ y_train, y_test) = train_test_split(X_real_zeros, y,
+                                     test_size=0.3,
+                                     random_state=0)
+(X_train_real_mean,
+ X_test_real_mean) = train_test_split(X_real_mean,
+                                      test_size=0.3,
+                                      random_state=0)
+(X_train_cat_oh,
+ X_test_cat_oh) = train_test_split(X_cat_oh,
+                                   test_size=0.3,
+                                   random_state=0)
