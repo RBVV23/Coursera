@@ -2,11 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib
 from matplotlib import pyplot as plt
-# matplotlib.style.use('ggplot')
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import roc_auc_score
+from sklearn.linear_model import LogisticRegression as LR
+from sklearn.feature_extraction import DictVectorizer as DV
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -15,46 +12,88 @@ def calculate_means(numeric_data):
     means = np.zeros(numeric_data.shape[1])
     for j in range(numeric_data.shape[1]):
         to_sum = numeric_data.iloc[:,j]
+#       indices = np.nonzero(~numeric_data.iloc[:,j].isnull())[0] - оригинальная строка (не работает)
         indices = np.nonzero(~numeric_data.iloc[:,j].isnull().values)[0] # - авторская версия
         correction = np.amax(to_sum[indices])
+#         to_sum /= correction - первая строка из ненужной пары
         for i in indices:
             means[j] += to_sum[i]
         means[j] /= indices.size
+#         means[j] *= correction - вторая строка из ненужной пары
     return pd.Series(means, numeric_data.columns)
 
-
-pd.set_option('display.width', 1000)
-pd.set_option('display.max_rows', 250)
-pd.set_option('display.max_columns', 100)
-
-
 data = pd.read_csv('data.csv')
-print(data.shape)
+print('data.shape = ', data.shape)
 
-print(data.head(100))
+X = data.drop('Grant.Status', 1)
+y = data['Grant.Status']
+
+print('data.head()')
+data.head()
+
+numeric_cols = ['RFCD.Percentage.1', 'RFCD.Percentage.2', 'RFCD.Percentage.3',
+                'RFCD.Percentage.4', 'RFCD.Percentage.5',
+                'SEO.Percentage.1', 'SEO.Percentage.2', 'SEO.Percentage.3',
+                'SEO.Percentage.4', 'SEO.Percentage.5',
+                'Year.of.Birth.1', 'Number.of.Successful.Grant.1', 'Number.of.Unsuccessful.Grant.1']
+categorical_cols = list(set(X.columns.values.tolist()) - set(numeric_cols))
+
+data.dropna().shape
+
+means = data[numeric_cols].mean()
+print('means = ', means)
+
+numeric_cols = ['RFCD.Percentage.1', 'RFCD.Percentage.2', 'RFCD.Percentage.3',
+                'RFCD.Percentage.4', 'RFCD.Percentage.5',
+                'SEO.Percentage.1', 'SEO.Percentage.2', 'SEO.Percentage.3',
+                'SEO.Percentage.4', 'SEO.Percentage.5',
+                'Year.of.Birth.1', 'Number.of.Successful.Grant.1', 'Number.of.Unsuccessful.Grant.1']
+
+means = data[numeric_cols].mean()
+
+X = data.drop('Grant.Status', 1)
+# y = data['Grant.Status']
+X_real_mean = X[numeric_cols]
+# X_real_zeros = X
+
+for col in numeric_cols:
+    indices = X[col].isnull()
+#     print(X[col])
+#     print(indices)
+    X_real_mean[col][indices] = X_real_mean[col][indices].apply(lambda x: means[col])
+#     print(X_real_mean[col])
 
 
+X = data.drop('Grant.Status', 1)
+X_real_zeros = X[numeric_cols]
+for col in numeric_cols:
+    indices = X[col].isnull()
+#     print(X[col])
+#     print(indices)
+    X_real_zeros[col][indices] = X_real_zeros[col][indices].apply(lambda x: 0)
+#     print(X_real_zeros[col])
 
-# place your code here
+X = data.drop('Grant.Status', 1)
+X_cat = X[categorical_cols]
+for col in categorical_cols:
+    indices = X[col].isnull()
+#     print(X[col])
+#     print(indices)
+    X_cat[col][indices] = X_cat[col][indices].apply(lambda x: 'NA')
+    X_cat[col] = X_cat[col].apply(lambda x: str(x))
+#     print(X_real_zeros[col])
+# print(X_cat)
+X = data.drop('Grant.Status', 1)
+print('X_cat', X_cat)
 
-cv = 3
+categorial_data = pd.DataFrame({'sex': ['male', 'female', 'male', 'female'],
+                                'nationality': ['American', 'European', 'Asian', 'European']})
+print('Исходные данные:\n')
+print(categorial_data)
+encoder = DV(sparse = False)
+encoded_data = encoder.fit_transform(categorial_data.T.to_dict().values())
+print('\nЗакодированные данные:\n')
+print(encoded_data)
 
-X_train= [0,0,0,0,0,0,0,0,0]
-y_train= [0,0,0,0,0,0,0,0,0]
-X_test= [0,0,0,0,0,0,0,0,0]
-y_test= [0,0,0,0,0,0,0,0,0]
-
-
-param_grid = {'C': [0.01, 0.05, 0.1, 0.5, 1, 5, 10]}
-
-estimator = LogisticRegression(penalty='l1', solver='liblinear', class_weight='balanced')
-optimizer = GridSearchCV(estimator, param_grid, cv=cv, scoring='accuracy')
-optimizer.fit(X_train, y_train)
-
-auc = roc_auc_score(y_test, optimizer.predict_proba(X_test)[:,1])
-print('auc = ', auc)
-# print('weights = ', optimizer._coef)
-estimator.coef_
-# write_answer_6(auc)
-
-
+encoder = DV(sparse = False)
+X_cat_oh = encoder.fit_transform(X_cat.T.to_dict().values())
