@@ -35,7 +35,26 @@ print(data.head(100))
 
 
 
+# place your code here
 
-roc_auc_score
+cv = 3
+
+X_train= [0,0,0,0,0,0,0,0,0]
+y_train= [0,0,0,0,0,0,0,0,0]
+X_test= [0,0,0,0,0,0,0,0,0]
+y_test= [0,0,0,0,0,0,0,0,0]
+
+
+param_grid = {'C': [0.01, 0.05, 0.1, 0.5, 1, 5, 10]}
+
+estimator = LogisticRegression(penalty='l1', solver='liblinear', class_weight='balanced')
+optimizer = GridSearchCV(estimator, param_grid, cv=cv, scoring='accuracy')
+optimizer.fit(X_train, y_train)
+
+auc = roc_auc_score(y_test, optimizer.predict_proba(X_test)[:,1])
+print('auc = ', auc)
+# print('weights = ', optimizer._coef)
+estimator.coef_
+# write_answer_6(auc)
 
 
