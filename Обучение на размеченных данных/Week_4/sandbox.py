@@ -3,3 +3,8 @@ print(pd.__version__)
 import numpy as np
 print(np.__version__)
 import matplotlib.pyplot as plt
+
+
+a = 10
+
+foo = dict()
