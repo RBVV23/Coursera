@@ -425,7 +425,7 @@ coefs = optimizer.best_estimator_.coef_
 
 print(optimizer.best_estimator_.coef_)
 coefs = optimizer.best_estimator_.coef_
-coefs.shape
+print('coefs.shape = ', coefs.shape)
 features = []
 
 for i in range(X_real_zeros.shape[1]):
