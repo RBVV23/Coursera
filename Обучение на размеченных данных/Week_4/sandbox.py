@@ -7,4 +7,5 @@ import matplotlib.pyplot as plt
 
 a = 10
 
-foo = dict()
+my_dict = {}
+
