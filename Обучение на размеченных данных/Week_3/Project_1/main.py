@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression as LR
 from sklearn.feature_extraction import DictVectorizer as DV
 from sklearn.model_selection import train_test_split, GridSearchCV
