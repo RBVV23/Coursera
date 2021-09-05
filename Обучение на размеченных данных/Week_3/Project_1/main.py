@@ -95,20 +95,14 @@ X_real_mean = X[numeric_cols]
 
 for col in numeric_cols:
     indices = X[col].isnull()
-#     print(X[col])
-#     print(indices)
     X_real_mean[col][indices] = X_real_mean[col][indices].apply(lambda x: means[col])
-#     print(X_real_mean[col])
 
 
 X = data.drop('Grant.Status', 1)
 X_real_zeros = X[numeric_cols]
 for col in numeric_cols:
     indices = X[col].isnull()
-#     print(X[col])
-#     print(indices)
     X_real_zeros[col][indices] = X_real_zeros[col][indices].apply(lambda x: 0)
-#     print(X_real_zeros[col])
 
 X = data.drop('Grant.Status', 1)
 X_cat = X[categorical_cols]
