@@ -35,7 +35,6 @@ def plot_decision_surface(estimator, train_data, train_labels, test_data, test_l
     plt.show()
 
 
-
 classification_problem = datasets.make_classification(n_features=2, n_informative=2, n_redundant=0,
                                                       n_classes=3, n_clusters_per_class=1, random_state=3)
 
