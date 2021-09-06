@@ -13,6 +13,7 @@ def get_meshgrid(data, step=0.05, border=5):
 def plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels,
                           colors=ListedColormap(['red', 'blue', 'yellow']),
                           light_colors=ListedColormap(['lightcoral', 'lightblue', 'lightyellow'])):
+
     estimator.fit(train_data, train_labels)
 
     plt.figure(figsize=(16,6))
@@ -20,13 +21,13 @@ def plot_decision_surface(estimator, train_data, train_labels, test_data, test_l
     plt.subplot(1,2,1)
     xx, yy = get_meshgrid(train_data)
     mesh_predictions = np.array(estimator.predict(np.c_[xx.ravel(), yy.ravel()])).reshape(xx.shape)
-    plt.pcolormesh(xx, yy, mesh_predictions, cmap=light_colors)
+    plt.pcolormesh(xx, yy, mesh_predictions, cmap=light_colors, shading='auto')
     plt.scatter(train_data[:, 0], train_data[:, 1], c=train_labels, cmap=colors, s=100)
     accuracy = metrics.accuracy_score(train_labels, estimator.predict(train_data))
     plt.title('Train data accuracy = {}'.format(accuracy))
 
     plt.subplot(1, 2, 1)
-    plt.pcolormesh(xx, yy, mesh_predictions, cmap=light_colors)
+    plt.pcolormesh(xx, yy, mesh_predictions, cmap=light_colors, shading='auto')
     plt.scatter(test_data[:, 0], test_data[:, 1], c=test_labels, cmap=colors, s=100)
     accuracy = metrics.accuracy_score(test_labels, estimator.predict(test_data))
     plt.title('Test data accuracy = {}'.format(accuracy))

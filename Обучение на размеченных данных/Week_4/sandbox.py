@@ -4,8 +4,5 @@ import numpy as np
 print(np.__version__)
 import matplotlib.pyplot as plt
 
-
-a = 10
-
-my_dict = {}
+A =
 
