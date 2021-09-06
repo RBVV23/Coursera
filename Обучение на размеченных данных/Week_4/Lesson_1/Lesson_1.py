@@ -3,7 +3,7 @@ from sklearn import model_selection, datasets, metrics, tree
 import numpy as np
 import matplotlib.pyplot as plt
 
-def get_meshgrid(data, step=0.05, border=5):
+def get_meshgrid(data, step=0.05, border=0.5):
     x_min = data[:, 0].min() - border
     x_max = data[:, 0].max() + border
     y_min = data[:, 1].min() - border
@@ -26,26 +26,27 @@ def plot_decision_surface(estimator, train_data, train_labels, test_data, test_l
     accuracy = metrics.accuracy_score(train_labels, estimator.predict(train_data))
     plt.title('Train data accuracy = {}'.format(accuracy))
 
-    plt.subplot(1, 2, 1)
+    plt.subplot(1, 2, 2)
     plt.pcolormesh(xx, yy, mesh_predictions, cmap=light_colors, shading='auto')
     plt.scatter(test_data[:, 0], test_data[:, 1], c=test_labels, cmap=colors, s=100)
     accuracy = metrics.accuracy_score(test_labels, estimator.predict(test_data))
     plt.title('Test data accuracy = {}'.format(accuracy))
+
     plt.show()
 
 
 
-classification_problem = datasets.make_classification(n_features=3, n_informative=2, n_redundant=0,
+classification_problem = datasets.make_classification(n_features=2, n_informative=2, n_redundant=0,
                                                       n_classes=3, n_clusters_per_class=1, random_state=3)
 
 colors = ListedColormap(['red', 'blue', 'yellow'])
 light_colors = ListedColormap(['lightcoral', 'lightblue', 'lightyellow'])
 
-plt.figure(figsize=(8,6))
-plt.scatter(list(map(lambda x: x[0], classification_problem[0])),
-            list(map(lambda x: x[1], classification_problem[0])), c=classification_problem[1],
-                     cmap=colors, s=100)
-# plt.show()
+## plt.figure(figsize=(8,6))
+## plt.scatter(list(map(lambda x: x[0], classification_problem[0])),
+##             list(map(lambda x: x[1], classification_problem[0])), c=classification_problem[1],
+##                      cmap=colors, s=100)
+## plt.show()
 print('classification_problem: ')
 print(classification_problem)
 
@@ -63,3 +64,9 @@ print('predictions: ', predictions)
 
 estimator = tree.DecisionTreeClassifier(random_state=1, max_depth=1)
 plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
+#
+# xx, yy = get_meshgrid(train_data)
+# mesh_predictions = np.c_[xx.ravel(), yy.ravel()]
+# estimator.fit(train_data, train_labels)
+# # estimator.predict(mesh_predictions)
+# print(train_data)
