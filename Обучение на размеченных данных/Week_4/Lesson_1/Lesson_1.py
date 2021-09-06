@@ -42,11 +42,11 @@ classification_problem = datasets.make_classification(n_features=2, n_informativ
 colors = ListedColormap(['red', 'blue', 'yellow'])
 light_colors = ListedColormap(['lightcoral', 'lightblue', 'lightyellow'])
 
-## plt.figure(figsize=(8,6))
-## plt.scatter(list(map(lambda x: x[0], classification_problem[0])),
-##             list(map(lambda x: x[1], classification_problem[0])), c=classification_problem[1],
-##                      cmap=colors, s=100)
-## plt.show()
+plt.figure(figsize=(8,6))
+plt.scatter(list(map(lambda x: x[0], classification_problem[0])),
+            list(map(lambda x: x[1], classification_problem[0])), c=classification_problem[1],
+                     cmap=colors, s=100)
+plt.show()
 print('classification_problem: ')
 print(classification_problem)
 
@@ -64,9 +64,15 @@ print('predictions: ', predictions)
 
 estimator = tree.DecisionTreeClassifier(random_state=1, max_depth=1)
 plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
-#
-# xx, yy = get_meshgrid(train_data)
-# mesh_predictions = np.c_[xx.ravel(), yy.ravel()]
-# estimator.fit(train_data, train_labels)
-# # estimator.predict(mesh_predictions)
-# print(train_data)
+
+estimator = tree.DecisionTreeClassifier(random_state=1, max_depth=2)
+plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
+
+estimator = tree.DecisionTreeClassifier(random_state=1, max_depth=3)
+plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
+
+estimator = tree.DecisionTreeClassifier(random_state=1)
+plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
+
+estimator = tree.DecisionTreeClassifier(random_state=1, min_samples_leaf=3)
+plot_decision_surface(estimator, train_data, train_labels, test_data, test_labels)
