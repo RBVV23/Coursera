@@ -7,3 +7,9 @@ import xgboost as xgb
 print(xgb.__version__)
 import matplotlib.pyplot as plt
 
+def write_answer(answer, number):
+    name = 'ans{}.txt'.format(number)
+    with open(name, "w") as fout:
+        fout.write(str(answer))
+
+
