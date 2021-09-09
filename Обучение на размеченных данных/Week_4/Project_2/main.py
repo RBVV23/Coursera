@@ -13,3 +13,5 @@ def write_answer(answer, number):
         fout.write(str(answer))
 
 
+answer_4 = '2 3'
+write_answer(answer_4, 4)
