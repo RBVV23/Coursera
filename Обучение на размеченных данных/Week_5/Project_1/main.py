@@ -1,7 +1,5 @@
 import pybrain as pybrain
 
-print(pybrain.__version__)
-
 import random
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import normalize
