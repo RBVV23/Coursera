@@ -1,4 +1,3 @@
-import pybrain as pybrain
 
 import random
 import matplotlib.pyplot as plt
