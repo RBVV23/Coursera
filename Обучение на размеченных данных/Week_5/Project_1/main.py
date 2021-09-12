@@ -12,6 +12,14 @@ from pybrain.structure.modules import SoftmaxLayer
 from pybrain.utilities import percentError
 #для корректной работы требуется магия со старой версией библиотеки
 
+def plot_classification_error(hidden_neurons_num, res_train_vec, res_test_vec):
+    plt.figure()
+    plt.plot(hidden_neurons_num, res_train_vec)
+    plt.plot(hidden_neurons_num, res_test_vec, '-r')
+def write_answer_nn(optimal_neurons_num):
+    with open("nnets_answer1.txt", "w") as fout:
+        fout.write(str(optimal_neurons_num))
+
 with open('winequality-red.csv') as f:
     f.readline()  # пропуск заголовочной строки
     data = np.loadtxt(f, delimiter=';')
@@ -59,6 +67,35 @@ plt.legend()
 plt.show()
 
 res_train = net.activateOnDataset(ds_train).argmax(axis=1)
-print ('Error on train: ', percentError(res_train, ds_train['target'].argmax(axis=1)), '%') # Подсчет ошибки
+print ('Error on train: ', percentError(res_train, ds_train['target'].argmax(axis=1)), '%')
 res_test = net.activateOnDataset(ds_test).argmax(axis=1)
-print ('Error on test: ', percentError(res_test, ds_test['target'].argmax(axis=1)), '%') # Подсчет ошибки
+print ('Error on test: ', percentError(res_test, ds_test['target'].argmax(axis=1)), '%')
+
+random.seed(0)
+np.random.seed(0)
+
+hidden_neurons_num = [50, 100, 200, 500, 700, 1000]
+res_train_vec = list()
+res_test_vec = list()
+
+MAX_EPOCHS = 100
+
+for nnum in hidden_neurons_num:
+    HIDDEN_NEURONS_NUM = nnum
+    random.seed(0)
+    np.random.seed(0)
+    net = buildNetwork(ds_train.indim, HIDDEN_NEURONS_NUM, ds_train.outdim, outclass=SoftmaxLayer)
+    init_params = np.random.random((len(net.params)))
+    net._setParameters(init_params)
+    trainer = BackpropTrainer(net, dataset=ds_train)
+    err_train, err_val = trainer.trainUntilConvergence(maxEpochs=MAX_EPOCHS)
+    res_train = net.activateOnDataset(ds_train).argmax(axis=1)
+    res_train_vec.append(percentError(res_train, ds_train['target'].argmax(axis=1)))
+    res_test = net.activateOnDataset(ds_test).argmax(axis=1)
+    res_test_vec.append(percentError(res_test, ds_test['target'].argmax(axis=1)))
+    print(nnum)
+
+
+plot_classification_error(hidden_neurons_num, res_train_vec, res_test_vec)
+write_answer_nn(hidden_neurons_num[res_test_vec.index(min(res_test_vec))])
+print(hidden_neurons_num[res_test_vec.index(min(res_test_vec))])
