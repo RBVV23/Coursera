@@ -5,11 +5,12 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
-from pybrain.datasets import ClassificationDataSet # Структура данных pybrain
+from pybrain.datasets import ClassificationDataSet
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure.modules import SoftmaxLayer
 from pybrain.utilities import percentError
+from sklearn.model_selection import train_test_split
 #для корректной работы требуется магия со старой версией библиотеки
 
 def plot_classification_error(hidden_neurons_num, res_train_vec, res_test_vec):
@@ -21,11 +22,10 @@ def write_answer_nn(optimal_neurons_num):
         fout.write(str(optimal_neurons_num))
 
 with open('winequality-red.csv') as f:
-    f.readline()  # пропуск заголовочной строки
+    f.readline()
     data = np.loadtxt(f, delimiter=';')
 
-TRAIN_SIZE = 0.7 # Разделение данных на обучающую и контрольную части в пропорции 70/30%
-from sklearn.model_selection import train_test_split
+TRAIN_SIZE = 0.7
 
 y = data[:, -1]
 np.place(y, y < 5, 5)
