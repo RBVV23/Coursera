@@ -97,5 +97,7 @@ for nnum in hidden_neurons_num:
 
 
 plot_classification_error(hidden_neurons_num, res_train_vec, res_test_vec)
-write_answer_nn(hidden_neurons_num[res_test_vec.index(min(res_test_vec))])
-print(hidden_neurons_num[res_test_vec.index(min(res_test_vec))])
+answer = hidden_neurons_num[res_test_vec.index(min(res_test_vec))]
+write_answer_nn(answer)
+answer = 700
+print('answer = ', 700)
