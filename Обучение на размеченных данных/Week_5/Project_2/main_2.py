@@ -1,7 +1,5 @@
-import numpy as np
-from sklearn import model_selection, metrics, datasets, linear_model, tree, naive_bayes
+from sklearn import model_selection, datasets, naive_bayes
 from math import ceil
-import numpy as np
 
 def my_print_features(dataset, in_line=3):
     feature_names = dataset.feature_names
