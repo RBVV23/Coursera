@@ -4,9 +4,7 @@ from math import ceil
 def my_print_features(dataset, in_line=3):
     feature_names = dataset.feature_names
     n_lines = ceil(len(feature_names)/in_line)
-    # print('n_lines = ', n_lines)
     n_last_line = len(feature_names) - in_line*(n_lines-1)
-    # print('n_last_line = ', n_last_line)
     print('\nСписок признаков: ')
     for n in range(n_lines-1):
         line = ''
@@ -36,13 +34,9 @@ def write_answer(answer, number):
 
 digits = datasets.load_digits()
 breast_cancer = datasets.load_breast_cancer()
-# my_print_features(digits, 8)
-# my_print_targets(digits, 1)
 
 
-def my_best_classifer_finder(dataset, classifer_list=[naive_bayes.BernoulliNB(),
-                                                      naive_bayes.MultinomialNB(),
-                                                      naive_bayes.GaussianNB()]):
+def my_best_classifer_finder(dataset, classifers):
     X = dataset.data
     y = dataset.target
     results = []
