@@ -41,14 +41,37 @@ breast_cancer = datasets.load_breast_cancer()
 # my_print_features(digits, 8)
 # my_print_targets(digits, 1)
 
-X = digits.data
-y = digits.target
 
-classifer = naive_bayes.BernoulliNB()
-res = model_selection.cross_val_score(classifer, X, y)
-answer_1 = res.mean()
-print('answer_1 = ', res)
+def my_best_classifer_finder(dataset, classifer_list=[naive_bayes.BernoulliNB(),
+                                                      naive_bayes.MultinomialNB(),
+                                                      naive_bayes.GaussianNB()]):
+    X = dataset.data
+    y = dataset.target
+    results = []
+    print('\n================================ Поиск лучшего классификатора: ================================')
+    for classifer in classifers:
+        result = (model_selection.cross_val_score(classifer, X, y)).mean()
+        print('\tКлассификатор: {}, результат: {}'.format(classifer, result))
+        results.append(result)
+    print('==============================================================================================\n')
+    return max(results), classifers[results.index(max(results))]
+
+classifers = [naive_bayes.BernoulliNB(), naive_bayes.MultinomialNB(), naive_bayes.GaussianNB()]
+
+answer_1, best_classifer = my_best_classifer_finder(breast_cancer, classifers)
+print('answer_1 = {} ({})'.format(answer_1, best_classifer))
 write_answer(answer_1, 1)
+
+answer_2, best_classifer = my_best_classifer_finder(digits, classifers)
+print('answer_2 = {} ({})'.format(answer_2, best_classifer))
+write_answer(answer_2, 2)
+
+answer_3 = '3 4'
+write_answer(answer_3, 3)
+
+
+
+
 
 
 
