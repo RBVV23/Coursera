@@ -11,22 +11,22 @@ permutations = itertools.permutations([0, 1, 2])
 
 
 
-# def dist_to_nearest_office(offices, cluster_center, debug=False):
-#     dists = []
-#     if debug:
-#         print('Center: X = {}; Y = {}'.format(cluster_center[0], cluster_center[1]))
-#     for item in offices:
-#         dist = ((item[0] - cluster_center[0])**2 + (item[1] - cluster_center[1])**2 )**0.5
-#         dists.append(dist)
-#         if debug:
-#             print('\tOffice: X = {}; Y = {}'.format(item[0], item[1]))
-#             print('\tDistantion = ', dist)
-#     min_dist = min(dists)
-#     ind = np.argmin(dist)
-#     if debug:
-#         print('\t\tNearest office #{}: {}'.format(ind, offices[ind]))
-#         print('\t\tMinimal distance: {}'.format(min_dist))
-#     return min_dist, offices[ind]
+def dist_to_nearest_office(offices, cluster_center, debug=False):
+    dists = []
+    if debug:
+        print('Center: X = {}; Y = {}'.format(cluster_center[0], cluster_center[1]))
+    for item in offices:
+        dist = ((item[0] - cluster_center[0])**2 + (item[1] - cluster_center[1])**2 )**0.5
+        dists.append(dist)
+        if debug:
+            print('\tOffice: X = {}; Y = {}'.format(item[0], item[1]))
+            print('\tDistantion = ', dist)
+    min_dist = min(dists)
+    ind = np.argmin(dist)
+    if debug:
+        print('\t\tNearest office #{}: {}'.format(ind, offices[ind]))
+        print('\t\tMinimal distance: {}'.format(min_dist))
+    return min_dist, offices[ind]
 #
 #
 # offices = [[-10, 10], [20, -20], [-30, -30]]
@@ -41,10 +41,12 @@ permutations = itertools.permutations([0, 1, 2])
 # print(dists)
 
 
-coordinates_of_offices = [[25.867736, -80.324116],
+coordinates_of_offices = [[33.751277, -118.188740],
+                          [25.867736, -80.324116],
                           [51.503016, -0.075479],
                           [52.378894, 4.885084],
                           [39.366487, 117.036146],
                           [-33.868457, 151.205134]]
 
-print(coordinates_of_offices[1][0])
+cluster_center = [32.72532479999998, -114.62439700000003]
+dist_to_nearest_office(coordinates_of_offices, cluster_center, debug=True)
