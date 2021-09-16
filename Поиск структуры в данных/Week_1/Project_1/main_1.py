@@ -58,7 +58,7 @@ data = data.dropna(subset=['latitude', 'longitude'])
 print('data.shape = ', data.shape)
 
 small_data = data.iloc[0:100000]
-data = data.iloc[50000:50500]
+data = data.iloc[:30000]
 # data = data.iloc[0:100000]
 
 # print(small_data.head())
@@ -81,7 +81,7 @@ keys = my_dict.keys()
 i = 0
 clusters = {}
 for key in keys:
-    if my_dict[key] >= 5:
+    if my_dict[key] >= 15:
         i += 1
         # print('#{}. Кластер "{}" : {}'.format(i, key, my_dict[key]))
         clusters[key] = my_dict[key]
