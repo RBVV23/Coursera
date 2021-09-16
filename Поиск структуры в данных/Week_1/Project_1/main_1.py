@@ -59,8 +59,7 @@ data = data.dropna(subset=['latitude', 'longitude'])
 print('data.shape = ', data.shape)
 
 small_data = data.iloc[0:100000]
-# data = data.iloc[11000:19005]
-data = data.iloc[0:100000]
+data = small_data
 
 # print(small_data.head())
 # print('small_data.shape = ', small_data.shape)
@@ -84,10 +83,8 @@ clusters = {}
 clusters_list = []
 for key in keys:
     if my_dict[key] >= 15:
-        # print('#{}. Кластер "{}" : {}'.format(i, key, my_dict[key]))
         clusters[key] = my_dict[key]
         clusters_list.append([i, key])
-        # print('\tКластер "{}" (id={})'.format(key, i))
         i += 1
 
 min_dists = []
@@ -100,13 +97,8 @@ for n, key in clusters_list:
     min_dists.append(min_dist)
     office_inds.append(office_ind)
 
-# for i, word in enumerate(min_dists):
-    # print('\t #{} : {}'.format(i, word))
 
 min_dists_sort = np.sort(min_dists)[:20]
-# min_dists_sort = np.sort(min_dists)[:5]
-# print(min_dists_sort)
-# print(min_dists[:5])
 
 print('\n\t\t\tРЕЗУЛЬТАТЫ:\n')
 for i, dist in enumerate(min_dists_sort):
