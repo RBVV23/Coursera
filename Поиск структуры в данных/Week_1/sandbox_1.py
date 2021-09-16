@@ -50,3 +50,9 @@ coordinates_of_offices = [[33.751277, -118.188740],
 
 cluster_center = [32.72532479999998, -114.62439700000003]
 dist_to_nearest_office(coordinates_of_offices, cluster_center, debug=True)
+
+mass=[]
+for i in range(5):
+    mass.append(i, 0)
+
+print(mass)
