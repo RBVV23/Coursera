@@ -9,6 +9,7 @@ def write_answer(answer):
 
 def dist_to_nearest_office(offices, cluster_center, debug=False):
     if debug:
+        print()
         print('\tCenter: X = {}; Y = {}'.format(cluster_center[0], cluster_center[1]))
     dists = []
     for item in offices:
@@ -22,14 +23,13 @@ def dist_to_nearest_office(offices, cluster_center, debug=False):
     if debug:
         print('\t\t\tNearest office #{}: {}'.format(ind, offices[ind]))
         print('\t\t\tMinimal distance: {}'.format(min_dist))
-        print()
     return min_dist, ind
 
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_rows', 250)
 pd.set_option('display.max_columns', 100)
 
-debug=True
+debug=False
 
 data = pd.read_csv('checkins.csv', sep='|', header=0, skipinitialspace=True)
 columns = data.columns
@@ -59,8 +59,8 @@ data = data.dropna(subset=['latitude', 'longitude'])
 print('data.shape = ', data.shape)
 
 small_data = data.iloc[0:100000]
-data = data.iloc[11000:19005]
-# data = data.iloc[0:100000]
+# data = data.iloc[11000:19005]
+data = data.iloc[0:100000]
 
 # print(small_data.head())
 # print('small_data.shape = ', small_data.shape)
@@ -81,39 +81,41 @@ keys = my_dict.keys()
 
 i = 0
 clusters = {}
-cluster_list = []
+clusters_list = []
 for key in keys:
     if my_dict[key] >= 15:
-        print('#{}. Кластер "{}" : {}'.format(i, key, my_dict[key]))
+        # print('#{}. Кластер "{}" : {}'.format(i, key, my_dict[key]))
         clusters[key] = my_dict[key]
-        cluster_list.append(i, my_dict[key])
+        clusters_list.append([i, key])
+        # print('\tКластер "{}" (id={})'.format(key, i))
         i += 1
 
 min_dists = []
 office_inds = []
-for n in clusters:
-    point = cluster_centers[n]
-    min_dist, office_ind = dist_to_nearest_office(coordinates_of_offices, point, debug=True)
+for n, key in clusters_list:
+    point = cluster_centers[key]
+    min_dist, office_ind = dist_to_nearest_office(coordinates_of_offices, point, debug=debug)
     if debug:
         print('Кластер # {}\nБлижайший офис: {} ({})'.format(n, cities_offices[office_ind], min_dist))
     min_dists.append(min_dist)
     office_inds.append(office_ind)
 
-for i, word in enumerate(min_dists):
-    print('\t #{} : {}'.format(i, word))
-# min_dists_sort = np.sort(min_dists)[:20]
-min_dists_sort = np.sort(min_dists)[:5]
+# for i, word in enumerate(min_dists):
+    # print('\t #{} : {}'.format(i, word))
+
+min_dists_sort = np.sort(min_dists)[:20]
+# min_dists_sort = np.sort(min_dists)[:5]
 # print(min_dists_sort)
 # print(min_dists[:5])
-# 0.28431858159982026
 
 print('\n\t\t\tРЕЗУЛЬТАТЫ:\n')
 for i, dist in enumerate(min_dists_sort):
     n = min_dists.index(dist)
     print('{}-е место: (id={})'.format(i+1, n))
-    print('\tКластер №{} (X = {}, Y = {})'.format(n, cluster_centers[n][0], cluster_centers[n][1]))
+    key = clusters_list[n][1]
+    print('\tКластер №{} (X = {}, Y = {})'.format(n, cluster_centers[key][0], cluster_centers[key][1]))
     if i == 0:
-        answer = '{} {}'.format(cluster_centers[n][0], cluster_centers[n][1])
+        answer = '{} {}'.format(cluster_centers[key][0], cluster_centers[key][1])
         write_answer(answer)
         with open('coordinates.txt', "w") as fout:
             True
@@ -122,7 +124,7 @@ for i, dist in enumerate(min_dists_sort):
     Y = coordinates_of_offices[office_inds[n]][1]
     print('\t\tБлижайший офис: {} (X = {}, Y = {})'.format(city, X, Y))
     print('\t\tРасстояние: {}'.format(dist))
-    new_line = '{},{}\n'.format(cluster_centers[n][0], cluster_centers[n][1])
+    new_line = '{},{}\n'.format(cluster_centers[key][0], cluster_centers[key][1])
     with open('coordinates.txt', "a") as fout:
         fout.write(new_line)
 

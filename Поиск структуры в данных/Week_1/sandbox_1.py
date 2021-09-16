@@ -53,6 +53,9 @@ dist_to_nearest_office(coordinates_of_offices, cluster_center, debug=True)
 
 mass=[]
 for i in range(5):
-    mass.append(i, 0)
+    mass.append([i, 0])
 
 print(mass)
+
+for line,ine in mass:
+    print(line)
