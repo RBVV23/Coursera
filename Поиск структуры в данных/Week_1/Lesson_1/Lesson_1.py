@@ -6,7 +6,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.decomposition import TruncatedSVD
 import itertools
 
-def validate_with_mappings(preds, target, dataset):
+def validate_with_mappings(preds, target):
     permutations = itertools.permutations([0,1,2])
     for a,b,c in permutations:
         mapping = {2:a, 1:b, 0:c}
@@ -83,13 +83,13 @@ preds = model.fit_predict(features)
 print('Вектор предсказаний: ',preds)
 print('Вектор ответов: ',dataset.target)
 
-## mapping = {0:2, 1:1, 2:0}
-## mapped_preds = [mapping[pred] for pred in preds]
-## print('Точность {0:2, 1:1, 2:0}: ', sum(mapped_preds == dataset.target)/len(dataset.target))
+# mapping = {0:2, 1:1, 2:0}
+# mapped_preds = [mapping[pred] for pred in preds]
+# print('Точность {0:2, 1:1, 2:0}: ', sum(mapped_preds == dataset.target)/len(dataset.target))
 
-## mapping = {0:0, 1:1, 2:2}
-## mapped_preds = [mapping[pred] for pred in preds]
-## print('Точность {0:0, 1:1, 2:2}: ', sum(mapped_preds == dataset.target)/len(dataset.target))
+# mapping = {0:0, 1:1, 2:2}
+# mapped_preds = [mapping[pred] for pred in preds]
+# print('Точность {0:0, 1:1, 2:2}: ', sum(mapped_preds == dataset.target)/len(dataset.target))
 
 mapping = {0:2, 1:0, 2:1}
 mapped_preds = [mapping[pred] for pred in preds]
