@@ -1,16 +1,6 @@
 import numpy as np
 import itertools
 
-permutations = itertools.permutations([0, 1, 2])
-# print(list(permutations))
-
-# for a,b,c in permutations:
-#     print('a = {}, b = {}, c = {}'.format(a,b,c))
-#     mapping = mapping = {2:a, 1:b, 0:c}
-#     print(mapping)
-
-
-
 def dist_to_nearest_office(offices, cluster_center, debug=False):
     dists = []
     if debug:
@@ -27,18 +17,30 @@ def dist_to_nearest_office(offices, cluster_center, debug=False):
         print('\t\tNearest office #{}: {}'.format(ind, offices[ind]))
         print('\t\tMinimal distance: {}'.format(min_dist))
     return min_dist, offices[ind]
+
+permutations = itertools.permutations([0, 1, 2])
+print(list(permutations))
+
+for a,b,c in permutations:
+    print('a = {}, b = {}, c = {}'.format(a,b,c))
+    mapping = mapping = {2:a, 1:b, 0:c}
+    print(mapping)
+
+
+
+
 #
 #
-# offices = [[-10, 10], [20, -20], [-30, -30]]
-# cluster_centers = [[5, 5], [10,10], [0,0]]
-# # dist, office = dist_to_nearest_office(offices, cluster_centers[0], True)
-# # print('dist: {}, office: {}'.format(dist, office))
-#
-# dists = []
-# for point in cluster_centers:
-#     dist, office = dist_to_nearest_office(offices, point)
-#     dists.append([dist, office])
-# print(dists)
+offices = [[-10, 10], [20, -20], [-30, -30]]
+cluster_centers = [[5, 5], [10,10], [0,0]]
+# dist, office = dist_to_nearest_office(offices, cluster_centers[0], True)
+# print('dist: {}, office: {}'.format(dist, office))
+
+dists = []
+for point in cluster_centers:
+    dist, office = dist_to_nearest_office(offices, point)
+    dists.append([dist, office])
+print(dists)
 
 
 coordinates_of_offices = [[33.751277, -118.188740],
