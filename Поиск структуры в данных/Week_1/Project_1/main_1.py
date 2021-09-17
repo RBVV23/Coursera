@@ -110,7 +110,7 @@ for i, dist in enumerate(min_dists_sort):
         answer = '{} {}'.format(cluster_centers[key][0], cluster_centers[key][1])
         write_answer(answer)
         with open('coordinates.txt', "w") as fout:
-            True
+            pass
     city = cities_offices[office_inds[n]]
     X = coordinates_of_offices[office_inds[n]][0]
     Y = coordinates_of_offices[office_inds[n]][1]
