@@ -28,6 +28,11 @@ def my_bernoulli_confidence_interval(n_positive, n_samples, precision=2):
     range_max = p + 2 * MSE
     return round(range_min,precision), round(range_max,precision)
 
+# print('Доверительный интервал (95%) - ({}; {})'.format(my_bernulli_confidence_interval(0.6, 10)))
+print(my_bernoulli_confidence_interval(130, 3000))
+print(my_bernoulli_confidence_interval(50, 980))
+
+
 permutations = itertools.permutations([0, 1, 2])
 print(list(permutations))
 
@@ -71,6 +76,3 @@ for line,ine in mass:
 
 
 
-# print('Доверительный интервал (95%) - ({}; {})'.format(my_bernulli_confidence_interval(0.6, 10)))
-print(my_bernoulli_confidence_interval(130, 3000))
-print(my_bernoulli_confidence_interval(50, 980))
