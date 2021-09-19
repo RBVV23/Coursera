@@ -114,6 +114,7 @@ limits = [np.minimum(np.amin(data[:,0]), np.amin(data[:,1])),
 plt.xlim(limits[0],limits[1])
 plt.ylim(limits[0],limits[1])
 plt.draw()
+plt.show()
 
 model = PCA(n_components=2)
 model.fit(data)
@@ -127,6 +128,7 @@ plot_principal_components(data, model, scatter=False, legend=False)
 c_patch = mpatches.Patch(color='c', label='Principal components')
 plt.legend(handles=[g_patch, c_patch])
 plt.draw()
+plt.show()
 
 data_large = np.random.multivariate_normal(mu, C, size=5000)
 
@@ -141,6 +143,7 @@ plot_principal_components(data_large, model, scatter=False, legend=False)
 c_patch = mpatches.Patch(color='c', label='Principal components')
 plt.legend(handles=[g_patch, c_patch])
 plt.draw()
+plt.show()
 
 
 data = pd.read_csv('data_task1.csv')
@@ -285,6 +288,7 @@ for id in list_pc:
     image = data[id]
     plt.figure()
     plt.imshow(image.reshape(image_shape))
+    plt.show()
 
 
 C1 = np.array([[10,0],[0,0.5]])
