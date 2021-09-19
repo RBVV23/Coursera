@@ -28,10 +28,6 @@ for a,b,c in permutations:
     print(mapping)
 
 
-
-
-#
-#
 offices = [[-10, 10], [20, -20], [-30, -30]]
 cluster_centers = [[5, 5], [10,10], [0,0]]
 # dist, office = dist_to_nearest_office(offices, cluster_centers[0], True)
