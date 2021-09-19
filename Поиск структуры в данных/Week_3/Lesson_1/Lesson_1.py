@@ -7,6 +7,7 @@ from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report
 from collections import Counter
+from sklearn import manifold
 
 
 digits = datasets.load_digits()
@@ -70,3 +71,48 @@ print(classification_report(classifer.predict(data), labels))
 projection = random_projection.SparseRandomProjection(n_components=2, random_state=0)
 data_2d_rp = projection.fit_transform(data)
 
+plt.figure(figsize=(10,6))
+plt.scatter(data_2d_rp[:,0], data_2d_rp[:,1], c=labels)
+plt.title('Random projection')
+plt.show()
+
+classifer.fit(data_2d_rp, labels)
+print('random_projection:')
+print(classification_report(classifer.predict(data_2d_rp), labels))
+
+
+pca = PCA(n_components=2, random_state=0)
+data_2d_pca = pca.fit_transform(data)
+
+plt.figure(figsize=(10,6))
+plt.scatter(data_2d_pca[:,0], data_2d_pca[:,1], c=labels)
+plt.title('PCA')
+plt.show()
+
+classifer.fit(data_2d_pca, labels)
+print('PCA:')
+print(classification_report(classifer.predict(data_2d_pca), labels))
+
+mds = manifold.MDS(n_components=2, n_init=1, max_iter=100)
+data_2d_mds = mds.fit_transform(data)
+
+plt.figure(figsize=(10,6))
+plt.scatter(data_2d_mds[:,0], data_2d_mds[:,1], c=labels)
+plt.title('MDS')
+plt.show()
+
+classifer.fit(data_2d_mds, labels)
+print('MDS:')
+print(classification_report(classifer.predict(data_2d_mds), labels))
+
+tsne = manifold.TSNE(n_components=2, init='pca', random_state=0)
+data_2d_tsne = tsne.fit_transform(data)
+
+plt.figure(figsize=(10,6))
+plt.scatter(data_2d_tsne[:,0], data_2d_tsne[:,1], c=labels)
+plt.title('t-SNE')
+plt.show()
+
+classifer.fit(data_2d_tsne, labels)
+print('t-SNE::')
+print(classification_report(classifer.predict(data_2d_tsne), labels))
