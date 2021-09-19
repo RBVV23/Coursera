@@ -19,6 +19,15 @@ def dist_to_nearest_office(offices, cluster_center, debug=False):
         print('\t\tMinimal distance: {}'.format(min_dist))
     return min_dist, offices[ind]
 
+def my_bernoulli_confidence_interval(n_positive, n_samples, precision=2):
+    sample_mean = n_positive/n_samples
+    p =sample_mean
+    N = n_samples
+    MSE = (p*(1-p)/N)**0.5
+    range_min = p - 2*MSE
+    range_max = p + 2 * MSE
+    return round(range_min,precision), round(range_max,precision)
+
 permutations = itertools.permutations([0, 1, 2])
 print(list(permutations))
 
@@ -60,14 +69,7 @@ for line,ine in mass:
     print(line)
 
 
-def my_bernoulli_confidence_interval(n_positive, n_samples, precision=2):
-    sample_mean = n_positive/n_samples
-    p =sample_mean
-    N = n_samples
-    MSE = (p*(1-p)/N)**0.5
-    range_min = p - 2*MSE
-    range_max = p + 2 * MSE
-    return round(range_min,precision), round(range_max,precision)
+
 
 # print('Доверительный интервал (95%) - ({}; {})'.format(my_bernulli_confidence_interval(0.6, 10)))
 print(my_bernoulli_confidence_interval(130, 3000))
