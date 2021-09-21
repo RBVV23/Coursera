@@ -8,6 +8,7 @@ from sklearn.manifold import TSNE
 import matplotlib.cm as cm # импортируем цветовые схемы, чтобы рисовать графики.
 from sklearn.manifold import MDS
 from sklearn.metrics.pairwise import pairwise_distances
+from sklearn import svm
 
 data = pandas.read_csv("train.csv", na_values="NaN")
 print(data.head())
@@ -118,7 +119,52 @@ for y, c in zip(set(sdata.Response), colors):
 plt.legend(loc='lower left')
 plt.show()
 
+colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
+for y, c in zip(set(response_subset), colors):
+#     plt.scatter(MDS_transformed[response_subset.values==y, 0],
+#                 MDS_transformed[response_subset.values==y, 1],
+#                 color=c, alpha=0.5, label=str(y)) - вызывает warning
+    plt.scatter(MDS_transformed[response_subset.values==y, 0],
+                MDS_transformed[response_subset.values==y, 1],
+                color=c, alpha=0.5, label=str(y))
+plt.legend()
+plt.show()
+# plt.xlim(-5, 5)   # масса точек концентрируется в этом масштабе
+# plt.ylim(-5, 5)   # рекомендуем сначала отобразить визуализацию целиком, а затем раскомментировать эти строки.
 
+colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
+for y, c in zip(set(response_subset), colors):
+#     plt.scatter(MDS_transformed[response_subset.values==y, 0],
+#                 MDS_transformed[response_subset.values==y, 1],
+#                 c=c, alpha=0.5, label=str(y)) - вызывает warning
+    plt.scatter(MDS_transformed[response_subset.values==y, 0],
+                MDS_transformed[response_subset.values==y, 1],
+                color=c, alpha=0.5, label=str(y))
+plt.legend()
+plt.xlim(-5, 5)   # масса точек концентрируется в этом масштабе
+plt.ylim(-5, 5)   # рекомендуем сначала отобразить визуализацию целиком, а затем раскомментировать эти строки.
+plt.show()
 
+# Код 6. Присвойте переменной MDS_transformed_cos результат понижения размерности методом MDS с косинусной метрикой
+matrix = pairwise_distances(data_subset, metric='cosine')
+mds = MDS(random_state=321, dissimilarity="precomputed")
+MDS_transformed_cos = mds.fit_transform(matrix)
 
+colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
+for y, c in zip(set(response_subset), colors):
+#     plt.scatter(MDS_transformed_cos[response_subset.values[:subset_l]==y, 0],
+#                 MDS_transformed_cos[response_subset.values[:subset_l]==y, 1],
+#                 c=c, alpha=0.5, label=str(y)) - вызывает warning
+    plt.scatter(MDS_transformed_cos[response_subset.values[:subset_l]==y, 0],
+                MDS_transformed_cos[response_subset.values[:subset_l]==y, 1],
+                color=c, alpha=0.5, label=str(y))
+plt.legend()
+plt.show()
 
+person_features = ["Ins_Age", "Ht", "Wt", "BMI"]
+svm_ = svm.OneClassSVM(gamma=10, nu=0.01)
+svm_.fit(sdata[person_features])
+labels = svm_.predict(sdata[person_features])
+print((labels==1).mean())
+
+# Код 7. Постройте 6 графиков
