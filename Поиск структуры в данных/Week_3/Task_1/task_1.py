@@ -4,6 +4,10 @@ from matplotlib import pyplot as plt
 import seaborn
 from sklearn.utils import shuffle
 from sklearn.preprocessing import scale
+from sklearn.manifold import TSNE
+import matplotlib.cm as cm # импортируем цветовые схемы, чтобы рисовать графики.
+from sklearn.manifold import MDS
+from sklearn.metrics.pairwise import pairwise_distances
 
 data = pandas.read_csv("train.csv", na_values="NaN")
 print(data.head())
@@ -101,5 +105,20 @@ selected_features = real_features[:-4]
 objects_with_nan = sdata.index[np.any(np.isnan(sdata[selected_features].values), axis=1)]
 data_subset = scale(sdata[selected_features].drop(objects_with_nan, axis=0)[:subset_l])
 response_subset = sdata["Response"].drop(objects_with_nan, axis=0)[:subset_l]
+
+# Код 4. Присвойте переменной tsne_representation результат понижения размерности методом tSNE с параметрами по умолчанию
+tsne = TSNE(random_state=321)
+tsne_representation = tsne.fit_transform(data_subset)
+
+colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
+for y, c in zip(set(sdata.Response), colors):
+    plt.scatter(tsne_representation[response_subset.values==y, 0],
+#                 tsne_representation[response_subset.values==y, 1], color=c, alpha=0.5, label=str(y)) - вызывает warning
+                tsne_representation[response_subset.values==y, 1], color=c, alpha=0.5, label=str(y))
+plt.legend(loc='lower left')
+plt.show()
+
+
+
 
 
