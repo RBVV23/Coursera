@@ -49,6 +49,44 @@ for j, feature in enumerate(real_features):
         if abs(corr) > 0.9:
             print('Корреляция {} и {} равна (по модулю): {}'.format(feature, real_features[i+j+1], corr))
 
+fig, axes = plt.subplots(11, 10, figsize=(20, 20), sharey=True)
+for i in range(len(cat_features)):
+    seaborn.countplot(x=cat_features[i], data=data, ax=axes[i // 10, i % 10])
+plt.show()
+
+constant_cat_features = []
+more_five_cat_features = []
+
+for feature in cat_features:
+    if len(np.unique(data[feature])) == 1:
+        constant_cat_features.append(feature)
+        print('#{} - {}'.format(cat_features.index(feature), feature))
+        seaborn.countplot(x=data[feature], data=data)
+        plt.show()
+    if len(np.unique(data[feature])) > 5:
+        more_five_cat_features.append(feature)
+        print('#{} - {}'.format(cat_features.index(feature), feature))
+        seaborn.countplot(x=data[feature], data=data)
+        plt.show()
+
+print(constant_cat_features)
+print(more_five_cat_features)
+
+features = ['Medical_Keyword_23', 'Medical_Keyword_39', 'Medical_Keyword_45']
+
+# Код 3. Постройте countplot
+for feature in features:
+    seaborn.countplot(x=feature, data=data, hue='Response')
+    plt.show()
+
+for feature in features:
+    T = data[ (data[feature] == 1) & (data['Response'] == 8) ].shape
+    Fs = []
+    for lvl in np.unique(data['Response'])[:-1]:
+        F = data[ (data[feature] == 1) & (data['Response'] == lvl) ].shape
+        Fs.append(F)
+    if T >= max(Fs):
+        print(feature)
 
 
 
