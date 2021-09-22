@@ -5,7 +5,7 @@ import seaborn
 from sklearn.utils import shuffle
 from sklearn.preprocessing import scale
 from sklearn.manifold import TSNE
-import matplotlib.cm as cm # импортируем цветовые схемы, чтобы рисовать графики.
+import matplotlib.cm as cm
 from sklearn.manifold import MDS
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn import svm
@@ -35,7 +35,6 @@ print('{} ({} шт.)'.format(less_half_complete_real_features, len(less_half_com
 
 print('data.shape = ', data.shape)
 
-# Код 1. Постройте гистограммы.
 data[real_features].hist(bins=100, figsize=(20,20))
 data[discrete_features].hist(bins=100, figsize=(10,10))
 plt.show()
@@ -45,7 +44,6 @@ seaborn.pairplot(data[real_features+["Response"]].drop(
         hue="Response", diag_kind="kde")
 plt.show()
 
-# Код 2. Постройте pairplot для целочисленных признаков
 seaborn.pairplot(data[discrete_features+['Response']], hue='Response', diag_kind='kde')
 
 seaborn.heatmap(data[real_features].corr(), square=True)
@@ -81,7 +79,6 @@ print(more_five_cat_features)
 
 features = ['Medical_Keyword_23', 'Medical_Keyword_39', 'Medical_Keyword_45']
 
-# Код 3. Постройте countplot
 for feature in features:
     seaborn.countplot(x=feature, data=data, hue='Response')
     plt.show()
@@ -95,11 +92,10 @@ for feature in features:
     if T >= max(Fs):
         print(feature)
 
-# seaborn.countplot(data.Response) - перестанет работать в будущих версиях библиотеки
 seaborn.countplot(x=data.Response)
 
 sdata = shuffle(data, random_state=321)
-del data   # удалите неперемешанные данные, если не хватает оперативной памяти
+del data
 
 subset_l  = 1000
 selected_features = real_features[:-4]
@@ -107,54 +103,41 @@ objects_with_nan = sdata.index[np.any(np.isnan(sdata[selected_features].values),
 data_subset = scale(sdata[selected_features].drop(objects_with_nan, axis=0)[:subset_l])
 response_subset = sdata["Response"].drop(objects_with_nan, axis=0)[:subset_l]
 
-# Код 4. Присвойте переменной tsne_representation результат понижения размерности методом tSNE с параметрами по умолчанию
 tsne = TSNE(random_state=321)
 tsne_representation = tsne.fit_transform(data_subset)
 
 colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
 for y, c in zip(set(sdata.Response), colors):
     plt.scatter(tsne_representation[response_subset.values==y, 0],
-#                 tsne_representation[response_subset.values==y, 1], color=c, alpha=0.5, label=str(y)) - вызывает warning
                 tsne_representation[response_subset.values==y, 1], color=c, alpha=0.5, label=str(y))
 plt.legend(loc='lower left')
 plt.show()
 
 colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
 for y, c in zip(set(response_subset), colors):
-#     plt.scatter(MDS_transformed[response_subset.values==y, 0],
-#                 MDS_transformed[response_subset.values==y, 1],
-#                 color=c, alpha=0.5, label=str(y)) - вызывает warning
     plt.scatter(MDS_transformed[response_subset.values==y, 0],
                 MDS_transformed[response_subset.values==y, 1],
                 color=c, alpha=0.5, label=str(y))
 plt.legend()
 plt.show()
-# plt.xlim(-5, 5)   # масса точек концентрируется в этом масштабе
-# plt.ylim(-5, 5)   # рекомендуем сначала отобразить визуализацию целиком, а затем раскомментировать эти строки.
 
 colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
 for y, c in zip(set(response_subset), colors):
-#     plt.scatter(MDS_transformed[response_subset.values==y, 0],
-#                 MDS_transformed[response_subset.values==y, 1],
-#                 c=c, alpha=0.5, label=str(y)) - вызывает warning
     plt.scatter(MDS_transformed[response_subset.values==y, 0],
                 MDS_transformed[response_subset.values==y, 1],
                 color=c, alpha=0.5, label=str(y))
 plt.legend()
-plt.xlim(-5, 5)   # масса точек концентрируется в этом масштабе
-plt.ylim(-5, 5)   # рекомендуем сначала отобразить визуализацию целиком, а затем раскомментировать эти строки.
+plt.xlim(-5, 5)
+plt.ylim(-5, 5)
 plt.show()
 
-# Код 6. Присвойте переменной MDS_transformed_cos результат понижения размерности методом MDS с косинусной метрикой
+
 matrix = pairwise_distances(data_subset, metric='cosine')
 mds = MDS(random_state=321, dissimilarity="precomputed")
 MDS_transformed_cos = mds.fit_transform(matrix)
 
 colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
 for y, c in zip(set(response_subset), colors):
-#     plt.scatter(MDS_transformed_cos[response_subset.values[:subset_l]==y, 0],
-#                 MDS_transformed_cos[response_subset.values[:subset_l]==y, 1],
-#                 c=c, alpha=0.5, label=str(y)) - вызывает warning
     plt.scatter(MDS_transformed_cos[response_subset.values[:subset_l]==y, 0],
                 MDS_transformed_cos[response_subset.values[:subset_l]==y, 1],
                 color=c, alpha=0.5, label=str(y))
