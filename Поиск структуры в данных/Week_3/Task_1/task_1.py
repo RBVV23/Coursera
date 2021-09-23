@@ -1,16 +1,16 @@
 import numpy as np
-import pandas
-from matplotlib import pyplot as plt
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 import seaborn
+from sklearn import svm
 from sklearn.utils import shuffle
 from sklearn.preprocessing import scale
-from sklearn.manifold import TSNE
-import matplotlib.cm as cm
-from sklearn.manifold import MDS
+from sklearn.manifold import TSNE, MDS
 from sklearn.metrics.pairwise import pairwise_distances
-from sklearn import svm
 
-data = pandas.read_csv("train.csv", na_values="NaN")
+
+data = pd.read_csv("train.csv", na_values="NaN")
 print(data.head())
 
 real_features = ["Product_Info_4", "Ins_Age", "Ht", "Wt", "BMI", "Employment_Info_1", "Employment_Info_4", "Employment_Info_6",
