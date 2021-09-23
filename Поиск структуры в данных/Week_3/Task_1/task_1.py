@@ -150,4 +150,20 @@ svm_.fit(sdata[person_features])
 labels = svm_.predict(sdata[person_features])
 print((labels==1).mean())
 
-# Код 7. Постройте 6 графиков
+plt.subplots(2, 3, figsize=(12, 8))
+n = 0
+for i in range(len(person_features)-1):
+    for j in range(i+1,len(person_features)):
+        n += 1
+        plt.subplot(2,3,n)
+        plt.scatter(sdata[person_features[i]][labels == 1], sdata[person_features[j]][labels == 1], c='blue', alpha=0.5)
+        plt.scatter(sdata[person_features[i]][labels == -1], sdata[person_features[j]][labels == -1], c='red', alpha=0.5)
+        plt.xlabel(person_features[i])
+        plt.ylabel(person_features[j])
+plt.show()
+
+features = ['BMI', 'Employment_Info_1', 'Medical_History_32']
+for feature in features:
+    seaborn.distplot(sdata[feature], bins=50) # функция исчезнет при обновлении библиотеки (текущая версия: 0.11.1)
+    plt.show()
+
