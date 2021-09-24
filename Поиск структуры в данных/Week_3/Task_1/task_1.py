@@ -93,6 +93,7 @@ for feature in features:
         print(feature)
 
 seaborn.countplot(x=data.Response)
+plt.show()
 
 sdata = shuffle(data, random_state=321)
 del data
@@ -112,6 +113,9 @@ for y, c in zip(set(sdata.Response), colors):
                 tsne_representation[response_subset.values==y, 1], color=c, alpha=0.5, label=str(y))
 plt.legend(loc='lower left')
 plt.show()
+
+mds = MDS(random_state=321)
+MDS_transformed = mds.fit_transform(data_subset)
 
 colors = cm.rainbow(np.linspace(0, 1, len(set(response_subset))))
 for y, c in zip(set(response_subset), colors):
