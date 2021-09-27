@@ -3,6 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sympy as sym
 
+# factor - разложить на множители
+# expand - раскрыть скобки
+# simplfy
+
 def my_polinom_gen(degree=3, maxabs=10, answer=True, int=True):
     a = np.random.randint(-maxabs,maxabs,degree)
     sym.var('x')
