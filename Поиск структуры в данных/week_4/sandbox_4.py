@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sympy as sym
 
+
 # factor - разложить на множители
 # expand - раскрыть скобки
 # simplfy
