@@ -32,3 +32,84 @@ for topic_name in model_artm.topic_names:
     for word in tokens[topic_name]:
         line += word + ' '
     print('\t', line)
+
+print('model_artm.score_tracker["SparsityPhiScore"].last_value = ',
+      model_artm.score_tracker["SparsityPhiScore"].last_value)
+print('model_artm.score_tracker["SparsityThetaScore"].last_value = ',
+      model_artm.score_tracker["SparsityThetaScore"].last_value)
+
+# model_artm.save("my_model")
+# model_artm.load("my_model")
+
+phi = model_artm.get_phi()
+print('Матрица phi')
+print(phi)
+
+theta = model_artm.get_theta()
+print('Матрица theta')
+print(theta)
+
+model_artm.regularizers.add(artm.SmoothSparsePhiRegularizer(name='SparsePhi',
+                                                            tau=-1, dictionary=dictionary))
+model_artm.fit_offline(batch_vectorizer=batch_vectorizer, num_collection_passes=40)
+
+print('После регуляризации с параметром: ', model_artm.regularizers['SparsePhi'].tau)
+for topic_name in model_artm.topic_names:
+    try:
+        print(topic_name + ': '),
+        tokens = model_artm.score_tracker["top_words"].last_tokens
+        line = ''
+        for word in tokens[topic_name]:
+            line += word + ' '
+        print('\t', line)
+    except:
+        print('deleted')
+
+print('model_artm.score_tracker["SparsityPhiScore"].last_value = ',
+      model_artm.score_tracker["SparsityPhiScore"].last_value)
+print('model_artm.score_tracker["SparsityThetaScore"].last_value = ',
+      model_artm.score_tracker["SparsityThetaScore"].last_value)
+
+model_artm.regularizers['SparsePhi'].tau = -100
+model_artm.fit_offline(batch_vectorizer=batch_vectorizer, num_collection_passes=40)
+
+print('После регуляризации с параметром: ', model_artm.regularizers['SparsePhi'].tau)
+for topic_name in model_artm.topic_names:
+    try:
+        print(topic_name + ': '),
+        tokens = model_artm.score_tracker["top_words"].last_tokens
+        line = ''
+        for word in tokens[topic_name]:
+            line += word + ' '
+        print('\t', line)
+    except:
+        print('deleted')
+
+print('model_artm.score_tracker["SparsityPhiScore"].last_value = ',
+      model_artm.score_tracker["SparsityPhiScore"].last_value)
+print('model_artm.score_tracker["SparsityThetaScore"].last_value = ',
+      model_artm.score_tracker["SparsityThetaScore"].last_value)
+
+model_artm.regularizers['SparsePhi'].tau = -5e4
+model_artm.fit_offline(batch_vectorizer=batch_vectorizer, num_collection_passes=40)
+
+print('После регуляризации с параметром: ', model_artm.regularizers['SparsePhi'].tau)
+for topic_name in model_artm.topic_names:
+    try:
+        print(topic_name + ': '),
+        tokens = model_artm.score_tracker["top_words"].last_tokens
+        line = ''
+        for word in tokens[topic_name]:
+            line += word + ' '
+        print('\t', line)
+    except:
+        print('deleted')
+
+print('model_artm.score_tracker["SparsityPhiScore"].last_value = ',
+      model_artm.score_tracker["SparsityPhiScore"].last_value)
+print('model_artm.score_tracker["SparsityThetaScore"].last_value = ',
+      model_artm.score_tracker["SparsityThetaScore"].last_value)
+
+# model_artm.save("my_model") # не будем сохранять не понравившуюся мне модель с регуляризатором
+
+# theta_test = model_artm.transform(batch_vectorizer) - для новых батчей
