@@ -18,3 +18,17 @@ model_artm.scores.add(artm.PerplexityScore(name='PerplexityScore',
 model_artm.scores.add(artm.SparsityPhiScore(name='SparsityPhiScore', class_id="text"))
 model_artm.scores.add(artm.SparsityThetaScore(name='SparsityThetaScore'))
 model_artm.scores.add(artm.TopTokensScore(name="top_words", num_tokens=15, class_id="text"))
+
+model_artm.initialize('dictionary')
+
+model_artm.fit_offline(batch_vectorizer=batch_vectorizer, num_collection_passes=40)
+plt.plot(model_artm.score_tracker["PerplexityScore"].value)
+plt.show()
+
+for topic_name in model_artm.topic_names:
+    print(topic_name + ': '),
+    tokens = model_artm.score_tracker["top_words"].last_tokens
+    line = ''
+    for word in tokens[topic_name]:
+        line += word + ' '
+    print('\t', line)

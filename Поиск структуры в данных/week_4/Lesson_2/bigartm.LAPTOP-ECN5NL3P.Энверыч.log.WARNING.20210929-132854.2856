@@ -1,0 +1,9 @@
+Log file created at: 2021/09/29 13:28:54
+Running on machine: LAPTOP-ECN5NL3P
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0929 13:28:54.197172  5020 check_messages.h:1075] Inconsistent fields size in ThetaMatrix: 475 vs 0 vs 475 vs 0;
+W0929 14:07:26.556587 16372 helpers.cc:221] File already exists: school_batches\aaaaaa.batch
+W0929 14:07:26.572587 17212 helpers.cc:221] File already exists: school_batches\aaaaab.batch
+W0929 14:07:26.596587  4264 helpers.cc:221] File already exists: school_batches\aaaaae.batch
+W0929 14:07:26.604705  8568 helpers.cc:221] File already exists: school_batches\aaaaac.batch
+W0929 14:07:26.620329 17956 helpers.cc:221] File already exists: school_batches\aaaaad.batch
