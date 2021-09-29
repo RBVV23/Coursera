@@ -1,0 +1,38 @@
+Log file created at: 2021/09/29 12:33:14
+Running on machine: LAPTOP-ECN5NL3P
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0929 12:33:14.398064 14476 c_interface.cc:127] Logging enabled to .
+I0929 12:33:14.398064 14476 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 12:33:14.398064 13372 processor.cc:701] Processor thread started
+I0929 12:33:14.398064 14476 c_interface.cc:271] Creating MasterModel (id=1)...
+I0929 12:33:14.398064  4208 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  9924 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  5836 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  8844 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  3816 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  9724 processor.cc:701] Processor thread started
+I0929 12:33:14.398064  2416 processor.cc:701] Processor thread started
+I0929 12:33:14.398064 14476 c_interface.cc:271] Creating MasterModel (id=2)...
+I0929 12:33:14.413686 14476 c_interface.cc:372] Pass dictionary to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0929 12:33:14.413686 14476 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=dictionary, data_path=school_batches, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0929 12:33:14.413686 14476 dictionary_operations.cc:249] Found 5 batches in 'school_batches' folder
+I0929 12:33:14.444928 14476 dictionary_operations.cc:313] Find 16080 unique tokens in 475 items
+I0929 12:33:14.507424 13372 processor.cc:709] Processor thread stopped
+I0929 12:33:14.507424 13372 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.523037  8844 processor.cc:709] Processor thread stopped
+I0929 12:33:14.523037  8844 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.538663  9924 processor.cc:709] Processor thread stopped
+I0929 12:33:14.538663  9924 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.554284  4208 processor.cc:709] Processor thread stopped
+I0929 12:33:14.554284  4208 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.569903  5836 processor.cc:709] Processor thread stopped
+I0929 12:33:14.569903  5836 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.585675  3816 processor.cc:709] Processor thread stopped
+I0929 12:33:14.585675  3816 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.601320  9724 processor.cc:709] Processor thread stopped
+I0929 12:33:14.601320  9724 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.616952  2416 processor.cc:709] Processor thread stopped
+I0929 12:33:14.616952  2416 processor.cc:710] Total number of processed batches: 0
+I0929 12:33:14.616952 14476 c_interface.cc:336] Disposing MasterComponent (id=1)...
+I0929 12:33:14.616952 14476 c_interface.cc:372] Pass dictionary to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0929 12:33:14.616952 14476 c_interface.cc:336] Disposing MasterComponent (id=2)...

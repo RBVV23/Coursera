@@ -1,0 +1,31 @@
+Log file created at: 2021/09/29 11:51:27
+Running on machine: LAPTOP-ECN5NL3P
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0929 11:51:27.424706 13256 c_interface.cc:127] Logging enabled to .
+I0929 11:51:27.424706 13256 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 11:51:27.424706  8632 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 14984 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 15588 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 13256 c_interface.cc:271] Creating MasterModel (id=1)...
+I0929 11:51:27.424706  4276 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 13704 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 16224 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 13608 processor.cc:701] Processor thread started
+I0929 11:51:27.424706 13096 processor.cc:701] Processor thread started
+I0929 11:51:27.487191  8632 processor.cc:709] Processor thread stopped
+I0929 11:51:27.487191  8632 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.502812  4276 processor.cc:709] Processor thread stopped
+I0929 11:51:27.502812  4276 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.518435 14984 processor.cc:709] Processor thread stopped
+I0929 11:51:27.518435 14984 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.534055 15588 processor.cc:709] Processor thread stopped
+I0929 11:51:27.534055 15588 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.549676 13704 processor.cc:709] Processor thread stopped
+I0929 11:51:27.549676 13704 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.565299 16224 processor.cc:709] Processor thread stopped
+I0929 11:51:27.565299 16224 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.580920 13608 processor.cc:709] Processor thread stopped
+I0929 11:51:27.580920 13608 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.596541 13096 processor.cc:709] Processor thread stopped
+I0929 11:51:27.596541 13096 processor.cc:710] Total number of processed batches: 0
+I0929 11:51:27.596541 13256 c_interface.cc:336] Disposing MasterComponent (id=1)...

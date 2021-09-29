@@ -1,0 +1,41 @@
+Log file created at: 2021/09/29 12:55:05
+Running on machine: LAPTOP-ECN5NL3P
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0929 12:55:05.361460  1724 c_interface.cc:127] Logging enabled to .
+I0929 12:55:05.361460  1724 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 12:55:05.361460 18044 processor.cc:701] Processor thread started
+I0929 12:55:05.361460  1724 c_interface.cc:271] Creating MasterModel (id=1)...
+I0929 12:55:05.361460 14900 processor.cc:701] Processor thread started
+I0929 12:55:05.361460 18032 processor.cc:701] Processor thread started
+I0929 12:55:05.361460 18028 processor.cc:701] Processor thread started
+I0929 12:55:05.361460 18040 processor.cc:701] Processor thread started
+I0929 12:55:05.361460 18056 processor.cc:701] Processor thread started
+I0929 12:55:05.361460  1724 c_interface.cc:271] Creating MasterModel (id=2)...
+I0929 12:55:05.361460 14748 processor.cc:701] Processor thread started
+I0929 12:55:05.361460  1724 c_interface.cc:372] Pass dictionary to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0929 12:55:05.361460 16036 processor.cc:701] Processor thread started
+I0929 12:55:05.361460  1724 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=dictionary, data_path=school_batches, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0929 12:55:05.361460  1724 dictionary_operations.cc:249] Found 5 batches in 'school_batches' folder
+I0929 12:55:05.392702  1724 dictionary_operations.cc:313] Find 16080 unique tokens in 475 items
+I0929 12:55:05.423947  1724 c_interface.cc:386] Pass MasterModelConfig: topic_name_size=10, class=(text:1), score_config_size=2, num_processors=0, pwt_name=pwt, nwt_name=nwt, num_document_passes=1, reuse_theta=yes, cache_theta=yes, opt_for_avx=yes, disk_cache_path to void (__cdecl artm::core::MasterComponent::*)(class artm::MasterModelConfig const & __ptr64) __ptr64
+I0929 12:55:05.423947  1724 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 12:55:05.423947  1724 perplexity.cc:26] Perplexity score calculator created: model_type=1, dictionary_name=dictionary
+I0929 12:55:05.471040 18044 processor.cc:709] Processor thread stopped
+I0929 12:55:05.471040 18044 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.486433 14900 processor.cc:709] Processor thread stopped
+I0929 12:55:05.486433 14900 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.502054 18032 processor.cc:709] Processor thread stopped
+I0929 12:55:05.502054 18032 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.517674 18028 processor.cc:709] Processor thread stopped
+I0929 12:55:05.517674 18028 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.533296 18040 processor.cc:709] Processor thread stopped
+I0929 12:55:05.533296 18040 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.549487 18056 processor.cc:709] Processor thread stopped
+I0929 12:55:05.549487 18056 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.565131 14748 processor.cc:709] Processor thread stopped
+I0929 12:55:05.565131 14748 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.580511 16036 processor.cc:709] Processor thread stopped
+I0929 12:55:05.580511 16036 processor.cc:710] Total number of processed batches: 0
+I0929 12:55:05.580511  1724 c_interface.cc:336] Disposing MasterComponent (id=1)...
+I0929 12:55:05.580511  1724 c_interface.cc:372] Pass dictionary to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0929 12:55:05.580511  1724 c_interface.cc:336] Disposing MasterComponent (id=2)...

@@ -1,0 +1,34 @@
+Log file created at: 2021/09/29 11:53:07
+Running on machine: LAPTOP-ECN5NL3P
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0929 11:53:07.006661 15444 c_interface.cc:127] Logging enabled to .
+I0929 11:53:07.006661 15444 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 11:53:07.006661 15860 processor.cc:701] Processor thread started
+I0929 11:53:07.006661 10996 processor.cc:701] Processor thread started
+I0929 11:53:07.006661 15444 c_interface.cc:271] Creating MasterModel (id=1)...
+I0929 11:53:07.006661 14676 processor.cc:701] Processor thread started
+I0929 11:53:07.006661 14820 processor.cc:701] Processor thread started
+I0929 11:53:07.006661  3056 processor.cc:701] Processor thread started
+I0929 11:53:07.006661  4972 processor.cc:701] Processor thread started
+I0929 11:53:07.006661 16172 processor.cc:701] Processor thread started
+I0929 11:53:07.006661  2992 processor.cc:701] Processor thread started
+I0929 11:53:07.006661 15444 c_interface.cc:386] Pass MasterModelConfig: topic_name_size=10, class=(text:1), score_config_size=2, num_processors=0, pwt_name=pwt, nwt_name=nwt, num_document_passes=10, reuse_theta=no, cache_theta=no, opt_for_avx=yes, disk_cache_path to void (__cdecl artm::core::MasterComponent::*)(class artm::MasterModelConfig const & __ptr64) __ptr64
+I0929 11:53:07.006661 15444 instance.cc:401] MasterModelConfig.processors_count is automatically set to 8
+I0929 11:53:07.006661 15444 perplexity.cc:26] Perplexity score calculator created: model_type=1, dictionary_name=dictionary
+I0929 11:53:07.053510 15860 processor.cc:709] Processor thread stopped
+I0929 11:53:07.053510 15860 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.069178 10996 processor.cc:709] Processor thread stopped
+I0929 11:53:07.069178 10996 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.084802 14676 processor.cc:709] Processor thread stopped
+I0929 11:53:07.084802 14676 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.100426 14820 processor.cc:709] Processor thread stopped
+I0929 11:53:07.100426 14820 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.116044  3056 processor.cc:709] Processor thread stopped
+I0929 11:53:07.116044  3056 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.131669  4972 processor.cc:709] Processor thread stopped
+I0929 11:53:07.131669  4972 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.147614 16172 processor.cc:709] Processor thread stopped
+I0929 11:53:07.147614 16172 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.163233  2992 processor.cc:709] Processor thread stopped
+I0929 11:53:07.163233  2992 processor.cc:710] Total number of processed batches: 0
+I0929 11:53:07.163233 15444 c_interface.cc:336] Disposing MasterComponent (id=1)...
