@@ -2,3 +2,4 @@ Log file created at: 2021/09/29 11:26:20
 Running on machine: LAPTOP-ECN5NL3P
 Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
 E0929 11:26:20.589605  1452 c_interface.cc:59] DiskReadException :  File school.txt does not exist.
+W0929 20:22:50.872642  1452 check_messages.h:1075] Inconsistent fields size in ThetaMatrix: 1424 vs 0 vs 1424 vs 0;
