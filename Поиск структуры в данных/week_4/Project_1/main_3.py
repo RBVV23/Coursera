@@ -2,11 +2,40 @@ import json
 from gensim import corpora, models
 import numpy as np
 import copy
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import cross_val_score
 
 def save_answers1(c_salt, c_sugar, c_water, c_mushrooms, c_chicken, c_eggs):
     with open("cooking_LDA_pa_task1.txt", "w") as fout:
         fout.write(" ".join([str(el) for el in [c_salt, c_sugar, c_water, c_mushrooms, c_chicken, c_eggs]]))
+def save_answers2(dict_size_before, dict_size_after, corpus_size_before, corpus_size_after):
+    with open("cooking_LDA_pa_task2.txt", "w") as fout:
+        fout.write(" ".join([str(el) for el in [dict_size_before, dict_size_after, corpus_size_before, corpus_size_after]]))
+def save_answers3(coherence, coherence2):
+    with open("cooking_LDA_pa_task3.txt", "w") as fout:
+        fout.write(" ".join(["%3f"%el for el in [coherence, coherence2]]))
+def save_answers4(count_model2, count_model3):
+    with open("cooking_LDA_pa_task4.txt", "w") as fout:
+        fout.write(" ".join([str(el) for el in [count_model2, count_model3]]))
 
+def my_mean_coherence(my_lda, my_corpus):
+    sum = 0
+    var = my_lda.top_topics(my_corpus)
+    for i in range(len(var)):
+        sum += var[i][-1]
+    my_coherence = sum/len(var)
+    return my_coherence
+def my_sum(my_lda, my_corpus):
+    sum = 0
+    for line in my_lda.get_document_topics(my_corpus, minimum_probability=0.01):
+        sum += len(line)
+    return sum
+def my_y_maker(recipes, cuisines):
+    y = []
+    for rec in recipes:
+        targ = cuisines.index(rec['cuisine'])
+        y.append(targ)
+    return y
 
 with open("recipes.json") as f:
     recipes = json.load(f)
@@ -72,3 +101,55 @@ for doc in corpus2:
     corpus_size_after += len(doc)
 
 print('corpus_size_after = ', corpus_size_after)
+
+save_answers2(dict_size_before, dict_size_after, corpus_size_before, corpus_size_after)
+
+np.random.seed(76543)
+new_lda = models.ldamodel.LdaModel(corpus2, num_topics=40, id2word=dictionary2, passes=5)
+
+coherence = my_mean_coherence(lda, corpus)
+coherence2 = my_mean_coherence(new_lda, corpus2)
+
+print('coherence = ', coherence)
+print('coherence2 = ', coherence2)
+
+
+save_answers3(coherence, coherence2)
+
+print('new_lda.get_document_topics(corpus2)[0]:')
+print(new_lda.get_document_topics(corpus2)[0])
+
+print('new_lda.alpha:')
+print(new_lda.alpha)
+
+np.random.seed(76543)
+lda3 = models.ldamodel.LdaModel(corpus2, num_topics=40, id2word=dictionary2, passes=5, alpha=1)
+print('lda3.get_document_topics(corpus2)[0]:')
+print(lda3.get_document_topics(corpus2)[0])
+
+count_model2 = my_sum(new_lda, corpus2)
+count_model3 = my_sum(lda3, corpus2)
+print('count_model2 = ', count_model2)
+print('count_model3 = ', count_model3)
+
+save_answers4(count_model2, count_model3)
+
+cuisines = []
+for rec in recipes:
+    if not (rec['cuisine'] in cuisines):
+        cuisines.append(rec['cuisine'])
+
+targets = my_y_maker(recipes, cuisines)
+
+X = np.zeros((len(new_lda.get_document_topics(corpus2)),new_lda.num_topics))
+
+for i,line in enumerate(new_lda.get_document_topics(corpus2)):
+    for top in line:
+        X[i][top[0]] = top[1]
+
+estimator = RandomForestClassifier(n_estimators=100)
+result = cross_val_score(estimator, X, targets, cv=3, scoring='accuracy')
+
+print(result)
+accuracy=np.mean(result, axis=0)
+print('accuracy = ', accuracy)
