@@ -95,3 +95,16 @@ print('phi_a.shape:', phi_a.shape)
 plt.figure(figsize=(20,10))
 seaborn.heatmap(theta[theta.columns[0:100]])
 plt.show()
+
+pt = np.sum(theta, axis=1)/np.sum(np.sum(theta, axis=1), axis=0)
+pt.sort_values()
+df = pd.DataFrame(pt)
+df['topic_labels'] = topic_labels
+df['pt']=df[0]
+df.drop([0], axis=1, inplace=True)
+df=df.sort_values('pt')[:-2]
+
+print('5 наиболее популярных тем:')
+print(df['topic_labels'][-5:])
+print('3 наименее популярные темы:')
+print(df['topic_labels'][:3])
