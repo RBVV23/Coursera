@@ -19,3 +19,14 @@ dictionary.gather(batch_vectorizer.data_path)
 
 model_artm.seed=1
 model_artm.initialize(dictionary=dictionary)
+
+model_artm.scores.add(artm.TopTokensScore(name='TTTScore', class_id="text"))
+model_artm.scores.add(artm.TopTokensScore(name='TTAScore', class_id="author"))
+
+model_artm.regularizers.add(artm.SmoothSparsePhiRegularizer(name='SparsePhi',
+                                                            tau=1e5, dictionary=dictionary,
+                                                            class_ids='text', topic_names='bcg'))
+model_artm.regularizers.add(artm.SmoothSparsePhiRegularizer(name='SparsePhi2',
+                                                            tau=-1e5, dictionary=dictionary,
+                                                            class_ids='text',
+                                                            topic_names=topic_names[:-1]))
