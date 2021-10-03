@@ -15,6 +15,7 @@ def my_polinom_gen(degree=3, maxabs=10, answer=True, int=True):
     if answer:
         print(a)
     return sym.expand(f)
+
 sym.var('a')
 sym.var('b')
 sym.var('x')
