@@ -1,7 +1,6 @@
 import numpy as np
 import sympy as sym
 
-
 # factor - разложить на множители
 # expand - раскрыть скобки
 # simplfy
