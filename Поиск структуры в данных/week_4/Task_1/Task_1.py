@@ -5,6 +5,9 @@ from matplotlib import pyplot as plt
 import seaborn
 from sklearn.manifold import MDS
 from sklearn.metrics import pairwise_distances
+import random
+import matplotlib.cm as cm
+
 seaborn.set_style("whitegrid", {'axes.grid' : False})
 
 batch_vectorizer = artm.BatchVectorizer(data_path="lectures.txt",
@@ -128,9 +131,10 @@ for i, author in enumerate(authors):
     Ns.append(counter)
     if counter >= 3:
         best_authors.append(author)
-best_authors
+
 df.drop(columns=[0, 'N'], axis=0, inplace=True)
 df['Significance']=Ns
+print('best_authors:')
 print(best_authors)
 
 pd.set_option('display.max_columns', 30)
@@ -148,3 +152,34 @@ fig = plt.figure(figsize=(15,10))
 plt.grid(True)
 plt.scatter(data_2d_mds[:, 0], data_2d_mds[:, 1])
 plt.savefig('2d_mds_visualization-2')
+
+pd.set_option('display.max_rows', 50)
+m = np.array([[1,2,5],
+            [7,4,5],
+            [4,1,6]])
+
+df=matrix.iloc[:10]
+np.argmax(df.iloc[0])
+
+main_tops = []
+for i in range(matrix.shape[0]):
+    main_tops.append(np.argmax(matrix.iloc[i]))
+
+
+random.seed(42)
+data_2d_mds[10] -[1000,0]
+deltas[10] +=1
+
+
+deltas = np.zeros((T,))
+colors = cm.rainbow(np.linspace(0, 1, T))
+fig = plt.figure(figsize=(30,20))
+plt.grid(True)
+for i, p in enumerate(data_2d_mds):
+    plt.scatter(p[0], p[1], color=colors[main_tops[i]], s=100, alpha=0.5)
+    deltas[main_tops[i]] +=1
+    d = deltas[main_tops[i]]
+    delta1=[-0.15, 0.01]
+    delta2 = -0.03+deltas[main_tops[i]]*0.03
+    plt.annotate(authors[i], p+[delta1[int(d%2)],delta2])
+plt.savefig('my_new_map.pdf')
