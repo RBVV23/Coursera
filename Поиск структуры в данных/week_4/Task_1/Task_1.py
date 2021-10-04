@@ -3,6 +3,8 @@ import pandas as pd
 import artm
 from matplotlib import pyplot as plt
 import seaborn
+from sklearn.manifold import MDS
+from sklearn.metrics import pairwise_distances
 seaborn.set_style("whitegrid", {'axes.grid' : False})
 
 batch_vectorizer = artm.BatchVectorizer(data_path="lectures.txt",
@@ -108,3 +110,41 @@ print('5 наиболее популярных тем:')
 print(df['topic_labels'][-5:])
 print('3 наименее популярные темы:')
 print(df['topic_labels'][:3])
+
+plt.figure(figsize=(20,10))
+seaborn.heatmap(phi_a, yticklabels=False)
+plt.show()
+
+df = pd.DataFrame(phi_a)
+authors = phi_a.index
+best_authors = []
+
+Ns = []
+for i, author in enumerate(authors):
+    counter = 0
+    for sbj in topic_names:
+        if phi_a[sbj][i] > 0.01:
+            counter += 1
+    Ns.append(counter)
+    if counter >= 3:
+        best_authors.append(author)
+best_authors
+df.drop(columns=[0, 'N'], axis=0, inplace=True)
+df['Significance']=Ns
+print(best_authors)
+
+pd.set_option('display.max_columns', 30)
+
+matr=phi_a*pt
+vec = np.sum(matr.values, axis=1)
+vec = vec.reshape(len(vec),1)
+matrix = matr/vec
+
+dists = pairwise_distances(matrix, metric='cosine')
+mds = MDS(n_components=2, random_state=42, dissimilarity='precomputed')
+data_2d_mds = mds.fit_transform(dists)
+
+fig = plt.figure(figsize=(15,10))
+plt.grid(True)
+plt.scatter(data_2d_mds[:, 0], data_2d_mds[:, 1])
+plt.savefig('2d_mds_visualization-2')
