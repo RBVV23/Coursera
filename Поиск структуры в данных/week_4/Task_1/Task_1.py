@@ -7,6 +7,7 @@ from sklearn.manifold import MDS
 from sklearn.metrics import pairwise_distances
 import random
 import matplotlib.cm as cm
+from IPython.core.display import display, HTML
 
 seaborn.set_style("whitegrid", {'axes.grid' : False})
 
