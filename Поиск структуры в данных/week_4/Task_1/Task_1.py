@@ -183,3 +183,13 @@ for i, p in enumerate(data_2d_mds):
     delta2 = -0.03+deltas[main_tops[i]]*0.03
     plt.annotate(authors[i], p+[delta1[int(d%2)],delta2])
 plt.savefig('my_new_map.pdf')
+
+vec = np.sum(theta.values, axis=1)
+vec = vec.reshape(len(vec),1)
+matrix = theta/vec
+
+tops_links = []
+
+for i in range(matrix.shape[0]):
+    top_links = matrix.iloc[i].sort_values(ascending=False).index[:10]
+    tops_links.append(top_links)
