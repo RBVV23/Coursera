@@ -39,6 +39,7 @@ model_artm.regularizers.add(artm.SmoothSparsePhiRegularizer(name='SparsePhi2',
 
 model_artm.fit_offline(batch_vectorizer=batch_vectorizer, num_collection_passes=15)
 
+tops_words = []
 for topic_name in model_artm.topic_names:
     print(topic_name + ': '),
     tokens = model_artm.score_tracker["TTTScore"].last_tokens
@@ -46,6 +47,7 @@ for topic_name in model_artm.topic_names:
     for word in tokens[topic_name]:
         line += word + ' '
     print('\t', line)
+    tops_words.append(line)
 
 print()
 
