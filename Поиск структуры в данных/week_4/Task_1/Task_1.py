@@ -169,10 +169,6 @@ for i in range(matrix.shape[0]):
     main_tops.append(np.argmax(matrix.iloc[i]))
 
 
-random.seed(42)
-data_2d_mds[10] -[1000,0]
-deltas[10] +=1
-
 
 deltas = np.zeros((T,))
 colors = cm.rainbow(np.linspace(0, 1, T))
@@ -196,3 +192,10 @@ tops_links = []
 for i in range(matrix.shape[0]):
     top_links = matrix.iloc[i].sort_values(ascending=False).index[:10]
     tops_links.append(top_links)
+
+display(HTML(u"<h1>Мой навигатор Постауки</h1>"))
+for t in range(T):
+    display(HTML(u"<h3>{}</h3>".format(topic_labels[t])))
+    display(HTML(u"<h4>{}</h4>".format(tops_words[t])))
+    for link in tops_links[t]:
+        display(HTML(u'<a href={}>{}</a>'.format(link,link)))
