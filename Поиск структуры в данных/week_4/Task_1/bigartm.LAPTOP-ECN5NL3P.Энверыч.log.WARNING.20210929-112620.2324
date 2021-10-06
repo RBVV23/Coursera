@@ -3,3 +3,34 @@ Running on machine: LAPTOP-ECN5NL3P
 Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
 E0929 11:26:20.589605  1452 c_interface.cc:59] DiskReadException :  File school.txt does not exist.
 W0929 20:22:50.872642  1452 check_messages.h:1075] Inconsistent fields size in ThetaMatrix: 1424 vs 0 vs 1424 vs 0;
+W1005 13:11:54.674441  9048 helpers.cc:221] File already exists: lectures_batches\aaaaaa.batch
+W1005 13:11:54.716328 19612 helpers.cc:221] File already exists: lectures_batches\aaaaab.batch
+W1005 13:11:54.731288 22984 helpers.cc:221] File already exists: lectures_batches\aaaaac.batch
+W1005 13:11:54.761209 18252 helpers.cc:221] File already exists: lectures_batches\aaaaae.batch
+W1005 13:11:54.792125   428 helpers.cc:221] File already exists: lectures_batches\aaaaad.batch
+W1005 13:11:54.797113  8100 helpers.cc:221] File already exists: lectures_batches\aaaaaf.batch
+W1005 13:11:54.820050  9048 helpers.cc:221] File already exists: lectures_batches\aaaaai.batch
+W1005 13:11:54.828029  6832 helpers.cc:221] File already exists: lectures_batches\aaaaah.batch
+W1005 13:11:54.836009 16988 helpers.cc:221] File already exists: lectures_batches\aaaaag.batch
+W1005 13:11:54.904824 19612 helpers.cc:221] File already exists: lectures_batches\aaaaaj.batch
+W1005 13:11:54.911805  9048 helpers.cc:221] File already exists: lectures_batches\aaaaao.batch
+W1005 13:11:55.110275 22984 helpers.cc:221] File already exists: lectures_batches\aaaaak.batch
+W1005 13:11:55.131218 18252 helpers.cc:221] File already exists: lectures_batches\aaaaal.batch
+W1005 13:11:55.163136  8100 helpers.cc:221] File already exists: lectures_batches\aaaaan.batch
+W1005 13:11:55.179090   428 helpers.cc:221] File already exists: lectures_batches\aaaaam.batch
+W1005 13:19:06.413971  8100 helpers.cc:221] File already exists: lectures_batches\aaaaaa.batch
+W1005 13:19:06.460846   428 helpers.cc:221] File already exists: lectures_batches\aaaaad.batch
+W1005 13:19:06.466831 22984 helpers.cc:221] File already exists: lectures_batches\aaaaac.batch
+W1005 13:19:06.478798 19612 helpers.cc:221] File already exists: lectures_batches\aaaaae.batch
+W1005 13:19:06.485780 18252 helpers.cc:221] File already exists: lectures_batches\aaaaab.batch
+W1005 13:19:06.520687  9048 helpers.cc:221] File already exists: lectures_batches\aaaaaf.batch
+W1005 13:19:06.569557  6832 helpers.cc:221] File already exists: lectures_batches\aaaaah.batch
+W1005 13:19:06.577534 16988 helpers.cc:221] File already exists: lectures_batches\aaaaag.batch
+W1005 13:19:06.603466  8100 helpers.cc:221] File already exists: lectures_batches\aaaaai.batch
+W1005 13:19:06.638373  6832 helpers.cc:221] File already exists: lectures_batches\aaaaao.batch
+W1005 13:19:06.660312   428 helpers.cc:221] File already exists: lectures_batches\aaaaaj.batch
+W1005 13:19:06.843825 22984 helpers.cc:221] File already exists: lectures_batches\aaaaak.batch
+W1005 13:19:06.860776 19612 helpers.cc:221] File already exists: lectures_batches\aaaaal.batch
+W1005 13:19:06.875738  9048 helpers.cc:221] File already exists: lectures_batches\aaaaan.batch
+W1005 13:19:06.893689 18252 helpers.cc:221] File already exists: lectures_batches\aaaaam.batch
+W1005 13:20:07.431982  1452 check_messages.h:1075] Inconsistent fields size in ThetaMatrix: 1424 vs 0 vs 1424 vs 0;
