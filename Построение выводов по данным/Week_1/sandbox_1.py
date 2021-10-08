@@ -15,7 +15,8 @@ def my_interval(X, alpha=0.95, norm=True):
     return low, high
 
 A = np.array([3,2,3,4,3])
-print(A.mean())
-print(A.std(ddof=1))
+# my_interval(A)
 
-my_interval(A)
+water = pd.read_csv('water.txt')
+print(water.head())
+print(water.info())
