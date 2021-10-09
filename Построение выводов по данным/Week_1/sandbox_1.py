@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 # print(np.__version__)
 import matplotlib.pyplot as plt
+from conda_verify.utilities import sel_pat
+
 
 def my_interval(X, alpha=0.95, norm=True):
     sample_mean=X.mean()
@@ -17,7 +19,7 @@ def my_interval(X, alpha=0.95, norm=True):
 A = np.array([3,2,3,4,3])
 # my_interval(A)
 
-water = pd.read_csv('water.txt')
+water = pd.read_csv('water.txt', sep='\t', header=0)
 
 print(water.head())
 
