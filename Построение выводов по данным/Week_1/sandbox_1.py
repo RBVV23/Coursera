@@ -25,4 +25,4 @@ water = pd.read_csv('water.txt', sep='\t', header=0)
 
 print(water.head())
 
-print(water.info())
+print(water.columns)
