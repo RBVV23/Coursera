@@ -25,4 +25,7 @@ water = pd.read_csv('water.txt', sep='\t', header=0)
 
 print(water.head())
 
-print(water.columns)
+
+
+var = water['mortality']
+print(type(var))
