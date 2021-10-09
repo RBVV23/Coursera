@@ -29,3 +29,7 @@ print(water.head())
 
 var = water['mortality']
 print(type(var))
+
+my_interval(var, precision=4)
+
+print()
