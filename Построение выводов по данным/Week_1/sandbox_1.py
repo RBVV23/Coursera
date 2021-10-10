@@ -2,8 +2,6 @@ import pandas as pd
 # print(pd.__version__)
 import numpy as np
 # print(np.__version__)
-import matplotlib.pyplot as plt
-from conda_verify.utilities import sel_pat
 
 
 def my_interval(X, alpha=0.95, precision=4, norm=True):
