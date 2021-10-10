@@ -38,7 +38,7 @@ my_interval(df['mortality'], precision=4)
 df = water[water['location'] == 'North']
 my_interval(df['mortality'], precision=4)
 
-print('hardness')
+print('hardness:')
 
 df = water[water['location'] == 'South']
 my_interval(df['hardness'], precision=4)
