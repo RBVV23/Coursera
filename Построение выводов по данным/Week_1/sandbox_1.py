@@ -14,6 +14,7 @@ def my_interval(X, alpha=0.95, precision=4, norm=True):
     high = sample_mean + 2 * sample_std
     high = round(high, precision)
     print('Доверительный интервал {}%: ({} - {})'.format(100*alpha, low, high))
+    print()
     return low, high
 
 A = np.array([3,2,3,4,3])
