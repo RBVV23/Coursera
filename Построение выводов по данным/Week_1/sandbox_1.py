@@ -23,8 +23,8 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
     print()
     return low, high
 
-A = np.array([3,2,3,4,3])
-my_interval(A)
+# A = np.array([3,2,3,4,3])
+# my_interval(A)
 
 water = pd.read_csv('water.txt', sep='\t', header=0)
 
