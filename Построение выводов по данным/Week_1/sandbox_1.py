@@ -3,6 +3,7 @@ print(pd.__version__)
 import numpy as np
 print(np.__version__)
 from math import sqrt
+from statsmodels.stats.weightstats import _zconfint_generic, _tconfint_generic
 
 
 def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
@@ -45,10 +46,12 @@ print('4. Постройте 95% доверительный интервал д�
 df = water[water['location'] == 'North']
 my_interval(df['mortality'], precision=4)
 
-print('HARDNESS:')
-
-df = water[water['location'] == 'South']
-my_interval(df['hardness'], precision=4)
+print('5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
 
 df = water[water['location'] == 'North']
 my_interval(df['hardness'], precision=4)
+print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(data[data.location == 'North'])), len(data[data.location == 'North']) - 1, 0.05, 'two-sided'))
+df = water[water['location'] == 'South']
+my_interval(df['hardness'], precision=4)
+
+print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(data[data.location == 'South'])), len(data[data.location == 'South']) - 1, 0.05, 'two-sided'))
