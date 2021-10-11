@@ -10,15 +10,15 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
     sample_mean=X.mean()
     sample_std = X.std(ddof=1)
     n = len(X)
-
+    z = 2
     if flag:
         print('sample_mean = ', sample_mean)
         print('sample_std = ', sample_std)
 
     low = sample_mean - z*sample_std/sqrt(n)
     low = round(low, precision)
-    z = 2
-    high = sample_mean + z * sample_std/sqrt(n)
+
+    high = sample_mean + z *sample_std/sqrt(n)
     high = round(high, precision)
     print('Доверительный интервал {}%: ({} - {})'.format(100*alpha, low, high))
     print()
