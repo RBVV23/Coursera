@@ -61,8 +61,8 @@ print('5. 95% доверительные интервалы для средне�
 
 print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'North'])), len(water[water.location == 'North']) - 1, 0.05, 'two-sided'))
 df = water[water['location'] == 'North']
-my_interval(df['hardness'], precision=4)
+# my_interval(df['hardness'], precision=4)
 
 print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
 df = water[water['location'] == 'South']
-my_interval(df['hardness'], precision=4)
+# my_interval(df['hardness'], precision=4)
