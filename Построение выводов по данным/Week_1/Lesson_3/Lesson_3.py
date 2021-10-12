@@ -3,11 +3,16 @@ import pandas as pd
 import scipy
 from statsmodels.stats.weightstats import *
 from statsmodels.stats.proportion import proportion_confint
+from math import sqrt
 
 def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
-    p1 = float(sum(sample1)/len(sample1))
-    p2 = float(sum(sample2) / len(sample2))
+    n1 = len(sample1)
+    n2 = len(sample2)
+    p1 = float(sum(sample1)/n1)
+    p2 = float(sum(sample2)/n2)
     z = stats.norm.ppf(alpha+(1-alpha)/2)
+    low = p1-p2 - z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    high = p1-p2 + z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
 
 data = pd.read_csv('banner_click_stat.txt', header=None, sep='\t')
 data.columns = ['banner_a', 'banner_b']
