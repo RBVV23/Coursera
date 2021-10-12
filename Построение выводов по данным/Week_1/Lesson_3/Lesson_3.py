@@ -4,7 +4,10 @@ import scipy
 from statsmodels.stats.weightstats import *
 from statsmodels.stats.proportion import proportion_confint
 
-def my_proportions_confint_diff_ind
+def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
+    p1 = float(sum(sample1)/len(sample1))
+    p2 = float(sum(sample2) / len(sample2))
+    z = stats.norm.ppf(alpha+(1-alpha)/2)
 
 data = pd.read_csv('banner_click_stat.txt', header=None, sep='\t')
 data.columns = ['banner_a', 'banner_b']

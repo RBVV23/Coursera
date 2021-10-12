@@ -11,7 +11,7 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
     sample_mean=X.mean()
     sample_std = X.std(ddof=1)
     n = len(X)
-    z = stats.norm.ppf(alpha/2)
+    z = stats.norm.ppf((1+alpha)/2)
     print('z = ',z)
     if flag:
         print('sample_mean = ', sample_mean)
