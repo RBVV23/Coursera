@@ -4,13 +4,15 @@ import numpy as np
 print(np.__version__)
 from math import sqrt
 from statsmodels.stats.weightstats import _zconfint_generic, _tconfint_generic
+from scipy import stats
 
 
 def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
     sample_mean=X.mean()
     sample_std = X.std(ddof=1)
     n = len(X)
-    z = 2
+    z = stats.norm.ppf(alpha/2)
+    print('z = ',z)
     if flag:
         print('sample_mean = ', sample_mean)
         print('sample_std = ', sample_std)
@@ -18,7 +20,7 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
     low = sample_mean - z*sample_std/sqrt(n)
     low = round(low, precision)
 
-    high = sample_mean + z *sample_std/sqrt(n)
+    high = sample_mean + z*sample_std/sqrt(n)
     high = round(high, precision)
     print('Доверительный интервал {}%: ({} - {})'.format(100*alpha, low, high))
     print()
@@ -37,7 +39,7 @@ print('2. Постройте 95% доверительный интервал д�
 my_mean = my_X.mean()
 my_std = my_X.std(ddof=1)/sqrt(len(my_X))
 print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(my_X, precision=4)
+my_interval(my_X, precision=4)
 
 print('3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
 df = water[water['location'] == 'South']
