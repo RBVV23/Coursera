@@ -31,44 +31,44 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=False):
 
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
-#
-#
-# water = pd.read_csv('water.txt', sep='\t', header=0)
-# # print(water.head())
-#
-# my_X = water['mortality']
-#
-# print('1.2. Постройте 95% доверительный интервал для средней годовой смертности в больших городах:')
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(my_X, precision=4)
-#
-# print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
-# df = water[water['location'] == 'South']
-# my_X = df['mortality']
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(df['mortality'], precision=4)
-#
-# print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
-# df = water[water['location'] == 'North']
-# my_X = df['mortality']
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(df['mortality'], precision=4)
-#
-# print('1.5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
-#
-# print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'North'])), len(water[water.location == 'North']) - 1, 0.05, 'two-sided'))
-# df = water[water['location'] == 'North']
-# my_interval(df['hardness'], precision=4)
-#
-# print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
-# df = water[water['location'] == 'South']
-# my_interval(df['hardness'], precision=4)
+
+
+water = pd.read_csv('water.txt', sep='\t', header=0)
+# print(water.head())
+
+my_X = water['mortality']
+
+print('1.2. Постройте 95% доверительный интервал для средней годовой смертности в больших городах:')
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+my_interval(my_X, precision=4)
+
+print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
+df = water[water['location'] == 'South']
+my_X = df['mortality']
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+my_interval(df['mortality'], precision=4)
+
+print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
+df = water[water['location'] == 'North']
+my_X = df['mortality']
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+my_interval(df['mortality'], precision=4)
+
+print('1.5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
+
+print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'North'])), len(water[water.location == 'North']) - 1, 0.05, 'two-sided'))
+df = water[water['location'] == 'North']
+my_interval(df['hardness'], precision=4)
+
+print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
+df = water[water['location'] == 'South']
+my_interval(df['hardness'], precision=4)
 
 print('2.2. Нормальный доверительный интервал для доли носителей варианта 13910T в популяции майя:')
 
@@ -100,7 +100,7 @@ print('2.5. Объём выборки необходимый в худшем с�
 print('{} человек (при p = {})'.format(np.max(counts), array[np.argmax(counts)]))
 plt.plot(array, counts)
 plt.grid(True)
-# plt.show()
+plt.show()
 
 my_A = np.zeros(50)
 my_A[0] = 1
