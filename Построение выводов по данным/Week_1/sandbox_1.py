@@ -56,11 +56,16 @@ def my_get_boostraps_samples(data, n_samples):
     return samples
 
 def my_odds(sample1, sample2):
-    p1 = sum(sample1) / len(sample1)
-    p2 = sum(sample2) / len(sample2)
-    odds1 = p1 / (1 - p1)
-    odds2 = p2 / (1 - p2)
-    return (odds1 / odds2)
+    p1 = np.sum(sample1) / len(sample1)
+    # print('len1 = ', len(sample1))
+    # print('len2 = ', len(sample2))
+    # print('p1 = ', p1)
+    p2 = np.sum(sample2) / len(sample2)
+    odds1 = float(p1 / (1 - p1))
+    # print('odds1 = ',odds1)
+    odds2 = float(p2 / (1 - p2))
+    # print('odds2 = ',odds2)
+    return float(odds1 / odds2)
 
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
@@ -147,23 +152,27 @@ n_asp_inf = 104
 n_plac = 11034
 n_plac_inf = 189
 group_asp = np.array([1]*n_asp_inf + [0]*(n_asp-n_asp_inf))
-group_plac = np.array([1]*n_plac_inf + [0]*(n_asp-n_plac_inf))
+group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
 print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
 print(n_plac_inf/n_plac - n_asp_inf/n_asp)
 
 print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
-print(my_proportions_confint_diff_rel(group_plac, group_asp, alpha = 0.03))
+print(my_proportions_confint_diff_rel(group_plac, group_asp, alpha = 0.05))
 
 print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
 p_asp = n_asp_inf/n_asp
 p_plac = n_plac_inf/n_plac
-odds_asp = p_asp/(1-p_asp)
+print('p_plac', p_plac)
 odds_plac = p_plac/(1-p_plac)
+print('odds_plac = ', odds_plac)
+odds_asp = p_asp/(1-p_asp)
+print('odds_asp = ', odds_asp)
+
 print(odds_plac/odds_asp)
 print(my_odds(group_plac, group_asp))
 
 np.random.seed(0)
-# my_get_boostraps_samples(group_asp, 1000)
+my_get_boostraps_samples(group_asp, 1000)
 my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
 
-print(my_stat_intervals(my_list, 0.05))
+print(my_interval(np.array(my_list)))
