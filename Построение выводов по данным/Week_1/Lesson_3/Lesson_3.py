@@ -10,9 +10,10 @@ def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
     n2 = len(sample2)
     p1 = float(sum(sample1)/n1)
     p2 = float(sum(sample2)/n2)
-    z = stats.norm.ppf(alpha+(1-alpha)/2)
+    z = stats.norm.ppf(1-alpha/2.)
     low = p1-p2 - z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
     high = p1-p2 + z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    return low, high
 
 data = pd.read_csv('banner_click_stat.txt', header=None, sep='\t')
 data.columns = ['banner_a', 'banner_b']
@@ -27,15 +28,6 @@ print('Вильсоновский интервал [{}; {}] для баннер�
                                                             conf_interval_banner_a[1]))
 print('Вильсоновский интервал [{}; {}] для баннера "B"'.format(conf_interval_banner_b[0],
                                                             conf_interval_banner_b[1]))
-#
-# confidence interval: [-0.034157, 0.002157]
-# def proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
-#     z = scipy.stats.norm.ppf(1 - alpha / 2.)
-#     p1 = float(sum(sample1)) / len(sample1)
-#     p2 = float(sum(sample2)) / len(sample2)
-#
-#     left_boundary = (p1 - p2) - z * np.sqrt(p1 * (1 - p1) / len(sample1) + p2 * (1 - p2) / len(sample2))
-#     right_boundary = (p1 - p2) + z * np.sqrt(p1 * (1 - p1) / len(sample1) + p2 * (1 - p2) / len(sample2))
-#
-#     return (left_boundary, right_boundary)
-# print("confidence interval: [%f, %f]" % proportions_confint_diff_ind(data.banner_a, data.banner_b))
+
+bound = my_proportions_confint_diff_ind(data.banner_a, data.banner_b)
+print('Доверительный интервал для разности: [{}; {}]'.format(bound[0], bound[1]))
