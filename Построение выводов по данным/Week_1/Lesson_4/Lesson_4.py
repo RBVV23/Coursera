@@ -50,3 +50,4 @@ print('Точечная оценка разности медиан: ', np.median
 
 delta_median_score = list(map(lambda x: x[0] - x[1], zip(clec_median_score, ilec_median_score)))
 print('Интервальная оценка разности медиан: ', my_stat_intervals(delta_median_score,0.05))
+

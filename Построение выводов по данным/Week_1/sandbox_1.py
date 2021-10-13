@@ -9,6 +9,10 @@ from statsmodels.stats.proportion import proportion_confint
 from statsmodels.stats.proportion import samplesize_confint_proportion
 import matplotlib.pyplot as plt
 
+def my_stat_intervals(stat, alpha):
+    low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
+    return low, high
+
 def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     z = stats.norm.ppf(1 - alpha/2.)
     sample = list(zip(sample1, sample2))
@@ -50,6 +54,13 @@ def my_get_boostraps_samples(data, n_samples):
     indices = np.random.randint(0, L, (n_samples, L))
     samples = data[indices]
     return samples
+
+def my_odds(sample1, sample2):
+    p1 = sum(sample1) / len(sample1)
+    p2 = sum(sample2) / len(sample2)
+    odds1 = p1 / (1 - p1)
+    odds2 = p2 / (1 - p2)
+    return (odds1 / odds2)
 
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
@@ -149,6 +160,10 @@ p_plac = n_plac_inf/n_plac
 odds_asp = p_asp/(1-p_asp)
 odds_plac = p_plac/(1-p_plac)
 print(odds_plac/odds_asp)
+print(my_odds(group_plac, group_asp))
 
 np.random.seed(0)
-my_get_boostraps_samples(group_asp, 1000)
+# my_get_boostraps_samples(group_asp, 1000)
+my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
+
+print(my_stat_intervals(my_list, 0.05))
