@@ -29,8 +29,8 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=True):
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
 
-water = pd.read_csv('water.txt', sep='\t', header=0)
 
+water = pd.read_csv('water.txt', sep='\t', header=0)
 print(water.head())
 
 my_X = water['mortality']
@@ -66,3 +66,7 @@ df = water[water['location'] == 'North']
 print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
 df = water[water['location'] == 'South']
 # my_interval(df['hardness'], precision=4)
+
+sample_mean = 1/50
+n = 50
+sample_std = sqrt((49*1/50 + 49/50)**2/(n-1))
