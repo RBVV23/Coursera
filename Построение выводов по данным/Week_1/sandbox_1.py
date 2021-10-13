@@ -45,6 +45,12 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=False):
     print()
     return low, high
 
+def my_get_boostraps_samples(data, n_samples):
+    L = len(data)
+    indices = np.random.randint(0, L, (n_samples, L))
+    samples = data[indices]
+    return samples
+
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
 
@@ -143,3 +149,6 @@ p_plac = n_plac_inf/n_plac
 odds_asp = p_asp/(1-p_asp)
 odds_plac = p_plac/(1-p_plac)
 print(odds_plac/odds_asp)
+
+np.random.seed(0)
+my_get_boostraps_samples(group_asp, 1000)
