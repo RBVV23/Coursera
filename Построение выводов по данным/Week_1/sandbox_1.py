@@ -186,7 +186,6 @@ print('answer 3.7. = ', answer37)
 print(my_odds(group_plac, group_asp))
 
 np.random.seed(0)
-# my_get_boostraps_samples(group_asp, 1000)
 
 my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
 print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
