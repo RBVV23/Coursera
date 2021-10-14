@@ -157,6 +157,9 @@ def my_odds(sample1, sample2):
 # my_interval(my_A)
 
 print('3.1. Уточненное правило 3-х ({}) сигм'.format(stats.norm.ppf((1 + 0.997)/2.)))
+answer31 = round(stats.norm.ppf((1 + 0.997)/2.),4)
+print('answer 3.1. = ',answer31)
+
 n_asp = 11037
 n_asp_inf = 104
 n_plac = 11034
@@ -166,6 +169,7 @@ group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
 print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
 print(n_plac_inf/n_plac - n_asp_inf/n_asp)
 answer35 = round(n_plac_inf/n_plac - n_asp_inf/n_asp,4)
+print('answer 3.5. = ',answer35)
 
 print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
 print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
