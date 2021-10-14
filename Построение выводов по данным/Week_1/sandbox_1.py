@@ -146,6 +146,8 @@ def my_odds(sample1, sample2):
 #
 # print('2.5. Объём выборки необходимый в худшем случае для оценки нормального интервала:')
 # print('{} человек (при p = {})'.format(np.max(counts), array[np.argmax(counts)]))
+# answer25 = np.max(counts)
+# print('answer 2.5. = ',answer25)
 # plt.plot(array, counts)
 # plt.grid(True)
 # plt.show()
