@@ -30,6 +30,16 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
 
+def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
+    n1 = len(sample1)
+    n2 = len(sample2)
+    p1 = float(sum(sample1)/n1)
+    p2 = float(sum(sample2)/n2)
+    z = stats.norm.ppf(1-alpha/2.)
+    low = p1-p2 - z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    high = p1-p2 + z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    return low, high
+
 def my_interval(X, alpha=0.95, precision=4, norm=True, flag=False):
     n = len(X)
     sample_mean=X.mean()
@@ -157,7 +167,9 @@ print('3.5. Вероятность инфаркта снижается при п
 print(n_plac_inf/n_plac - n_asp_inf/n_asp)
 
 print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
-print(my_proportions_confint_diff_rel(group_plac, group_asp, alpha = 0.05))
+print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
+answer36 = round(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05)[1], 4)
+print('answer 3.6. = ', answer36)
 
 print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
 p_asp = n_asp_inf/n_asp
@@ -168,11 +180,16 @@ print('odds_plac = ', odds_plac)
 odds_asp = p_asp/(1-p_asp)
 print('odds_asp = ', odds_asp)
 
-print(odds_plac/odds_asp)
+answer37=odds_plac/odds_asp
+print('answer 3.7. = ', answer37)
+
 print(my_odds(group_plac, group_asp))
 
 np.random.seed(0)
-my_get_boostraps_samples(group_asp, 1000)
-my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
+# my_get_boostraps_samples(group_asp, 1000)
 
-print(my_interval(np.array(my_list)))
+my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
+print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
+print(my_stat_intervals(np.array(my_list), 0.05))
+answer38 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
+print('answer 3.8. = ', answer38)
