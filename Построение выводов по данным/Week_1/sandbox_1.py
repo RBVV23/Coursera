@@ -8,6 +8,7 @@ from scipy import stats
 from statsmodels.stats.proportion import proportion_confint
 from statsmodels.stats.proportion import samplesize_confint_proportion
 import matplotlib.pyplot as plt
+import scipy
 
 def my_stat_intervals(stat, alpha):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
@@ -158,44 +159,101 @@ def my_odds(sample1, sample2):
 # print(sqrt((49*(1/50)**2 + (49/50)**2)/(n-1)))
 # my_interval(my_A)
 
-print('3.1. Уточненное правило 3-х ({}) сигм'.format(stats.norm.ppf((1 + 0.997)/2.)))
-answer31 = round(stats.norm.ppf((1 + 0.997)/2.),4)
-print('answer 3.1. = ',answer31)
+# print('3.1. Уточненное правило 3-х ({}) сигм'.format(stats.norm.ppf((1 + 0.997)/2.)))
+# answer31 = round(stats.norm.ppf((1 + 0.997)/2.),4)
+# print('answer 3.1. = ',answer31)
+#
+# n_asp = 11037
+# n_asp_inf = 104
+# n_plac = 11034
+# n_plac_inf = 189
+# group_asp = np.array([1]*n_asp_inf + [0]*(n_asp-n_asp_inf))
+# group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
+# print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
+# print(n_plac_inf/n_plac - n_asp_inf/n_asp)
+# answer35 = round(n_plac_inf/n_plac - n_asp_inf/n_asp,4)
+# print('answer 3.5. = ',answer35)
+#
+# print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
+# print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
+# answer36 = round(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05)[1], 4)
+# print('answer 3.6. = ', answer36)
+#
+# print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
+# p_asp = n_asp_inf/n_asp
+# p_plac = n_plac_inf/n_plac
+# print('p_plac', p_plac)
+# odds_plac = p_plac/(1-p_plac)
+# print('odds_plac = ', odds_plac)
+# odds_asp = p_asp/(1-p_asp)
+# print('odds_asp = ', odds_asp)
+#
+# answer37=odds_plac/odds_asp
+# print('answer 3.7. = ', answer37)
+#
+# print(my_odds(group_plac, group_asp))
+#
+# np.random.seed(0)
+#
+# my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
+# print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
+# print(my_stat_intervals(np.array(my_list), 0.05))
+# answer38 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
+# print('answer 3.8. = ', answer38)
 
-n_asp = 11037
-n_asp_inf = 104
-n_plac = 11034
-n_plac_inf = 189
-group_asp = np.array([1]*n_asp_inf + [0]*(n_asp-n_asp_inf))
-group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
-print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
-print(n_plac_inf/n_plac - n_asp_inf/n_asp)
-answer35 = round(n_plac_inf/n_plac - n_asp_inf/n_asp,4)
-print('answer 3.5. = ',answer35)
+my_rest = np.array([1]*75 + [0]*(100-75))
+all_rest = np.array([1]*67 + [0]*(100-67))
 
-print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
-print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
-answer36 = round(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05)[1], 4)
-print('answer 3.6. = ', answer36)
+print('4.1. Достигаемый уровень значимости против двусторонней альтернативы:')
+print(stats.binom_test(67, 100, 0.75, alternative = 'two-sided'))
+answer41 = round(stats.binom_test(67, 100, 0.75, alternative = 'two-sided'),4)
+print('answer 4.1. = ', answer41)
 
-print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
-p_asp = n_asp_inf/n_asp
-p_plac = n_plac_inf/n_plac
-print('p_plac', p_plac)
-odds_plac = p_plac/(1-p_plac)
-print('odds_plac = ', odds_plac)
-odds_asp = p_asp/(1-p_asp)
-print('odds_asp = ', odds_asp)
+print(stats.binom_test(22, 50, 0.75, alternative = 'two-sided'))
+# answer41 = round(stats.binom_test(67, 100, 0.75, alternative = 'two-sided'),4)
 
-answer37=odds_plac/odds_asp
-print('answer 3.7. = ', answer37)
+data = pd.read_csv('pines.txt', sep='\t', header=0)
+print(data.head())
 
-print(my_odds(group_plac, group_asp))
+print('4.3. Среднее ожидаемое количество сосен в каждом квадрате')
+answer43 = data.shape[0]/25
+print('answer43 = ', answer43)
 
-np.random.seed(0)
+sn = data.sn
+we = data.we
 
-my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
-print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
-print(my_stat_intervals(np.array(my_list), 0.05))
-answer38 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
-print('answer 3.8. = ', answer38)
+# print(sn[:5])
+# print(we[:5])
+plt.scatter(sn, we, alpha=0.5, s=10)
+plt.grid()
+# plt.show()
+
+binx = [0.0, 40, 80, 120, 160, 200]
+biny = [0.0, 40, 80, 120, 160, 200]
+ret = stats.binned_statistic_2d(sn, we, None, 'count', bins=[binx, biny])
+print(ret[0])
+expected = np.array([[answer43]*5]*5)
+print(expected)
+
+print('4.4. Значение статистики хи-квадрат:')
+ret = stats.chisquare(ret[0].reshape(25), expected.reshape(25), ddof = 0)
+print(ret)
+answer44 = round(ret[0],2)
+print('answer44 = ', answer44)
+
+
+
+Xs = np.array([3,3,5,7,9]*5)
+Ys = np.array([1]*5 +[3]*5 + [5]*5 + [7]*5 + [9]*5)
+
+plt.scatter(Xs, Ys)
+plt.grid()
+plt.xlim(0,10)
+plt.ylim(0,10)
+# plt.show()
+
+
+# binx = [0.0, 2, 4, 6, 8, 10]
+# biny = [0.0, 2, 4, 6, 8, 10]
+# ret = stats.binned_statistic_2d(Xs, Ys, None, 'count', bins=[binx, biny])
+# print(ret.statistic)
