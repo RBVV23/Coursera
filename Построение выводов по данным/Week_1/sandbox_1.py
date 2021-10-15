@@ -243,16 +243,14 @@ print('answer44 = ', answer44)
 
 
 
-Xs = np.array([3,3,5,7,9]*5)
-Ys = np.array([1]*5 +[3]*5 + [5]*5 + [7]*5 + [9]*5)
-
-plt.scatter(Xs, Ys)
-plt.grid()
-plt.xlim(0,10)
-plt.ylim(0,10)
+# Xs = np.array([3,3,5,7,9]*5)
+# Ys = np.array([1]*5 +[3]*5 + [5]*5 + [7]*5 + [9]*5)
+#
+# plt.scatter(Xs, Ys)
+# plt.grid()
+# plt.xlim(0,10)
+# plt.ylim(0,10)
 # plt.show()
-
-
 # binx = [0.0, 2, 4, 6, 8, 10]
 # biny = [0.0, 2, 4, 6, 8, 10]
 # ret = stats.binned_statistic_2d(Xs, Ys, None, 'count', bins=[binx, biny])
