@@ -68,9 +68,6 @@ def my_get_boostraps_samples(data, n_samples):
 
 def my_odds(sample1, sample2):
     p1 = np.sum(sample1) / len(sample1)
-    # print('len1 = ', len(sample1))
-    # print('len2 = ', len(sample2))
-    # print('p1 = ', p1)
     p2 = np.sum(sample2) / len(sample2)
     odds1 = float(p1 / (1 - p1))
     # print('odds1 = ',odds1)
