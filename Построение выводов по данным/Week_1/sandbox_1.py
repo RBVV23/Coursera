@@ -70,9 +70,7 @@ def my_odds(sample1, sample2):
     p1 = np.sum(sample1) / len(sample1)
     p2 = np.sum(sample2) / len(sample2)
     odds1 = float(p1 / (1 - p1))
-    # print('odds1 = ',odds1)
     odds2 = float(p2 / (1 - p2))
-    # print('odds2 = ',odds2)
     return float(odds1 / odds2)
 
 # A = np.array([3,2,3,4,3])
@@ -88,7 +86,8 @@ def my_odds(sample1, sample2):
 # my_mean = my_X.mean()
 # my_std = my_X.std(ddof=1)/sqrt(len(my_X))
 # print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(my_X, precision=4)
+answer12 = my_interval(my_X, precision=4)
+print('answer12 = ',answer12)
 #
 # print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
 # df = water[water['location'] == 'South']
@@ -97,6 +96,8 @@ def my_odds(sample1, sample2):
 # my_std = my_X.std(ddof=1)/sqrt(len(my_X))
 # print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
 # my_interval(df['mortality'], precision=4)
+answer13 = my_interval(df['mortality'], precision=4)
+print('answer13 = ',answer13)
 #
 # print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
 # df = water[water['location'] == 'North']
