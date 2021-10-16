@@ -87,7 +87,7 @@ def my_odds(sample1, sample2):
 # my_std = my_X.std(ddof=1)/sqrt(len(my_X))
 # print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
 answer12 = my_interval(my_X, precision=4)
-print('answer12 = ',answer12)
+print('answer 1.2. = ',answer12)
 #
 # print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
 # df = water[water['location'] == 'South']
@@ -97,7 +97,7 @@ print('answer12 = ',answer12)
 # print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
 # my_interval(df['mortality'], precision=4)
 answer13 = my_interval(df['mortality'], precision=4)
-print('answer13 = ',answer13)
+print('answer 1.3. = ',answer13)
 #
 # print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
 # df = water[water['location'] == 'North']
@@ -107,7 +107,7 @@ print('answer13 = ',answer13)
 # print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
 # my_interval(df['mortality'], precision=4)
 answer14 = my_interval(df['mortality'], precision=4)
-print('answer14 = ', answer14)
+print('answer 1.4. = ', answer14)
 
 
 # print('1.5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
@@ -133,7 +133,7 @@ print('answer15 = ' , answer15)
 # print('[{}; {}]'.format(low, high))
 # # print(_tconfint_generic(sample_mean, sample_std, n, 0.05, 'two-sided'))
 answer22 = _tconfint_generic(sample_mean, sample_std, n, 0.05, 'two-sided')
-print('answer22 = ', answer22)
+print('answer 2.2. = ', answer22)
 # print('2.3. Вильсоновский доверительный интервал для доли носителей варианта 13910T в популяции майя:')
 # wilson_interval = proportion_confint(count=1, nobs=50, method='wilson')
 # print('[{}; {}]'.format(wilson_interval[0], wilson_interval[1]))
@@ -148,7 +148,6 @@ print('answer22 = ', answer22)
 # counts = list(map(lambda x: int(np.ceil(samplesize_confint_proportion(proportion=x,
 #                                                       half_length=0.01))), array))
 # print(counts)
-#
 # print('2.5. Объём выборки необходимый в худшем случае для оценки нормального интервала:')
 # print('{} человек (при p = {})'.format(np.max(counts), array[np.argmax(counts)]))
 # answer25 = np.max(counts)
