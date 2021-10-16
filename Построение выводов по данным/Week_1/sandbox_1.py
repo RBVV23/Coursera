@@ -77,132 +77,132 @@ def my_odds(sample1, sample2):
 # my_interval(A)
 
 
-# water = pd.read_csv('water.txt', sep='\t', header=0)
-# # print(water.head())
-#
-# my_X = water['mortality']
-#
-# print('1.2. Постройте 95% доверительный интервал для средней годовой смертности в больших городах:')
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-answer12 = my_interval(my_X, precision=4)
+water = pd.read_csv('water.txt', sep='\t', header=0)
+# print(water.head())
+
+my_X = water['mortality']
+
+print('1.2. Постройте 95% доверительный интервал для средней годовой смертности в больших городах:')
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+answer12 = my_interval(my_X, precision=4)[0]
 print('answer 1.2. = ',answer12)
 #
-# print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
-# df = water[water['location'] == 'South']
-# my_X = df['mortality']
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(df['mortality'], precision=4)
+print('1.3. Постройте 95% доверительный интервал для средней годовой смертности по всем южным городам:')
+df = water[water['location'] == 'South']
+my_X = df['mortality']
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+my_interval(df['mortality'], precision=4)
 answer13 = my_interval(df['mortality'], precision=4)
 print('answer 1.3. = ',answer13)
 #
-# print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
-# df = water[water['location'] == 'North']
-# my_X = df['mortality']
-# my_mean = my_X.mean()
-# my_std = my_X.std(ddof=1)/sqrt(len(my_X))
-# print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
-# my_interval(df['mortality'], precision=4)
+print('1.4. Постройте 95% доверительный интервал для средней годовой смертности по всем северным городам')
+df = water[water['location'] == 'North']
+my_X = df['mortality']
+my_mean = my_X.mean()
+my_std = my_X.std(ddof=1)/sqrt(len(my_X))
+print(_tconfint_generic(my_mean, my_std, len(my_X) - 1, 0.05, 'two-sided'))
+my_interval(df['mortality'], precision=4)
 answer14 = my_interval(df['mortality'], precision=4)
 print('answer 1.4. = ', answer14)
 
 
-# print('1.5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
-#
-# print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'North'])), len(water[water.location == 'North']) - 1, 0.05, 'two-sided'))
-# df = water[water['location'] == 'North']
-# my_interval(df['hardness'], precision=4)
-#
-# print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
-# df = water[water['location'] == 'South']
-# my_interval(df['hardness'], precision=4)
+print('1.5. 95% доверительные интервалы для средней жёсткости воды в северных и южных городах:')
+
+print(_tconfint_generic(water[water.location == 'North'].hardness.mean(), water[water.location == 'North'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'North'])), len(water[water.location == 'North']) - 1, 0.05, 'two-sided'))
+df = water[water['location'] == 'North']
+my_interval(df['hardness'], precision=4)
+
+print(_tconfint_generic(water[water.location == 'South'].hardness.mean(), water[water.location == 'South'].hardness.std(ddof=1) / np.sqrt(len(water[water.location == 'South'])), len(water[water.location == 'South']) - 1, 0.05, 'two-sided'))
+df = water[water['location'] == 'South']
+my_interval(df['hardness'], precision=4)
 #
 answer15 = my_interval(df['hardness'], precision=4)
 print('answer15 = ' , answer15)
-# print('2.2. Нормальный доверительный интервал для доли носителей варианта 13910T в популяции майя:')
-#
-# sample_mean = 1/50
-# n = 50
-# sample_std = sqrt((49*(1/50)**2 + (49/50)**2)/(n-1))
-# z = stats.norm.ppf(0.975)
-# low = sample_mean - z*sqrt(sample_mean*(1-sample_mean)/n)
-# high = sample_mean + z*sqrt(sample_mean*(1-sample_mean)/n)
-# print('[{}; {}]'.format(low, high))
-# # print(_tconfint_generic(sample_mean, sample_std, n, 0.05, 'two-sided'))
+print('2.2. Нормальный доверительный интервал для доли носителей варианта 13910T в популяции майя:')
+
+sample_mean = 1/50
+n = 50
+sample_std = sqrt((49*(1/50)**2 + (49/50)**2)/(n-1))
+z = stats.norm.ppf(0.975)
+low = sample_mean - z*sqrt(sample_mean*(1-sample_mean)/n)
+high = sample_mean + z*sqrt(sample_mean*(1-sample_mean)/n)
+print('[{}; {}]'.format(low, high))
+print(_tconfint_generic(sample_mean, sample_std, n, 0.05, 'two-sided'))
 answer22 = _tconfint_generic(sample_mean, sample_std, n, 0.05, 'two-sided')
 print('answer 2.2. = ', answer22)
-# print('2.3. Вильсоновский доверительный интервал для доли носителей варианта 13910T в популяции майя:')
-# wilson_interval = proportion_confint(count=1, nobs=50, method='wilson')
-# print('[{}; {}]'.format(wilson_interval[0], wilson_interval[1]))
-#
-# print('2.5. Объём выборки для оценки нормального интервала с точностью до 0.01:')
-# n_samples = int(np.ceil(samplesize_confint_proportion(proportion=sample_mean,
-#                                                       half_length=0.01)))
-# print(n_samples)
-#
-# array = np.arange(0, 1.01, 0.01)
-# print(array)
-# counts = list(map(lambda x: int(np.ceil(samplesize_confint_proportion(proportion=x,
-#                                                       half_length=0.01))), array))
-# print(counts)
-# print('2.5. Объём выборки необходимый в худшем случае для оценки нормального интервала:')
-# print('{} человек (при p = {})'.format(np.max(counts), array[np.argmax(counts)]))
-# answer25 = np.max(counts)
-# print('answer 2.5. = ',answer25)
-# plt.plot(array, counts)
-# plt.grid(True)
-# plt.show()
-#
-# my_A = np.zeros(50)
-# my_A[0] = 1
-# print(my_A.std(ddof=1))
-# print(sqrt((49*(1/50)**2 + (49/50)**2)/(n-1)))
-# my_interval(my_A)
+print('2.3. Вильсоновский доверительный интервал для доли носителей варианта 13910T в популяции майя:')
+wilson_interval = proportion_confint(count=1, nobs=50, method='wilson')
+print('[{}; {}]'.format(wilson_interval[0], wilson_interval[1]))
 
-# print('3.1. Уточненное правило 3-х ({}) сигм'.format(stats.norm.ppf((1 + 0.997)/2.)))
-# answer31 = round(stats.norm.ppf((1 + 0.997)/2.),4)
-# print('answer 3.1. = ',answer31)
+print('2.5. Объём выборки для оценки нормального интервала с точностью до 0.01:')
+n_samples = int(np.ceil(samplesize_confint_proportion(proportion=sample_mean,
+                                                      half_length=0.01)))
+print(n_samples)
 #
-# n_asp = 11037
-# n_asp_inf = 104
-# n_plac = 11034
-# n_plac_inf = 189
-# group_asp = np.array([1]*n_asp_inf + [0]*(n_asp-n_asp_inf))
-# group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
-# print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
-# print(n_plac_inf/n_plac - n_asp_inf/n_asp)
-# answer35 = round(n_plac_inf/n_plac - n_asp_inf/n_asp,4)
-# print('answer 3.5. = ',answer35)
-#
-# print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
-# print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
-# answer36 = round(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05)[1], 4)
-# print('answer 3.6. = ', answer36)
-#
-# print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
-# p_asp = n_asp_inf/n_asp
-# p_plac = n_plac_inf/n_plac
-# print('p_plac', p_plac)
-# odds_plac = p_plac/(1-p_plac)
-# print('odds_plac = ', odds_plac)
-# odds_asp = p_asp/(1-p_asp)
-# print('odds_asp = ', odds_asp)
-#
-# answer37=odds_plac/odds_asp
-# print('answer 3.7. = ', answer37)
-#
-# print(my_odds(group_plac, group_asp))
-#
-# np.random.seed(0)
-#
-# my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
-# print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
-# print(my_stat_intervals(np.array(my_list), 0.05))
-# answer38 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
-# print('answer 3.8. = ', answer38)
+array = np.arange(0, 1.01, 0.01)
+print(array)
+counts = list(map(lambda x: int(np.ceil(samplesize_confint_proportion(proportion=x,
+                                                      half_length=0.01))), array))
+print(counts)
+print('2.5. Объём выборки необходимый в худшем случае для оценки нормального интервала:')
+print('{} человек (при p = {})'.format(np.max(counts), array[np.argmax(counts)]))
+answer25 = np.max(counts)
+print('answer 2.5. = ',answer25)
+plt.plot(array, counts)
+plt.grid(True)
+plt.show()
+
+my_A = np.zeros(50)
+my_A[0] = 1
+print(my_A.std(ddof=1))
+print(sqrt((49*(1/50)**2 + (49/50)**2)/(n-1)))
+my_interval(my_A)
+
+print('3.1. Уточненное правило 3-х ({}) сигм'.format(stats.norm.ppf((1 + 0.997)/2.)))
+answer31 = round(stats.norm.ppf((1 + 0.997)/2.),4)
+print('answer 3.1. = ',answer31)
+
+n_asp = 11037
+n_asp_inf = 104
+n_plac = 11034
+n_plac_inf = 189
+group_asp = np.array([1]*n_asp_inf + [0]*(n_asp-n_asp_inf))
+group_plac = np.array([1]*n_plac_inf + [0]*(n_plac-n_plac_inf))
+print('3.5. Вероятность инфаркта снижается при приёме аспирина на величину:')
+print(n_plac_inf/n_plac - n_asp_inf/n_asp)
+answer35 = round(n_plac_inf/n_plac - n_asp_inf/n_asp,4)
+print('answer 3.5. = ',answer35)
+
+print('3.6. Доверительный интервал для снижения вероятности инфаркта при приёме аспирина:')
+print(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05))
+answer36 = round(my_proportions_confint_diff_ind(group_plac, group_asp, alpha = 0.05)[1], 4)
+print('answer 3.6. = ', answer36)
+
+print('3.7. Шансы инфаркта при регулярном приёме аспирина понижаются в (раз):')
+p_asp = n_asp_inf/n_asp
+p_plac = n_plac_inf/n_plac
+print('p_plac', p_plac)
+odds_plac = p_plac/(1-p_plac)
+print('odds_plac = ', odds_plac)
+odds_asp = p_asp/(1-p_asp)
+print('odds_asp = ', odds_asp)
+
+answer37=odds_plac/odds_asp
+print('answer 3.7. = ', answer37)
+
+print(my_odds(group_plac, group_asp))
+
+np.random.seed(0)
+
+my_list = list(map(lambda x: my_odds(x[0],x[1]), zip(my_get_boostraps_samples(group_plac,1000),my_get_boostraps_samples(group_asp,1000))))
+print('3.8. Доверительный интервал для шансов, построенный с помощью бутстрепа:')
+print(my_stat_intervals(np.array(my_list), 0.05))
+answer38 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
+print('answer 3.8. = ', answer38)
 
 my_rest = np.array([1]*75 + [0]*(100-75))
 all_rest = np.array([1]*67 + [0]*(100-67))
