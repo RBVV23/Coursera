@@ -73,6 +73,7 @@ def my_odds(sample1, sample2):
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
 
+
 # A = np.array([3,2,3,4,3])
 # my_interval(A)
 
@@ -154,7 +155,7 @@ answer25 = np.max(counts)
 print('answer 2.5. = ',answer25)
 plt.plot(array, counts)
 plt.grid(True)
-plt.show()
+# plt.show()
 
 my_A = np.zeros(50)
 my_A[0] = 1
@@ -258,3 +259,7 @@ print('answer44 = ', answer44)
 # biny = [0.0, 2, 4, 6, 8, 10]
 # ret = stats.binned_statistic_2d(Xs, Ys, None, 'count', bins=[binx, biny])
 # print(ret.statistic)
+
+
+
+
