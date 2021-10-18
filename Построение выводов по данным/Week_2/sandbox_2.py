@@ -8,6 +8,7 @@ from scipy import stats
 from statsmodels.stats.proportion import proportion_confint
 from statsmodels.stats.proportion import samplesize_confint_proportion
 import matplotlib.pyplot as plt
+from sklearn import model_selection, metrics, datasets, linear_model, tree, ensemble
 import scipy
 
 def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95):
@@ -26,5 +27,26 @@ print('2.4. Достигаемый уровень значимости для г
 answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
 print('answer 2.4. = ' ,answer24)
 
-data = pd.read_csv('diamonds.txt', sep='\t', header=0)
-print(data.head())
+df = pd.read_csv('diamonds.txt', sep='\t', header=0)
+print(df.head())
+data = df.drop('price', axis='columns')
+# print(data.head())
+target = df.price
+# print(target.head())
+
+train_data, test_data, train_target, test_target = model_selection.train_test_split(data, target,
+                                                                                    test_size=0.25,
+                                                                                    random_state=1)
+estimator_1 = linear_model.LinearRegression()
+estimator_1.fit(train_data, train_target)
+predictions_1 = estimator_1.predict(test_data)
+# print(predictions)
+error_1 = metrics.mean_absolute_error(predictions_1, test_target)
+print('Ошибка логистической регрессии: ', error_1)
+
+estimator_2 = ensemble.RandomForestRegressor(n_estimators=10, random_state=1)
+estimator_2.fit(train_data, train_target)
+predictions_2 = estimator_2.predict(test_data)
+# print(predictions)
+error_2 = metrics.mean_absolute_error(predictions_2, test_target)
+print('Ошибка случайного леса: ', error_2)
