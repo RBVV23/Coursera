@@ -1,7 +1,5 @@
 import pandas as pd
-# print(pd.__version__)
 import numpy as np
-# print(np.__version__)
 from math import sqrt
 from statsmodels.stats.weightstats import _zconfint_generic, _tconfint_generic
 from scipy import stats
