@@ -145,7 +145,7 @@ test_data_1 = test_data.drop(['X4', 'X5', 'X6'], axis='columns')
 
 estimator_1 = linear_model.LogisticRegression()
 estimator_1.fit(train_data_1, train_target)
-predictions_1 = abs(np.round(estimator_1.predict(test_data_1),0))
+predictions_1 = np.round(estimator_1.predict(test_data_1),0)
 # print(test_target)
 print('predictions_1:')
 print(predictions_1)
@@ -186,4 +186,3 @@ print('answer 3.7. = ', answer37)
 # print(test_target)
 # print(errors_1)
 
-pri
