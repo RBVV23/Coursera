@@ -26,7 +26,7 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
-def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95):
+def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, alternative='two-sided'):
     # z = stats.t.ppf((1+alpha)/2.0, n-1)
     z = (sample_mean - expect_mean)/(std/sqrt(n))
     # print('Z(Xn) = ', z)
@@ -34,7 +34,13 @@ def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95):
     S = 0.5*(1 + scipy.special.erf((z - 0)/sqrt(2*1**2)))
     # print('F(z) = ', abs(Fz))
     # print('S = ', S)
-    p = 2*(1 - stats.norm.cdf(abs(z)))
+    if alternative == 'two-sided':
+        p = 2*(1 - scipy.stats.norm.cdf(abs(z)))
+    if alternative == 'less':
+        p = scipy.stats.norm.cdf(z)
+    if alternative == 'greater':
+        p = 1 - scipy.stats.norm.cdf(z)
+    # p = 2*(1 - stats.norm.cdf(abs(z)))
     # print('p = ', p)
     return p
 def my_proportions_diff_z_stat_ind(sample1, sample2):
@@ -163,3 +169,21 @@ print('3.4. Значение достижимого уровня значимо�
 print('3.5. Доверительный интервал для разности долей ошибок двух классификаторов:')
 print(my_proportions_confint_diff_rel(errors_1, errors_2))
 print('3.6. Достигаемый уровень значимости для гипотезы о неэффективности программы: ')
+control_mean = 525
+control_std = 100
+test_mean = 541.4
+test_n = 100
+answer36 = round(my_p_value(expect_mean=525, std=100, n=100, sample_mean=541.4, alpha=0.95, alternative='greater'),4)
+print('answer 3.6. = ', answer36)
+
+print('3.7. Достигаемый уровень значимости для гипотезы о неэффективности программы (с увеличенным средним): ')
+control_mean = 525
+control_std = 100
+test_mean = 541.5
+test_n = 100
+answer37 = round(my_p_value(control_mean, control_std, test_n, test_mean, alpha=0.95, alternative='greater'),4)
+print('answer 3.7. = ', answer37)
+
+print(predictions_1)
+print(test_target)
+print(errors_1)
