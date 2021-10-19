@@ -24,7 +24,7 @@ def my_proportions_diff_z_stat_ind(sample1, sample2):
     Z = (p1 - p2)/np.sqrt(P*(1-P)*(1/n1 + 1/n2))
     return Z
 
-def my_proportions_diff_z_test(z_stat, alternative = 'two-sided'):
+def my_proportions_diff_z_test(z_stat, alternative='two-sided'):
     if alternative not in ('two-sided', 'less', 'greater'):
         raise ValueError('Недопустимое значения параметра "alternative"\n'
                          'допустимо: "two-sided", "less" или "greater"')
