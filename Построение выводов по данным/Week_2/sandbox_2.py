@@ -165,7 +165,7 @@ p_value = my_proportions_diff_z_test(my_proportions_diff_z_stat_rel(errors_1, er
 print('3.4. Значение достижимого уровня значимости: ', p_value)
 
 print('3.5. Доверительный интервал для разности долей ошибок двух классификаторов:')
-print(my_proportions_confint_diff_ind(errors_1, errors_2))
+print(my_proportions_confint_diff_rel(errors_1, errors_2))
 print('3.6. Достигаемый уровень значимости для гипотезы о неэффективности программы: ')
 control_mean = 525
 control_std = 100
