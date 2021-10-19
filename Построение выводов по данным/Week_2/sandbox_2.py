@@ -21,8 +21,6 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
             f += 1
         if x[0] == 0 and x[1] == 1:
             g += 1
-    # print('f = ',f)
-    # print('g = ',g)
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
@@ -74,6 +72,7 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
             g += 1
     result = (f-g)/np.sqrt(f+g - ((f-g)**2)/n)
     return result
+
 # print('2.4. Достигаемый уровень значимости для гипотезы, что среднее значение уровня кальция отличается от среднего:')
 # answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
 # print('answer 2.4. = ' ,answer24)
@@ -132,7 +131,7 @@ print('answer 3.3. = ', answer33)
 df = pd.read_csv('banknotes.txt', header=0, sep='\t')
 print(df.head())
 data = df.drop('real', axis='columns')
-print(data.head())
+# print(data.head())
 target = df['real']
 
 train_data, test_data, train_target, test_target = model_selection.train_test_split(data, target,
@@ -145,21 +144,25 @@ test_data_1 = test_data.drop(['X4', 'X5', 'X6'], axis='columns')
 
 estimator_1 = linear_model.LogisticRegression()
 estimator_1.fit(train_data_1, train_target)
-predictions_1 = np.round(estimator_1.predict(test_data_1),0)
+predictions_1 = estimator_1.predict(test_data_1)
 # print(test_target)
 print('predictions_1:')
 print(predictions_1)
 accuracy_1 = metrics.accuracy_score(test_target, predictions_1)
 print('Доля ошибок первого классификатора: ', 1-accuracy_1)
 errors_1 = [0 if a == b else 1 for a,b in zip(predictions_1,test_target)]
+print('errors_1')
+print(errors_1)
 estimator_2 = linear_model.LogisticRegression()
 estimator_2.fit(train_data_2, train_target)
-predictions_2 = abs(np.round(estimator_2.predict(test_data_2),0))
+predictions_2 = estimator_2.predict(test_data_2)
 print('predictions_2:')
 print(predictions_2)
 accuracy_2 = metrics.accuracy_score(test_target, predictions_2)
 print('Доля ошибок второго классификатора: ', 1-accuracy_2)
 errors_2 = [0 if a == b else 1 for a,b in zip(predictions_2,test_target)]
+print('errors_2')
+print(errors_2)
 
 p_value = my_proportions_diff_z_test(my_proportions_diff_z_stat_rel(errors_1, errors_2))
 print('3.4. Значение достижимого уровня значимости: ', p_value)
