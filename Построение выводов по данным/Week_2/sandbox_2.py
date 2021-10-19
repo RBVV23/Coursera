@@ -135,11 +135,6 @@ data = df.drop('real', axis='columns')
 print(data.head())
 target = df['real']
 
-data_2 = data.drop(['X1', 'X2', 'X3'], axis='columns')
-data_1 = data.drop(['X4', 'X5', 'X6'], axis='columns')
-print(data_1.head())
-print(data_2.head())
-
 train_data, test_data, train_target, test_target = model_selection.train_test_split(data, target,
                                                                                     test_size=0.25,
                                                                                     random_state=1)
@@ -148,17 +143,20 @@ train_data_1 = train_data.drop(['X4', 'X5', 'X6'], axis='columns')
 test_data_2 = test_data.drop(['X1', 'X2', 'X3'], axis='columns')
 test_data_1 = test_data.drop(['X4', 'X5', 'X6'], axis='columns')
 
-estimator_1 = linear_model.LinearRegression()
+estimator_1 = linear_model.LogisticRegression()
 estimator_1.fit(train_data_1, train_target)
 predictions_1 = abs(np.round(estimator_1.predict(test_data_1),0))
 # print(test_target)
-# print(predictions_1)
+print('predictions_1:')
+print(predictions_1)
 accuracy_1 = metrics.accuracy_score(test_target, predictions_1)
 print('Доля ошибок первого классификатора: ', 1-accuracy_1)
 errors_1 = [0 if a == b else 1 for a,b in zip(predictions_1,test_target)]
-estimator_2 = linear_model.LinearRegression()
+estimator_2 = linear_model.LogisticRegression()
 estimator_2.fit(train_data_2, train_target)
 predictions_2 = abs(np.round(estimator_2.predict(test_data_2),0))
+print('predictions_2:')
+print(predictions_2)
 accuracy_2 = metrics.accuracy_score(test_target, predictions_2)
 print('Доля ошибок второго классификатора: ', 1-accuracy_2)
 errors_2 = [0 if a == b else 1 for a,b in zip(predictions_2,test_target)]
@@ -184,6 +182,6 @@ test_n = 100
 answer37 = round(my_p_value(control_mean, control_std, test_n, test_mean, alpha=0.95, alternative='greater'),4)
 print('answer 3.7. = ', answer37)
 
-print(predictions_1)
-print(test_target)
-print(errors_1)
+# print(predictions_1)
+# print(test_target)
+# print(errors_1)
