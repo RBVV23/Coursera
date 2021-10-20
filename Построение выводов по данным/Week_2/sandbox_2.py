@@ -142,7 +142,7 @@ train_data_1 = train_data.drop(['X4', 'X5', 'X6'], axis='columns')
 test_data_2 = test_data.drop(['X1', 'X2', 'X3'], axis='columns')
 test_data_1 = test_data.drop(['X4', 'X5', 'X6'], axis='columns')
 
-estimator_1 = linear_model.LogisticRegression()
+estimator_1 = linear_model.LogisticRegression(solver='liblinear')
 estimator_1.fit(train_data_1, train_target)
 predictions_1 = estimator_1.predict(test_data_1)
 # print(test_target)
@@ -153,7 +153,7 @@ print('Доля ошибок первого классификатора: ', 1-a
 errors_1 = [0 if a == b else 1 for a,b in zip(predictions_1,test_target)]
 print('errors_1')
 print(errors_1)
-estimator_2 = linear_model.LogisticRegression()
+estimator_2 = linear_model.LogisticRegression(solver='liblinear')
 estimator_2.fit(train_data_2, train_target)
 predictions_2 = estimator_2.predict(test_data_2)
 print('predictions_2:')
