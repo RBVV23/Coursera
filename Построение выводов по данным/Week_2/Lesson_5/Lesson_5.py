@@ -16,12 +16,12 @@ price2001 = seattle_data[seattle_data.Year == 2001].Price
 price2002 = seattle_data[seattle_data.Year == 2002].Price
 
 plt.figure(figsize=(12,4))
-plt.subplot(2,1,1)
+plt.subplot(1,2,1)
 plt.grid()
 plt.hist(price2001, color='r', label='2001')
 plt.legend()
 plt.xlabel('Стоимость недвижимости')
-plt.subplot(2,1,2)
+plt.subplot(1,2,2)
 plt.grid()
 plt.hist(price2002, color='b', label='2002')
 plt.legend()
