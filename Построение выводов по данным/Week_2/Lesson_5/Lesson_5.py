@@ -34,12 +34,12 @@ def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
     distr = [joined_sample[list(i[0])].mean() - joined_sample[list(i[1])].mean() for i in indices]
     return distr
 
-def my_permutation_test(sample, mean, max_permutations = None, alternative = 'two-sided'):
+def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
     if alternative not in ['two-sided', 'less', 'greater']:
         raise ValueError('Недопустимое значения параметра "alternative"\n'
                          'допустимо: "two-sided", "less" или "greater"')
-    t_stat = my_permutation_t_stat_ind(sample, mean)
-    zero_distr = my_permutation_zero_dist_ind(sample, mean, max_permutations)
+    t_stat = my_permutation_t_stat_ind(sample1, sample2)
+    zero_distr = my_permutation_zero_dist_ind(sample1, sample2, max_permutations)
 
     if alternative == 'two-sided':
         res = sum([1. if abs(x) >= abs(t_stat) else 0. for x in zero_distr])/len(zero_distr)
@@ -80,3 +80,8 @@ print(stats.mannwhitneyu(price2001, price2002))
 plt.figure(figsize=(12,4))
 plt.hist(my_permutation_zero_dist_ind(price2001, price2002, max_combinations=1000))
 plt.show()
+
+print('Проверка гипотезы при помощи перестановочного критерия (число перестановок - 10000)')
+print('p_value = ', my_permutation_test(price2001, price2002, max_permutations=10000))
+print('Проверка гипотезы при помощи перестановочного критерия (число перестановок - 50000)')
+print('p_value = ', my_permutation_test(price2001, price2002, max_permutations=50000))
