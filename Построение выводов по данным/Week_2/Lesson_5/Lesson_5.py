@@ -13,7 +13,7 @@ def my_permutation_t_stat_ind(sample1, sample2):
     return result
 
 def my_get_random_combinations(n1, n2, max_combinations):
-    index = range(n1 + n2)
+    index = list(range(n1 + n2))
     indices = set([tuple(index)])
     for i in range(max_combinations - 1):
         np.random.shuffle(index)
@@ -34,6 +34,20 @@ def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
     distr = [joined_sample[list(i[0])].mean() - joined_sample[list(i[1])].mean() for i in indices]
     return distr
 
+def my_permutation_test(sample, mean, max_permutations = None, alternative = 'two-sided'):
+    if alternative not in ['two-sided', 'less', 'greater']:
+        raise ValueError('Недопустимое значения параметра "alternative"\n'
+                         'допустимо: "two-sided", "less" или "greater"')
+    t_stat = my_permutation_t_stat_ind(sample, mean)
+    zero_distr = my_permutation_zero_dist_ind(sample, mean, max_permutations)
+
+    if alternative == 'two-sided':
+        res = sum([1. if abs(x) >= abs(t_stat) else 0. for x in zero_distr])/len(zero_distr)
+    if alternative == 'less':
+        res = sum([1. if x <= t_stat else 0. for x in zero_distr])/len(zero_distr)
+    if alternative == 'greater':
+        res = sum([1. if x >= t_stat else 0. for x in zero_distr])/len(zero_distr)
+    return res
 
 seattle_data = pd.read_csv('seattle.txt', header=0, sep='\t')
 print('seattle_data.shape = ', seattle_data.shape)
@@ -63,3 +77,6 @@ print(zconfint(price2002))
 print('Проверка гипотезы по критерию Манна-Уитни:')
 print(stats.mannwhitneyu(price2001, price2002))
 
+plt.figure(figsize=(12,4))
+plt.hist(my_permutation_zero_dist_ind(price2001, price2002, max_combinations=1000))
+plt.show()
