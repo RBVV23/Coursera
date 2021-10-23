@@ -7,8 +7,6 @@ from scipy import stats
 from statsmodels.stats.descriptivestats import sign_test
 from statsmodels.stats.weightstats import zconfint
 
-import scipy
-import statsmodels
 
 def my_permutation_t_stat_1sample(sample, mean):
     t_stat = sum(list(map(lambda x: x - mean, sample)))
