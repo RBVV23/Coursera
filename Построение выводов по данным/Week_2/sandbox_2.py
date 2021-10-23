@@ -198,4 +198,5 @@ print('4.5. Достижимый уровень значимости для кр
 sample1 = np.array([22,22,15,13,19,19,18,20,21,13,13,15])
 sample2 = np.array([17,18,18,15,12,4,14,15,10])
 answer45 = round(stats.wilcoxon(sample1 - np.median(sample2), mode='approx', alternative='greater')[1],4)
+
 print('answer 4.5. = ', answer45)
