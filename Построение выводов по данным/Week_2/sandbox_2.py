@@ -190,11 +190,11 @@ sample = np.array([49,58,75,110,112,132,151,276,281,362]) - 200
 # print(sample)
 
 print('4.4. Достижимый уровень значимости для критерия знаковых рангов против двусторонней альтернативы:')
-answer44 = stats.wilcoxon(sample)
+answer44 = round(stats.wilcoxon(sample, mode='approx')[1],4)
 
 print('answer 4.4. = ', answer44)
 print('4.5. Достижимый уровень значимости для критерия знаковых рангов против двусторонней альтернативы:')
-# sample1 = np.array([22,22,15,13,19,19,18,20,21,13,13,15])
-# sample2 = np.array([17,18,18,15,12,4,14,15,10])
-# answer45 = stats.wilcoxon(sample1, sample2, mode='approx')
-# print('answer 4.5. = ', answer45)
+sample1 = np.array([22,22,15,13,19,19,18,20,21,13,13,15])
+sample2 = np.array([17,18,18,15,12,4,14,15,10])
+answer45 = round(stats.wilcoxon(sample1 - np.median(sample2), mode='approx', alternative='greater')[1],4)
+print('answer 4.5. = ', answer45)
