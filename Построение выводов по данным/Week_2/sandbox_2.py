@@ -187,11 +187,9 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
 # print('answer 3.7. = ', answer37)
 
 sample = np.array([49,58,75,110,112,132,151,276,281,362]) - 200
-# print(sample)
 
 print('4.4. Достижимый уровень значимости для критерия знаковых рангов против двусторонней альтернативы:')
 answer44 = round(stats.wilcoxon(sample, mode='approx')[1],4)
-
 print('answer 4.4. = ', answer44)
 
 print('4.5. Достижимый уровень значимости для критерия знаковых рангов против двусторонней альтернативы:')
