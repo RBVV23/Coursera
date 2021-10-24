@@ -81,7 +81,7 @@ def my_get_boostraps_samples(data, n_samples):
     indices = np.random.randint(0, L, (n_samples, L))
     samples = data[indices]
     return samples
-def my_stat_intervals(stat, alpha):
+def my_stat_intervals(stat, alpha=0.05):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
     return low, high
 def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
@@ -240,10 +240,10 @@ print('4.4. Достижимый уровень значимости для кр
 answer44 = round(stats.wilcoxon(sample, mode='approx')[1],4)
 print('answer 4.4. = ', answer44)
 
-print('4.5. Достижимый уровень значимости для критерия знаковых рангов против двусторонней альтернативы:')
+print('4.5. Достижимый уровень значимости для критерия знаковых рангов против односторонней альтернативы:')
 sample1 = np.array([22,22,15,13,19,19,18,20,21,13,13,15])
 sample2 = np.array([17,18,18,15,12,4,14,15,10])
-answer45 = round(stats.wilcoxon(sample1 - np.median(sample2), mode='approx', alternative='greater')[1],4)
+answer45 = round(stats.wilcoxon(sample1 - np.mean(sample2), mode='approx', alternative='greater')[1],4)
 
 print('answer 4.5. = ', answer45)
 
@@ -254,19 +254,16 @@ df.columns=['Date', 'Temperature', 'Incident']
 my_ones = df.Temperature[df.Incident == 1].values
 my_zeros = df.Temperature[df.Incident == 0].values
 random.seed(0)
-new_ones = my_get_boostraps_samples(my_ones, 1000)
-ones_mean = np.mean(new_ones, axis=1)
 new_zeros = my_get_boostraps_samples(my_zeros, 1000)
+new_ones = my_get_boostraps_samples(my_ones, 1000)
 zeros_mean = np.mean(new_zeros, axis=1)
+ones_mean = np.mean(new_ones, axis=1)
 my_list = list(map(lambda x: x[1] - x[0], zip(ones_mean, zeros_mean)))
-print(my_stat_intervals(np.array(my_list), 0.05))
 # deltas = new_ones - new_zeros
-# print(new_zeros.shape)
-# print(new_ones.shape)
 
-print(my_stat_intervals(np.array(my_list), 0.05))
+print(my_stat_intervals(my_list))
 
-answer46 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
+answer46 = round(my_stat_intervals(my_list)[0],4)
 print('answer 4.6. = ', answer46)
 
 print('4.7. Проверка нулевой гипотезы при помощи перестоновочного критерия:')
