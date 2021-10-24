@@ -10,6 +10,7 @@ from statsmodels.stats.proportion import samplesize_confint_proportion
 import matplotlib.pyplot as plt
 from sklearn import model_selection, metrics, datasets, linear_model, tree, ensemble
 from statsmodels.stats.descriptivestats import sign_test
+import itertools
 import scipy
 from statsmodels.stats.weightstats import *
 
@@ -83,6 +84,43 @@ def my_get_boostraps_samples(data, n_samples):
 def my_stat_intervals(stat, alpha):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
     return low, high
+def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
+    if alternative not in ['two-sided', 'less', 'greater']:
+        raise ValueError('Недопустимое значения параметра "alternative"\n'
+                         'допустимо: "two-sided", "less" или "greater"')
+    t_stat = my_permutation_t_stat_ind(sample1, sample2)
+    zero_distr = my_permutation_zero_dist_ind(sample1, sample2, max_permutations)
+
+    if alternative == 'two-sided':
+        res = sum([1. if abs(x) >= abs(t_stat) else 0. for x in zero_distr])/len(zero_distr)
+    if alternative == 'less':
+        res = sum([1. if x <= t_stat else 0. for x in zero_distr])/len(zero_distr)
+    if alternative == 'greater':
+        res = sum([1. if x >= t_stat else 0. for x in zero_distr])/len(zero_distr)
+    return res
+def my_get_random_combinations(n1, n2, max_combinations):
+    index = list(range(n1 + n2))
+    indices = set([tuple(index)])
+    for i in range(max_combinations - 1):
+        np.random.shuffle(index)
+        indices.add(tuple(index))
+    result = [(index[:n1], index[n1:]) for index in indices]
+    return result
+def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
+    joined_sample = np.hstack((sample1, sample2))
+    n1 = len(sample1)
+    n2 = len(sample2)
+    n = len(joined_sample)
+
+    if max_combinations:
+        indices = my_get_random_combinations(n1, n2, max_combinations)
+    else:
+        indices = [(list(index), filter(lambda i: i not in index, range(n))) for index in itertools.combinations(range(n), n1)]
+    distr = [joined_sample[list(i[0])].mean() - joined_sample[list(i[1])].mean() for i in indices]
+    return distr
+def my_permutation_t_stat_ind(sample1, sample2):
+    result = np.mean(sample1) - np.mean(sample2)
+    return result
 
 # print('2.4. Достигаемый уровень значимости для гипотезы, что среднее значение уровня кальция отличается от среднего:')
 # answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
@@ -212,7 +250,7 @@ print('answer 4.5. = ', answer45)
 print('4.6. 95% доверительный интервал для разности средних температур воздуха при запусках при помощи бустрепа:')
 df = pd.read_csv('challenger.txt', sep='\t', header=0)
 df.columns=['Date', 'Temperature', 'Incident']
-print(df.head())
+# print(df.head())
 my_ones = df.Temperature[df.Incident == 1].values
 my_zeros = df.Temperature[df.Incident == 0].values
 random.seed(0)
@@ -223,10 +261,15 @@ zeros_mean = np.mean(new_zeros, axis=1)
 my_list = list(map(lambda x: x[1] - x[0], zip(ones_mean, zeros_mean)))
 print(my_stat_intervals(np.array(my_list), 0.05))
 # deltas = new_ones - new_zeros
-print(new_zeros.shape)
-print(new_ones.shape)
-# my_list = list(map(lambda x: (x[0],x[1]), zip(new_ones,new_zeros)))
+# print(new_zeros.shape)
+# print(new_ones.shape)
+
 print(my_stat_intervals(np.array(my_list), 0.05))
 
-answer46 = round(my_stat_intervals(np.array(my_list), 0.05)[1],4)
+answer46 = round(my_stat_intervals(np.array(my_list), 0.05)[0],4)
 print('answer 4.6. = ', answer46)
+
+print('4.7. Проверка нулевой гипотезы при помощи перестоновочного критерия:')
+np.random.seed = 0
+answer47 = round(my_permutation_test(my_ones, my_zeros, max_permutations=10000),4)
+print('answer 4.7. = ', answer47)
