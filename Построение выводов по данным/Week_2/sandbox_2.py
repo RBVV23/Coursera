@@ -1,3 +1,5 @@
+import random
+
 import pandas as pd
 import numpy as np
 from math import sqrt
@@ -73,6 +75,11 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
             g += 1
     result = (f-g)/np.sqrt(f+g - ((f-g)**2)/n)
     return result
+def my_get_boostraps_samples(data, n_samples):
+    L = len(data)
+    indices = np.random.randint(0, L, (n_samples, L))
+    samples = data[indices]
+    return samples
 
 # print('2.4. Достигаемый уровень значимости для гипотезы, что среднее значение уровня кальция отличается от среднего:')
 # answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
@@ -203,6 +210,9 @@ print('4.6. 95% доверительный интервал для разнос�
 df = pd.read_csv('challenger.txt', sep='\t', header=0)
 df.columns=['Date', 'Temperature', 'Incident']
 print(df.head())
-
+my_ones = df.Temperature[df.Incident == 1].values
+my_zeros = df.Temperature[df.Incident == 0].values
+random.seed(0)
+new_ones = my_get_boostrap_samples(my_ones, 1000)
 answer46 = round(0,4)
 print('answer 4.6. = ', answer46)
