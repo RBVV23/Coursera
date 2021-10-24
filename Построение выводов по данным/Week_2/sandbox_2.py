@@ -198,3 +198,11 @@ sample2 = np.array([17,18,18,15,12,4,14,15,10])
 answer45 = round(stats.wilcoxon(sample1 - np.median(sample2), mode='approx', alternative='greater')[1],4)
 
 print('answer 4.5. = ', answer45)
+
+print('4.6. 95% доверительный интервал для разности средних температур воздуха при запусках при помощи бустрепа:')
+df = pd.read_csv('challenger.txt', sep='\t', header=0)
+df.columns=['Date', 'Temperature', 'Incident']
+print(df.head())
+
+answer46 = round(0,4)
+print('answer 4.6. = ', answer46)
