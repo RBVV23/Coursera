@@ -80,6 +80,9 @@ def my_get_boostraps_samples(data, n_samples):
     indices = np.random.randint(0, L, (n_samples, L))
     samples = data[indices]
     return samples
+def my_stat_intervals(stat, alpha):
+    low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
+    return low, high
 
 # print('2.4. Достигаемый уровень значимости для гипотезы, что среднее значение уровня кальция отличается от среднего:')
 # answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
@@ -213,6 +216,17 @@ print(df.head())
 my_ones = df.Temperature[df.Incident == 1].values
 my_zeros = df.Temperature[df.Incident == 0].values
 random.seed(0)
-new_ones = my_get_boostrap_samples(my_ones, 1000)
-answer46 = round(0,4)
+new_ones = my_get_boostraps_samples(my_ones, 1000)
+ones_mean = np.mean(new_ones, axis=1)
+new_zeros = my_get_boostraps_samples(my_zeros, 1000)
+zeros_mean = np.mean(new_zeros, axis=1)
+my_list = list(map(lambda x: x[1] - x[0], zip(ones_mean, zeros_mean)))
+print(my_stat_intervals(np.array(my_list), 0.05))
+# deltas = new_ones - new_zeros
+print(new_zeros.shape)
+print(new_ones.shape)
+# my_list = list(map(lambda x: (x[0],x[1]), zip(new_ones,new_zeros)))
+print(my_stat_intervals(np.array(my_list), 0.05))
+
+answer46 = round(my_stat_intervals(np.array(my_list), 0.05)[1],4)
 print('answer 4.6. = ', answer46)
