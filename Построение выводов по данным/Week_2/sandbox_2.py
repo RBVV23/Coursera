@@ -1,15 +1,9 @@
-import random
-
 import pandas as pd
-import numpy as np
+
 from math import sqrt
-from statsmodels.stats.weightstats import _zconfint_generic, _tconfint_generic
 from scipy import stats
-from statsmodels.stats.proportion import proportion_confint
-from statsmodels.stats.proportion import samplesize_confint_proportion
-import matplotlib.pyplot as plt
-from sklearn import model_selection, metrics, datasets, linear_model, tree, ensemble
-from statsmodels.stats.descriptivestats import sign_test
+
+from sklearn import model_selection, metrics, linear_model, ensemble
 import itertools
 import scipy
 from statsmodels.stats.weightstats import *
