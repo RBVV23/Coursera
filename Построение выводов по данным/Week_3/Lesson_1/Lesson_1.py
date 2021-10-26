@@ -27,3 +27,6 @@ print(min_corr.sort_values(by='min').head())
 max_corr = pd.DataFrame(sales_correlation.apply(lambda x: np.max(list(filter(lambda x: x != 1., x))), axis=1))
 max_corr.columns = ['max']
 print(max_corr.sort_values(by='max', ascending=False).head())
+
+product_name = 'Plato French Roast Coffee'
+print(sales_correlation[[product_name]].sort_values(product_name, ascending=False).head())
