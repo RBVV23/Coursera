@@ -15,3 +15,15 @@ sparse_sales = pd.pivot_table(sales, values='sales', index=['date', 'store_id'],
 print(sparse_sales.head())
 
 sales_correlation = sparse_sales.corr()
+print(sales_correlation.head())
+
+product_name = 'American Chicken Hot Dogs'
+print(sales_correlation[[product_name]].sort_values(product_name, ascending=True).head())
+
+min_corr = pd.DataFrame(sales_correlation.min())
+min_corr.columns = ['min']
+print(min_corr.sort_values(by='min').head())
+
+max_corr = pd.DataFrame(sales_correlation.apply(lambda x: np.max(list(filter(lambda x: x != 1., x))), axis=1))
+max_corr.columns = ['max']
+print(max_corr.sort_values(by='max', ascending=False).head())
