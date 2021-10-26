@@ -4,7 +4,7 @@ from scipy import stats
 from sklearn import model_selection, metrics, linear_model, ensemble
 import itertools
 import scipy
-from statsmodels.stats.weightstats import *
+
 
 data = pd.read_csv('illiteracy.txt', sep='\t', header=0)
 print(data.head())
