@@ -82,9 +82,9 @@ print('answer 2.5. = ', answer25)
 print('2.6. Доверительный интервал для разности долей мужчин и женщин, относительно часто бывающих в барах:')
 z = scipy.stats.norm.ppf(1 - 0.05 / 2.)
 n1 = a + c
-p1 = a / n1
+p1 = a/n1
 n2 = b + d
-p2 = b / n2
+p2 = b/n2
 delta = np.sqrt(p1 * (1 - p1) / n1 + p2 * (1 - p2) / n2)
 low = p1 - p2 - z * delta
 high = p1 - p2 + z * delta
