@@ -5,6 +5,11 @@ from scipy.stats import pearsonr
 from statsmodels.sandbox.stats.multicomp import multipletests
 import scipy
 
+pd.set_option('display.width', 1000)
+pd.set_option('display.max_rows', 25)
+pd.set_option('display.max_columns', 10)
+
+
 sales = pd.read_csv('foodmart.sales.tsv', sep='\t', header=0, parse_dates=[2])
 print(sales.head())
 
@@ -34,20 +39,27 @@ sales_correlation.columns = ['product_A', 'product_B', 'corr', 'p_value']
 print(sales_correlation.head())
 
 print('Количество отвергнутых/принятых гипотез без поправки на множественную проверку:')
-print((sales_correlation.p_value < 0.5).value_counts())
+print((sales_correlation.p_value < 0.05).value_counts())
 
-reject, p_corrected, a1, a2 = multipletests(sales_correlation.p_values, alpha=0.05, method='holm')
+reject, p_corrected, a1, a2 = multipletests(sales_correlation.p_value, alpha=0.05, method='holm')
 sales_correlation['p_corrected'] = p_corrected
 sales_correlation['reject'] = reject
 
 print(sales_correlation.head())
 
 print('Количество отвергнутых/принятых гипотез с поправки на множественную проверку методом Холма:')
-print((sales_correlation.p_value < 0.5).value_counts())
+print(sales_correlation.reject.value_counts())
 
 print(sales_correlation[sales_correlation.reject == True].sort_values(by='corr', ascending=False))
 
-reject, p_corrected, a1, a2 = multipletests(sales_correlation.p_values, alpha=0.05, method='fdr_bh')
+reject, p_corrected, a1, a2 = multipletests(sales_correlation.p_value, alpha=0.05, method='fdr_bh')
 sales_correlation['p_corrected'] = p_corrected
 sales_correlation['reject'] = reject
+
+print(sales_correlation.head())
+
+print('Количество отвергнутых/принятых гипотез с поправки на множественную проверку методом Бенджамини-Хохберга:')
+print(sales_correlation.reject.value_counts())
+
+print(sales_correlation[sales_correlation.reject == True].sort_values(by='corr', ascending=False))
 
