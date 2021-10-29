@@ -5,6 +5,7 @@ from scipy import stats
 from sklearn import model_selection, metrics, linear_model, ensemble
 import itertools
 import scipy
+from statsmodels.sandbox.stats.multicomp import multipletests
 
 def my_MCC(X1, X2):
     a = 0
@@ -118,4 +119,37 @@ print(data.corr())
 # answer210 = round(answer210,4)
 # print('answer 2.10. = ', answer210)
 #
-print('4.1. Значение коэффициента V Крамера для рассматриваемых признаков:')
+print('4.3. Количество статистически значимых на уровне 0.05 различий:')
+
+data = pd.read_csv('AUCs.txt', sep='\t', header=0)
+
+print(data.head())
+
+my_columns = data.columns.values[1:]
+# print(list(itertools.combinations([[1,2,3],[10,20,30], [100,200,300]],2)))
+
+pares = itertools.combinations([data[my_columns[0]], data[my_columns[1]], data[my_columns[2]], data[my_columns[3]]], 2)
+names_pares = list(itertools.combinations(my_columns,2))
+# print(names_pares)
+
+p_values = []
+for i,pare in enumerate(pares):
+    print('Пара методов: ', names_pares[i])
+    print('Критерий знаковых рангов Вилкоксона:')
+    print('\t',stats.wilcoxon(pare[0], pare[1]))
+    p_value = stats.wilcoxon(pare[0], pare[1])[1]
+    p_values.append(p_value)
+
+print(p_values)
+answer43 = len(list(filter(lambda x: x<0.05, p_values)))
+print('answer 4.3. = ', answer43)
+
+print('4.5. Количество статистически значимых на уровне 0.05 различий с учётом поправки Холма:')
+reject, p_corrected, a1, a2 = multipletests(p_values, alpha=0.05, method='holm')
+answer45 = len(list(filter(lambda x: x<0.05, p_corrected)))
+print('answer 4.5. = ', answer45)
+
+print('4.6. Количество статистически значимых на уровне 0.05 различий с учётом поправки Бенджамини-Хохберга:')
+reject, p_corrected, a1, a2 = multipletests(p_values, alpha=0.05, method='fdr_bh')
+answer46 = len(list(filter(lambda x: x<0.05, p_corrected)))
+print('answer 4.6. = ', answer46)
