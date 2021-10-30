@@ -1,5 +1,5 @@
-import patsy
-print(patsy.__version__)
+# import patsy
+# print(patsy.__version__)
 import statsmodels
 import scipy as sc
 import numpy as np
