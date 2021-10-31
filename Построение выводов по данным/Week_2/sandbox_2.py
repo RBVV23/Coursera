@@ -32,8 +32,6 @@ def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, al
         p = scipy.stats.norm.cdf(z)
     if alternative == 'greater':
         p = 1 - scipy.stats.norm.cdf(z)
-    # p = 2*(1 - stats.norm.cdf(abs(z)))
-    # print('p = ', p)
     return p
 def my_proportions_diff_z_stat_ind(sample1, sample2):
     n1 = len(sample1)
