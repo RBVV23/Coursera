@@ -64,6 +64,7 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
             g += 1
     result = (f-g)/np.sqrt(f+g - ((f-g)**2)/n)
     return result
+
 def my_get_boostraps_samples(data, n_samples):
     L = len(data)
     indices = np.random.randint(0, L, (n_samples, L))
@@ -72,6 +73,7 @@ def my_get_boostraps_samples(data, n_samples):
 def my_stat_intervals(stat, alpha=0.05):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
     return low, high
+
 def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
     if alternative not in ['two-sided', 'less', 'greater']:
         raise ValueError('Недопустимое значения параметра "alternative"\n'
