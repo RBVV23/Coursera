@@ -11,3 +11,4 @@ import matplotlib.pyplot as plt
 
 raw = pd.read_csv('beauty.csv', sep=';', index_col=False)
 print(raw.head())
+
