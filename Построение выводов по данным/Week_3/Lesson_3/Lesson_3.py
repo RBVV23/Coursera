@@ -8,3 +8,6 @@ import statsmodels.formula.api as smf
 import statsmodels.stats.api as sms
 from statsmodels.graphics.regressionplots import plot_leverage_resid2
 import matplotlib.pyplot as plt
+
+raw = pd.read_csv('beauty.csv', sep=';', index_col=False)
+print(raw.head())
