@@ -23,13 +23,9 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
 def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, alternative='two-sided'):
-    # z = stats.t.ppf((1+alpha)/2.0, n-1)
     z = (sample_mean - expect_mean)/(std/sqrt(n))
-    # print('Z(Xn) = ', z)
     Fz = stats.t.ppf(0.05/2,n-1)
     S = 0.5*(1 + scipy.special.erf((z - 0)/sqrt(2*1**2)))
-    # print('F(z) = ', abs(Fz))
-    # print('S = ', S)
     if alternative == 'two-sided':
         p = 2*(1 - scipy.stats.norm.cdf(abs(z)))
     if alternative == 'less':
