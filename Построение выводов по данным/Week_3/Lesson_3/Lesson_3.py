@@ -1,4 +1,4 @@
-# import patsy
+import patsy
 # print(patsy.__version__)
 import statsmodels
 import scipy as sc
