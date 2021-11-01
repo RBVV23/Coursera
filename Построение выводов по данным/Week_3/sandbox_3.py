@@ -5,6 +5,8 @@ from scipy import stats
 import itertools
 from statsmodels.sandbox.stats.multicomp import multipletests
 import scipy
+import statsmodels.formula.api as smf
+import statsmodels.stats.api as sms
 
 def my_MCC(X1, X2):
     a = 0
@@ -177,6 +179,65 @@ res = (data[(data['heduc'].isnull() == 0) & (data['agefm'].isnull() == 0) & (dat
 answer62 = res.shape[0]
 print('answer 6.2. = ', answer62)
 
-data['nevermarr'] = 1 - data['evermarr']
+# data['nevermarr'] = 1 - data['evermarr']
+data['nevermarr']=0
+data.loc[data['agefm'].isnull(), 'nevermarr']=1
 data.drop('evermarr', axis=1, inplace=True)
+
+data.loc[data['agefm'].isnull(), 'agefm']=0
+data.loc[data['heduc'].isnull() & data['nevermarr']==1, 'heduc']=-1
 print(data.head())
+
+print('6.3. Сколько осталось пропущенных значений в признаке "heduc"?')
+answer63 = data[data['heduc'].isnull()].shape[0]
+print('answer 6.3. = ', answer63)
+
+print('6.4. Какого размера теперь наша матрица данных? Умножьте количество строк на количество всех столбцов:')
+my_columns = ['idlnchld', 'heduc', 'usemeth']
+my_values = [-1, -2, -1]
+for i, column in enumerate(my_columns):
+    new_column = column + '_noans'
+    data[new_column] = 0
+    data.loc[data[column].isnull(), new_column] = 1
+    data.loc[data[column].isnull(), column] = my_values[i]
+
+my_columns = ['knowmeth', 'electric', 'radio', 'tv', 'bicycle']
+for column in my_columns:
+    data.drop(data.loc[data[column].isnull()].index, axis=0, inplace=True)
+
+print(data.head())
+answer64 = data.shape[0]*data.shape[1]
+print('answer 6.4. = ', answer64)
+
+print('6.5. Какого размера теперь наша матрица данных? Умножьте количество строк на количество всех столбцов:')
+m1 = smf.ols('ceb ~ age+educ+religion+idlnchld+knowmeth+usemeth+agefm+heduc+urban+electric+radio+tv+bicycle+nevermarr+idlnchld_noans+heduc_noans+usemeth_noans', data=data)
+fitted = m1.fit()
+res = fitted.summary()
+print(res, '\n')
+answer65 = round(float(str(list(res.tables[0][0])[3]).strip()), 3)
+print('answer 6.5. = ', answer65)
+
+print('Проверка гомоскедастичности ошибки по критерию Бройша-Пагана:')
+print('p = ', sms.het_breuschpagan(fitted.resid, fitted.model.exog)[1])
+
+m2 = smf.ols('ceb ~ age+educ+religion+idlnchld+knowmeth+usemeth+agefm+heduc+urban+electric+radio+tv+bicycle+nevermarr+idlnchld_noans+heduc_noans+usemeth_noans', data=data)
+fitted = m2.fit(cov_type='HC1')
+print(fitted.summary())
+
+m3 = smf.ols('ceb ~ age+educ+idlnchld+knowmeth+usemeth+agefm+heduc+urban+electric+bicycle+nevermarr+idlnchld_noans+heduc_noans+usemeth_noans', data=data)
+fitted = m3.fit(cov_type='HC1')
+print(fitted.summary())
+
+print('6.8. Проверьте с помощью критерия Фишера. Чему равен его достигаемый уровень значимости?')
+answer68 = round(m2.fit().compare_f_test(m3.fit())[1],4)
+print('answer 6.8. = ', answer68)
+
+print('6.9. Проверьте критерием Фишера гипотезу о том, что качество модели не ухудшилось:')
+
+m4 = smf.ols('ceb ~ age+educ+idlnchld+knowmeth+agefm+heduc+urban+electric+bicycle+nevermarr+idlnchld_noans+heduc_noans', data=data)
+fitted = m4.fit(cov_type='HC1')
+print(m3.fit().compare_f_test(m4.fit())[1])
+answer69 = 40
+print('answer 6.9. = ', answer69)
+
+print(fitted.summary())
