@@ -240,4 +240,5 @@ print(m3.fit().compare_f_test(m4.fit())[1])
 answer69 = 40
 print('answer 6.9. = ', answer69)
 
-print(fitted.summary())
+final_fitted = m3.fit(cov_type='HC1')
+print(final_fitted.summary())
