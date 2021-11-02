@@ -25,8 +25,6 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
             f += 1
         if x[0] == 0 and x[1] == 1:
             g += 1
-    # print('f = ',f)
-    # print('g = ',g)
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
