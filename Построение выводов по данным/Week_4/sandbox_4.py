@@ -117,3 +117,10 @@ def my_odds(sample1, sample2):
     odds1 = float(p1 / (1 - p1))
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
+
+
+A = np.array([1,2,3,4,5,6,7,8,9,10])
+print('np.std() = ', A.std())
+print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/len(A)) )
+print('np.std(ddof=1) = ', A.std(ddof=1))
+print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )

@@ -1,0 +1,53 @@
+import scipy
+from scipy import stats
+import statsmodels.stats.multitest as smm
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+def my_t_statistic_ind(sample1, sample2):
+    M1 = np.mean(sample1)
+    M2 = np.mean(sample2)
+    n1 = len(sample1)
+    n2 = len(sample2)
+    D1 = np.sum((sample1 - M1)**2) / n1 # смещенная оценка (ddof = 0)
+    # D1 = np.sum((sample1 - M1)**2) / (n1-1)  # несмещенная оценка (ddof = 1)
+    D2 = np.sum((sample2 - M2)**2) / n2  # смещенная оценка (ddof = 0)
+    # D2 = np.sum((sample2 - M2)**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
+    T_stat = (M1 - M2)/np.sqrt(D1/n1 + D2/n2)
+    return T_stat
+
+def my_t_test_nu(sample1, sample2):
+    n1 = len(sample1)
+    n2 = len(sample2)
+    D1 = np.sum((sample1 - sample1.mean())**2) / n1 # смещенная оценка (ddof = 0)
+    # D1 = np.sum((sample1 - sample1.mean())**2) / (n1-1)  # несмещенная оценка (ddof = 1)
+    D2 = np.sum((sample2 - sample2.mean())**2) / n2  # смещенная оценка (ddof = 0)
+    # D2 = np.sum((sample2 - sample2.mean())**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
+    nu = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
+    return nu
+
+# def my_t_test(T_stat, nu, alpha = 0.05):
+
+
+def my_write_answer(answer, part, number):
+    name = 'answer' + str(part) + str(number) + '.txt'
+    with open(name, 'w') as file:
+        file.write(str(answer))
+
+# my_write_answer(10,1,1)
+
+
+pd.set_option('display.width', 1000)
+pd.set_option('display.max_columns', 12)
+pd.set_option('display.max_rows', 72)
+
+data = pd.read_csv('gene_high_throughput_sequencing.csv', header=0, sep=',')
+print(data.head())
+print(data.shape)
+
+values_1 = data['LOC643837'][data['Diagnosis'] == 'normal']
+values_2 = data['LOC643837'][data['Diagnosis'] == 'cancer']
+
+p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
+print(p_value)
