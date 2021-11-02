@@ -124,3 +124,24 @@ print('np.std() = ', A.std())
 print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/len(A)) )
 print('np.std(ddof=1) = ', A.std(ddof=1))
 print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )
+
+def my_gamma_function(a,b,c,z, eps=1e-6):
+    sum = 0
+    k = 1
+    delta = eps+1
+    while delta > eps:
+        mult = 1
+        for l in range(k):
+            mult *= (a+l)*(b+l) / ((1+l)*(c+l))
+            # print(l*10)
+        delta = mult * z**k
+        sum += delta
+        print(delta)
+    return sum + 1
+
+n = 1000
+t = 0.5
+print(my_gamma_function(0.5, 0.5*(n+1), 3/2, -(t**2)/n))
+
+x = 0.5
+print('arcsin(x)/x = ', np.arcsin(x)/x)
