@@ -174,4 +174,4 @@ def my_gamma_function(z, precision=15, max_iters=25000):
 print('Г(5/2) = ', 0.75*np.sqrt(np.pi))
 print('Г(5/2) = ', my_gamma_function(5/2))
 
-def my_student_cdf()
+def my_student_cdf():
