@@ -180,4 +180,8 @@ def my_student_cdf(x, n):
     var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
     return var1/var2
 
-print(my_student_cdf(0, 10))
+# print(my_student_cdf(0.5, 10))
+x = 0
+n = 10
+var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
+print(var1)
