@@ -185,5 +185,5 @@ def my_student_cdf(x, n):
 print(my_student_cdf(0.5, 10), '=')
 x = 0
 n = 10
-var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
+# var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
 # print(var1)
