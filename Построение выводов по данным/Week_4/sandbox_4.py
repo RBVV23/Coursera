@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 from math import sqrt
@@ -153,7 +154,7 @@ print(my_hypergeometric_function(0.5, 0.5*(n+1), 3/2, -(t**2)/n))
 
 x = 0.5
 print('arcsin(x)/x = ', round(np.arcsin(x)/x, prec))
-print('F = ', my_hypergeometric_function(1/2, 1/2, 3/2, x**2))
+# print('F = ', my_hypergeometric_function(1/2, 1/2, 3/2, x**2))
 
 def my_gamma_function(z, precision=15, max_iters=25000):
     eps = 0.1**(precision+1)
@@ -172,6 +173,11 @@ def my_gamma_function(z, precision=15, max_iters=25000):
     return round(float(mult/z),precision)
 
 print('Г(5/2) = ', 0.75*np.sqrt(np.pi))
-print('Г(5/2) = ', my_gamma_function(5/2))
+# print('Г(5/2) = ', my_gamma_function(5/2))
 
-def my_student_cdf():
+def my_student_cdf(x, n):
+    var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
+    var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
+    return var1/var2
+
+print(my_student_cdf(0, 10))
