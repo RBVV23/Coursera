@@ -24,9 +24,12 @@ def my_t_test_df(sample1, sample2):
     n2 = len(sample2)
     # D1 = np.sum((sample1 - sample1.mean())**2) / n1 # смещенная оценка (ddof = 0)
     D1 = np.sum((sample1 - sample1.mean())**2) / (n1-1)  # несмещенная оценка (ddof = 1)
+    # print(D1)
     # D2 = np.sum((sample2 - sample2.mean())**2) / n2  # смещенная оценка (ddof = 0)
     D2 = np.sum((sample2 - sample2.mean())**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
+    # print(D2)
     df = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
+    # print(df)
     return df
 
 # def my_t_test(T_stat, nu, alpha = 0.05):
@@ -51,9 +54,9 @@ print(data.shape)
 values_1 = data['LOC643837'][data['Diagnosis'] == 'normal']
 values_2 = data['LOC643837'][data['Diagnosis'] == 'cancer']
 
-p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
+p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)
 print(p_value)
 
 df = my_t_test_df(values_1, values_2)
 t_stat = my_t_statistic_ind(values_1, values_2)
-print(stats.t.ppf(t_stat, df))
+print(t_stat, stats.t.cdf(t_stat, df))
