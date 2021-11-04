@@ -54,5 +54,6 @@ values_2 = data['LOC643837'][data['Diagnosis'] == 'cancer']
 p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
 print(p_value)
 
-nu = my_t_test_nu(values_1, values_2)
+df = my_t_test_df(values_1, values_2)
+my_t_statistic_ind(values_1, values_2)
 print(stats.t.ppf(0))
