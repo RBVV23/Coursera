@@ -129,7 +129,7 @@ print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )
 
 prec=15
 
-def my_hypergeometric_function(a,b,c,z, precision=15, max_iters=10000):
+def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
     eps = 0.1**(precision+1)
     sum = float(0)
     k = 1
@@ -156,19 +156,19 @@ x = 0.5
 print('arcsin(x)/x = ', round(np.arcsin(x)/x, prec))
 # print('F = ', my_hypergeometric_function(1/2, 1/2, 3/2, x**2))
 
-def my_gamma_function(z, precision=15, max_iters=1000):
+def my_gamma_function(z, precision=prec, max_iters=2000000000):
     eps = 0.1**(precision+1)
     mult = float(1)
     n = float(1)
     delta = eps+1
     iter = 0
-    while delta > eps and iter < max_iters:
+    while abs(delta) > eps-1 and iter < max_iters:
         new_mult = mult * ((1 + 1/n)**z / (1 + z/n))
-        delta = abs(new_mult - mult)
+        delta = (new_mult - mult)
         # print(delta)
         mult = new_mult
         n += 1
-        if iter % 5000 == 0:
+        if iter % 1000000 == 0:
             print(delta)
             print(iter)
         iter += 1
@@ -178,12 +178,18 @@ print('Г(5/2) = ', 0.75*np.sqrt(np.pi))
 # print('Г(5/2) = ', my_gamma_function(5/2))
 
 def my_student_cdf(x, n):
-    var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
+    var1 = x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
     var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
-    return var1/var2
+    return var1/var2 + 0.5
 
-print(my_student_cdf(0.5, 10), '=')
+# print(my_student_cdf(1.5, 10), '=')
 x = 0
 n = 10
 # var1 = 0.5 + x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
 # print(var1)
+
+print(stats.t.cdf(1.5, 10))
+
+print('my: ', my_gamma_function((n+1)/2))
+print(' = ', scipy.special.gamma((n+1)/2))
+
