@@ -193,3 +193,5 @@ print(stats.t.cdf(1.5, 10))
 print('my: ', my_gamma_function((n+1)/2))
 print(' = ', scipy.special.gamma((n+1)/2))
 
+print('my: ', my_hypergeometric_function((n+1)/2))
+print(' = ', scipy.special.gamma((n+1)/2))
