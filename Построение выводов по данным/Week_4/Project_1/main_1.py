@@ -26,7 +26,7 @@ def my_t_test_df(sample1, sample2):
     D1 = np.sum((sample1 - sample1.mean())**2) / (n1-1)  # несмещенная оценка (ddof = 1)
     # D2 = np.sum((sample2 - sample2.mean())**2) / n2  # смещенная оценка (ddof = 0)
     D2 = np.sum((sample2 - sample2.mean())**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
-    nu = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
+    df = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
     return df
 
 # def my_t_test(T_stat, nu, alpha = 0.05):
@@ -55,5 +55,5 @@ p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
 print(p_value)
 
 df = my_t_test_df(values_1, values_2)
-my_t_statistic_ind(values_1, values_2)
-print(stats.t.ppf(0))
+t_stat = my_t_statistic_ind(values_1, values_2)
+print(stats.t.ppf(t_stat, df))
