@@ -23,11 +23,8 @@ def my_t_test_df(sample1, sample2):
     n1 = len(sample1)
     n2 = len(sample2)
     D1 = np.sum((sample1 - sample1.mean())**2) / (n1-1)  # несмещенная оценка (ddof = 1)
-    # print(D1)
     D2 = np.sum((sample2 - sample2.mean())**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
-    # print(D2)
     df = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
-    # print(df)
     return df
 
 # def my_t_test(T_stat, nu, alpha = 0.05):
