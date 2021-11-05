@@ -12,7 +12,6 @@ def my_t_statistic_ind(sample1, sample2):
     M2 = np.mean(sample2)
     n1 = len(sample1)
     n2 = len(sample2)
-    # D1 = np.sum((sample1 - M1)**2) / n1 # смещенная оценка (ddof = 0)
     D1 = np.sum((sample1 - M1)**2) / (n1-1)  # несмещенная оценка (ddof = 1)
     D2 = np.sum((sample2 - M2)**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
     T_stat = (M1 - M2)/np.sqrt(D1/n1 + D2/n2)
@@ -32,7 +31,7 @@ def my_write_answer(answer, part, number):
     with open(name, 'w') as file:
         file.write(str(answer))
 
-# my_write_answer(10,1,1)
+
 
 
 pd.set_option('display.width', 1000)
