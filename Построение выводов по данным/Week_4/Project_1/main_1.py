@@ -5,8 +5,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-
 def my_t_statistic_ind(sample1, sample2):
     M1 = np.mean(sample1)
     M2 = np.mean(sample2)
