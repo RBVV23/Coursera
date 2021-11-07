@@ -50,5 +50,6 @@ print(p_value)
 
 df = my_t_test_df(values_1, values_2)
 t_stat = my_t_statistic_ind(values_1, values_2)
-print(t_stat, stats.t.cdf(t_stat, df))
+
+print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
 
