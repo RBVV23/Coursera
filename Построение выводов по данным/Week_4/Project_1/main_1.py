@@ -38,9 +38,10 @@ print(data.shape)
 control = 'normal'
 test = 'cancer'
 gens = data.columns[2:]
-print(gens)
-
-gens = ['LOC643837','LOC100130417']
+# print(gens)
+# gens = ['LOC643837','LOC100130417']
+counter = 0
+for test in ['cancer', 'early neoplasia', 'normal']
 for gen in gens:
     print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
@@ -51,7 +52,7 @@ for gen in gens:
     # print(p_value)
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
-    print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
+    # print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
     p_value = 2*(1 - stats.t.cdf(t_stat, df))
-    # if p_value < 0.05:
-
+    if p_value < 0.05:
+        counter += 1
