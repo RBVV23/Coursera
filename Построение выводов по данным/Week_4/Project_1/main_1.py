@@ -36,13 +36,13 @@ print(data.head())
 print(data.shape)
 
 control = 'normal'
-test = 'canser'
+test = 'cancer'
 gens = ['LOC643837','LOC100130417']
 for gen in gens:
     print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
-    print(values_1)
-    print(values_2)
+    # print(values_1)
+    # print(values_2)
     values_2 = data[gen][data['Diagnosis'] == test]
     # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)
     # print(p_value)
