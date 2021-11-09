@@ -44,7 +44,7 @@ counter = 0
 control = 'normal'
 treatment = 'early neoplasia'
 for gen in gens:
-    print('gen:', gen)
+    # print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
     # print(values_1)
     # print(values_2)
@@ -64,7 +64,7 @@ control = 'early neoplasia'
 treatment = 'cancer'
 counter = 0
 for gen in gens:
-    print('gen:', gen)
+    # print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
     values_2 = data[gen][data['Diagnosis'] == treatment]
     df = my_t_test_df(values_1, values_2)
