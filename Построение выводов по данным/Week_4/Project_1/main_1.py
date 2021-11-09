@@ -41,13 +41,15 @@ gens = data.columns[2:]
 
 # gens = ['LOC643837','LOC100130417']
 counter = 0
-for test in ['cancer', 'early neoplasia', 'normal']
+control = 'normal'
+treatment = 'early neoplasia'
+# for test in ['cancer', 'early neoplasia', 'normal']
 for gen in gens:
     print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
     # print(values_1)
     # print(values_2)
-    values_2 = data[gen][data['Diagnosis'] == test]
+    values_2 = data[gen][data['Diagnosis'] == treatment]
     # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)
     # print(p_value)
     df = my_t_test_df(values_1, values_2)
