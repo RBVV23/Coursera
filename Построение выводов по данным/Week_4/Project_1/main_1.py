@@ -37,7 +37,7 @@ print(data.shape)
 
 # control = 'normal'
 # test = 'cancer'
-gens = data.columns[2:10]
+gens = data.columns[2:]
 
 # gens = ['LOC643837','LOC100130417']
 counter = 0
@@ -54,31 +54,45 @@ for gen in gens:
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
     # print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
-    my_p_value = 2*(1 - abs(stats.t.cdf(t_stat, df)))
-    if my_p_value != p_value:
-        print('p_value = ', p_value)
-        print('my_p_value = ', my_p_value)
-        print()
-    if p_value < 0.05:
+    my_cdf = stats.t.cdf(t_stat, df)
+    # print('cdf = ', my_cdf)
+    # if my_cdf > 0.5:
+    #     my_p_value = 2*(1 - abs(stats.t.cdf(t_stat, df)))
+    # else:
+    #     my_p_value = stats.t.cdf(t_stat, df)
+    if my_cdf < 0.5:
+        my_p_value = 2*my_cdf
+    else:
+        my_p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
+
+    # if my_p_value != p_value:
+    #     print('p_value = ', p_value)
+    #     print('my_p_value = ', my_p_value)
+    #     print()
+    if my_p_value < 0.05:
         counter += 1
 
 answer11 = counter
 print('answer11 = ', answer11)
 my_write_answer(answer11, part=1, number=1)
 #
-# control = 'early neoplasia'
-# treatment = 'cancer'
-# counter = 0
-# for gen in gens:
-#     # print('gen:', gen)
-#     values_1 = data[gen][data['Diagnosis'] == control]
-#     values_2 = data[gen][data['Diagnosis'] == treatment]
-#     df = my_t_test_df(values_1, values_2)
-#     t_stat = my_t_statistic_ind(values_1, values_2)
-#     p_value = 2*(1 - stats.t.cdf(t_stat, df))
-#     if p_value < 0.05:
-#         counter += 1
-#
-# answer12 = counter
-# print('answer12 = ', answer12)
-# my_write_answer(answer12, part=1, number=2)
+control = 'early neoplasia'
+treatment = 'cancer'
+counter = 0
+for gen in gens:
+    # print('gen:', gen)
+    values_1 = data[gen][data['Diagnosis'] == control]
+    values_2 = data[gen][data['Diagnosis'] == treatment]
+    df = my_t_test_df(values_1, values_2)
+    t_stat = my_t_statistic_ind(values_1, values_2)
+    my_cdf = stats.t.cdf(t_stat, df)
+    if my_cdf < 0.5:
+        my_p_value = 2*my_cdf
+    else:
+        my_p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
+    if my_p_value < 0.05:
+        counter += 1
+
+answer12 = counter
+print('answer12 = ', answer12)
+my_write_answer(answer12, part=1, number=2)
