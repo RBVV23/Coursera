@@ -57,7 +57,9 @@ for gen in gens:
     p_value = 2*(1 - stats.t.cdf(t_stat, df))
     if p_value < 0.05:
         counter += 1
+
 answer11 = counter
+print('answer11 = ', answer11)
 my_write_answer(answer11, part=1, number=1)
 
 control = 'early neoplasia'
@@ -74,4 +76,5 @@ for gen in gens:
         counter += 1
 
 answer12 = counter
+print('answer12 = ', answer12)
 my_write_answer(answer12, part=1, number=2)
