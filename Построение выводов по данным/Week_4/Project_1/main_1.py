@@ -49,13 +49,16 @@ for gen in gens:
     # print(values_1)
     # print(values_2)
     values_2 = data[gen][data['Diagnosis'] == treatment]
-    # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)
+    p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
     # print(p_value)
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
     # print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
-    p_value = 2*(1 - stats.t.cdf(t_stat, df))
-    if p_value < 0.05:
+    my_p_value = 2*(1 - stats.t.cdf(t_stat, df))
+    if my_p_value != p_value:
+        print('p_value = ', p_value)
+        print('my_p_value = ',my_p_value)
+    if my_p_value < 0.05:
         counter += 1
 
 answer11 = counter
