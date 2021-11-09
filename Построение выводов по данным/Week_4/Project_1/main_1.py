@@ -38,7 +38,7 @@ print(data.shape)
 control = 'normal'
 test = 'cancer'
 gens = data.columns[2:]
-# print(gens)
+
 # gens = ['LOC643837','LOC100130417']
 counter = 0
 for test in ['cancer', 'early neoplasia', 'normal']
