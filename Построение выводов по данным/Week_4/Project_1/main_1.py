@@ -106,4 +106,5 @@ reject_2, p_corrected_2 = multipletests(my_p_values_2,
 counter = 0
 if p_corrected_2 < 0.05/2:
     counter += 1
+
 print('answer22 = ', counter)
