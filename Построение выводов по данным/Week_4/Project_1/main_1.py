@@ -4,6 +4,7 @@ import statsmodels.stats.multitest as smm
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from statsmodels.sandbox.stats.multicomp import multipletests
 
 def my_t_statistic_ind(sample1, sample2):
     M1 = np.mean(sample1)
@@ -40,35 +41,23 @@ print(data.shape)
 gens = data.columns[2:]
 
 # gens = ['LOC643837','LOC100130417']
+my_p_values_1 = []
+my_p_values_2 = []
 counter = 0
 control = 'normal'
 treatment = 'early neoplasia'
 for gen in gens:
-    # print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
-    # print(values_1)
-    # print(values_2)
     values_2 = data[gen][data['Diagnosis'] == treatment]
     p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
-    # print(p_value)
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
-    # print(t_stat, 2*(1 - stats.t.cdf(t_stat, df)))
     my_cdf = stats.t.cdf(t_stat, df)
-    # print('cdf = ', my_cdf)
-    # if my_cdf > 0.5:
-    #     my_p_value = 2*(1 - abs(stats.t.cdf(t_stat, df)))
-    # else:
-    #     my_p_value = stats.t.cdf(t_stat, df)
     if my_cdf < 0.5:
         my_p_value = 2*my_cdf
     else:
         my_p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
-
-    # if my_p_value != p_value:
-    #     print('p_value = ', p_value)
-    #     print('my_p_value = ', my_p_value)
-    #     print()
+    my_p_values_1.append(my_p_value)
     if my_p_value < 0.05:
         counter += 1
 
@@ -80,7 +69,6 @@ control = 'early neoplasia'
 treatment = 'cancer'
 counter = 0
 for gen in gens:
-    # print('gen:', gen)
     values_1 = data[gen][data['Diagnosis'] == control]
     values_2 = data[gen][data['Diagnosis'] == treatment]
     df = my_t_test_df(values_1, values_2)
@@ -90,9 +78,32 @@ for gen in gens:
         my_p_value = 2*my_cdf
     else:
         my_p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
+    my_p_values_2.append(my_p_value)
     if my_p_value < 0.05:
         counter += 1
 
 answer12 = counter
 print('answer12 = ', answer12)
 my_write_answer(answer12, part=1, number=2)
+
+# new_p_values_1 = smm(my_p_values_1, str='holm')
+# new_p_values_2 = smm(my_p_values_2, str='holm')
+
+# print(new_p_values_1)
+# print(new_p_values_2)
+
+reject_1, p_corrected_1 = multipletests(my_p_values_1,
+                                            alpha = 0.05,
+                                            method = 'holm')
+counter = 0
+if p_corrected_1 < 0.05/2:
+    counter += 1
+print('answer21 = ', counter)
+
+reject_2, p_corrected_2 = multipletests(my_p_values_2,
+                                            alpha = 0.05,
+                                            method = 'holm')
+counter = 0
+if p_corrected_2 < 0.05/2:
+    counter += 1
+print('answer22 = ', counter)
