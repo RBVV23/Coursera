@@ -88,8 +88,7 @@ my_write_answer(answer12, part=1, number=2)
 # new_p_values_1 = smm(my_p_values_1, str='holm')
 # new_p_values_2 = smm(my_p_values_2, str='holm')
 
-# print(new_p_values_1)
-# print(new_p_values_2)
+
 
 reject_1, p_corrected_1 = multipletests(my_p_values_1,
                                             alpha = 0.05,
