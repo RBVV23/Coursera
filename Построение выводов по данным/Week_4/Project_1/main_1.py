@@ -36,11 +36,10 @@ data = pd.read_csv('gene_high_throughput_sequencing.csv', header=0, sep=',')
 print(data.head())
 print(data.shape)
 
-# control = 'normal'
-# test = 'cancer'
+
 gens = data.columns[2:]
 
-# gens = ['LOC643837','LOC100130417']
+
 my_p_values_1 = []
 my_p_values_2 = []
 counter = 0
@@ -106,5 +105,4 @@ reject_2, p_corrected_2 = multipletests(my_p_values_2,
 counter = 0
 if p_corrected_2 < 0.05/2:
     counter += 1
-
 print('answer22 = ', counter)
