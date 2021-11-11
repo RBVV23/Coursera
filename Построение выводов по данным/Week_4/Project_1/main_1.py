@@ -85,9 +85,6 @@ answer12 = counter
 print('answer12 = ', answer12)
 my_write_answer(answer12, part=1, number=2)
 
-# new_p_values_1 = smm(my_p_values_1, str='holm')
-
-
 
 reject_1, p_corrected_1 = multipletests(my_p_values_1,
                                             alpha = 0.05,
