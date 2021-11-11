@@ -89,14 +89,16 @@ reject_1, p_corrected_1, spam, egg = multipletests(my_p_values_1,
                                             alpha = 0.05,
                                             method = 'holm')
 counter = 0
-if p_corrected_1 < 0.05/2:
-    counter += 1
+for p in p_corrected_1:
+    if p < 0.05/2:
+        counter += 1
 print('answer21 = ', counter)
 
 reject_2, p_corrected_2, spam, egg = multipletests(my_p_values_2,
                                             alpha = 0.05,
                                             method = 'holm')
 counter = 0
-if p_corrected_2 < 0.05/2:
-    counter += 1
+for p in p_corrected_2:
+    if p < 0.05/2:
+        counter += 1
 print('answer22 = ', counter)
