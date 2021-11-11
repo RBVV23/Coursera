@@ -85,6 +85,7 @@ answer12 = counter
 print('answer12 = ', answer12)
 my_write_answer(answer12, part=1, number=2)
 
+
 reject_1, p_corrected_1, spam, egg = multipletests(my_p_values_1,
                                             alpha = 0.05,
                                             method = 'holm')
