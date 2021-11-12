@@ -38,24 +38,24 @@ print(data.shape)
 
 gens = data.columns[2:]
 
-my_p_values_1 = []
-my_p_values_2 = []
+p_values_1 = []
+p_values_2 = []
 counter = 0
 control = 'normal'
 treatment = 'early neoplasia'
 for gen in gens:
     values_1 = data[gen][data['Diagnosis'] == control]
     values_2 = data[gen][data['Diagnosis'] == treatment]
-    p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
+    # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
     my_cdf = stats.t.cdf(t_stat, df)
     if my_cdf < 0.5:
-        my_p_value = 2*my_cdf
+        p_value = 2*my_cdf
     else:
-        my_p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
-    my_p_values_1.append(my_p_value)
-    if my_p_value < 0.05:
+        p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
+    p_values_1.append(my_p_value)
+    if p_value < 0.05:
         counter += 1
 
 answer11 = counter
