@@ -25,7 +25,12 @@ def my_write_answer(answer, part, number):
     name = 'answer' + str(part) + str(number) + '.txt'
     with open(name, 'w') as file:
         file.write(str(answer))
-
+def my_fold_change(T,C):
+    if T > C:
+        res = float(T) / C
+    if T < C:
+        res = -float(C) / T
+    return res
 
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_columns', 12)
