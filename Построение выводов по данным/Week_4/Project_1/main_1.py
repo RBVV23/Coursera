@@ -54,7 +54,7 @@ for gen in gens:
         p_value = 2*my_cdf
     else:
         p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
-    p_values_1.append(my_p_value)
+    p_values_1.append(p_value)
     if p_value < 0.05:
         counter += 1
 
@@ -75,7 +75,7 @@ for gen in gens:
         p_value = 2*my_cdf
     else:
         p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
-    p_values_2.append(my_p_value)
+    p_values_2.append(p_value)
     if p_value < 0.05:
         counter += 1
 
@@ -84,7 +84,7 @@ print('answer12 = ', answer12)
 my_write_answer(answer12, part=1, number=2)
 
 
-reject_1, p_corrected_1, spam, egg = multipletests(my_p_values_1,
+reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
                                             alpha = 0.05,
                                             method = 'holm')
 counter = 0
