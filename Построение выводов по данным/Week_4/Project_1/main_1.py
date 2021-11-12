@@ -93,7 +93,7 @@ for p in p_corrected_1:
         counter += 1
 print('answer21 = ', counter)
 
-reject_2, p_corrected_2, spam, egg = multipletests(my_p_values_2,
+reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
                                             alpha = 0.05,
                                             method = 'holm')
 counter = 0
