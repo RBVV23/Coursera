@@ -190,8 +190,26 @@ n = 10
 
 print(stats.t.cdf(1.5, 10))
 
-print('my: ', my_gamma_function((n+1)/2))
+# print('my: ', my_gamma_function((n+1)/2))
 print(' = ', scipy.special.gamma((n+1)/2))
 
-print('my: ', my_hypergeometric_function((n+1)/2))
+# print('my: ', my_hypergeometric_function((n+1)/2))
 print(' = ', scipy.special.gamma((n+1)/2))
+
+
+def my_fold_change(T,C, check=False):
+    if T > C:
+        res = float(T) / C
+    if T < C:
+        res = -float(C) / T
+    if check:
+        flag = False
+        if abs(res) >= 1.5:
+            flag = True
+        return res, flag
+    return res
+
+print(my_fold_change(10, 2, check=True))
+FC, check = my_fold_change(10, 2, check=True)
+print('FC = ', FC)
+# print('check = ', check)
