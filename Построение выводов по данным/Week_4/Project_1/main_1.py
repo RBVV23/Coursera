@@ -52,6 +52,7 @@ gens = data.columns[2:]
 p_values_1 = []
 p_values_2 = []
 counter = 0
+counter_2 = 0
 control = 'normal'
 treatment = 'early neoplasia'
 for gen in gens:
@@ -67,8 +68,11 @@ for gen in gens:
         p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
     p_values_1.append(p_value)
     T = np.mean(values_1)
+    C = np.mean(values_2)
     fold_change = my_fold_change(T, C)
     if p_value < 0.05 and abs(fold_change) > 1.5:
+        counter_2 += 1
+    elif p_value < 0.05:
         counter += 1
 
 answer11 = counter
