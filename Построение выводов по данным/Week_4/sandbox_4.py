@@ -212,4 +212,4 @@ def my_fold_change(T,C, check=False):
 print(my_fold_change(10, 2, check=True))
 FC, check = my_fold_change(10, 2, check=True)
 print('FC = ', FC)
-# print('check = ', check)
+print('check = ', check)
