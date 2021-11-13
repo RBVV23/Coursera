@@ -66,7 +66,9 @@ for gen in gens:
     else:
         p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
     p_values_1.append(p_value)
-    if p_value < 0.05:
+    T = np.mean(values_1)
+    fold_change = my_fold_change(T, C)
+    if p_value < 0.05 and abs(fold_change) > 1.5:
         counter += 1
 
 answer11 = counter
