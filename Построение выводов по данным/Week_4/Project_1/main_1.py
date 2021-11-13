@@ -78,9 +78,9 @@ for gen in gens:
 answer11 = counter
 answer21 = counter_2
 print('answer11 = ', answer11)
-print('answer21 = ', answer21)
+# print('answer21 = ', answer21)
 my_write_answer(answer11, part=1, number=1)
-my_write_answer(answer21, part=2, number=1)
+# my_write_answer(answer21, part=2, number=1)
 
 control = 'early neoplasia'
 treatment = 'cancer'
