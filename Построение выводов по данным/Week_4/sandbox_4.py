@@ -3,12 +3,9 @@ import pandas as pd
 
 from math import sqrt
 from scipy import stats
-
-from sklearn import model_selection, metrics, linear_model, ensemble
 import itertools
 import scipy
 from statsmodels.stats.weightstats import *
-from math import factorial
 
 def my_proportions_diff_z_stat_ind(sample1, sample2):
     n1 = len(sample1)
