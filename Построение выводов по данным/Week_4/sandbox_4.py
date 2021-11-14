@@ -99,6 +99,7 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
+
 def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, alternative='two-sided'):
     z = (sample_mean - expect_mean)/(std/sqrt(n))
     Fz = stats.t.ppf(0.05/2,n-1)
@@ -110,6 +111,7 @@ def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, al
     if alternative == 'greater':
         p = 1 - scipy.stats.norm.cdf(z)
     return p
+
 def my_odds(sample1, sample2):
     p1 = np.sum(sample1) / len(sample1)
     p2 = np.sum(sample2) / len(sample2)
