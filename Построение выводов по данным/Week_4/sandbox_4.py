@@ -120,6 +120,18 @@ def my_odds(sample1, sample2):
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
 
+def my_fold_change(T,C, check=False):
+    if T > C:
+        res = float(T) / C
+    if T < C:
+        res = -float(C) / T
+    if check:
+        flag = False
+        if abs(res) >= 1.5:
+            flag = True
+        return res, flag
+    return res
+
 
 A = np.array([1,2,3,4,5,6,7,8,9,10])
 print('np.std() = ', A.std())
@@ -197,17 +209,6 @@ print(' = ', scipy.special.gamma((n+1)/2))
 print(' = ', scipy.special.gamma((n+1)/2))
 
 
-def my_fold_change(T,C, check=False):
-    if T > C:
-        res = float(T) / C
-    if T < C:
-        res = -float(C) / T
-    if check:
-        flag = False
-        if abs(res) >= 1.5:
-            flag = True
-        return res, flag
-    return res
 
 print(my_fold_change(10, 2, check=True))
 FC, check = my_fold_change(10, 2, check=True)
