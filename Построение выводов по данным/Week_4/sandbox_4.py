@@ -119,6 +119,46 @@ def my_odds(sample1, sample2):
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
 
+def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
+    eps = 0.1**(precision+1)
+    sum = float(0)
+    k = 1
+    iter = 1
+    delta = eps+1
+    while delta > eps and iter < max_iters:
+        mult = 1
+        for l in range(k):
+            mult *= (a+l)*(b+l) / ((1+l)*(c+l))
+        delta = mult * z**k
+        sum += delta
+        k += 1
+        iter += 1
+        if iter % 5000 == 0:
+            print(delta)
+            print(iter)
+    return round((sum + 1),precision)
+def my_gamma_function(z, precision=prec, max_iters=2000000000):
+    eps = 0.1**(precision+1)
+    mult = float(1)
+    n = float(1)
+    delta = eps+1
+    iter = 0
+    while abs(delta) > eps-1 and iter < max_iters:
+        new_mult = mult * ((1 + 1/n)**z / (1 + z/n))
+        delta = (new_mult - mult)
+        # print(delta)
+        mult = new_mult
+        n += 1
+        if iter % 1000000 == 0:
+            print(delta)
+            print(iter)
+        iter += 1
+    return round(float(mult/z),precision)
+def my_student_cdf(x, n):
+    var1 = x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
+    var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
+    return var1/var2 + 0.5
+
 def my_fold_change(T,C, check=False):
     if T > C:
         res = float(T) / C
@@ -140,24 +180,6 @@ print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )
 
 prec=15
 
-def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
-    eps = 0.1**(precision+1)
-    sum = float(0)
-    k = 1
-    iter = 1
-    delta = eps+1
-    while delta > eps and iter < max_iters:
-        mult = 1
-        for l in range(k):
-            mult *= (a+l)*(b+l) / ((1+l)*(c+l))
-        delta = mult * z**k
-        sum += delta
-        k += 1
-        iter += 1
-        if iter % 5000 == 0:
-            print(delta)
-            print(iter)
-    return round((sum + 1),precision)
 
 n = 1000
 t = 0.5
@@ -167,31 +189,11 @@ x = 0.5
 print('arcsin(x)/x = ', round(np.arcsin(x)/x, prec))
 # print('F = ', my_hypergeometric_function(1/2, 1/2, 3/2, x**2))
 
-def my_gamma_function(z, precision=prec, max_iters=2000000000):
-    eps = 0.1**(precision+1)
-    mult = float(1)
-    n = float(1)
-    delta = eps+1
-    iter = 0
-    while abs(delta) > eps-1 and iter < max_iters:
-        new_mult = mult * ((1 + 1/n)**z / (1 + z/n))
-        delta = (new_mult - mult)
-        # print(delta)
-        mult = new_mult
-        n += 1
-        if iter % 1000000 == 0:
-            print(delta)
-            print(iter)
-        iter += 1
-    return round(float(mult/z),precision)
 
 print('Г(5/2) = ', 0.75*np.sqrt(np.pi))
 # print('Г(5/2) = ', my_gamma_function(5/2))
 
-def my_student_cdf(x, n):
-    var1 = x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
-    var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
-    return var1/var2 + 0.5
+
 
 # print(my_student_cdf(1.5, 10), '=')
 x = 0
