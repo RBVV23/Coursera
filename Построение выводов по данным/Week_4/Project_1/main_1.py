@@ -27,16 +27,11 @@ def my_write_answer(answer, part, number):
     with open(name, 'w') as file:
         file.write(str(answer))
 
-def my_fold_change(T,C, check=False):
+def my_fold_change(T,C):
     if T > C:
         res = float(T) / C
     if T < C:
         res = -float(C) / T
-    if check:
-        flag = False
-        if abs(res) >= 1.5:
-            flag = True
-        return res, flag
     return res
 
 
@@ -52,14 +47,19 @@ print(data.shape)
 gens = data.columns[2:]
 
 p_values_1 = []
+f_changes_1 = []
 p_values_2 = []
+f_changes_2 = []
 counter = 0
-counter_2 = 0
 control = 'normal'
 treatment = 'early neoplasia'
 for gen in gens:
     values_1 = data[gen][data['Diagnosis'] == control]
+    T = values_1.mean()
     values_2 = data[gen][data['Diagnosis'] == treatment]
+    C = values_2.mean()
+    f_change = my_fold_change(T, C)
+    f_changes_1.append(f_change)
     # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
@@ -69,27 +69,24 @@ for gen in gens:
     else:
         p_value = 2 * (1 - abs(stats.t.cdf(t_stat, df)))
     p_values_1.append(p_value)
-    T = np.mean(values_1)
-    C = np.mean(values_2)
-    fold_change = my_fold_change(T, C)
-    if p_value < 0.05 and abs(fold_change) > 1.5:
-        counter_2 += 1
-    elif p_value < 0.05:
+    if p_value < 0.05:
         counter += 1
 
 answer11 = counter
-answer21 = counter_2
 print('answer11 = ', answer11)
-# print('answer21 = ', answer21)
 my_write_answer(answer11, part=1, number=1)
-# my_write_answer(answer21, part=2, number=1)
+
 
 control = 'early neoplasia'
 treatment = 'cancer'
 counter = 0
 for gen in gens:
     values_1 = data[gen][data['Diagnosis'] == control]
+    T = values_1.mean()
     values_2 = data[gen][data['Diagnosis'] == treatment]
+    C = values_2.mean()
+    f_change = my_fold_change(T, C)
+    f_changes_2.append(f_change)
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
     my_cdf = stats.t.cdf(t_stat, df)
@@ -107,25 +104,25 @@ my_write_answer(answer12, part=1, number=2)
 
 
 reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
-                                            alpha = 0.05,
+                                            alpha = 0.05/2,
                                             method = 'holm')
 counter = 0
-for p in p_corrected_1:
-    if p < 0.05/2:
+for p, fc in zip(p_corrected_1, f_changes_1):
+    if p < 0.05 and abs(fc) > 1.5:
         counter += 1
-print('answer21 = ', counter)
 
-reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
-                                            alpha = 0.05,
-                                            method = 'holm')
-counter = 0
-for p in p_corrected_2:
-    if p < 0.05/2:
-        counter += 1
-print('answer22 = ', counter)
-answer21 = counter_2
-print('answer11 = ', answer11)
+answer21 = counter
 print('answer21 = ', answer21)
-my_write_answer(answer11, part=1, number=1)
 my_write_answer(answer21, part=2, number=1)
 
+reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
+                                            alpha = 0.05/2,
+                                            method = 'holm')
+counter = 0
+for p, fc in zip(p_corrected_2, f_changes_2):
+    if p < 0.05:
+        counter += 1
+
+answer22 = counter
+print('answer22 = ', answer22)
+my_write_answer(answer22, part=2, number=2)
