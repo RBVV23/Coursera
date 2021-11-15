@@ -108,7 +108,7 @@ reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
                                             method = 'holm')
 counter = 0
 for p, fc in zip(p_corrected_1, f_changes_1):
-    if p < 0.05 and abs(fc) > 1.5:
+    if p < 0.05/2 and abs(fc) > 1.5:
         counter += 1
 
 answer21 = counter
@@ -120,9 +120,34 @@ reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
                                             method = 'holm')
 counter = 0
 for p, fc in zip(p_corrected_2, f_changes_2):
-    if p < 0.05:
+    if p < 0.05/2:
         counter += 1
 
 answer22 = counter
 print('answer22 = ', answer22)
 my_write_answer(answer22, part=2, number=2)
+
+
+reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
+                                            alpha = 0.05/2,
+                                            method = 'fdr_bh')
+counter = 0
+for p, fc in zip(p_corrected_1, f_changes_1):
+    if p < 0.05/2 and abs(fc) > 1.5:
+        counter += 1
+
+answer31 = counter
+print('answer31 = ', answer21)
+# my_write_answer(answer21, part=2, number=1)
+
+reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
+                                            alpha = 0.05/2,
+                                            method = 'fdr_bh')
+counter = 0
+for p, fc in zip(p_corrected_2, f_changes_2):
+    if p < 0.05/2:
+        counter += 1
+
+answer32 = counter
+print('answer32 = ', answer32)
+# my_write_answer(answer22, part=2, number=2)
