@@ -138,7 +138,7 @@ for p, fc in zip(p_corrected_1, f_changes_1):
 
 answer31 = counter
 print('answer31 = ', answer31)
-my_write_answer(answer21, part=2, number=1)
+my_write_answer(answer31, part=3, number=1)
 
 reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
                                             alpha = 0.05/2,
@@ -150,4 +150,4 @@ for p, fc in zip(p_corrected_2, f_changes_2):
 
 answer32 = counter
 print('answer32 = ', answer32)
-my_write_answer(answer22, part=2, number=2)
+my_write_answer(answer32, part=3, number=2)
