@@ -11,3 +11,5 @@ data = pd.read_csv('credit_card_default_analysis.csv', header=0, sep=',')
 
 print(data.head())
 print(data.shape)
+
+answer1 = None
