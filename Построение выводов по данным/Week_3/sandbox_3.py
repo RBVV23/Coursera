@@ -178,7 +178,7 @@ res = (data[(data['heduc'].isnull() == 0) & (data['agefm'].isnull() == 0) & (dat
 answer62 = res.shape[0]
 print('answer 6.2. = ', answer62)
 
-# data['nevermarr'] = 1 - data['evermarr']
+
 data['nevermarr']=0
 data.loc[data['agefm'].isnull(), 'nevermarr']=1
 data.drop('evermarr', axis=1, inplace=True)
@@ -187,7 +187,7 @@ data.loc[data['agefm'].isnull(), 'agefm']=0
 data.loc[data['heduc'].isnull() & data['nevermarr']==1, 'heduc']=-1
 print(data.head())
 
-print('6.3. Сколько осталось пропущенных значений в признаке "heduc"?')
+print('6.3. Сколько осталось пропущенных значений в признаке "heduc":')
 answer63 = data[data['heduc'].isnull()].shape[0]
 print('answer 6.3. = ', answer63)
 
@@ -227,7 +227,7 @@ m3 = smf.ols('ceb ~ age+educ+idlnchld+knowmeth+usemeth+agefm+heduc+urban+electri
 fitted = m3.fit(cov_type='HC1')
 print(fitted.summary())
 
-print('6.8. Проверьте с помощью критерия Фишера. Чему равен его достигаемый уровень значимости?')
+print('6.8. Проверьте с помощью критерия Фишера, чему равен его достигаемый уровень значимости:')
 answer68 = round(m2.fit().compare_f_test(m3.fit())[1],4)
 print('answer 6.8. = ', answer68)
 
