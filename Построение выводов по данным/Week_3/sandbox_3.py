@@ -128,11 +128,10 @@ data = pd.read_csv('AUCs.txt', sep='\t', header=0)
 print(data.head())
 
 my_columns = data.columns.values[1:]
-# print(list(itertools.combinations([[1,2,3],[10,20,30], [100,200,300]],2)))
+
 
 pares = itertools.combinations([data[my_columns[0]], data[my_columns[1]], data[my_columns[2]], data[my_columns[3]]], 2)
 names_pares = list(itertools.combinations(my_columns,2))
-# print(names_pares)
 
 p_values = []
 for i,pare in enumerate(pares):
