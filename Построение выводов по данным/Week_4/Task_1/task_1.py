@@ -15,5 +15,3 @@ print(data.shape)
 answer1 = None
 
 #1
-#2
-#3
