@@ -13,7 +13,4 @@ print(data.head())
 print(data.shape)
 
 answer1 = None
-#1
-#2
-#5
-#6
+
