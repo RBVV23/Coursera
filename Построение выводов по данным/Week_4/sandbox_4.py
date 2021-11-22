@@ -1,6 +1,3 @@
-import numpy as np
-import pandas as pd
-
 from math import sqrt
 from scipy import stats
 import itertools
