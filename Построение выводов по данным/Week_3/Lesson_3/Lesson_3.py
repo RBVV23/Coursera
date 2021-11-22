@@ -1,6 +1,3 @@
-import patsy
-# print(patsy.__version__)
-import statsmodels
 import scipy as sc
 import numpy as np
 import pandas as pd
