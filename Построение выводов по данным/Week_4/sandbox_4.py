@@ -134,7 +134,7 @@ def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
             print(delta)
             print(iter)
     return round((sum + 1),precision)
-def my_gamma_function(z, precision=prec, max_iters=2000000000):
+def my_gamma_function(z, precision=15, max_iters=2000000000):
     eps = 0.1**(precision+1)
     mult = float(1)
     n = float(1)
@@ -175,7 +175,6 @@ print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/len(A)) )
 print('np.std(ddof=1) = ', A.std(ddof=1))
 print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )
 
-prec=15
 
 
 n = 1000
