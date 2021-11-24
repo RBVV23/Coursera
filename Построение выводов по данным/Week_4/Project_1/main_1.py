@@ -58,7 +58,6 @@ for gen in gens:
     C = values_2.mean()
     f_change = my_fold_change(T, C)
     f_changes_1.append(f_change)
-    # p_value = scipy.stats.ttest_ind(values_1, values_2, equal_var=False)[1]
     df = my_t_test_df(values_1, values_2)
     t_stat = my_t_statistic_ind(values_1, values_2)
     my_cdf = stats.t.cdf(t_stat, df)
