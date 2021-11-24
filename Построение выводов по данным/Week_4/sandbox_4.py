@@ -169,11 +169,11 @@ def my_fold_change(T,C, check=False):
     return res
 
 
-A = np.array([1, 2, 3, 4,5,6,7,8,9,10])
+A = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 print('np.std() = ', A.std())
-print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/len(A)) )
+print('my.std = ', np.sqrt(np.sum((A - A.mean())**2) / len(A)))
 print('np.std(ddof=1) = ', A.std(ddof=1))
-print('my.std = ', np.sqrt(np.sum((A - A.mean())**2)/(len(A)-1)) )
+print('my.std = ', np.sqrt(np.sum((A - A.mean())**2) / (len(A)-1)))
 
 
 
