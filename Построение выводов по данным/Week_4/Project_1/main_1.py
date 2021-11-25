@@ -19,12 +19,10 @@ def my_t_test_df(sample1, sample2):
     D2 = np.sum((sample2 - sample2.mean())**2) / (n2 - 1)  # несмещенная оценка (ddof = 1)
     df = ( (D1/n1 + D2/n2)**2 ) / ( D1**2/((n1-1)*n1**2) + D2**2/((n2-1)*n2**2) )
     return df
-
 def my_write_answer(answer, part, number):
     name = 'answer' + str(part) + str(number) + '.txt'
     with open(name, 'w') as file:
         file.write(str(answer))
-
 def my_fold_change(T,C):
     if T > C:
         res = float(T) / C
