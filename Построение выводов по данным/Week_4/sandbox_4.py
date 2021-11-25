@@ -113,7 +113,7 @@ def my_odds(sample1, sample2):
     odds1 = float(p1 / (1 - p1))
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
-def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
+def my_hypergeometric_function(a,b,c,z, precision=15, max_iters=200000):
     eps = 0.1**(precision+1)
     sum = float(0)
     k = 1
@@ -178,7 +178,7 @@ t = 0.5
 print(my_hypergeometric_function(0.5, 0.5*(n+1), 3/2, -(t**2)/n))
 
 x = 0.5
-print('arcsin(x)/x = ', round(np.arcsin(x)/x, prec))
+print('arcsin(x)/x = ', round(np.arcsin(x)/x, 15))
 # print('F = ', my_hypergeometric_function(1/2, 1/2, 3/2, x**2))
 
 
