@@ -96,7 +96,6 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
-
 def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, alternative='two-sided'):
     z = (sample_mean - expect_mean)/(std/sqrt(n))
     Fz = stats.t.ppf(0.05/2,n-1)
@@ -108,14 +107,12 @@ def my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95, al
     if alternative == 'greater':
         p = 1 - scipy.stats.norm.cdf(z)
     return p
-
 def my_odds(sample1, sample2):
     p1 = np.sum(sample1) / len(sample1)
     p2 = np.sum(sample2) / len(sample2)
     odds1 = float(p1 / (1 - p1))
     odds2 = float(p2 / (1 - p2))
     return float(odds1 / odds2)
-
 def my_hypergeometric_function(a,b,c,z, precision=prec, max_iters=200000):
     eps = 0.1**(precision+1)
     sum = float(0)
@@ -155,7 +152,6 @@ def my_student_cdf(x, n):
     var1 = x*my_gamma_function((n+1)/2)*my_hypergeometric_function(0.5, (n+1)/2, 1.5, -(x**2)/n)
     var2 = np.sqrt(np.pi*n)*my_gamma_function(n/2)
     return var1/var2 + 0.5
-
 def my_fold_change(T,C, check=False):
     if T > C:
         res = float(T) / C
