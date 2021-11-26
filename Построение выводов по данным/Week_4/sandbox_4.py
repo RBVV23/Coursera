@@ -4,6 +4,7 @@ import itertools
 import scipy
 from statsmodels.stats.weightstats import *
 
+
 def my_proportions_diff_z_stat_ind(sample1, sample2):
     n1 = len(sample1)
     p1 = sum(sample1) / n1
