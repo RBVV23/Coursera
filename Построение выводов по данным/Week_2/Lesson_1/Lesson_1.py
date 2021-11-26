@@ -1,7 +1,4 @@
-import numpy as np
 import pandas as pd
-
-import scipy
 from statsmodels.stats.weightstats import *
 import matplotlib.pyplot as plt
 

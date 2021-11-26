@@ -11,7 +11,6 @@ from statsmodels.stats.weightstats import zconfint
 def my_permutation_t_stat_1sample(sample, mean):
     t_stat = sum(list(map(lambda x: x - mean, sample)))
     return  t_stat
-
 def my_permutation_zero_distr_1sample(sample, mean, max_permutations = None):
     centered_sample = list(map(lambda x: x - mean, sample))
     if max_permutations:
@@ -22,7 +21,6 @@ def my_permutation_zero_distr_1sample(sample, mean, max_permutations = None):
         signs_array = itertools.product([-1,1], repeat=len(sample))
     distr = [sum(centered_sample * np.array(signs)) for signs in signs_array]
     return distr
-
 def my_permutation_test(sample, mean, max_permutations = None, alternative = 'two-sided'):
     if alternative not in ['two-sided', 'less', 'greater']:
         raise ValueError('Недопустимое значения параметра "alternative"\n'
@@ -37,6 +35,7 @@ def my_permutation_test(sample, mean, max_permutations = None, alternative = 'tw
     if alternative == 'greater':
         res = sum([1. if x >= t_stat else 0. for x in zero_distr])/len(zero_distr)
     return res
+
 
 weight_data = pd.read_csv('weight.txt', header=0, sep='\t')
 print(weight_data.head())

@@ -1,13 +1,13 @@
-import pandas as pd
 import itertools
+import pandas as pd
+import matplotlib.pyplot as plt
 
 from statsmodels.stats.weightstats import *
-import matplotlib.pyplot as plt
+
 
 def my_permutation_t_stat_ind(sample1, sample2):
     result = np.mean(sample1) - np.mean(sample2)
     return result
-
 def my_get_random_combinations(n1, n2, max_combinations):
     index = list(range(n1 + n2))
     indices = set([tuple(index)])
@@ -16,7 +16,6 @@ def my_get_random_combinations(n1, n2, max_combinations):
         indices.add(tuple(index))
     result = [(index[:n1], index[n1:]) for index in indices]
     return result
-
 def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
     joined_sample = np.hstack((sample1, sample2))
     n1 = len(sample1)
@@ -29,7 +28,6 @@ def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
         indices = [(list(index), filter(lambda i: i not in index, range(n))) for index in itertools.combinations(range(n), n1)]
     distr = [joined_sample[list(i[0])].mean() - joined_sample[list(i[1])].mean() for i in indices]
     return distr
-
 def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
     if alternative not in ['two-sided', 'less', 'greater']:
         raise ValueError('Недопустимое значения параметра "alternative"\n'
@@ -44,6 +42,7 @@ def my_permutation_test(sample1, sample2, max_permutations = None, alternative =
     if alternative == 'greater':
         res = sum([1. if x >= t_stat else 0. for x in zero_distr])/len(zero_distr)
     return res
+
 
 seattle_data = pd.read_csv('seattle.txt', header=0, sep='\t')
 print('seattle_data.shape = ', seattle_data.shape)
