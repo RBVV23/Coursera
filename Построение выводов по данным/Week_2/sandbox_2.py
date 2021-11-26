@@ -1,12 +1,12 @@
-import pandas as pd
-
-from math import sqrt
-from scipy import stats
-
-from sklearn import model_selection, metrics, linear_model, ensemble
 import itertools
 import scipy
+import pandas as pd
+
 from statsmodels.stats.weightstats import *
+from math import sqrt
+from scipy import stats
+from sklearn import model_selection, metrics, linear_model, ensemble
+
 
 def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     z = stats.norm.ppf(1 - alpha/2.)
@@ -64,7 +64,6 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
             g += 1
     result = (f-g)/np.sqrt(f+g - ((f-g)**2)/n)
     return result
-
 def my_get_boostraps_samples(data, n_samples):
     L = len(data)
     indices = np.random.randint(0, L, (n_samples, L))
@@ -73,7 +72,6 @@ def my_get_boostraps_samples(data, n_samples):
 def my_stat_intervals(stat, alpha=0.05):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
     return low, high
-
 def my_permutation_test(sample1, sample2, max_permutations = None, alternative = 'two-sided'):
     if alternative not in ['two-sided', 'less', 'greater']:
         raise ValueError('Недопустимое значения параметра "alternative"\n'
@@ -111,6 +109,7 @@ def my_permutation_zero_dist_ind(sample1, sample2, max_combinations = None):
 def my_permutation_t_stat_ind(sample1, sample2):
     result = np.mean(sample1) - np.mean(sample2)
     return result
+
 
 print('2.4. Достигаемый уровень значимости для гипотезы, что среднее значение уровня кальция отличается от среднего:')
 answer24 = round(my_p_value(expect_mean=9.5, std=0.4, n=160, sample_mean=9.57, alpha=0.95),4)
