@@ -13,7 +13,6 @@ import scipy
 def my_stat_intervals(stat, alpha):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
     return low, high
-
 def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     z = stats.norm.ppf(1 - alpha/2.)
     sample = list(zip(sample1, sample2))
@@ -28,7 +27,6 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     low = float(f - g)/n - z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
-
 def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
     n1 = len(sample1)
     n2 = len(sample2)
@@ -38,7 +36,6 @@ def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
     low = p1-p2 - z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
     high = p1-p2 + z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
     return low, high
-
 def my_interval(X, alpha=0.95, precision=4, norm=True, flag=False):
     n = len(X)
     sample_mean=X.mean()
@@ -57,13 +54,11 @@ def my_interval(X, alpha=0.95, precision=4, norm=True, flag=False):
     print('Доверительный интервал {}%: ({} - {})'.format(100*alpha, low, high))
     print()
     return low, high
-
 def my_get_boostraps_samples(data, n_samples):
     L = len(data)
     indices = np.random.randint(0, L, (n_samples, L))
     samples = data[indices]
     return samples
-
 def my_odds(sample1, sample2):
     p1 = np.sum(sample1) / len(sample1)
     p2 = np.sum(sample2) / len(sample2)
