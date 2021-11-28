@@ -1,8 +1,8 @@
-import numpy as np
-import pandas as pd
 import scipy
+import pandas as pd
 from statsmodels.stats.weightstats import *
 from statsmodels.stats.proportion import proportion_confint
+
 
 def my_proportions_diff_confint_ind(sample1, sample2, alpha=0.05):
     z = scipy.stats.norm.ppf(1 - alpha / 2.)
@@ -14,7 +14,6 @@ def my_proportions_diff_confint_ind(sample1, sample2, alpha=0.05):
     low = p1 - p2 - z*delta
     high = p1 - p2 + z*delta
     return low, high
-
 def my_proportions_diff_z_stat_ind(sample1, sample2):
     n1 = len(sample1)
     p1 = sum(sample1) / n1
@@ -23,7 +22,6 @@ def my_proportions_diff_z_stat_ind(sample1, sample2):
     P = (p1*n1 + p2*n2) / (n1 + n2)
     Z = (p1 - p2)/np.sqrt(P*(1-P)*(1/n1 + 1/n2))
     return Z
-
 def my_proportions_diff_z_test(z_stat, alternative='two-sided'):
     if alternative not in ('two-sided', 'less', 'greater'):
         raise ValueError('Недопустимое значения параметра "alternative"\n'
@@ -35,7 +33,6 @@ def my_proportions_diff_z_test(z_stat, alternative='two-sided'):
         return scipy.stats.norm.cdf(z_stat)
     if alternative == 'greater':
         return 1 - scipy.stats.norm.cdf(z_stat)
-
 def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     z = stats.norm.ppf(1 - alpha/2.)
     sample = list(zip(sample1, sample2))
@@ -50,7 +47,6 @@ def my_proportions_confint_diff_rel(sample1, sample2, alpha = 0.05):
     low = float(f - g)/n - z*np.sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     high = float(f - g)/n + z*np.sqrt(float((f + g)) / n**2 - float((f - g))**2 / n**3)
     return low, high
-
 def my_proportions_diff_z_stat_rel(sample1, sample2):
     sample = list(zip(sample1, sample2))
     n = len(sample)
@@ -63,7 +59,6 @@ def my_proportions_diff_z_stat_rel(sample1, sample2):
             g += 1
     result = (f-g)/np.sqrt(f+g - ((f-g)**2)/n)
     return result
-
 
 
 data = pd.read_csv('banner_click_stat.txt', header=None, sep='\t')

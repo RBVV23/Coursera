@@ -1,9 +1,7 @@
 import numpy as np
-import pandas as pd
-
 from scipy import stats
-import scipy
 import matplotlib.pyplot as plt
+
 
 fin = open('fertility.txt', 'r')
 data = list(map(lambda x: int(x.strip()),fin.readlines()))
