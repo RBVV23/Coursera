@@ -173,7 +173,6 @@ print('np.std(ddof=1) = ', A.std(ddof=1))
 print('my.std = ', np.sqrt(np.sum((A - A.mean())**2) / (len(A)-1)))
 
 
-
 n = 1000
 t = 0.5
 print(my_hypergeometric_function(0.5, 0.5*(n+1), 3/2, -(t**2)/n))
