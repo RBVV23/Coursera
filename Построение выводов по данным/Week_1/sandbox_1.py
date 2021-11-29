@@ -8,7 +8,7 @@ from scipy import stats
 from statsmodels.stats.proportion import proportion_confint
 from statsmodels.stats.proportion import samplesize_confint_proportion
 import matplotlib.pyplot as plt
-import scipy
+
 
 def my_stat_intervals(stat, alpha):
     low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
@@ -72,7 +72,7 @@ def my_odds(sample1, sample2):
 
 
 water = pd.read_csv('water.txt', sep='\t', header=0)
-# print(water.head())
+print(water.head())
 
 my_X = water['mortality']
 
@@ -219,8 +219,7 @@ print('answer43 = ', answer43)
 sn = data.sn
 we = data.we
 
-# print(sn[:5])
-# print(we[:5])
+
 plt.scatter(sn, we, alpha=0.5, s=10)
 plt.grid()
 # plt.show()
@@ -239,19 +238,6 @@ answer44 = round(ret[0],2)
 print('answer44 = ', answer44)
 
 
-
-# Xs = np.array([3,3,5,7,9]*5)
-# Ys = np.array([1]*5 +[3]*5 + [5]*5 + [7]*5 + [9]*5)
-#
-# plt.scatter(Xs, Ys)
-# plt.grid()
-# plt.xlim(0,10)
-# plt.ylim(0,10)
-# plt.show()
-# binx = [0.0, 2, 4, 6, 8, 10]
-# biny = [0.0, 2, 4, 6, 8, 10]
-# ret = stats.binned_statistic_2d(Xs, Ys, None, 'count', bins=[binx, biny])
-# print(ret.statistic)
 
 
 
