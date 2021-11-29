@@ -1,7 +1,6 @@
 import itertools
 import scipy
 import pandas as pd
-
 from statsmodels.stats.weightstats import *
 from math import sqrt
 from scipy import stats
@@ -169,7 +168,7 @@ print('answer 3.3. = ', answer33)
 df = pd.read_csv('banknotes.txt', header=0, sep='\t')
 print(df.head())
 data = df.drop('real', axis='columns')
-# print(data.head())
+print(data.head())
 target = df['real']
 
 train_data, test_data, train_target, test_target = model_selection.train_test_split(data, target,
@@ -248,7 +247,6 @@ new_zeros = my_get_boostraps_samples(my_zeros, 1000)
 zeros_mean = np.mean(new_zeros, axis=1)
 ones_mean = np.mean(new_ones, axis=1)
 my_list = list(map(lambda x: x[1] - x[0], zip(ones_mean, zeros_mean)))
-# deltas = new_ones - new_zeros
 
 print(my_stat_intervals(my_list))
 
