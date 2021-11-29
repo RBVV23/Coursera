@@ -1,7 +1,6 @@
 import itertools
 import pandas as pd
 import matplotlib.pyplot as plt
-
 from statsmodels.stats.weightstats import *
 
 
@@ -62,7 +61,7 @@ plt.grid()
 plt.hist(price2002, color='b', label='2002')
 plt.legend()
 plt.xlabel('Стоимость недвижимости')
-# plt.show()
+plt.show()
 
 print('Доверительный интервал (95%) для цен 2001 года:')
 print(zconfint(price2001))
