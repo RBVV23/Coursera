@@ -102,6 +102,7 @@ my_write_answer(answer12, part=1, number=2)
 reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
                                             alpha = 0.05/2,
                                             method = 'holm')
+
 counter = 0
 for p, fc in zip(p_corrected_1, f_changes_1):
     if p < 0.05/2 and abs(fc) > 1.5:
@@ -127,6 +128,7 @@ my_write_answer(answer22, part=2, number=2)
 reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
                                             alpha = 0.05/2,
                                             method = 'fdr_bh')
+
 counter = 0
 for p, fc in zip(p_corrected_1, f_changes_1):
     if p < 0.05/2 and abs(fc) > 1.5:
