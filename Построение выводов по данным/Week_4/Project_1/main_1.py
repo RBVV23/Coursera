@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from statsmodels.sandbox.stats.multicomp import multipletests
 
-
 def my_t_statistic_ind(sample1, sample2):
     M1 = np.mean(sample1)
     M2 = np.mean(sample2)
