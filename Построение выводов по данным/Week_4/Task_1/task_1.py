@@ -24,8 +24,6 @@ Ymax = max(Yt)
 Ymin = min(Yt)
 
 
-# plt.ax.arrow(0, 0, 1, 1)
-
 plt.plot(x, y, color='r')
 plt.plot([Xmin,Xmax],[0,0], color='k')
 plt.plot([0,0],[Ymin,Ymax], color='k')
