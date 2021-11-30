@@ -34,4 +34,3 @@ plt.ylim(Ymin, Ymax)
 
 plt.show()
 
-#1
