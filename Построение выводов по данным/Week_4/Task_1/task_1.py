@@ -2,7 +2,7 @@ from scipy import stats
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from statsmodels.stats.weightstats import zconfint
+import itertools
 from statsmodels.stats.proportion import proportion_confint
 
 
@@ -23,8 +23,8 @@ def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
     p1 = float(sum(sample1)/n1)
     p2 = float(sum(sample2)/n2)
     z = stats.norm.ppf(1-alpha/2.)
-    low = p1-p2 - z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
-    high = p1-p2 + z*sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    low = p1-p2 - z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    high = p1-p2 + z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
     return low, high
 def my_proportions_diff_z_stat_ind(sample1, sample2):
     n1 = len(sample1)
@@ -101,11 +101,11 @@ plt.grid()
 
 
 control = data[data.default == 0]['LIMIT_BAL']
-control_median = np.median(control['LIMIT_BAL'])
+control_median = np.median(data[data.default == 0]['LIMIT_BAL'])
 print('control_median = ', control_median)
 
 test = data[data.default == 1]['LIMIT_BAL']
-test_median = np.median(test['LIMIT_BAL'])
+test_median = np.median(data[data.default == 1]['LIMIT_BAL'])
 print('test_median = ', test_median)
 
 
@@ -238,7 +238,7 @@ res = stats.chisquare(f_obs=proportions_obs, f_exp=proportions_exp, ddof=1)
 print('p-value = ', res[1])
 
 plt.figure(figsize=(16,9))
-subplot(121)
+plt.subplot(121)
 plt.title('Гистограмма заёмщиков по семейному положению')
 plt.hist(data.MARRIAGE, bins=4, edgecolor='k')
 plt.grid(axis='y')
@@ -265,7 +265,7 @@ print(table)
 print('Коэффициент V Крамера: ', round(my_v_cramer(table),4))
 
 plt.figure(figsize=(16,9))
-subplot(121)
+plt.subplot(121)
 plt.title('Гистограмма заёмщиков по возрасту')
 plt.hist(data.AGE, edgecolor='k')
 plt.grid(axis='y')
