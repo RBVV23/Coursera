@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+from scipy.stats import probplot
+import matplotlib.pyplot as plt
 
 def my_get_boostraps_samples(data, n_samples):
     L = len(data)
@@ -65,6 +66,17 @@ print('[{}; {}]'.format(interval[0], interval[1]))
 
 np.random.seed(0)
 n_boot_samples = 500
-control_btstrap
-control_mean =
-control_boot_chi_squared
+control_btstrap = my_get_boostraps_samples(control_clicks.values, n_boot_samples)
+control_mean = list(map(np.mean, control_btstrap))
+control_boot_chi_squared = []
+
+for btstrap in control_btstrap:
+    my_mean = np.mean(btstrap)
+    my_STDs = list(map(lambda x: (x - my_mean)**2, btstrap))
+    control_boot_chi_squared.append(np.sum(my_STDs))
+
+
+N = len(control_mean)
+probplot(control_mean, dist="norm", sparams=(N-1), plot=plt)
+N = len(control_boot_chi_squared)
+probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt)
