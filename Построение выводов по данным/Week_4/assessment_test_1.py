@@ -32,58 +32,48 @@ print('answer1 = ', answer1)
 
 np.random.seed(0)
 
-# btstrap_c = my_get_boostraps_samples(control_clicks.values, 500)
-# meds_c = list(map(np.median, btstrap_c))
-# means_c = list(map(np.mean, btstrap_c))
-# btstrap_e = my_get_boostraps_samples(exp_clicks.values, 500)
-# meds_e = list(map(np.median, btstrap_e))
-# means_e = list(map(np.mean, btstrap_e))
+btstrap_c = my_get_boostraps_samples(control_clicks.values, 500)
+meds_c = list(map(np.median, btstrap_c))
+means_c = list(map(np.mean, btstrap_c))
+btstrap_e = my_get_boostraps_samples(exp_clicks.values, 500)
+meds_e = list(map(np.median, btstrap_e))
+means_e = list(map(np.mean, btstrap_e))
 
-## interval = my_stat_intervals(meds_c, 0.05)
-## print('Доверительный интервал для медианы количества кликов в подгруппе "control":')
-## print('[{}; {}]'.format(interval[0], interval[1]))
-
-## interval = my_stat_intervals(meds_e, 0.05)
-## print('Доверительный интервал для медианы количества кликов в подгруппе "exp":')
-## print('[{}; {}]'.format(interval[0], interval[1]))
-
-# meds_deltas = list(map(lambda x: x[0] - x[1], zip(meds_e, meds_c)))
-# interval = my_stat_intervals(meds_deltas, 0.05)
-# print('Доверительный интервал для разности медиан количества кликов в подгруппах "exp" и "control":')
+# interval = my_stat_intervals(meds_c, 0.05)
+# print('Доверительный интервал для медианы количества кликов в подгруппе "control":')
 # print('[{}; {}]'.format(interval[0], interval[1]))
 
-## interval = my_stat_intervals(means_c, 0.05)
-## print('Доверительный интервал для среднего количества кликов в подгруппе "control":')
-## print('[{}; {}]'.format(interval[0], interval[1]))
-
-## interval = my_stat_intervals(means_e, 0.05)
-## print('Доверительный интервал для среднего количества кликов в подгруппе "exp":')
-## print('[{}; {}]'.format(interval[0], interval[1]))
-
-# means_deltas = list(map(lambda x: x[0] - x[1], zip(means_e, means_c)))
-# interval = my_stat_intervals(means_deltas, 0.05)
-# print('Доверительный интервал для разности средних количеств кликов в подгруппах "exp" и "control":')
+# interval = my_stat_intervals(meds_e, 0.05)
+# print('Доверительный интервал для медианы количества кликов в подгруппе "exp":')
 # print('[{}; {}]'.format(interval[0], interval[1]))
+
+meds_deltas = list(map(lambda x: x[0] - x[1], zip(meds_e, meds_c)))
+interval = my_stat_intervals(meds_deltas, 0.05)
+print('Доверительный интервал для разности медиан количества кликов в подгруппах "exp" и "control":')
+print('[{}; {}]'.format(interval[0], interval[1]))
+
+# interval = my_stat_intervals(means_c, 0.05)
+# print('Доверительный интервал для среднего количества кликов в подгруппе "control":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+# interval = my_stat_intervals(means_e, 0.05)
+# print('Доверительный интервал для среднего количества кликов в подгруппе "exp":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+means_deltas = list(map(lambda x: x[0] - x[1], zip(means_e, means_c)))
+interval = my_stat_intervals(means_deltas, 0.05)
+print('Доверительный интервал для разности средних количеств кликов в подгруппах "exp" и "control":')
+print('[{}; {}]'.format(interval[0], interval[1]))
 
 np.random.seed(0)
 n_boot_samples = 500
 control_btstrap = my_get_boostraps_samples(control_clicks.values, n_boot_samples)
 control_mean = list(map(np.mean, control_btstrap))
 control_boot_chi_squared = []
-i = 0
-# control_btstrap = np.array([[1,2,3,3,2,1], [1,1,1,1,1,7]])
+
 
 control_boot_chi_squared = np.sum(list(map(lambda x: (x - np.mean(x))**2, control_btstrap)), axis=1)
-# print(len(qq))
 
-# for btstrap in control_btstrap:
-#     my_mean = np.mean(btstrap)
-#     print(my_mean)
-#     my_STDs = list(map(lambda x: (x - my_mean)**2, btstrap))
-#     print(np.sum(my_STDs))
-#     control_boot_chi_squared.append(np.sum(my_STDs))
-    # i += 1
-    # print(i)
 
 plt.subplot(1,2,1)
 N = len(control_mean)
@@ -107,10 +97,10 @@ for my_browser in browsers:
     my_control = control[control.browser == my_browser].n_clicks.values
     my_exp = exp[exp.browser == my_browser].n_clicks.values
     p_values.append(mannwhitneyu(my_exp, my_control)[1])
-    exp_percent = 100*np.sum(exp[exp.browser == my_browser].n_nonclicks_queries.values) \
+    exp_percent = 100*np.sum(exp[exp.browser == my_browser].n_nonclk_queries.values) \
                   / np.sum(exp[exp.browser == my_browser].n_queries.values)
     exp_percents.append(exp_percent)
-    control_percent = 100 * np.sum(control[control.browser == my_browser].n_nonclicks_queries.values) \
+    control_percent = 100 * np.sum(control[control.browser == my_browser].n_nonclk_queries.values) \
                   / np.sum(control[control.browser == my_browser].n_queries.values)
     control_percents.append(control_percent)
 
@@ -119,9 +109,15 @@ reject, p_corrected, spam, egg = multipletests(p_values,
                                             method = 'holm')
 
 
-
+print()
 for p1, p2 in zip(p_values, p_corrected):
     print('p_value = {}; p_corrected = {}'.format(p1, p2))
 
+answer6 = 5
+print('answer6 = ', answer6)
+print()
+
 for p1, p2 in zip(control_percents, exp_percents):
-    print('control_percent = {}%; exp_percent = {}%'.format(p1, p2))
+    print('control_percent = {}%; exp_percent = {}%'.format(round(p1, 1), round(p2, 1)))
+
+plt.show()
