@@ -7,7 +7,9 @@ def my_get_boostraps_samples(data, n_samples):
     indices = np.random.randint(0, L, (n_samples, L))
     samples = data[indices]
     return samples
-
+def my_stat_intervals(stat, alpha=0.05):
+    low, high = np.percentile(stat, [100*alpha/2., 100*(1 - alpha/2.)])
+    return low, high
 
 data = pd.read_csv('ab_browser_test.csv', sep=',', header=0)
 
@@ -28,7 +30,41 @@ print('answer1 = ', answer1)
 
 np.random.seed(0)
 
-bstrap_0 = my_get_boostraps_samples(control.values, 100)
-meds_0 = list(map(np.median, bstrap_0))
-bstrap_1 = my_get_boostraps_samples(test.values, 100)
-meds_1 = list(map(np.median, bstrap_1))
+btstrap_c = my_get_boostraps_samples(control_clicks.values, 500)
+meds_c = list(map(np.median, btstrap_c))
+means_c = list(map(np.mean, btstrap_c))
+btstrap_e = my_get_boostraps_samples(exp_clicks.values, 500)
+meds_e = list(map(np.median, btstrap_e))
+means_e = list(map(np.mean, btstrap_e))
+
+# interval = my_stat_intervals(meds_c, 0.05)
+# print('Доверительный интервал для медианы количества кликов в подгруппе "control":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+# interval = my_stat_intervals(meds_e, 0.05)
+# print('Доверительный интервал для медианы количества кликов в подгруппе "exp":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+meds_deltas = list(map(lambda x: x[0] - x[1], zip(meds_e, meds_c)))
+interval = my_stat_intervals(meds_deltas, 0.05)
+print('Доверительный интервал для разности медиан количества кликов в подгруппах "exp" и "control":')
+print('[{}; {}]'.format(interval[0], interval[1]))
+
+# interval = my_stat_intervals(means_c, 0.05)
+# print('Доверительный интервал для среднего количества кликов в подгруппе "control":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+# interval = my_stat_intervals(means_e, 0.05)
+# print('Доверительный интервал для среднего количества кликов в подгруппе "exp":')
+# print('[{}; {}]'.format(interval[0], interval[1]))
+
+means_deltas = list(map(lambda x: x[0] - x[1], zip(means_e, means_c)))
+interval = my_stat_intervals(means_deltas, 0.05)
+print('Доверительный интервал для разности средних количеств кликов в подгруппах "exp" и "control":')
+print('[{}; {}]'.format(interval[0], interval[1]))
+
+np.random.seed(0)
+n_boot_samples = 500
+control_btstrap
+control_mean =
+control_boot_chi_squared
