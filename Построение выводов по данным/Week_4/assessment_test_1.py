@@ -65,18 +65,29 @@ print('Доверительный интервал для разности ср�
 print('[{}; {}]'.format(interval[0], interval[1]))
 
 np.random.seed(0)
-n_boot_samples = 500
+# n_boot_samples = 500
+n_boot_samples = 100
 control_btstrap = my_get_boostraps_samples(control_clicks.values, n_boot_samples)
 control_mean = list(map(np.mean, control_btstrap))
 control_boot_chi_squared = []
+i = 0
+control_btstrap = np.array([[1,2,3,3,2,1], [1,1,1,1,1,7]])
 
 for btstrap in control_btstrap:
     my_mean = np.mean(btstrap)
+    print(my_mean)
     my_STDs = list(map(lambda x: (x - my_mean)**2, btstrap))
+    print(np.sum(my_STDs))
+    var = np.sum(list(map(lambda x: (x - np.mean(btstrap))**2, btstrap)))
+    print(var)
     control_boot_chi_squared.append(np.sum(my_STDs))
+    # i += 1
+    # print(i)
 
 
-N = len(control_mean)
-probplot(control_mean, dist="norm", sparams=(N-1), plot=plt)
-N = len(control_boot_chi_squared)
-probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt)
+# N = len(control_mean)
+# probplot(control_mean, dist="norm", sparams=(N-1), plot=plt)
+# plt.show()
+# N = len(control_boot_chi_squared)
+# probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt)
+# plt.show()
