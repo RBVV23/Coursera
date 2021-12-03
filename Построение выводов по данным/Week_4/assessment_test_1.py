@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from scipy.stats import probplot
+from scipy.stats import probplot, mannwhitneyu
+from statsmodels.sandbox.stats.multicomp import multipletests
 import matplotlib.pyplot as plt
 
 def my_get_boostraps_samples(data, n_samples):
@@ -86,8 +87,41 @@ control_boot_chi_squared = np.sum(list(map(lambda x: (x - np.mean(x))**2, contro
 
 plt.subplot(1,2,1)
 N = len(control_mean)
-probplot(control_mean, dist="norm", sparams=(N-1), plot=plt)
+probplot(control_mean, dist="norm", sparams=(N-1), plot=plt, rvalue=True)
+# print(R_squared)
 plt.subplot(1,2,2)
 N = len(control_boot_chi_squared)
-probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt)
-plt.show()
+probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt, rvalue=True)
+# plt.show()
+
+res = mannwhitneyu(exp_clicks, control_clicks)
+print(res)
+print('p-value = ', res[1])
+
+p_values = []
+control_percents = []
+exp_percents = []
+browsers = np.unique(data.browser)
+print(browsers)
+for my_browser in browsers:
+    my_control = control[control.browser == my_browser].n_clicks.values
+    my_exp = exp[exp.browser == my_browser].n_clicks.values
+    p_values.append(mannwhitneyu(my_exp, my_control)[1])
+    exp_percent = 100*np.sum(exp[exp.browser == my_browser].n_nonclicks_queries.values) \
+                  / np.sum(exp[exp.browser == my_browser].n_queries.values)
+    exp_percents.append(exp_percent)
+    control_percent = 100 * np.sum(control[control.browser == my_browser].n_nonclicks_queries.values) \
+                  / np.sum(control[control.browser == my_browser].n_queries.values)
+    control_percents.append(control_percent)
+
+reject, p_corrected, spam, egg = multipletests(p_values,
+                                            alpha = 0.05,
+                                            method = 'holm')
+
+
+
+for p1, p2 in zip(p_values, p_corrected):
+    print('p_value = {}; p_corrected = {}'.format(p1, p2))
+
+for p1, p2 in zip(control_percents, exp_percents):
+    print('control_percent = {}%; exp_percent = {}%'.format(p1, p2))
