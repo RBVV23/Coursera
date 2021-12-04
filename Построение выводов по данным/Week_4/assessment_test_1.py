@@ -91,12 +91,17 @@ print('p-value = ', res[1])
 p_values = []
 control_percents = []
 exp_percents = []
-browsers = np.unique(data.browser)
+all_browsers = np.unique(data.browser)
+browsers_order = [2, 5, 0, 1, 3, 4]
+browsers = []
+for n in browsers_order:
+    browsers.append(all_browsers[n])
+
 print(browsers)
 for my_browser in browsers:
     my_control = control[control.browser == my_browser].n_clicks.values
     my_exp = exp[exp.browser == my_browser].n_clicks.values
-    p_values.append(mannwhitneyu(my_exp, my_control)[1])
+    p_values.append(mannwhitneyu(my_exp, my_control, alternative='two-sided')[1])
     exp_percent = 100*np.sum(exp[exp.browser == my_browser].n_nonclk_queries.values) \
                   / np.sum(exp[exp.browser == my_browser].n_queries.values)
     exp_percents.append(exp_percent)
@@ -104,20 +109,23 @@ for my_browser in browsers:
                   / np.sum(control[control.browser == my_browser].n_queries.values)
     control_percents.append(control_percent)
 
-reject, p_corrected, spam, egg = multipletests(p_values,
+_, p_corrected, _, _ = multipletests(p_values,
                                             alpha = 0.05,
                                             method = 'holm')
 
 
 print()
-for p1, p2 in zip(p_values, p_corrected):
-    print('p_value = {}; p_corrected = {}'.format(p1, p2))
+n = 0
+for b, p1, p2 in zip(browsers, p_values, p_corrected):
+    print('{}: p_value = {}; p_corrected = {}'.format(b, round(p1, 4), round(p2, 4)))
+    if p2 > 0.05:
+        n += 1
 
-answer6 = 5
+answer6 = n
 print('answer6 = ', answer6)
 print()
 
-for p1, p2 in zip(control_percents, exp_percents):
-    print('control_percent = {}%; exp_percent = {}%'.format(round(p1, 1), round(p2, 1)))
+for b, p1, p2 in zip(browsers, control_percents, exp_percents):
+    print('{}: control_percent = {}%; exp_percent = {}%'.format(b, round(p1, 1), round(p2, 1)))
 
 plt.show()
