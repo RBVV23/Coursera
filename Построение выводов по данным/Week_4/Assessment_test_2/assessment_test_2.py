@@ -83,9 +83,17 @@ print('Среденее значение достигаемого уровня �
 print('Среденее значение достигаемого уровня значимости после введения поправки Йетса: ', np.mean(p_values_corrected))
 print('Среденее значение достигаемого уровня значимости при использовании точного критерия Фишера: ', np.mean(p_values_fisher))
 
-corr = data.corr(method='pearson')['day_calls']['mes_estim']
-print('Корреляция между признаками "day_calls" и  "mes_estim":', corr)
+corr_p = data.corr(method='pearson')['day_calls']['mes_estim']
+print()
+print('Корреляция Пирсона между признаками "day_calls" и  "mes_estim":', corr_p)
 n = data.shape[0]
-T = corr*np.sqrt((n-2))/np.sqrt(1 - corr**2)
+T = corr_p*np.sqrt((n-2))/np.sqrt(1 - corr_p**2)
 p_value = stats.t.cdf(T, n-2)
-print('Достигаемый уровень значимости:', p_value)
+print('/tДостигаемый уровень значимости:', p_value)
+
+corr_s = data.corr(method='spearman')['day_calls']['mes_estim']
+print('Корреляция Спирмена между признаками "day_calls" и  "mes_estim":', corr_s)
+n = data.shape[0]
+T = corr_s*np.sqrt((n-2))/np.sqrt(1 - corr_s**2)
+p_value = stats.t.cdf(T, n-2)
+print('/tДостигаемый уровень значимости:', p_value)
