@@ -1,7 +1,7 @@
-from scipy import stats
 import pandas as pd
 import numpy as np
 from scipy.stats import chi2_contingency, fisher_exact
+from scipy import stats
 
 
 pd.set_option('display.width', 150)
@@ -83,4 +83,9 @@ print('Среденее значение достигаемого уровня �
 print('Среденее значение достигаемого уровня значимости после введения поправки Йетса: ', np.mean(p_values_corrected))
 print('Среденее значение достигаемого уровня значимости при использовании точного критерия Фишера: ', np.mean(p_values_fisher))
 
-
+corr = data.corr(method='pearson')['day_calls']['mes_estim']
+print('Корреляция между признаками "day_calls" и  "mes_estim":', corr)
+n = data.shape[0]
+T = corr*np.sqrt((n-2))/np.sqrt(1 - corr**2)
+p_value = stats.t.cdf(T, n-2)
+print('Достигаемый уровень значимости:', p_value)
