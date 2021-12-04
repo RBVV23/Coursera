@@ -89,11 +89,11 @@ print('Корреляция Пирсона между признаками "day_
 n = data.shape[0]
 T = corr_p*np.sqrt((n-2))/np.sqrt(1 - corr_p**2)
 p_value = stats.t.cdf(T, n-2)
-print('/tДостигаемый уровень значимости:', p_value)
+print('\tДостигаемый уровень значимости:', p_value)
 
 corr_s = data.corr(method='spearman')['day_calls']['mes_estim']
 print('Корреляция Спирмена между признаками "day_calls" и  "mes_estim":', corr_s)
 n = data.shape[0]
 T = corr_s*np.sqrt((n-2))/np.sqrt(1 - corr_s**2)
 p_value = stats.t.cdf(T, n-2)
-print('/tДостигаемый уровень значимости:', p_value)
+print('\tДостигаемый уровень значимости:', p_value)
