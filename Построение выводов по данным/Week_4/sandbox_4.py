@@ -240,3 +240,10 @@ send_keys('{ENTER}', with_spaces=True)
 send_keys('{TAB 2}' + surname + '{TAB}' + name + '{TAB}' + patronymic, with_spaces=True)
 # some text
 #2 таба
+
+# Выбираем пункт меню
+# app.UntitledNotepad.menu_select("Справка->О программе")
+# # Симулируем клик
+# app.AboutNotepad.OK.click()
+# Вводим текст
+# app.UntitledNotepad.Edit.type_keys("Заработало!", with_spaces = True)
