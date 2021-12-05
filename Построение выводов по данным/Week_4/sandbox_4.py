@@ -220,3 +220,18 @@ email = 'qweeerty23@gmail.com'
 surname = 'Алексеев'
 name = 'Игорь'
 patronymic = 'Андреевич'
+
+print(path + '\chrome.exe ' + web)
+app = Application(backend='win32').start(path + '\chrome.exe ' + web)
+time.sleep(3)
+
+# app.WindowSpecification.wait('enabled')
+
+
+# send_keys('{ALT+TAB}')
+        # gh = app.window()some more text
+
+# Лист1
+send_keys('{TAB 2}' + email, with_spaces=True)
+send_keys('{TAB}', with_spaces=True)
+send_keys('{ENTER}', with_spaces=True)
