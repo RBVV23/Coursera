@@ -212,3 +212,38 @@ FC, check = my_fold_change(10, 2, check=True)
 print('FC = ', FC)
 print('check = ', check)
 
+print(pywinauto.__version__)
+# Запускаем целевое приложение - обычный блокнот
+path = 'C:\Program Files\Google\Chrome\Application'
+web = 'https://forms.office.com/r/5wjmhGn7SY'
+email = 'qweeerty23@gmail.com'
+surname = 'Алексеев'
+name = 'Игорь'
+patronymic = 'Андреевич'
+
+print(path + '\chrome.exe ' + web)
+app = Application(backend='win32').start(path + '\chrome.exe ' + web)
+time.sleep(3)
+
+# app.WindowSpecification.wait('enabled')
+
+
+# send_keys('{ALT+TAB}')
+        # gh = app.window()some more text
+
+# Лист1
+send_keys('{TAB 2}' + email, with_spaces=True)
+send_keys('{TAB}', with_spaces=True)
+send_keys('{ENTER}', with_spaces=True)
+
+# Лист2
+send_keys('{TAB 2}' + surname + '{TAB}' + name + '{TAB}' + patronymic, with_spaces=True)
+
+#2 таба
+
+# Выбираем пункт меню
+# app.UntitledNotepad.menu_select("Справка->О программе")
+# # Симулируем клик
+# app.AboutNotepad.OK.click()
+# Вводим текст
+# app.UntitledNotepad.Edit.type_keys("Заработало!", with_spaces = True)
