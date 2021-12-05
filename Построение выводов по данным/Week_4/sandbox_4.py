@@ -3,6 +3,10 @@ from scipy import stats
 import itertools
 import scipy
 from statsmodels.stats.weightstats import *
+import pywinauto
+from pywinauto.application import Application
+import time
+from pywinauto.keyboard import send_keys
 
 
 def my_proportions_diff_z_stat_ind(sample1, sample2):
@@ -207,3 +211,4 @@ print(my_fold_change(10, 2, check=True))
 FC, check = my_fold_change(10, 2, check=True)
 print('FC = ', FC)
 print('check = ', check)
+
