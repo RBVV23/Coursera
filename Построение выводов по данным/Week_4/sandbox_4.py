@@ -238,7 +238,7 @@ send_keys('{ENTER}', with_spaces=True)
 
 # Лист2
 send_keys('{TAB 2}' + surname + '{TAB}' + name + '{TAB}' + patronymic, with_spaces=True)
-# some text
+
 #2 таба
 
 # Выбираем пункт меню
