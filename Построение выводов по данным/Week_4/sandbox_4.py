@@ -212,3 +212,11 @@ FC, check = my_fold_change(10, 2, check=True)
 print('FC = ', FC)
 print('check = ', check)
 
+print(pywinauto.__version__)
+# Запускаем целевое приложение - обычный блокнот
+path = 'C:\Program Files\Google\Chrome\Application'
+web = 'https://forms.office.com/r/5wjmhGn7SY'
+email = 'qweeerty23@gmail.com'
+surname = 'Алексеев'
+name = 'Игорь'
+patronymic = 'Андреевич'
