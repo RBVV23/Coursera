@@ -96,3 +96,5 @@ n = data.shape[0]
 T = corr_s*np.sqrt((n-2))/np.sqrt(1 - corr_s**2)
 p_value = stats.t.cdf(T, n-2)
 print('\tДостигаемый уровень значимости:', p_value)
+
+treatment = data[data.treatment == 1]
