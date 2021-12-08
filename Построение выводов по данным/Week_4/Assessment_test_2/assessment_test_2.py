@@ -4,6 +4,15 @@ from scipy.stats import chi2_contingency, fisher_exact
 from scipy import stats
 
 
+def my_v_cramer(table):
+    K1 = table.shape[0]
+    K2 = table.shape[1]
+    N = np.sum(table)
+    minK = min(K1, K2)
+    chi2 = stats.chi2_contingency(table)[0]
+    return np.sqrt(chi2 / (N*(minK-1)))
+
+
 pd.set_option('display.width', 150)
 pd.set_option('display.max_columns', 100)
 
