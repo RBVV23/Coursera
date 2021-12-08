@@ -115,7 +115,10 @@ for x in range(new_data.churn.value_counts().shape[0]):
 
 print('Построим таблицу сопряженности:')
 print(table)
-
+corr_cr = my_v_cramer(table)
 print('Коэффициент V Крамера: ', round(my_v_cramer(table),4))
+n = new_data.shape[0]
+T = corr_cr*np.sqrt((n-2))/np.sqrt(1 - corr_s**2)
+p_value = stats.t.cdf(T, n-2)
 p_value = 0
 print('Достигаемый уровень значимости: ', p_value)
