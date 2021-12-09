@@ -84,11 +84,11 @@ answer1 = n
 print()
 print('answer1 = ', answer1)
 
-# print('p_values')
+# print('p_values:')
 # print(p_values)
-# print('p_values_corrected')
+# print('p_values_corrected:')
 # print(p_values_corrected)
-print('p_values_fisher')
+print('p_values_fisher:')
 print(p_values_fisher)
 
 print('Количество отвергнутых нулевых гипотез (p-value < 0.05) с учетом поправки Йетса:', n_corrected)
