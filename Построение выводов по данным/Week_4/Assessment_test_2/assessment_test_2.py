@@ -108,9 +108,15 @@ print('\tДостигаемый уровень значимости:', p_value)
 
 
 new_data = data[data.treatment == 1]
-for x in range(new_data.churn.value_counts().shape[0]):
-    for y in range(data.state.value_counts().shape[0]):
-        cell = new_data[(new_data.churn == x) & (new_data.state == y)]
+table = np.zeros((len(np.unique(new_data.state)), len(np.unique(new_data.churn))))
+# print(np.unique(new_data.state))
+# print(np.unique(new_data.churn))
+for x, ch in enumerate(np.unique(new_data.churn)):
+    for y, st in enumerate(np.unique(new_data.state)):
+        # print('ch = {}; st = {}'.format(ch,st))
+        cell = new_data[(new_data.churn == ch) & (new_data.state == st)]
+        # print(cell)
+        # print(cell.shape[0])
         table[y, x] = cell.shape[0]
 
 print('Построим таблицу сопряженности:')
@@ -118,6 +124,7 @@ print(table)
 corr_cr = my_v_cramer(table)
 print('Коэффициент V Крамера: ', round(my_v_cramer(table),4))
 n = new_data.shape[0]
-T = corr_cr*np.sqrt((n-2))/np.sqrt(1 - corr_cr**2)
-p_value = stats.t.cdf(T, n-2)
+T = stats.chi2_contingency(table)[0]
+df = (table[0] - 1)*(table[1] - 1)
+p_value = stats.chi2.cdf(T, df)[0]
 print('Достигаемый уровень значимости: ', p_value)
