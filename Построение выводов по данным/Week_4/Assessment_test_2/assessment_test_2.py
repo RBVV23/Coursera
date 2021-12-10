@@ -155,5 +155,13 @@ df = (table[0] - 1)*(table[1] - 1)
 p_value = stats.chi2_contingency(table)[1]
 print('Достигаемый уровень значимости: ', p_value)
 
-new_table = pd.pivot_table(data, index='state', columns=['treatment', 'churn'], aggfunc=len, fill_value=0)
+new_table = pd.pivot_table(data, values='account_length', index='state', columns=['treatment', 'churn'], aggfunc=len, fill_value=0)
 print(new_table)
+
+prop_0 = data[(data.treatment == 0 & data.churn == 'True.')].shape[0] / data[(data.treatment == 0)].shape[0]
+prop_1 = data[(data.treatment == 1 & data.churn == 'True.')].shape[0] / data[(data.treatment == 1)].shape[0]
+prop_2 = data[(data.treatment == 2 & data.churn == 'True.')].shape[0] / data[(data.treatment == 2)].shape[0]
+
+print('prop_0 = ', prop_0)
+print('prop_1 = ', prop_1)
+print('prop_2 = ', prop_2)
