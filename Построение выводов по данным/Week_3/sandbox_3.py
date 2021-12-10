@@ -170,8 +170,6 @@ print('answer 6.1. = ', answer61)
 print('6.2. Сколько объектов из 4361 останется, если выбросить все, содержащие пропуски?')
 
 
-
-
 res = (data[(data['heduc'].isnull() == 0) & (data['agefm'].isnull() == 0) & (data['idlnchld'].isnull() == 0) &
            (data['knowmeth'].isnull() == 0) & (data['usemeth'].isnull() == 0) & (data['electric'].isnull() == 0) &
       (data['radio'].isnull() == 0) & (data['tv'].isnull() == 0) & (data['bicycle'].isnull() == 0)])
