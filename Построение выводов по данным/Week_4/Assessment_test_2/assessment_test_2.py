@@ -6,15 +6,6 @@ import matplotlib.pyplot as plt
 from statsmodels.stats.proportion import proportion_confint
 from statsmodels.sandbox.stats.multicomp import multipletests
 
-def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
-    n1 = len(sample1)
-    n2 = len(sample2)
-    p1 = float(sum(sample1)/n1)
-    p2 = float(sum(sample2)/n2)
-    z = stats.norm.ppf(1-alpha/2.)
-    low = p1-p2 - z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
-    high = p1-p2 + z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
-    return low, high
 
 def my_v_cramer(table):
     K1 = table.shape[0]
