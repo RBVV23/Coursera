@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
-from scipy.stats import chi2_contingency, fisher_exact
+from scipy.stats import chi2_contingency, fisher_exact, probplot
 from scipy import stats
+import matplotlib.pyplot as plt
 
 
 def my_v_cramer(table):
@@ -88,8 +89,8 @@ print('answer1 = ', answer1)
 # print(p_values)
 # print('p_values_corrected:')
 # print(p_values_corrected)
-print('p_values_fisher:')
-print(p_values_fisher)
+# print('p_values_fisher:')
+# print(p_values_fisher)
 
 print('Количество отвергнутых нулевых гипотез (p-value < 0.05) с учетом поправки Йетса:', n_corrected)
 print('Количество отвергнутых нулевых гипотез (p-value < 0.05) при использовании точного критерия Фишера:', n_corrected)
@@ -103,17 +104,33 @@ corr_p = data.corr(method='pearson')['day_calls']['mes_estim']
 print()
 print('Корреляция Пирсона между признаками "day_calls" и  "mes_estim":', corr_p)
 n = data.shape[0]
-T = corr_p*np.sqrt((n-2))/np.sqrt(1 - corr_p**2)
-p_value = stats.t.cdf(T, n-2)
+T = corr_p*np.sqrt(n-2)/np.sqrt(1 - corr_p**2)
+# print(T)
+p_value = 2*(1 - stats.t.cdf(abs(T), n-2))
 print('\tДостигаемый уровень значимости:', p_value)
 
 corr_s = data.corr(method='spearman')['day_calls']['mes_estim']
 print('Корреляция Спирмена между признаками "day_calls" и  "mes_estim":', corr_s)
 n = data.shape[0]
 T = corr_s*np.sqrt((n-2))/np.sqrt(1 - corr_s**2)
-p_value = stats.t.cdf(T, n-2)
+p_value = 2*(1 - stats.t.cdf(abs(T), n-2))
 print('\tДостигаемый уровень значимости:', p_value)
 
+
+plt.subplot(1,2,1)
+# N = len(control_mean)
+probplot(data.day_calls, dist="norm", plot=plt)
+# print(R_squared)
+plt.subplot(1,2,2)
+# N = len(control_boot_chi_squared)
+probplot(data.mes_estim, dist="norm", plot=plt)
+# plt.show()
+
+plt.figure()
+plt.scatter(data.day_calls, data.mes_estim, alpha=0.2)
+plt.xlabel('day_calls')
+plt.ylabel('mes_estim')
+# plt.show()
 
 new_data = data[data.treatment == 1]
 table = np.zeros((len(np.unique(new_data.state)), len(np.unique(new_data.churn))))
@@ -134,5 +151,9 @@ print('Коэффициент V Крамера: ', round(my_v_cramer(table),4))
 n = new_data.shape[0]
 T = stats.chi2_contingency(table)[0]
 df = (table[0] - 1)*(table[1] - 1)
-p_value = stats.chi2.cdf(T, df)[0]
+# p_value = 2*(1 - stats.chi2.cdf(abs(T), df))
+p_value = stats.chi2_contingency(table)[1]
 print('Достигаемый уровень значимости: ', p_value)
+
+new_table = pd.pivot_table(data, index='state', columns=['treatment', 'churn'], aggfunc=len, fill_value=0)
+print(new_table)

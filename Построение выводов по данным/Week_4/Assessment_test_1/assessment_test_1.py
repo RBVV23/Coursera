@@ -82,7 +82,7 @@ probplot(control_mean, dist="norm", sparams=(N-1), plot=plt, rvalue=True)
 plt.subplot(1,2,2)
 N = len(control_boot_chi_squared)
 probplot(control_boot_chi_squared, dist="chi2", sparams=(N-1), plot=plt, rvalue=True)
-# plt.show()
+plt.show()
 
 res = mannwhitneyu(exp_clicks, control_clicks)
 print(res)
