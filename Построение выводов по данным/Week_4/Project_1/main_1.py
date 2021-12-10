@@ -125,7 +125,7 @@ print('answer22 = ', answer22)
 my_write_answer(answer22, part=2, number=2)
 
 
-reject_1, p_corrected_1, spam, egg = multipletests(p_values_1,
+_, p_corrected_1, _, _ = multipletests(p_values_1,
                                             alpha = 0.05/2,
                                             method = 'fdr_bh')
 
@@ -138,7 +138,7 @@ answer31 = counter
 print('answer31 = ', answer31)
 my_write_answer(answer31, part=3, number=1)
 
-reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
+_, p_corrected_2, _, _ = multipletests(p_values_2,
                                             alpha = 0.05/2,
                                             method = 'fdr_bh')
 counter = 0
