@@ -3,7 +3,18 @@ import numpy as np
 from scipy.stats import chi2_contingency, fisher_exact, probplot
 from scipy import stats
 import matplotlib.pyplot as plt
+from statsmodels.stats.proportion import proportion_confint
+from statsmodels.sandbox.stats.multicomp import multipletests
 
+def my_proportions_confint_diff_ind(sample1, sample2, alpha=0.05):
+    n1 = len(sample1)
+    n2 = len(sample2)
+    p1 = float(sum(sample1)/n1)
+    p2 = float(sum(sample2)/n2)
+    z = stats.norm.ppf(1-alpha/2.)
+    low = p1-p2 - z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    high = p1-p2 + z*np.sqrt(p1*(1-p1)/n1 + p2*(1-p2)/n2)
+    return low, high
 
 def my_v_cramer(table):
     K1 = table.shape[0]
@@ -158,10 +169,38 @@ print('Достигаемый уровень значимости: ', p_value)
 new_table = pd.pivot_table(data, values='account_length', index='state', columns=['treatment', 'churn'], aggfunc=len, fill_value=0)
 print(new_table)
 
-prop_0 = data[(data.treatment == 0 & data.churn == 'True.')].shape[0] / data[(data.treatment == 0)].shape[0]
-prop_1 = data[(data.treatment == 1 & data.churn == 'True.')].shape[0] / data[(data.treatment == 1)].shape[0]
-prop_2 = data[(data.treatment == 2 & data.churn == 'True.')].shape[0] / data[(data.treatment == 2)].shape[0]
 
-print('prop_0 = ', prop_0)
-print('prop_1 = ', prop_1)
-print('prop_2 = ', prop_2)
+for i in range(3):
+    sums = data[(data.treatment == i) & (data.churn == 'True.')].shape[0]
+    all = data[(data.treatment == i)].shape[0]
+    prop = sums/all
+    print('treatment = ', i)
+    print('proportion = {}'.format(round(prop,4)))
+    interval = np.round(proportion_confint(count=sums, nobs=all,
+                                           method='wilson'), 4)
+    print('[{}; {}]'.format(interval[0], interval[1]))
+# prop_1 = data[(data.treatment == 1) & (data.churn == 'True.')].shape[0] / data[(data.treatment == 1)].shape[0]
+# prop_2 = data[(data.treatment == 2) & (data.churn == 'True.')].shape[0] / data[(data.treatment == 2)].shape[0]
+
+p_values = []
+for i in range(0,3):
+    for j in range(i+1,3):
+        s1 = data[(data.treatment == i) & (data.churn == 'True.')].shape[0]
+        l1 = data[(data.treatment == i)].shape[0]
+        s2 = data[(data.treatment == j) & (data.churn == 'True.')].shape[0]
+        l2 = data[(data.treatment == j)].shape[0]
+        p1 = float(s1/l1)
+        p2 = float(s2/l2)
+        z = stats.norm.ppf(1 - 0.05 / 2.)
+        low = p1 - p2 - z * np.sqrt(p1 * (1 - p1) / l1 + p2 * (1 - p2) / l2)
+        high = p1 - p2 + z * np.sqrt(p1 * (1 - p1) / l1 + p2 * (1 - p2) / l2)
+        P = (p1 * l1 + p2 * l2) / (l1 + l2)
+        z_stat = (p1 - p2) / np.sqrt(P * (1 - P) * (1 / l1 + 1 / l2))
+        p_value = 2*(1 - stats.norm.cdf(abs(z_stat)))
+        print('[treatment = {}] - [treatment = {}]'.format(i, j))
+        print('\t[{}; {}]'.format(round(low,4), round(high,4)))
+        print('\tp-value = ', round(p_value,4))
+        p_values.append(p_value)
+
+_, p_corrected, _, _ = multipletests(p_values, alpha=0.05, method='fdr_bh')
+print(p_corrected)
