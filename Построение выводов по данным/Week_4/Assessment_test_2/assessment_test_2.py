@@ -24,8 +24,8 @@ data = pd.read_csv('churn_analysis.csv')
 print(data.head())
 print(data.info())
 
-# print(np.unique(data.state))
-# print(len(np.unique(data.state)))
+print(np.unique(data.state))
+print(len(np.unique(data.state)))
 
 treatment = data[data.treatment == 1]
 all_states = np.unique(data.state)
