@@ -4,6 +4,7 @@ from scipy.stats import probplot, mannwhitneyu
 from statsmodels.sandbox.stats.multicomp import multipletests
 import matplotlib.pyplot as plt
 
+
 def my_get_boostraps_samples(data, n_samples):
     L = len(data)
     indices = np.random.randint(0, L, (n_samples, L))
@@ -109,9 +110,7 @@ for my_browser in browsers:
                   / np.sum(control[control.browser == my_browser].n_queries.values)
     control_percents.append(control_percent)
 
-_, p_corrected, _, _ = multipletests(p_values,
-                                            alpha = 0.05,
-                                            method = 'holm')
+_, p_corrected, _, _ = multipletests(p_values, alpha = 0.05, method = 'holm')
 
 
 print()
