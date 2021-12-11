@@ -87,6 +87,7 @@ def my_permutation_test(sample1, sample2, max_permutations = None, alternative =
         res = sum([1. if x >= t_stat else 0. for x in zero_distr])/len(zero_distr)
     return res
 
+
 data = pd.read_csv('credit_card_default_analysis.csv')
 
 pd.set_option('display.max_columns', 25)
