@@ -112,9 +112,7 @@ answer21 = counter
 print('answer21 = ', answer21)
 my_write_answer(answer21, part=2, number=1)
 
-reject_2, p_corrected_2, spam, egg = multipletests(p_values_2,
-                                            alpha = 0.05/2,
-                                            method = 'holm')
+reject_2, p_corrected_2, spam, egg = multipletests(p_values_2, alpha = 0.05/2, method = 'holm')
 counter = 0
 for p, fc in zip(p_corrected_2, f_changes_2):
     if p < 0.05/2:
@@ -125,9 +123,7 @@ print('answer22 = ', answer22)
 my_write_answer(answer22, part=2, number=2)
 
 
-_, p_corrected_1, _, _ = multipletests(p_values_1,
-                                            alpha = 0.05/2,
-                                            method = 'fdr_bh')
+_, p_corrected_1, _, _ = multipletests(p_values_1, alpha = 0.05/2, method = 'fdr_bh')
 
 counter = 0
 for p, fc in zip(p_corrected_1, f_changes_1):
