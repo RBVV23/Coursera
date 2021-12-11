@@ -36,7 +36,7 @@ n_corrected = 0
 p_values_corrected = []
 n_fisher = 0
 p_values_fisher = []
-f1, f2, f3 = 0,0,0
+f1, f2, f3 = 0, 0, 0
 g1, g2, g3 = 0, 0, 0
 
 for n1, st1 in enumerate(all_states):
