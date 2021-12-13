@@ -17,13 +17,17 @@ plt.plot(data.milk.values)
 
 res = sm.tsa.stattools.adfuller(data.milk.values)
 print(res)
-print('p-value = ', round(res[1],2))
+answer14 = round(res[1],2)
+print('answer 1.4 = ', answer14)
 
 data['n_days'] = list(map(lambda x: x.days_in_month, data.month))
 data['avg_per_day'] = data.milk / data.n_days
-print(data)
+# print(data.head())
 
 plt.figure()
 plt.title('average milk per day')
 plt.plot(data.avg_per_day.values)
 plt.show()
+
+answer15 = round(np.sum(data.avg_per_day.values), 2)
+print('answer 1.5 = ', answer15)
