@@ -31,3 +31,9 @@ plt.show()
 
 answer15 = round(np.sum(data.avg_per_day.values), 2)
 print('answer 1.5 = ', answer15)
+
+data.daily_diff1 = data.avg_per_day - data.avg_per_day.shift(12)
+data.daily_diff12 = data.avg_per_day - data.avg_per_day.shift(1)
+
+print(data.daily_diff1.values[-1])
+# sm.tsa.stattools.adfuller(data.daily_diff1.values)
