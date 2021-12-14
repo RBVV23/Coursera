@@ -114,6 +114,7 @@ print(result_table.sort_values(by = 'aic', ascending=True).head())
 
 print()
 print(best_model.summary())
+print()
 
 
 
