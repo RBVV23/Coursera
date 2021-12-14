@@ -108,6 +108,13 @@ for param in parametrs_list:
 
 warnings.filterwarnings('default')
 
+result_table = pd.DataFrame(results)
+result_table.columns = ['parameters', 'aic']
+print(result_table.sort_values(by = 'aic', ascending=True).head())
+
+print()
+print(best_model.summary())
+
 
 
 
