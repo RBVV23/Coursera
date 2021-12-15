@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1512 1243">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1512 1309">
       <change beforePath="$PROJECT_DIR$/Week_1/Lesson_1/wine.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Lesson_1/wine.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639561440278</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="1512 1309">
+      <created>1639563027036</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1639563027036</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,6 +300,7 @@
     <MESSAGE value="1412 2104" />
     <MESSAGE value="1412 2105" />
     <MESSAGE value="1512 1243" />
-    <option name="LAST_COMMIT_MESSAGE" value="1512 1243" />
+    <MESSAGE value="1512 1309" />
+    <option name="LAST_COMMIT_MESSAGE" value="1512 1309" />
   </component>
 </project>

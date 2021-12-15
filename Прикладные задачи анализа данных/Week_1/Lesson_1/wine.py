@@ -1,3 +1,5 @@
+import datetime
+
 import pandas as pd
 from scipy import stats
 import statsmodels.api as sm
@@ -137,12 +139,14 @@ print()
 
 wine['model'] = my_inv_boxcox(best_model.fittedvalues, lmbda)
 plt.figure(figsize=(15,8))
-wine.sales.plot(label='- исторические данные')
-wine.model[(S+1):].plot(color='r', label='- результаты моделирования')
+wine.sales.plot(label='исторические данные')
+wine.model[(S+1):].plot(color='r', label='результаты моделирования')
 plt.ylabel('Продажи вина (л)')
 plt.legend()
-plt.show()
+# plt.show()
 
+wine2 = wine[['sales']]
+date_list = [datetime.datetime.strptime("1994-09-01", "%Y-%m-%d") + relativedelta(month=x) for x in range(36)]
 
 
 
