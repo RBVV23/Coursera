@@ -146,8 +146,7 @@ plt.legend()
 # plt.show()
 
 wine2 = wine[['sales']]
-# date_list = [datetime.datetime.strptime("1994-09-01", "%Y-%m-%d") + relativedelta(year=1994+x//12, month=9+x%12) for x in range(36)]
-date_list = [datetime.datetime.strptime("1994-09-01", "%Y-%m-%d") + relativedelta(year=1994+(9+x)//13, month=x % 13 - 8) for x in range(36)]
+date_list = [datetime.datetime.strptime("1994-01-01","%Y-%m-%d") + relativedelta(year=1994+(8+x)//12, month=1+(8+x)%12) for x in range(36)]
 print(date_list)
 future = pd.DataFrame(index=date_list, columns=wine2.columns)
 wine2 = pd.concat([wine2, future])
