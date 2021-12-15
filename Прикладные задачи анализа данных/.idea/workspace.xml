@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1412 2008">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1412 2105" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +27,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.sandbox">
+  <component name="RunManager" selected="Python.wine">
     <configuration name="sandbox" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,8 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sandbox" />
         <item itemvalue="Python.wine" />
+        <item itemvalue="Python.sandbox" />
         <item itemvalue="Python.sandbox_1" />
       </list>
     </recent_temporary>
@@ -236,7 +234,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639501711264</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="1412 2104">
+      <created>1639505065049</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1639505065049</updated>
+    </task>
+    <task id="LOCAL-00020" summary="1412 2105">
+      <created>1639505125751</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1639505125751</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,6 +281,8 @@
     <MESSAGE value="1412 1348" />
     <MESSAGE value="1412 1352" />
     <MESSAGE value="1412 2008" />
-    <option name="LAST_COMMIT_MESSAGE" value="1412 2008" />
+    <MESSAGE value="1412 2104" />
+    <MESSAGE value="1412 2105" />
+    <option name="LAST_COMMIT_MESSAGE" value="1412 2105" />
   </component>
 </project>

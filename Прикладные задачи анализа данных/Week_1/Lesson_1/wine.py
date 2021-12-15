@@ -116,6 +116,11 @@ print()
 print(best_model.summary())
 print()
 
+plt.figure(figsize=(15,8))
+plt.subplot(2,1,1)
+best_model.resid[(S+1):].plot()
+plt.ylabel('Остатки')
+
 
 
 
