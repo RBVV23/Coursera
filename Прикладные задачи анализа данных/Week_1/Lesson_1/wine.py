@@ -60,9 +60,9 @@ print('\t - гипотеза о нестационарности уверенн�
 
 plt.figure(figsize=(15,8))
 ax = plt.subplot(2,1,1)
-sm.graphics.tsa.plot_acf(wine.sales_boxcox_diff[(S+1):].values.squeeze(), lags=48, ax=ax)
+sm.graphics.tsa.plot_acf(wine.sales_boxcox_diff[(S+1):].values.squeeze(), lags=4*S, ax=ax)
 ax = plt.subplot(2,1,2)
-sm.graphics.tsa.plot_pacf(wine.sales_boxcox_diff[(S+1):].values.squeeze(), lags=48, ax=ax)
+sm.graphics.tsa.plot_pacf(wine.sales_boxcox_diff[(S+1):].values.squeeze(), lags=4*S, ax=ax)
 # plt.show()
 
 D, d = 1, 1
@@ -120,6 +120,28 @@ plt.figure(figsize=(15,8))
 plt.subplot(2,1,1)
 best_model.resid[(S+1):].plot()
 plt.ylabel('Остатки')
+
+ax = plt.subplot(2,1,2)
+sm.graphics.tsa.plot_acf(best_model.resid[(S+1):].values.squeeze(), lags=4*S, ax=ax)
+# plt.show()
+
+print('Критерий Стьюдента для остатков модели:')
+p_value = stats.ttest_1samp(best_model.resid[(S+1):], 0)[1]
+print('\tp-value = ', round(p_value, 6))
+print('\t - нулевая гипотеза о несмещенности остатков не отвергается')
+print('Критерий Дики-Фуллера для остатков модели:')
+p_value = sm.tsa.stattools.adfuller(best_model.resid[(S+1):])[1]
+print('\tp-value = ', round(p_value, 6))
+print('\t - нулевая гипотеза о нестационарности остатков отвергается')
+print()
+
+wine['model'] = my_inv_boxcox(best_model.fittedvalues, lmbda)
+plt.figure(figsize=(15,8))
+wine.sales.plot(label='- исторические данные')
+wine.model[(S+1):].plot(color='r', label='- результаты моделирования')
+plt.ylabel('Продажи вина (л)')
+plt.legend()
+plt.show()
 
 
 
