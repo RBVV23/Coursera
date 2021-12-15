@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1512 1309">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1512 1316">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_1/Lesson_1/wine.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Lesson_1/wine.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_1/Lesson_1/wine.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Lesson_1/wine.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639563027036</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="1512 1316">
+      <created>1639563391652</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1639563391652</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +310,7 @@
     <MESSAGE value="1412 2105" />
     <MESSAGE value="1512 1243" />
     <MESSAGE value="1512 1309" />
-    <option name="LAST_COMMIT_MESSAGE" value="1512 1309" />
+    <MESSAGE value="1512 1316" />
+    <option name="LAST_COMMIT_MESSAGE" value="1512 1316" />
   </component>
 </project>

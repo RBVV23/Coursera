@@ -1,5 +1,5 @@
 import datetime
-
+from dateutil.relativedelta import relativedelta
 import pandas as pd
 from scipy import stats
 import statsmodels.api as sm
@@ -146,8 +146,18 @@ plt.legend()
 # plt.show()
 
 wine2 = wine[['sales']]
-date_list = [datetime.datetime.strptime("1994-09-01", "%Y-%m-%d") + relativedelta(month=x) for x in range(36)]
+date_list = [datetime.datetime.strptime("1994-09-01", "%Y-%m-%d") + relativedelta(year=x%12, month=x//12) for x in range(36)]
+print(date_list)
+future = pd.DataFrame(index=date_list, columns=wine2.columns)
+wine2 = pd.concat([wine2, future])
+wine2['forecast'] = my_inv_boxcox(best_model.predict(start=wine.shape[0], end=wine.shape[0] + 35), lmbda)
 
+plt.figure(figsize=(15,8))
+wine2.sales.plot(label='моделирование')
+wine2.forecast.plot(color='r', label='прогнозирование')
+plt.ylabel('Продажи вина (л)')
+plt.legend()
+plt.show()
 
 
 
