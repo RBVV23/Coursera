@@ -27,9 +27,12 @@ first_date = data2.month[0]
 print('first_date = ', first_date)
 data2.drop(['month'], axis=1, inplace=True)
 
-date_list = [datetime.datetime.strptime("2016-01-01","%Y-%m-%d") + relativedelta(year=2016+(x)//12, month=1+(x)%12) for x in range(data2.shape[0])]
-# print(date_list)
-data2.index = date_list
+date_list = [datetime.datetime.strptime("2016.01.01","%Y.%m.%d") + relativedelta(year=2016+(x)//12, month=1+(x)%12) for x in range(data2.shape[0])]
+print(date_list[:5])
+data2.index.name = 'month'
+data2.index = list(map(lambda x: x.strftime("%Y.%m.%d"), date_list))
 print(data2)
 # first_date = datetime.datetime.strptime("2016-01-01","%Y-%m-%d")
+
+data2.to_csv('new_WAG_C_M.csv', sep=';')
 

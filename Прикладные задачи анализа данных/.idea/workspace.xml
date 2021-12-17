@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1612 2327">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1612 1309">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639686487121</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="1612 1308">
+      <created>1639735739836</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1639735739836</updated>
+    </task>
+    <task id="LOCAL-00030" summary="1612 1309">
+      <created>1639735755826</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1639735755826</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,8 +359,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1212 2240" />
-    <MESSAGE value="1212 2241" />
     <MESSAGE value="1212 2242" />
     <MESSAGE value="1212 2243" />
     <MESSAGE value="1312 1237" />
@@ -369,6 +382,8 @@
     <MESSAGE value="1512 2338" />
     <MESSAGE value="1512 0028" />
     <MESSAGE value="1612 2327" />
-    <option name="LAST_COMMIT_MESSAGE" value="1612 2327" />
+    <MESSAGE value="1612 1308" />
+    <MESSAGE value="1612 1309" />
+    <option name="LAST_COMMIT_MESSAGE" value="1612 1309" />
   </component>
 </project>
