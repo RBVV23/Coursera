@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1612 1309">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1612 1323">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" afterDir="false" />
     </list>
@@ -44,6 +44,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="for_new_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Прикладные задачи анализа данных" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week_1/Task_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_1/Task_1/for_new_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,6 +139,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.average_wages_forecasting" />
+        <item itemvalue="Python.for_new_data" />
         <item itemvalue="Python.wine" />
         <item itemvalue="Python.sandbox" />
         <item itemvalue="Python.sandbox_1" />
@@ -343,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639735755826</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="1612 1323">
+      <created>1639736631968</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1639736631968</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +388,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1212 2242" />
     <MESSAGE value="1212 2243" />
     <MESSAGE value="1312 1237" />
     <MESSAGE value="1312 1301" />
@@ -384,6 +412,7 @@
     <MESSAGE value="1612 2327" />
     <MESSAGE value="1612 1308" />
     <MESSAGE value="1612 1309" />
-    <option name="LAST_COMMIT_MESSAGE" value="1612 1309" />
+    <MESSAGE value="1612 1323" />
+    <option name="LAST_COMMIT_MESSAGE" value="1612 1323" />
   </component>
 </project>
