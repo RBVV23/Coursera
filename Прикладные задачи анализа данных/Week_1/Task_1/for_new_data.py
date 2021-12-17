@@ -1,6 +1,7 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 import pandas as pd
+import re
 
 # скопируйте новые строки таблицы и вставьте в файл filename.txt
 # поменяйте расширение с .txt на .csv
@@ -22,6 +23,7 @@ date_list = [datetime.datetime.strptime("1993.01.01","%Y.%m.%d") + relativedelta
 # print(date_list[:5])
 # # new_data.index.name = 'month'
 new_data.month = list(map(lambda x: x.strftime("%Y.%m.%d"), date_list))
+new_data['WAG_C_M'] = list(map(lambda x: re.sub(',', '.', str(x)), new_data['WAG_C_M']))
 print('new_data')
 print(new_data)
 #
@@ -50,5 +52,5 @@ print(new_data)
 # print(updated_data)
 #
 #
-# updated_data.to_csv('update_WAG_C_M.csv', sep=';', index=False)
+new_data.to_csv('updated_WAG_C_M.csv', sep=';', index=False)
 #

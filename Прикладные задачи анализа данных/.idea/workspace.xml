@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1612 1931">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 0113">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_1/Task_1/filename.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/filename.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_1/Task_1/for_new_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/for_new_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_1/Task_1/new_WAG_C_M.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.for_new_data">
+  <component name="RunManager" selected="Python.average_wages_forecasting">
     <configuration name="average_wages_forecasting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,8 +148,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.for_new_data" />
         <item itemvalue="Python.average_wages_forecasting" />
+        <item itemvalue="Python.for_new_data" />
         <item itemvalue="Python.wine" />
         <item itemvalue="Python.sandbox" />
         <item itemvalue="Python.sandbox_1" />
@@ -403,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639758675641</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="1812 0113">
+      <created>1639779243896</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1639779243896</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -419,7 +426,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1312 1301" />
     <MESSAGE value="1312 1716" />
     <MESSAGE value="1312 1924" />
     <MESSAGE value="1312 1957" />
@@ -444,6 +450,7 @@
     <MESSAGE value="1612 1323" />
     <MESSAGE value="1612 1328" />
     <MESSAGE value="1612 1931" />
-    <option name="LAST_COMMIT_MESSAGE" value="1612 1931" />
+    <MESSAGE value="1812 0113" />
+    <option name="LAST_COMMIT_MESSAGE" value="1812 0113" />
   </component>
 </project>

@@ -9,16 +9,12 @@ from itertools import product
 import matplotlib.pyplot as plt
 import numpy as np
 
-# data = pd.read_csv('WAG_C_M.csv', sep=';', index_col=['month'], parse_dates=['month'],
+# data = pd.read_csv('updated_WAG_C_M.csv', sep=';', index_col=['month'], parse_dates=['month'],
 #                    dayfirst=True)
-
-old_data = pd.read_csv('WAG_C_M.csv', sep=';', index_col=['month'], parse_dates=['month'],
+data = pd.read_csv('alternative.csv', sep=';', index_col=['month'], parse_dates=['month'],
                    dayfirst=True)
-new_data = pd.read_csv('new_WAG_C_M.csv', sep=';', index_col=['month'], parse_dates=['month'],
-                   dayfirst=True)
-data = pd.concat([old_data, new_data])
 
-# data = data[0:297]
+# data = data[0:293]
 
 print(data)
 print()
