@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 2006" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 2324">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.average_wages_forecasting">
+  <component name="RunManager" selected="Python.wine">
     <configuration name="average_wages_forecasting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,8 +145,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.average_wages_forecasting" />
         <item itemvalue="Python.wine" />
+        <item itemvalue="Python.average_wages_forecasting" />
         <item itemvalue="Python.for_new_data" />
         <item itemvalue="Python.sandbox" />
         <item itemvalue="Python.sandbox_1" />
@@ -433,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639847172601</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="1812 2324">
+      <created>1639859061733</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1639859061733</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,7 +458,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1412 1248" />
     <MESSAGE value="1412 1254" />
     <MESSAGE value="1412 1326" />
     <MESSAGE value="1412 1348" />
@@ -474,6 +482,7 @@
     <MESSAGE value="1812 1834" />
     <MESSAGE value="1812 1915" />
     <MESSAGE value="1812 2006" />
-    <option name="LAST_COMMIT_MESSAGE" value="1812 2006" />
+    <MESSAGE value="1812 2324" />
+    <option name="LAST_COMMIT_MESSAGE" value="1812 2324" />
   </component>
 </project>
