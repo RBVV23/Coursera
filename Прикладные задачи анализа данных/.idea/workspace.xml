@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 1915">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 2006" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -429,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639844156822</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="1812 2006">
+      <created>1639847172601</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1639847172601</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -445,7 +449,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1312 2346" />
     <MESSAGE value="1412 1248" />
     <MESSAGE value="1412 1254" />
     <MESSAGE value="1412 1326" />
@@ -470,6 +473,7 @@
     <MESSAGE value="1812 0228" />
     <MESSAGE value="1812 1834" />
     <MESSAGE value="1812 1915" />
-    <option name="LAST_COMMIT_MESSAGE" value="1812 1915" />
+    <MESSAGE value="1812 2006" />
+    <option name="LAST_COMMIT_MESSAGE" value="1812 2006" />
   </component>
 </project>
