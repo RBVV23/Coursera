@@ -9,6 +9,13 @@ from itertools import product
 import matplotlib.pyplot as plt
 import numpy as np
 
+def my_inv_boxcox(y, lmbda):
+    if lmbda == 0:
+        result = (np.exp(y))
+    else:
+        result = (np.exp(np.log(lmbda*y+1)/lmbda))
+    return result
+
 # data = pd.read_csv('updated_WAG_C_M.csv', sep=';', index_col=['month'], parse_dates=['month'],
 #                    dayfirst=True)
 data = pd.read_csv('alternative.csv', sep=';', index_col=['month'], parse_dates=['month'],
@@ -72,13 +79,13 @@ plt.text(Q+0.1, 0.85, 'Q\u00d7S = {}'.format(Q))
 
 ax = plt.subplot(2,1,2)
 sm.graphics.tsa.plot_pacf(data.WAG_C_M_boxcox_diff[(S+1):].values.squeeze(), lags=4*S, ax=ax)
-p, p_mark = 10, -0.132213
+p, p_mark = 1, -0.132213
 plt.plot(p, p_mark, marker='o', markerfacecolor=(1,1,0,0), markeredgecolor='r', markeredgewidth=3, markersize=15)
 plt.text(p+0.1, 0.15, 'p = {}'.format(p))
-P, P_mark = 48, 0.1458
+P, P_mark = 12, -0.15
 plt.plot(P, P_mark, marker='o', markerfacecolor=(1,1,0,0), markeredgecolor='r', markeredgewidth=3, markersize=15)
 plt.text(P-1.2, 0.25, 'P\u00d7S = {}'.format(P))
-plt.show()
+# plt.show()
 
 Q = int(Q/S)
 print('Начальные приближения из графика автокорреляционной функции:')
@@ -103,32 +110,73 @@ parametrs = product(ps, qs, Ps, Qs)
 parametrs_list = list(parametrs)
 print('Количество моделей для перебора: ', len(parametrs_list), '\n')
 
-# results = []
-# best_aic = float('inf')
-# warnings.filterwarnings('ignore')
-#
-# for i, param in enumerate(parametrs_list):
-#     try:
-#         model = sm.tsa.statespace.SARIMAX(data.WAG_C_M_boxcox, order=(param[0], d, param[1]),
-#                                           seasonal_order=(param[2], D, param[3], S)).fit(disp=-1)
-#     except ValueError:
-#         print('Параметры невозможные для обучения: ', param)
-#         continue
-#     aic = model.aic
-#     print('#',i)
-#     if aic < best_aic:
-#         best_model = model
-#         best_aic = aic
-#         best_param = param
-#         print('\taic = {}'.format(aic))
-#     results.append([param, model.aic])
-#
-# warnings.filterwarnings('default')
-#
-# result_table = pd.DataFrame(results)
-# result_table.columns = ['parameters', 'aic']
-# print(result_table.sort_values(by = 'aic', ascending=True).head())
+results = []
+best_aic = float('inf')
+warnings.filterwarnings('ignore')
 
-# print()
-# print(best_model.summary())
-# print()
+for param in parametrs_list:
+    try:
+        model = sm.tsa.statespace.SARIMAX(data.WAG_C_M_boxcox, order=(param[0], d, param[1]),
+                                          seasonal_order=(param[2], D, param[3], S)).fit(disp=-1)
+    except ValueError:
+        print('Параметры невозможные для обучения: ', param)
+        continue
+    aic = model.aic
+    if aic < best_aic:
+        best_model = model
+        best_aic = aic
+        best_param = param
+    results.append([param, model.aic])
+
+warnings.filterwarnings('default')
+
+result_table = pd.DataFrame(results)
+result_table.columns = ['parameters', 'aic']
+print(result_table.sort_values(by = 'aic', ascending=True).head())
+
+print()
+print(best_model.summary())
+print()
+
+
+plt.figure(figsize=(15,8))
+plt.subplot(2,1,1)
+best_model.resid[(S+1):].plot()
+plt.ylabel('Остатки')
+
+ax = plt.subplot(2,1,2)
+sm.graphics.tsa.plot_acf(best_model.resid[(S+1):].values.squeeze(), lags=4*S, ax=ax)
+# plt.show()
+
+print('Критерий Стьюдента для остатков модели:')
+p_value = stats.ttest_1samp(best_model.resid[(S+1):], 0)[1]
+print('\tp-value = ', round(p_value, 6))
+print('\t - нулевая гипотеза о несмещенности остатков не отвергается')
+print('Критерий Дики-Фуллера для остатков модели:')
+p_value = sm.tsa.stattools.adfuller(best_model.resid[(S+1):])[1]
+print('\tp-value = ', round(p_value, 6))
+print('\t - нулевая гипотеза о нестационарности остатков отвергается')
+print()
+
+data['model'] = my_inv_boxcox(best_model.fittedvalues, lmbda)
+plt.figure(figsize=(15,8))
+data.WAG_C_M.plot(label='исторические данные')
+data.model[(S+1):].plot(color='r', label='результаты моделирования')
+plt.ylabel('Средняя номинальная заработная плата')
+plt.legend()
+# plt.show()
+
+data2 = data[['WAG_C_M']]
+date_list = [datetime.datetime.strptime("2017-06-01","%Y-%m-%d") + relativedelta(year=2017+(5+x)//12, month=1+(5+x)%12)
+             for x in range(51)]
+print(date_list)
+future = pd.DataFrame(index=date_list, columns=data2.columns)
+data2 = pd.concat([data2, future])
+data2['forecast'] = my_inv_boxcox(best_model.predict(start=data.shape[0], end=data.shape[0]+50), lmbda)
+
+plt.figure(figsize=(15,8))
+data2.WAG_C_M.plot(label='моделирование')
+data2.forecast.plot(color='r', label='прогнозирование')
+plt.ylabel('Средняя номинальная заработная плата')
+plt.legend()
+plt.show()
