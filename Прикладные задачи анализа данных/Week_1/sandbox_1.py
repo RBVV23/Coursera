@@ -58,4 +58,4 @@ print('answer 2.8 = ', answer28)
 sm.graphics.tsa.plot_pacf(data.daily_diff12_1.values[13:].squeeze(), lags=50)
 answer29 = 0
 print('answer 2.9 = ', answer29)
-plt.show()
+# plt.show()
