@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
 
-data = pd.read_csv('monthly-milk-production.csv', sep=';', header=0,
-                   parse_dates=['month'], dayfirst=True)
+data = pd.read_csv('monthly-milk-production.csv', sep=';', header=0, parse_dates=['month'], dayfirst=True)
 print(data)
 
 plt.figure()
