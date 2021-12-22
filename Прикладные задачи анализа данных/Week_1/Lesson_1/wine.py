@@ -3,7 +3,6 @@ from dateutil.relativedelta import relativedelta
 import pandas as pd
 from scipy import stats
 import statsmodels.api as sm
-import matplotlib.pyplot as plt
 import warnings
 from itertools import product
 import matplotlib.pyplot as plt
