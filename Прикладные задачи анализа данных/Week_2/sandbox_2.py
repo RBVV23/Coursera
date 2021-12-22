@@ -1,4 +1,5 @@
-# import opencv
+# import opencv as cv2
+# print(cv2.__version__)
 import pandas as pd
 print(pd.__version__)
 import numpy as np
