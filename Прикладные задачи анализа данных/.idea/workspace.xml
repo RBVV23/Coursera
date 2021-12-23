@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1812 2346">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Week_1/Task_1/average_wages_forecasting.ipynb" afterDir="false" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2312 2341">
+      <change beforePath="$PROJECT_DIR$/Week_2/sandbox_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_2/sandbox_2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,7 +456,28 @@
       <option name="project" value="LOCAL" />
       <updated>1639860401601</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="2312 2340">
+      <created>1640292067940</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1640292067940</updated>
+    </task>
+    <task id="LOCAL-00044" summary="2312 2341">
+      <created>1640292096188</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1640292096188</updated>
+    </task>
+    <task id="LOCAL-00045" summary="2312 2341">
+      <created>1640292104776</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1640292104776</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,8 +493,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1412 1348" />
-    <MESSAGE value="1412 1352" />
     <MESSAGE value="1412 2008" />
     <MESSAGE value="1412 2104" />
     <MESSAGE value="1412 2105" />
@@ -498,6 +516,8 @@
     <MESSAGE value="1812 2324" />
     <MESSAGE value="1812 2339" />
     <MESSAGE value="1812 2346" />
-    <option name="LAST_COMMIT_MESSAGE" value="1812 2346" />
+    <MESSAGE value="2312 2340" />
+    <MESSAGE value="2312 2341" />
+    <option name="LAST_COMMIT_MESSAGE" value="2312 2341" />
   </component>
 </project>
