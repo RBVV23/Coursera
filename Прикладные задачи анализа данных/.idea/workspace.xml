@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2512 2332">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2612 1329">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_2/sandbox_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_2/sandbox_2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.wine">
+  <component name="RunManager" selected="Python.sandbox_2">
     <configuration name="average_wages_forecasting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,7 +102,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sandbox_1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="sandbox_2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,11 +110,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week_1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week_2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_1/sandbox_1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_2/sandbox_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -145,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sandbox_2" />
         <item itemvalue="Python.wine" />
         <item itemvalue="Python.average_wages_forecasting" />
         <item itemvalue="Python.for_new_data" />
         <item itemvalue="Python.sandbox" />
-        <item itemvalue="Python.sandbox_1" />
       </list>
     </recent_temporary>
   </component>
@@ -161,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00006" summary="1212 2243">
-      <created>1639338189379</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1639338189379</updated>
     </task>
     <task id="LOCAL-00007" summary="1312 1237">
       <created>1639388235330</created>
@@ -505,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640464333101</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="2612 1329">
+      <created>1640514606074</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1640514606074</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +522,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1612 2327" />
     <MESSAGE value="1612 1308" />
     <MESSAGE value="1612 1309" />
     <MESSAGE value="1612 1323" />
@@ -546,6 +546,7 @@
     <MESSAGE value="2512 2315" />
     <MESSAGE value="2512 2320" />
     <MESSAGE value="2512 2332" />
-    <option name="LAST_COMMIT_MESSAGE" value="2512 2332" />
+    <MESSAGE value="2612 1329" />
+    <option name="LAST_COMMIT_MESSAGE" value="2612 1329" />
   </component>
 </project>
