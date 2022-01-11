@@ -6,5 +6,5 @@ import tensorflow as tf
 # print(tf.__version__)
 import matplotlib.pyplot as plt
 
-# 123
-#
+
+# 1
