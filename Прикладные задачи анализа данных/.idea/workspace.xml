@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1101 1335" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1101 1829" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,13 +160,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00029" summary="1612 1308">
-      <created>1639735739836</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1639735739836</updated>
     </task>
     <task id="LOCAL-00030" summary="1612 1309">
       <created>1639735755826</created>
@@ -504,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641897353147</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="1101 1829">
+      <created>1641914980250</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1641914980250</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +520,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2512 2307" />
     <MESSAGE value="2512 2315" />
     <MESSAGE value="2512 2320" />
     <MESSAGE value="2512 2332" />
@@ -545,6 +544,7 @@
     <MESSAGE value="2812 2359" />
     <MESSAGE value="1101 1320" />
     <MESSAGE value="1101 1335" />
-    <option name="LAST_COMMIT_MESSAGE" value="1101 1335" />
+    <MESSAGE value="1101 1829" />
+    <option name="LAST_COMMIT_MESSAGE" value="1101 1829" />
   </component>
 </project>
