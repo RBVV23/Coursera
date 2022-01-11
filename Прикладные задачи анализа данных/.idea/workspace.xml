@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2812 2359">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1101 1335" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.sandbox_2">
     <configuration name="average_wages_forecasting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -161,20 +160,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00027" summary="1512 0028">
-      <created>1639603727697</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1639603727697</updated>
-    </task>
-    <task id="LOCAL-00028" summary="1612 2327">
-      <created>1639686487121</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1639686487121</updated>
     </task>
     <task id="LOCAL-00029" summary="1612 1308">
       <created>1639735739836</created>
@@ -505,7 +490,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640725170714</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="1101 1320">
+      <created>1641896440908</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1641896440908</updated>
+    </task>
+    <task id="LOCAL-00077" summary="1101 1335">
+      <created>1641897353147</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1641897353147</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,8 +520,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2512 2250" />
-    <MESSAGE value="2512 2300" />
     <MESSAGE value="2512 2307" />
     <MESSAGE value="2512 2315" />
     <MESSAGE value="2512 2320" />
@@ -546,6 +543,8 @@
     <MESSAGE value="2812 2357" />
     <MESSAGE value="2812 2358" />
     <MESSAGE value="2812 2359" />
-    <option name="LAST_COMMIT_MESSAGE" value="2812 2359" />
+    <MESSAGE value="1101 1320" />
+    <MESSAGE value="1101 1335" />
+    <option name="LAST_COMMIT_MESSAGE" value="1101 1335" />
   </component>
 </project>
