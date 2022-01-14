@@ -248,3 +248,105 @@ class vgg16:
             print(i, k, np.shape(weights[k]))
             sess.run(self.parameters[i].assign(weights[k]))
 
+# Функция сохранения в файл ответа, состоящего из одного числа
+def save_answerNum(fname,number):
+    with open(fname,"w") as fout:
+        fout.write(str(number))
+
+# Функция сохранения в файл ответа, представленного массивом
+def save_answerArray(fname,array):
+    with open(fname,"w") as fout:
+        fout.write(" ".join([str(el) for el in array]))
+
+# Загрузка словаря из текстового файла. Словарь у нас используется для сохранения меток классов в выборке data.
+def load_txt(fname):
+    line_dict = {}
+    for line in open(fname):
+        fname, class_id = line.strip().split()
+        line_dict[fname] = class_id
+
+    return line_dict
+
+# Функция обработки отдельного изображения, печатает метки TOP-5 классов и уверенность модели в каждом из них.
+def process_image(fname):
+    img1 = imread(fname, pilmode='RGB')
+    img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
+
+    prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
+    preds = (np.argsort(prob)[::-1])[0:5]
+    for p in preds:
+        print(class_names[p], prob[p])
+
+# Инициируем TF сессию, и инициализируем модель. На этом шаге модель загружает веса. Веса - это 500Мб в сжатом виде
+# и ~2.5Гб в памяти, процесс их загрузки послойно выводится ниже этой ячейки, и если вы увидите этот вывод ещё раз -
+# у вас неистово кончается память. Остановитесь. Также, не запускайте эту ячейку на выполнение больше одного раза
+# за запуск ядра Jupyter.
+sess = tf.Session()
+imgs = tf.placeholder(tf.float32, [None, 224, 224, 3])
+# vgg = vgg16(imgs, 'D:/vgg16_weights.npz', sess)
+vgg = vgg16(imgs, 'vgg16_weights.npz', sess)
+
+# Ваш код здесь
+
+process_image('train/00002.jpg')
+answer = 0.3658359
+answer1 = round(answer, 1)
+
+save_answerNum("vgg16_answer1.txt", answer1 )
+
+img1 = imread('train/00002.jpg', pilmode='RGB')
+img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
+
+# Ваш код здесь
+
+fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
+answer2 = fc2[:20]
+# process_image('train/00002.jpg')
+
+save_answerArray("vgg16_answer2", answer2 )
+
+
+# Функция, возвращающая признаковое описание для каждого файла jpg в заданной папке
+def get_features(folder, ydict):
+    paths = glob.glob(folder)
+    X = np.zeros((len(paths), 4096))
+    Y = np.zeros(len(paths))
+
+    for i, img_name in enumerate(paths):
+        print(img_name)
+        base = os.path.basename(img_name)
+        Y[i] = ydict[base]
+
+        img1 = imread(img_name, pilmode='RGB')
+        img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
+        # Здесь ваш код. Нужно получить слой fc2
+        fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
+        prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
+
+        X[i, :] = fc2
+    #         Y[i, :] = prob
+
+    return X, Y
+
+
+# Функция обработки папки. Ожидается, что в этой папке лежит файл results.txt с метками классов, и
+# имеются подразделы train и test с jpg файлами.
+def process_folder(folder):
+    ydict = load_txt(os.path.join(folder, 'results.txt'))
+
+    X, Y = get_features(os.path.join(folder, 'train/*jpg'), ydict)
+    # Ваш код здесь.
+    X_test, Y_test = get_features(os.path.join(folder, 'test/*jpg'), ydict)
+
+    # Ваш код здесь.
+    random_state = 0
+    clf = SVC()
+    clf.fit(X, Y)
+    Y_test_pred = clf.predict(X_test)
+    print(sum(Y_test == Y_test_pred))  # Число правильно предсказанных классов
+
+
+process_folder('.') # Вызови меня!
+
+answer3 = 89
+save_answerNum("vgg16_answer3.txt", answer3 )
