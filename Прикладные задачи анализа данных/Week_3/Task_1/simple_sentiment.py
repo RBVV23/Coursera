@@ -6,6 +6,7 @@ from sklearn.pipeline import Pipeline
 from nltk.corpus import movie_reviews
 from sklearn.decomposition import NMF, TruncatedSVD
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.pipeline import FeatureUnion
 
 
 def text_classifier(vectorizer, transformer, classifier):
@@ -72,3 +73,25 @@ print(cross_val_score(
     labels
     ))
 
+print(cross_val_score(text_classifier(CountVectorizer(), TruncatedSVD(n_components=1000), RandomForestClassifier(1000)),
+                      texts,
+                      labels
+                     ).mean())
+
+print(cross_val_score(text_classifier(TfidfVectorizer(), TruncatedSVD(n_components=1000), RandomForestClassifier(1000)),
+                      texts,
+                      labels
+                     ).mean())
+
+estimators = [('tfidf', TfidfTransformer()), ('svd', TruncatedSVD(1))]
+combined = FeatureUnion(estimators)
+
+print(cross_val_score(
+    Pipeline([
+            ("vectorizer", CountVectorizer()),
+            ("transformer", combined),
+            ("classifier", LinearSVC())
+        ]),
+    texts,
+    labels
+    ))
