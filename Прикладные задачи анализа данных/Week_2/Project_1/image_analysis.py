@@ -23,12 +23,10 @@ class vgg16:
     def convlayers(self):
         self.parameters = []
 
-        # zero-mean input
         with tf.name_scope('preprocess') as scope:
             mean = tf.constant([123.68, 116.779, 103.939], dtype=tf.float32, shape=[1, 1, 1, 3], name='img_mean')
             images = self.imgs-mean
 
-        # conv1_1
         with tf.name_scope('conv1_1') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 3, 64], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -39,7 +37,6 @@ class vgg16:
             self.conv1_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv1_2
         with tf.name_scope('conv1_2') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 64, 64], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -50,14 +47,12 @@ class vgg16:
             self.conv1_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # pool1
         self.pool1 = tf.nn.max_pool(self.conv1_2,
                                ksize=[1, 2, 2, 1],
                                strides=[1, 2, 2, 1],
                                padding='SAME',
                                name='pool1')
 
-        # conv2_1
         with tf.name_scope('conv2_1') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 64, 128], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -68,7 +63,6 @@ class vgg16:
             self.conv2_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv2_2
         with tf.name_scope('conv2_2') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 128, 128], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -79,14 +73,12 @@ class vgg16:
             self.conv2_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # pool2
         self.pool2 = tf.nn.max_pool(self.conv2_2,
                                ksize=[1, 2, 2, 1],
                                strides=[1, 2, 2, 1],
                                padding='SAME',
                                name='pool2')
 
-        # conv3_1
         with tf.name_scope('conv3_1') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 128, 256], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -97,7 +89,6 @@ class vgg16:
             self.conv3_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv3_2
         with tf.name_scope('conv3_2') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 256, 256], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -108,7 +99,6 @@ class vgg16:
             self.conv3_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv3_3
         with tf.name_scope('conv3_3') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 256, 256], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -119,14 +109,12 @@ class vgg16:
             self.conv3_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # pool3
         self.pool3 = tf.nn.max_pool(self.conv3_3,
                                ksize=[1, 2, 2, 1],
                                strides=[1, 2, 2, 1],
                                padding='SAME',
                                name='pool3')
 
-        # conv4_1
         with tf.name_scope('conv4_1') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 256, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -137,7 +125,6 @@ class vgg16:
             self.conv4_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv4_2
         with tf.name_scope('conv4_2') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 512, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -148,7 +135,6 @@ class vgg16:
             self.conv4_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv4_3
         with tf.name_scope('conv4_3') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 512, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -159,14 +145,12 @@ class vgg16:
             self.conv4_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # pool4
         self.pool4 = tf.nn.max_pool(self.conv4_3,
                                ksize=[1, 2, 2, 1],
                                strides=[1, 2, 2, 1],
                                padding='SAME',
                                name='pool4')
 
-        # conv5_1
         with tf.name_scope('conv5_1') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 512, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -177,7 +161,6 @@ class vgg16:
             self.conv5_1 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv5_2
         with tf.name_scope('conv5_2') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 512, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -188,7 +171,6 @@ class vgg16:
             self.conv5_2 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # conv5_3
         with tf.name_scope('conv5_3') as scope:
             kernel = tf.Variable(tf.truncated_normal([3, 3, 512, 512], dtype=tf.float32,
                                                      stddev=1e-1), name='weights')
@@ -199,7 +181,6 @@ class vgg16:
             self.conv5_3 = tf.nn.relu(out, name=scope)
             self.parameters += [kernel, biases]
 
-        # pool5
         self.pool5 = tf.nn.max_pool(self.conv5_3,
                                ksize=[1, 2, 2, 1],
                                strides=[1, 2, 2, 1],
@@ -207,7 +188,6 @@ class vgg16:
                                name='pool4')
 
     def fc_layers(self):
-        # fc1
         with tf.name_scope('fc1') as scope:
             shape = int(np.prod(self.pool5.get_shape()[1:]))
             fc1w = tf.Variable(tf.truncated_normal([shape, 4096],
@@ -220,7 +200,6 @@ class vgg16:
             self.fc1 = tf.nn.relu(fc1l)
             self.parameters += [fc1w, fc1b]
 
-        # fc2
         with tf.name_scope('fc2') as scope:
             fc2w = tf.Variable(tf.truncated_normal([4096, 4096],
                                                          dtype=tf.float32,
@@ -231,7 +210,6 @@ class vgg16:
             self.fc2 = tf.nn.relu(fc2l)
             self.parameters += [fc2w, fc2b]
 
-        # fc3
         with tf.name_scope('fc3') as scope:
             fc3w = tf.Variable(tf.truncated_normal([4096, 1000],
                                                          dtype=tf.float32,
@@ -248,45 +226,13 @@ class vgg16:
             print(i, k, np.shape(weights[k]))
             sess.run(self.parameters[i].assign(weights[k]))
 
-# Функция сохранения в файл ответа, состоящего из одного числа
-def save_answerNum(fname,number):
-    with open(fname,"w") as fout:
-        fout.write(str(number))
 
-# Функция сохранения в файл ответа, представленного массивом
-def save_answerArray(fname,array):
-    with open(fname,"w") as fout:
-        fout.write(" ".join([str(el) for el in array]))
 
-# Загрузка словаря из текстового файла. Словарь у нас используется для сохранения меток классов в выборке data.
-def load_txt(fname):
-    line_dict = {}
-    for line in open(fname):
-        fname, class_id = line.strip().split()
-        line_dict[fname] = class_id
 
-    return line_dict
-
-# Функция обработки отдельного изображения, печатает метки TOP-5 классов и уверенность модели в каждом из них.
-def process_image(fname):
-    img1 = imread(fname, pilmode='RGB')
-    img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
-
-    prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
-    preds = (np.argsort(prob)[::-1])[0:5]
-    for p in preds:
-        print(class_names[p], prob[p])
-
-# Инициируем TF сессию, и инициализируем модель. На этом шаге модель загружает веса. Веса - это 500Мб в сжатом виде
-# и ~2.5Гб в памяти, процесс их загрузки послойно выводится ниже этой ячейки, и если вы увидите этот вывод ещё раз -
-# у вас неистово кончается память. Остановитесь. Также, не запускайте эту ячейку на выполнение больше одного раза
-# за запуск ядра Jupyter.
 sess = tf.Session()
 imgs = tf.placeholder(tf.float32, [None, 224, 224, 3])
-# vgg = vgg16(imgs, 'D:/vgg16_weights.npz', sess)
 vgg = vgg16(imgs, 'vgg16_weights.npz', sess)
 
-# Ваш код здесь
 
 process_image('train/00002.jpg')
 answer = 0.3658359
@@ -297,16 +243,14 @@ save_answerNum("vgg16_answer1.txt", answer1 )
 img1 = imread('train/00002.jpg', pilmode='RGB')
 img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
 
-# Ваш код здесь
 
 fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
 answer2 = fc2[:20]
-# process_image('train/00002.jpg')
+
 
 save_answerArray("vgg16_answer2", answer2 )
 
 
-# Функция, возвращающая признаковое описание для каждого файла jpg в заданной папке
 def get_features(folder, ydict):
     paths = glob.glob(folder)
     X = np.zeros((len(paths), 4096))
@@ -319,7 +263,6 @@ def get_features(folder, ydict):
 
         img1 = imread(img_name, pilmode='RGB')
         img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
-        # Здесь ваш код. Нужно получить слой fc2
         fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
         prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
 
@@ -329,24 +272,11 @@ def get_features(folder, ydict):
     return X, Y
 
 
-# Функция обработки папки. Ожидается, что в этой папке лежит файл results.txt с метками классов, и
-# имеются подразделы train и test с jpg файлами.
-def process_folder(folder):
-    ydict = load_txt(os.path.join(folder, 'results.txt'))
-
-    X, Y = get_features(os.path.join(folder, 'train/*jpg'), ydict)
-    # Ваш код здесь.
-    X_test, Y_test = get_features(os.path.join(folder, 'test/*jpg'), ydict)
-
-    # Ваш код здесь.
-    random_state = 0
-    clf = SVC()
-    clf.fit(X, Y)
-    Y_test_pred = clf.predict(X_test)
-    print(sum(Y_test == Y_test_pred))  # Число правильно предсказанных классов
 
 
-process_folder('.') # Вызови меня!
+
+
+process_folder('.')
 
 answer3 = 89
 save_answerNum("vgg16_answer3.txt", answer3 )
