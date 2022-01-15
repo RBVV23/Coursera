@@ -62,3 +62,13 @@ print(cross_val_score(text_classifier(TfidfVectorizer(), TruncatedSVD(n_componen
                       labels
                      ).mean())
 
+print(cross_val_score(
+    Pipeline([
+            ("vectorizer", CountVectorizer()),
+            ("transformer", TruncatedSVD(100)),
+            ("classifier", RandomForestClassifier(100))
+        ]),
+    texts,
+    labels
+    ))
+
