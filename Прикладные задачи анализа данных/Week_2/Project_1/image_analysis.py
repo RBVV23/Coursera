@@ -279,7 +279,6 @@ sess = tf.Session()
 imgs = tf.placeholder(tf.float32, [None, 224, 224, 3])
 vgg = vgg16(imgs, 'vgg16_weights.npz', sess)
 
-
 process_image('train/00002.jpg')
 answer = 0.3658359
 answer1 = round(answer, 1)
@@ -289,21 +288,11 @@ save_answerNum("vgg16_answer1.txt", answer1 )
 img1 = imread('train/00002.jpg', pilmode='RGB')
 img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
 
-
 fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
 answer2 = fc2[:20]
 
-
 save_answerArray("vgg16_answer2", answer2 )
-
-
-
-
-
-
-
-
 process_folder('.')
 
 answer3 = 89
-save_answerNum("vgg16_answer3.txt", answer3 )
+save_answerNum("vgg16_answer3.txt", answer3)
