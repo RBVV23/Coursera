@@ -258,6 +258,22 @@ def process_image(fname):
     preds = (np.argsort(prob)[::-1])[0:5]
     for p in preds:
         print(class_names[p], prob[p])
+def get_features(folder, ydict):
+    paths = glob.glob(folder)
+    X = np.zeros((len(paths), 4096))
+    Y = np.zeros(len(paths))
+
+    for i, img_name in enumerate(paths):
+        print(img_name)
+        base = os.path.basename(img_name)
+        Y[i] = ydict[base]
+        img1 = imread(img_name, pilmode='RGB')
+        img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
+        fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
+        prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
+        X[i, :] = fc2
+    return X, Y
+
 
 sess = tf.Session()
 imgs = tf.placeholder(tf.float32, [None, 224, 224, 3])
@@ -281,21 +297,6 @@ answer2 = fc2[:20]
 save_answerArray("vgg16_answer2", answer2 )
 
 
-def get_features(folder, ydict):
-    paths = glob.glob(folder)
-    X = np.zeros((len(paths), 4096))
-    Y = np.zeros(len(paths))
-
-    for i, img_name in enumerate(paths):
-        print(img_name)
-        base = os.path.basename(img_name)
-        Y[i] = ydict[base]
-        img1 = imread(img_name, pilmode='RGB')
-        img1 = np.array(Image.fromarray(img1).resize(size=(224, 224)))
-        fc2 = sess.run(vgg.fc2, feed_dict={vgg.imgs: [img1]})[0]
-        prob = sess.run(vgg.probs, feed_dict={vgg.imgs: [img1]})[0]
-        X[i, :] = fc2
-    return X, Y
 
 
 
