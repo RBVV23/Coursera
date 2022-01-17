@@ -10,7 +10,6 @@ print(data.head())
 print(data.shape)
 print(data.describe())
 
-# labels = np.array(data.type == 'spam')
 labels = [1 if (x == 'spam') else 0 for x in data.content]
 # print(labels)
 print(type(labels))
