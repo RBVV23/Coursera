@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import cross_val_score
 
 data = pd.read_csv('SMSSpamCollection.txt', sep='\t', header=None)
 
@@ -18,7 +19,6 @@ messages = list(data.sms)
 # print(messages)
 print(type(messages))
 
-vectorizer = CountVectorizer(input=messages)
-X = vectorizer.transform()
+X = CountVectorizer(input=messages)
 print(X)
 
