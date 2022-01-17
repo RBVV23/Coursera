@@ -18,6 +18,7 @@ messages = list(data.sms)
 # print(messages)
 print(type(messages))
 
-X = CountVectorizer(input=messages)
+vectorizer = CountVectorizer(input=messages)
+X = vectorizer.transform()
 print(X)
 
