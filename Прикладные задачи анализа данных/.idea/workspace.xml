@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1701 1241">
-      <change afterPath="$PROJECT_DIR$/Week_3/Project_1/readme" afterDir="false" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1701 1253">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_3/Project_2/SMSSpamCollection.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_3/Project_2/readme" beforeDir="false" />
     </list>
     <list id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="">
       <change afterPath="$PROJECT_DIR$/Week_2/Project_1/vgg16_weights.npz" afterDir="false" />
@@ -45,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.sandbox_2">
+  <component name="RunManager" selected="Python.text_analysis">
     <configuration name="average_wages_forecasting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,27 +85,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sandbox" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Прикладные задачи анализа данных" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../My_projects/TelegramBot" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../My_projects/TelegramBot/sandbox.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="sandbox_2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -122,6 +98,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_2/sandbox_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="text_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Прикладные задачи анализа данных" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Week_3/Project_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Week_3/Project_1/text_analysis.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.text_analysis" />
         <item itemvalue="Python.sandbox_2" />
         <item itemvalue="Python.wine" />
         <item itemvalue="Python.average_wages_forecasting" />
         <item itemvalue="Python.for_new_data" />
-        <item itemvalue="Python.sandbox" />
       </list>
     </recent_temporary>
   </component>
@@ -171,20 +168,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00072" summary="2812 2356">
-      <created>1640724990227</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1640724990227</updated>
-    </task>
-    <task id="LOCAL-00073" summary="2812 2357">
-      <created>1640725048993</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1640725048993</updated>
     </task>
     <task id="LOCAL-00074" summary="2812 2358">
       <created>1640725125767</created>
@@ -515,7 +498,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642412488887</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="1701 1241">
+      <created>1642412507993</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1642412507993</updated>
+    </task>
+    <task id="LOCAL-00122" summary="1701 1253">
+      <created>1642413233384</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1642413233384</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +528,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1301 2208" />
     <MESSAGE value="1301 2211" />
     <MESSAGE value="1401 2306" />
     <MESSAGE value="1401 2211" />
@@ -556,6 +552,7 @@
     <MESSAGE value="1601 0025" />
     <MESSAGE value="1701 1240" />
     <MESSAGE value="1701 1241" />
-    <option name="LAST_COMMIT_MESSAGE" value="1701 1241" />
+    <MESSAGE value="1701 1253" />
+    <option name="LAST_COMMIT_MESSAGE" value="1701 1253" />
   </component>
 </project>
