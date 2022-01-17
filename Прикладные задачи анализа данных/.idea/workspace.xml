@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1501 2309">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1701 1241">
+      <change afterPath="$PROJECT_DIR$/Week_3/Project_1/readme" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_3/Project_2/SMSSpamCollection.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_3/Project_2/readme" beforeDir="false" />
     </list>
     <list id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="">
       <change afterPath="$PROJECT_DIR$/Week_2/Project_1/vgg16_weights.npz" afterDir="false" />
@@ -168,55 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00065" summary="2712 2325">
-      <created>1640636744600</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1640636744600</updated>
-    </task>
-    <task id="LOCAL-00066" summary="2712 2328">
-      <created>1640636907633</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1640636907633</updated>
-    </task>
-    <task id="LOCAL-00067" summary="2712 2328">
-      <created>1640636940706</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1640636940706</updated>
-    </task>
-    <task id="LOCAL-00068" summary="2712 2329">
-      <created>1640637878243</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1640637878243</updated>
-    </task>
-    <task id="LOCAL-00069" summary="2812 2344">
-      <created>1640724297325</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1640724297325</updated>
-    </task>
-    <task id="LOCAL-00070" summary="2812 2346">
-      <created>1640724427408</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1640724427408</updated>
-    </task>
-    <task id="LOCAL-00071" summary="2812 2354">
-      <created>1640724849026</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1640724849026</updated>
     </task>
     <task id="LOCAL-00072" summary="2812 2356">
       <created>1640724990227</created>
@@ -512,7 +466,56 @@
       <option name="project" value="LOCAL" />
       <updated>1642277358895</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="1601 0014">
+      <created>1642281257361</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281257361</updated>
+    </task>
+    <task id="LOCAL-00115" summary="1601 0015">
+      <created>1642281356265</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281356265</updated>
+    </task>
+    <task id="LOCAL-00116" summary="1601 0016">
+      <created>1642281385427</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281385427</updated>
+    </task>
+    <task id="LOCAL-00117" summary="1601 0017">
+      <created>1642281444341</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281444341</updated>
+    </task>
+    <task id="LOCAL-00118" summary="1601 0024">
+      <created>1642281914434</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281914434</updated>
+    </task>
+    <task id="LOCAL-00119" summary="1601 0025">
+      <created>1642281924006</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1642281924006</updated>
+    </task>
+    <task id="LOCAL-00120" summary="1701 1241">
+      <created>1642412488886</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1642412488887</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -528,14 +531,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1301 1329" />
-    <MESSAGE value="1301 1347" />
-    <MESSAGE value="1301 1348" />
-    <MESSAGE value="1301 1513" />
-    <MESSAGE value="1301 2201" />
-    <MESSAGE value="1301 2202" />
-    <MESSAGE value="1301 2204" />
-    <MESSAGE value="1301 2205" />
     <MESSAGE value="1301 2208" />
     <MESSAGE value="1301 2211" />
     <MESSAGE value="1401 2306" />
@@ -553,6 +548,14 @@
     <MESSAGE value="1501 2306" />
     <MESSAGE value="1501 2307" />
     <MESSAGE value="1501 2309" />
-    <option name="LAST_COMMIT_MESSAGE" value="1501 2309" />
+    <MESSAGE value="1601 0014" />
+    <MESSAGE value="1601 0015" />
+    <MESSAGE value="1601 0016" />
+    <MESSAGE value="1601 0017" />
+    <MESSAGE value="1601 0024" />
+    <MESSAGE value="1601 0025" />
+    <MESSAGE value="1701 1240" />
+    <MESSAGE value="1701 1241" />
+    <option name="LAST_COMMIT_MESSAGE" value="1701 1241" />
   </component>
 </project>
