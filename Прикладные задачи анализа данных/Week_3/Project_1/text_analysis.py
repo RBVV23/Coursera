@@ -40,9 +40,6 @@ print(X.shape)
 pipeline = Pipeline([
     ('Создание_вектора_признаков', CountVectorizer()),
     ('Классификация_логистической_регрессией', LogisticRegression())])
-# pipeline = Pipeline([
-#     ('cove', CountVectorizer()),
-#     ('lore', LogisticRegression())])
 
 results = cross_val_score(pipeline, scoring='f1', cv=10, X=messages, y=labels)
 print(results)
@@ -59,12 +56,24 @@ new_messages = list(new_data[0])
 
 pipeline.fit(messages, labels)
 new_labels = pipeline.predict(new_messages)
-# preds = clf.predict(test_X)
-print(new_labels)
-answer6 = new_labels
 
+answer6 = str(new_labels)[1:-1]
+print('answer6 = ', answer6)
 my_write_answer(answer6, 6)
 
-# clf.fit(test_X)
-# test_y = clf.predict_proba(test_X)
-# print(test_y)
+results = []
+params = [(2,2), (3,3), (1,3)]
+for trpl in params:
+    pipeline_2 = Pipeline([
+        ('Создание_вектора_признаков', CountVectorizer(ngram_range=trpl)),
+        ('Классификация_логистической_регрессией', LogisticRegression())])
+
+    result = cross_val_score(pipeline_2, scoring='f1', cv=10, X=messages, y=labels).mean()
+    results.append(round(result,2))
+
+print(results)
+
+answer7 = str(results)[1:-1]
+answer7.replace(',','')
+print('answer7 = ', answer7)
+my_write_answer(answer7, 7)
