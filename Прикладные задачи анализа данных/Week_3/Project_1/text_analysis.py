@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import cross_val_score
+from sklearn.decomposition import TruncatedSVD
 
 data = pd.read_csv('SMSSpamCollection.txt', sep='\t', header=None)
 
@@ -19,6 +20,9 @@ messages = list(data.sms)
 # print(messages)
 print(type(messages))
 
-X = CountVectorizer(input=messages)
-print(X)
+# X = CountVectorizer(input=messages)
+# print(X)
 
+# vectorizer = CountVectorizer()
+X = TruncatedSVD().fit_transform(CountVectorizer().fit_transform(messages))
+print(X)
