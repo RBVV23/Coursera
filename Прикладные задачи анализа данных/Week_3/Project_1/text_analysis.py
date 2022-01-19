@@ -4,6 +4,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def my_write_answer(answer, number):
     name = 'answer' + str(number) + '.txt'
@@ -74,6 +76,30 @@ for trpl in params:
 print(results)
 
 answer7 = str(results)[1:-1]
-answer7.replace(',','')
+answer7 = answer7[:4] + answer7[5:10] + answer7[11:16]
 print('answer7 = ', answer7)
 my_write_answer(answer7, 7)
+
+print('Байес 1')
+results = []
+params = [(2,2), (3,3), (1,3)]
+for trpl in params:
+    X = CountVectorizer(ngram_range=trpl).fit_transform(messages)
+    clf = MultinomialNB()
+    result = cross_val_score(clf, scoring='f1', cv=10, X=X, y=labels).mean()
+    results.append(round(result,2))
+
+print(results)
+
+answer8 = str(results)[1:-1]
+answer8 = answer8[:4] + answer8[5:10] + answer8[11:16]
+print('answer8 = ', answer8)
+my_write_answer(answer8, 8)
+
+pipeline_4 = Pipeline([
+    ('Создание_вектора_признаков', TfidfVectorizer()),
+    ('Классификация_логистической_регрессией', LogisticRegression())])
+
+results = cross_val_score(pipeline_4, scoring='f1', cv=10, X=messages, y=labels)
+print(results)
+print(results.mean())
