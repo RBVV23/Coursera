@@ -43,10 +43,10 @@ pipeline = Pipeline([
     ('Создание_вектора_признаков', CountVectorizer()),
     ('Классификация_логистической_регрессией', LogisticRegression())])
 
-results = cross_val_score(pipeline, scoring='f1', cv=10, X=messages, y=labels)
-print(results)
-print(results.mean())
-answer5 = round(results.mean(),1)
+results_unigramms = cross_val_score(pipeline, scoring='f1', cv=10, X=messages, y=labels)
+print(results_unigramms)
+print(results_unigramms.mean())
+answer5 = round(results_unigramms.mean(),1)
 print('answer5 = ', answer5)
 my_write_answer(answer5, 5)
 
@@ -102,4 +102,16 @@ pipeline_4 = Pipeline([
 
 results = cross_val_score(pipeline_4, scoring='f1', cv=10, X=messages, y=labels)
 print(results)
-print(results.mean())
+print('results_unigramms.mean() = ', results_unigramms.mean())
+print('results.mean() = ', results.mean())
+
+answer9 = 11
+if abs(results.mean() - results_unigramms.mean()) < 0.01:
+    answer9 = 0
+elif results.mean() > results_unigramms.mean():
+    answer9 = 1
+else:
+    amswer9 = -1
+
+print('answer9 = ', answer9)
+my_write_answer(answer9, 9)
