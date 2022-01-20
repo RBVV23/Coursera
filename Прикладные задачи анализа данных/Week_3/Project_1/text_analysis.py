@@ -80,7 +80,6 @@ answer7 = answer7[:4] + answer7[5:10] + answer7[11:16]
 print('answer7 = ', answer7)
 my_write_answer(answer7, 7)
 
-print('Байес 1')
 results = []
 params = [(2,2), (3,3), (1,3)]
 for trpl in params:
@@ -106,12 +105,17 @@ print('results_unigramms.mean() = ', results_unigramms.mean())
 print('results.mean() = ', results.mean())
 
 answer9 = 11
+print('abs(results.mean() - results_unigramms.mean()) = ', abs(results.mean() - results_unigramms.mean()))
+
 if abs(results.mean() - results_unigramms.mean()) < 0.01:
     answer9 = 0
+    print('0')
 elif results.mean() > results_unigramms.mean():
     answer9 = 1
+    print('1')
 else:
-    amswer9 = -1
+    answer9 = -1
+    print('-1')
 
 print('answer9 = ', answer9)
 my_write_answer(answer9, 9)
