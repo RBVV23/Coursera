@@ -8,18 +8,18 @@ def my_write_answer(answer, part, number):
     with open(name, 'w') as file:
         file.write(str(answer))
 
-def my_precision(d):
+def my_precision(d, k):
     sum = 0
-    for i in d:
+    for i in d[:k]:
         sum += i
-    return sum/len(d)
+    return sum/k
 
 def my_AP(d):
     k = len(d)+1
     sum_1 = 0
     sum_2 = 0
     for n,i in enumerate(d):
-        sum_1 += i * i/(n+1)
+        sum_1 += i * my_precision(d,n+1)
         sum_2 += i
     return sum_1/sum_2
 
