@@ -5,7 +5,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import Pipeline
 from nltk.corpus import movie_reviews
 from sklearn.decomposition import NMF, TruncatedSVD
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import FeatureUnion
 
 
