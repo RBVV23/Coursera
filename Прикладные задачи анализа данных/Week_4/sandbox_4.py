@@ -4,17 +4,16 @@ import numpy as np
 print(pd.__version__)
 print(np.__version__)
 
+
 def my_write_answer(answer, part, number):
     name = 'answer' + str(part) + str(number) + '.txt'
     with open(name, 'w') as file:
         file.write(str(answer))
-
 def my_precision(d, k):
     sum = 0
     for i in d[:k]:
         sum += i
     return sum/k
-
 def my_AP(d):
     k = len(d)+1
     sum_1 = 0
@@ -23,6 +22,7 @@ def my_AP(d):
         sum_1 += i * my_precision(d,n+1)
         sum_2 += i
     return sum_1/sum_2
+
 
 vec_1 = [1, 0, 0, 1]
 vec_2 = [1, 1, 0, 0]
