@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2301 2352">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2301 1318">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" afterDir="false" />
     </list>
@@ -43,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.sandbox_4">
+  <component name="RunManager" selected="Python.recommender_systems">
     <configuration name="recommender_systems" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,8 +151,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.recommender_systems" />
+        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.text_analysis" />
         <item itemvalue="Python.sandbox_2" />
         <item itemvalue="Python.wine" />
@@ -169,41 +169,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00121" summary="1701 1241">
-      <created>1642412507993</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1642412507993</updated>
-    </task>
-    <task id="LOCAL-00122" summary="1701 1253">
-      <created>1642413233384</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1642413233384</updated>
-    </task>
-    <task id="LOCAL-00123" summary="1701 1347">
-      <created>1642416450704</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1642416450704</updated>
-    </task>
-    <task id="LOCAL-00124" summary="1701 2308">
-      <created>1642450117947</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1642450117947</updated>
-    </task>
-    <task id="LOCAL-00125" summary="1701 2309">
-      <created>1642450164757</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1642450164757</updated>
     </task>
     <task id="LOCAL-00126" summary="1701 2313">
       <created>1642450389576</created>
@@ -513,7 +478,42 @@
       <option name="project" value="LOCAL" />
       <updated>1642971159670</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="2301 1239">
+      <created>1643017176217</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1643017176217</updated>
+    </task>
+    <task id="LOCAL-00171" summary="2301 1239">
+      <created>1643017192141</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1643017192141</updated>
+    </task>
+    <task id="LOCAL-00172" summary="2301 1308">
+      <created>1643018952690</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1643018952690</updated>
+    </task>
+    <task id="LOCAL-00173" summary="2301 1309">
+      <created>1643018967873</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1643018967873</updated>
+    </task>
+    <task id="LOCAL-00174" summary="2301 1318">
+      <created>1643019495822</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1643019495822</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,10 +529,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2001 2012" />
-    <MESSAGE value="2001 2016" />
-    <MESSAGE value="2001 2255" />
-    <MESSAGE value="2001 2311" />
     <MESSAGE value="2001 2336" />
     <MESSAGE value="2001 2343" />
     <MESSAGE value="2101 2334" />
@@ -554,6 +550,21 @@
     <MESSAGE value="2301 2250" />
     <MESSAGE value="2301 2251" />
     <MESSAGE value="2301 2352" />
-    <option name="LAST_COMMIT_MESSAGE" value="2301 2352" />
+    <MESSAGE value="2301 1239" />
+    <MESSAGE value="2301 1308" />
+    <MESSAGE value="2301 1309" />
+    <MESSAGE value="2301 1318" />
+    <option name="LAST_COMMIT_MESSAGE" value="2301 1318" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,7 +6,8 @@ def my_write_answer(answer, part, number):
     with open(name, 'w') as file:
         file.write(str(answer))
 
-def my_data_prepare(input_file_names):
+def my_data_prepare(input_file_names, prefix='my_res'):
+    prepared_file_names = []
     for file_name in input_file_names:
         with open(file_name) as f:
             pre_data = f.read().split('\n')
@@ -23,11 +24,16 @@ def my_data_prepare(input_file_names):
         print('\tЗаписей ПОСЛЕ обработки - {}'.format(len(post_data)))
         print()
 
-        new_name = 'res_' + file_name[9:]
+        new_name = prefix + '_' + file_name[9:]
+        prepared_file_names.append(new_name)
         with open(new_name, 'w') as f:
             post_data = map(lambda x: x + '\n', post_data)
             f.writelines(post_data)
 
+    return prepared_file_names
+
+
 input_file_names = ['coursera_sessions_train.txt', 'coursera_sessions_test.txt']
 
-my_data_prepare(input_file_names)
+prepared_file_names = my_data_prepare(input_file_names)
+print(prepared_file_names)
