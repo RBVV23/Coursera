@@ -31,3 +31,14 @@ print(my_AP(vec_1))
 print(my_AP(vec_2))
 answer11 = my_AP(vec_2) - my_AP(vec_1)
 print('answer 1.1 = ', answer11)
+
+
+mass = ['A','B','C','D','E', 'F', 'G', 'H']
+new_mass = mass
+l = len(mass) - 1
+for i, egg in enumerate(reversed(mass)):
+    print('{}: mass[{}] = {}'.format(i, l-i, egg))
+    if (egg == 'A') or (egg == 'C') or (egg == 'H'):
+        new_mass.pop(l-i)
+
+print(new_mass)
