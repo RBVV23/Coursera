@@ -33,7 +33,25 @@ def my_data_prepare(input_file_names, prefix='my_res'):
     return prepared_file_names
 
 
-input_file_names = ['coursera_sessions_train.txt', 'coursera_sessions_test.txt']
+# input_file_names = ['coursera_sessions_train.txt', 'coursera_sessions_test.txt']
+#
+# prepared_file_names = my_data_prepare(input_file_names)
+# print(prepared_file_names)
 
-prepared_file_names = my_data_prepare(input_file_names)
-print(prepared_file_names)
+views = dict()
+purchases = dict()
+
+df = pd.DataFrame(columns=['VIEWS', 'PURCHASES'])
+# data.columns = ['VIEWS', 'PURCHASES']
+df.VIEWS = [[1,2], [3,4], [1,2,3,4]]
+
+
+with open('coursera_sessions_train.txt') as f:
+    data = f.read().split('\n')
+
+for string in data[:10]:
+    print(string)
+    pre = string.split(';')
+    view = pre[0].split(',')
+    purchase = pre[1].split(',')
+    print('\tПросмотрено: {}\n\tКуплено: {}\n'.format(view, purchase))

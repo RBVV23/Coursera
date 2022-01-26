@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2301 1318">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2401 1508">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" afterDir="false" />
     </list>
@@ -169,13 +169,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00126" summary="1701 2313">
-      <created>1642450389576</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1642450389576</updated>
     </task>
     <task id="LOCAL-00127" summary="1701 2314">
       <created>1642450487863</created>
@@ -513,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643019495822</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="2401 1508">
+      <created>1643026128810</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1643026128810</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,7 +529,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2001 2336" />
     <MESSAGE value="2001 2343" />
     <MESSAGE value="2101 2334" />
     <MESSAGE value="2101 2335" />
@@ -554,17 +553,7 @@
     <MESSAGE value="2301 1308" />
     <MESSAGE value="2301 1309" />
     <MESSAGE value="2301 1318" />
-    <option name="LAST_COMMIT_MESSAGE" value="2301 1318" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="2401 1508" />
+    <option name="LAST_COMMIT_MESSAGE" value="2401 1508" />
   </component>
 </project>
