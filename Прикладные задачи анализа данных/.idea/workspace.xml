@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2601 2001">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" afterDir="false" />
-    </list>
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2601 2039" />
     <list id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="">
       <change afterPath="$PROJECT_DIR$/Week_2/Project_1/vgg16_weights.npz" afterDir="false" />
     </list>
@@ -169,13 +166,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00130" summary="1801 1750">
-      <created>1642517425043</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1642517425043</updated>
     </task>
     <task id="LOCAL-00131" summary="1801 1803">
       <created>1642518304053</created>
@@ -513,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643216511170</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="2601 2039">
+      <created>1643218802331</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1643218802331</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,7 +526,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2101 2338" />
     <MESSAGE value="2101 2341" />
     <MESSAGE value="2101 2342" />
     <MESSAGE value="2101 2343" />
@@ -554,6 +550,7 @@
     <MESSAGE value="2601 1306" />
     <MESSAGE value="2601 1321" />
     <MESSAGE value="2601 2001" />
-    <option name="LAST_COMMIT_MESSAGE" value="2601 2001" />
+    <MESSAGE value="2601 2039" />
+    <option name="LAST_COMMIT_MESSAGE" value="2601 2039" />
   </component>
 </project>
