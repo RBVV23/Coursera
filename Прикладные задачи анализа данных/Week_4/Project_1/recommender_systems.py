@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import collections
 
 def my_write_answer(answer, part, number):
     name = 'answer' + str(part) + str(number) + '.txt'
@@ -38,20 +39,35 @@ def my_data_prepare(input_file_names, prefix='my_res'):
 # prepared_file_names = my_data_prepare(input_file_names)
 # print(prepared_file_names)
 
-views = dict()
-purchases = dict()
+views = []
+purchases = []
+view_dict = collections.Counter()
+purchase_dict = collections.Counter()
 
-df = pd.DataFrame(columns=['VIEWS', 'PURCHASES'])
-# data.columns = ['VIEWS', 'PURCHASES']
-df.VIEWS = [[1,2], [3,4], [1,2,3,4]]
+
+
+# df.VIEWS = [[1,2], [3,4], [1,2,3,4]]
 
 
 with open('coursera_sessions_train.txt') as f:
     data = f.read().split('\n')
 
-for string in data[:10]:
-    print(string)
+for string in data:
+    # print(string)
     pre = string.split(';')
+    # view = list(map(lambda x: int(x), pre[0].split(',')))
+    # purchase = list(map(lambda x: int(x), pre[1].split(',')))
     view = pre[0].split(',')
     purchase = pre[1].split(',')
-    print('\tПросмотрено: {}\n\tКуплено: {}\n'.format(view, purchase))
+    views.append(view)
+    purchases.append(purchase)
+    # print('\tПросмотрено: {}\n\tКуплено: {}\n'.format(view, purchase))
+
+mass = [views, purchases]
+df = pd.DataFrame(mass).T
+df.columns = ['VIEWS', 'PURCHASES']
+print(df)
+
+print(df.loc[10].VIEWS)
+
+
