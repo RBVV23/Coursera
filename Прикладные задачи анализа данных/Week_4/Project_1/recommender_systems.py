@@ -68,6 +68,7 @@ df = pd.DataFrame(mass).T
 df.columns = ['VIEWS', 'PURCHASES']
 print(df)
 
+print(data[10])
 print(df.loc[10].VIEWS)
-
+print(df.loc[10].PURCHASES)
 
