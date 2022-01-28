@@ -42,20 +42,22 @@ for p in points:
     print(f'{p} -> ', end='')
 print()
 
-print(len(list(itertools.permutations(points, len(points)))))
-print(list(itertools.permutations(points, len(points))))
+# print(len(list(itertools.permutations(points, len(points)))))
+# print(list(itertools.permutations(points, len(points))))
 
-print(points.pop(3))
-print(points)
+# print(points.pop(3))
+# print(points)
 points_0 = points
 
 # my_path_choose(points)
+# print(len(points))
 
-for i in range(len(points_0)):
-    print(points_0[i])
-    points = points.pop(i)
-    # for j in range(len(points)):
-    #     print('\t' + points[j])
-        # points_3 = points_2.pop(j)
-        # for k in range(len(points_3)):
-        #     print('\t\t' + points_3[k])
+for i in reversed(range(len(points))):
+    print(points[i])
+    points_1=points
+    points_1.pop(i)
+    for j in reversed(range(len(points_1))):
+        print('\t', points_1[j])
+        points_2 = points_1
+        points_2.pop(j)
+        for k in reversed(range(len(points_2))):
