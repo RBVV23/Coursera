@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2701 1554">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2801 1242">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_3/sandbox_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_3/sandbox_3.py" afterDir="false" />
     </list>
@@ -169,13 +169,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00136" summary="1901 1333">
-      <created>1642588418475</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1642588418475</updated>
     </task>
     <task id="LOCAL-00137" summary="1901 1440">
       <created>1642592454049</created>
@@ -513,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643316907756</updated>
     </task>
-    <option name="localTasksCounter" value="185" />
+    <task id="LOCAL-00185" summary="2801 1242">
+      <created>1643362986270</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1643362986270</updated>
+    </task>
+    <option name="localTasksCounter" value="186" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,7 +529,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2201 2334" />
     <MESSAGE value="2201 2335" />
     <MESSAGE value="2201 2342" />
     <MESSAGE value="2301 1008" />
@@ -554,6 +553,7 @@
     <MESSAGE value="2701 1326" />
     <MESSAGE value="2701 1552" />
     <MESSAGE value="2701 1554" />
-    <option name="LAST_COMMIT_MESSAGE" value="2701 1554" />
+    <MESSAGE value="2801 1242" />
+    <option name="LAST_COMMIT_MESSAGE" value="2801 1242" />
   </component>
 </project>
