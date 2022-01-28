@@ -42,3 +42,11 @@ for i, egg in enumerate(reversed(mass)):
         new_mass.pop(l-i)
 
 print(new_mass)
+
+
+mama = [0,1,2,3,4,5]
+# mama.pop((3,5))
+print(mama)
+
+for i in range(0,5):
+    print(i)
