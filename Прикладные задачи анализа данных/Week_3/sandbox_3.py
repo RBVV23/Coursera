@@ -47,36 +47,45 @@ points = ['A','B','C','D']
 
 print(points.pop(3))
 # print(points)
-points_0 = points
+points_0 = list(points)
 
 # my_path_choose(points)
 # print(len(points))
 
-L = len(points) - 1 # L = 2
-for i in range(L+1):
-    # print(L-i)
-    # print(f'points = {points}')
-    # print(points[L - i], end='->')
-    points_1 = list(points)
-    # print(f'points_1 = {points_1}')
-    points_1.pop(L-i)
-    # print(f'points_1 = {points_1}')
-    # print(f'points = {points}')
-    for j in range(L):
-        # print(points_1[L-1-j], end='->')
-        # print('\t', points_1[L-1-j])
-        points_2 = list(points_1)
-        points_2.pop(L-1-j)
-        for k in reversed(range(len(points_2))):
-            # print(points_2[k])
-            print(f'{points[L-i]}->{points_1[L-1-j]}->{points_2[L-2-k]}')
-            # print(f'{points[L-i]}->{points_1[L-1-j]}->{points_2[k]}')
+# L = len(points) - 1 # L = 2
+# print('points = ', points)
+# for i in range(L+1):
+#     print('points_0 = ', points_0)
+#     # print(L-i)
+#     # print(f'points = {points}')
+#     # print(points[L - i], end='->')
+#     points_1 = list(points_0)
+#     # print(f'points_1 = {points_1}')
+#     points_1.pop(L-i)
+#     # print(f'points_1 = {points_1}')
+#     # print(f'points = {points}')
+#     print('\tpoints_1 = ', points_1)
+#     for j in range(L):
+#         # print(points_1[L-1-j], end='->')
+#         # print('\t', points_1[L-1-j])
+#         points_2 = list(points_1)
+#         points_2.pop(L-j-i)
+#         print('\t\tpoints_2 = ', points_2)
+#         for k in range(len(points_2)):
+#             # print(points_2[k])
+#             print(f'{points[L-i]}->{points_1[L-1-j]}->{points_2[L-2-k]}')
+#             # print(f'{points[L-i]}->{points_1[L-1-j]}->{points_2[k]}')
+#     # print('i =', i)
+#     points_0.pop(L-i)
 
-bag = ['A','B','C']
+# bag = ['C','B','A']
+bag = ['A', 'B', 'C']
+L = len(bag) - 1
 bag_1 = ['A','B','C']
 bag_2 = ['A','B','C']
 bag_3 = ['A','B','C']
 
+n = 0
 for i in range(len(bag_1)):
     print(bag_1[i])
     bag_2 = list(bag_1)
@@ -87,4 +96,15 @@ for i in range(len(bag_1)):
         print('\t', bag_2[j])
         for k in range(len(bag_3)):
             print('\t\t', bag_3[k])
-    bag.pop(i)
+    # bag.pop(L-i)
+    # print(bag)
+
+bag = ['A', 'B', 'C']
+L = len(bag)
+
+for i in range(3):
+    print(i % 3)
+    for j in range(i+1,3):
+        print('\t', j%3)
+        for k in range(j,3):
+            print('\t\t', k%3)
