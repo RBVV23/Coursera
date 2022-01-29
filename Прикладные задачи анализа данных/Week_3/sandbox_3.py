@@ -79,48 +79,23 @@ points_0 = list(points)
 #     points_0.pop(L-i)
 
 # bag = ['C','B','A']
-bag = ['A', 'B', 'C']
-L = len(bag) - 1
-bag_1 = ['A','B','C']
-bag_2 = ['A','B','C']
-bag_3 = ['A','B','C']
+points = ['A', 'B', 'C']
 
 
-def func(bag, track=[[]]):
-    for i in range(len(bag)):
-        track[l].append(bag[i])
-        print(bag[i])
-    bag.pop()
-    if len(bag) == 0:
-        print('track')
-        print(track)
-        return True
-    else:
-        func(bag)
 
-func(bag)
+def func(points, track=[]):
+    if len(points)==1:
+        return track
+    track.append(points[0])
+    print(track)
+    points.pop(0)
+    return func(points, track)
 
-n = 0
-# for i in range(len(bag_1)):
-#     print(bag_1[i])
-#     bag_2 = list(bag_1)
-#     bag_2.pop(i)
-#     for j in range(len(bag_2)):
-#         bag_3 = list(bag_2)
-#         bag_3.pop(j)
-#         print('\t', bag_2[j])
-#         for k in range(len(bag_3)):
-#             print('\t\t', bag_3[k])
 
-    # bag.pop(L-i)
-    # print(bag)
 
-bag = ['a', 'b', 'c']
-L = len(bag)
 
-# for i in range(L):
-#     print(bag[i], f'(i = {i%L})')
-#     for j in range(i+i+1, i+i+1+L-1):
-#         print('\t', bag[j % L], f'(j = {j%L})')
-#         for k in range(j+j, j+j+L-2):
-#             print('\t\t', bag[k%L], f'(k = {k%L})')
+
+
+res = func(points)
+print(res)
+
