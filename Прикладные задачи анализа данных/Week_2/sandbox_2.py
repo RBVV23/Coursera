@@ -10,56 +10,112 @@ points = ['A', 'B', 'C']
 points1 = list(points)
 track = []
 
-def func(points, track=[], tracks=[]):
-    for p in points:
-        print('\t'*len(track), p)
-        track.append(p)
-        new_points = list(points)
-        new_points.remove(p)
-        # print('new_points = ', new_points, ' | ', end='\t')
-        # print('len(track) = ', len(track))
+def func(points, base=[]):
+    # размножение
+    A = []
+    for i in range(len(points)):
+        A.append(base * 1)
+    # заполнение
+    for i in range(len(points)):
+        A[i].append(points[i])
+    return A
 
-        if len(new_points) == 0:
-            print('track = ', track)
-            tracks.append(track)
-            print('tracks = ', tracks)
-            # track = track[:-2]
-            # print(f'func({new_points}) - из if')
-            # func(new_points, ['Aa'])
-            # func(new_points)
-            return tracks
-        # print(f'func({new_points}, {track}) - штатно')
-        func(new_points, track, tracks)
-        # track = track[:-2]
-
+points = [1, 2, 3]
 # res = func(points)
 # print(res)
-# print(res)
-tracks=[]
-for p1 in points1:
-    print('\t'*len(track), p1)
-    track.append(p1)
-    points2 = list(points1)
-    points2.remove(p1)
-    for p2 in points2:
-        print('\t'*len(track), p2)
-        track.append(p2)
-        points3 = list(points2)
-        points3.remove(p2)
-        for p3 in points3:
-            print('\t'*len(track), p3)
-            track.append(p3)
-            points4 = list(points3)
-            points4.remove(p3)
-            for p4 in points4:
-                print('\t'*len(track),  p4)
-                track.append(p4)
-                points5 = list(points4)
-                points5.remove(p4)
-                print(track)
-                tracks.append(track)
-            track = track[:-2]
-        track = track[:-1]
-    track = track[:-1]
-    # track = []
-print(tracks)
+
+# points = [2, 3]
+# print(func(points), res[0])
+
+# nsb = 3
+# nsb = len(points)
+# A = []
+# base = []
+# for i in range(nsb):
+#     A.append(base * 1)
+# print(A)
+
+# размножение
+
+Lzap = 3
+points = [1,2,3]
+base = [[0]]
+l = len(base[0])
+L = len(points) - len(base[0])
+print('L = ', L)
+print('l = ', l)
+print(base)
+A = [[0]]
+
+for i in range(L):
+    for b in base:
+        A.append(b * 1)
+print(A)
+# заполнение
+# for i in range(Lzap):
+#     A[i].append(points[i])
+for i, a in enumerate(A):
+    a.append(1 + (0+i - (i//3) )%3)
+    # a.append( (1+i)//l )
+print(A)
+
+print('===================')
+
+
+#
+# points = [1,2,3]
+# Lzap = 9
+base = [[0, 1], [0, 2], [0, 3]]
+
+print('len(base[0]) = ', len(base[0]))
+l = len(base[0])
+L = len(points) - len(base[0])
+print('L = ', L)
+print('l = ', l)
+print(base)
+# # A = []
+#
+for i in range(L):
+    for b in base:
+        A.append(b * 1)
+print(A)
+
+for i, a in enumerate(A):
+    a.append(1 + (1+i + (i//3) )%3)
+print(A)
+
+#
+print('===============================================================')
+#
+base = [[0, 1, 2], [0, 2, 3], [0, 3, 1], [0, 1, 2], [0, 2, 3], [0, 3, 1]]
+
+
+print('len(base[0]) = ', len(base[0]))
+l = len(base[0])
+L = len(points) - len(base[0])
+print('L = ', L)
+print('l = ', l)
+print(base)
+# # A = []
+#
+for i in range(L):
+    for b in base:
+        A.append(b * 1)
+print(A)
+
+for i, a in enumerate(A):
+    a.append(1 + (2+i - (i//3) )%3)
+print(A)
+
+
+
+
+# # A = []
+# for b in base:
+#     for i in range(len(points)-1):
+#         A.append(b * 1)
+# print(A)
+# # заполнение
+# for i in range(Lzap):
+#     A[i].append(points[i%3])
+# print(A)
