@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2102 1251">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2102 2337">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_4/sandbox_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/sandbox_4.py" afterDir="false" />
     </list>
     <list id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="">
       <change afterPath="$PROJECT_DIR$/Week_2/Project_1/vgg16_weights.npz" afterDir="false" />
@@ -44,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.recommender_systems">
+  <component name="RunManager" selected="Python.sandbox_4">
     <configuration name="recommender_systems" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,9 +152,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.recommender_systems" />
         <item itemvalue="Python.sandbox_3" />
-        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.sandbox_2" />
         <item itemvalue="Python.text_analysis" />
       </list>
@@ -170,13 +170,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00150" summary="2101 2335">
-      <created>1642793722021</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1642793722021</updated>
     </task>
     <task id="LOCAL-00151" summary="2101 2338">
       <created>1642793943250</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645437123798</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="2102 1305">
+      <created>1645437934624</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1645437934624</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -530,8 +530,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2301 1308" />
-    <MESSAGE value="2301 1309" />
     <MESSAGE value="2301 1318" />
     <MESSAGE value="2401 1508" />
     <MESSAGE value="2601 1306" />
@@ -555,6 +553,8 @@
     <MESSAGE value="2901 1912" />
     <MESSAGE value="2102 1246" />
     <MESSAGE value="2102 1251" />
-    <option name="LAST_COMMIT_MESSAGE" value="2102 1251" />
+    <MESSAGE value="2102 1305" />
+    <MESSAGE value="2102 2337" />
+    <option name="LAST_COMMIT_MESSAGE" value="2102 2337" />
   </component>
 </project>
