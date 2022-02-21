@@ -11,21 +11,21 @@ def my_write_answer(answer, part, number):
 
 points = [1, 2, 3,4]
 
-def func(points, tracks=[]):
-    new_tracks = tracks*(len(points)-1)
-    print(new_tracks)
-    # for i in range(len(points)-1):
-    #     new_tracks[i].append(points[:1] )
-    # func(points.pop(), tracks)
-# )
-#     i=0
-#     for track in tracks:
-#         print(track)
-#         new_track = track.append(points[0])
-#         new_tracks.append(new_track)
-    return new_tracks
+def func(A=[], base=[]):
+    base = A
+    print('base = ', base)
+    print('len(base) = ', len(base))
+    print('base[1] = ', base[1])
+    for i in range(len(base) * 1):
+        # for j in range(len(base)-1):
+        A.append(base[i] * 1)
+    print(A)
+    for i in range(len(A)):
+        A[i].append(1 + (i + 1) % 3)
+    print(A)
+    # return new_tracks
 
-res = func(points)
+# res = func(points)
 # # res[1] = [2, 1, 3, 1]
 # print(res)
 
@@ -103,10 +103,10 @@ base = []
 for i in range(nsb):
     A.append(base * 1)
 print(A)
-
 for i in range(len(A)):
     A[i].append(0)
 print(A)
+
 print('===========================')
 for i in range(len(A)):
     A[i].append(i+1)
@@ -121,14 +121,25 @@ base = A
 print('base = ', base)
 print('len(base) = ', len(base))
 print('base[1] = ', base[1])
-
-
 for i in range(len(base)*1):
     # for j in range(len(base)-1):
     A.append(base[i] * 1)
-
 print(A)
-
 for i in range(len(A)):
-    A[i].append((i))
+    A[i].append(1+(2 + i + (i+1)//len(base) )%3 )
 print(A)
+
+
+# base = A
+# print('base = ', base)
+# print('len(base) = ', len(base))
+# print('base[1] = ', base[1])
+
+
+# for i in range(len(base)*1):
+#     # for j in range(len(base)-1):
+#     A.append(base[i] * 1)
+# print(A)
+# for i in range(len(A)):
+#     A[i].append(1+(i+1)%3)
+# print(A)
