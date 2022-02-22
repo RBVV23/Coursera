@@ -70,4 +70,6 @@ for i, id in enumerate(uni_session):
 # print(my_dict.values())
 # array = array.sort()
 print(array, '\n')
-print(array[(array[:,1].argsort())])
+array = array[list(reversed(array[:,1].argsort()))]
+print(array)
+print(list(reversed(array[:,1].argsort())))
