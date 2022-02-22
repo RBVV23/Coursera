@@ -59,6 +59,6 @@ array[:,0] = uni_session
 for i,id in enumerate(array[:,0]):
     # array[i,1] = my_dict[id]
     print(id)
-    ...
+
 print(array)
 # for id in
