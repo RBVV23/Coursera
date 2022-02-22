@@ -51,15 +51,21 @@ print(np.__version__)
 
 my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
 my_test = ['8', '7','8', '10', '99', '23', '99']
+array = [[151, 5],
+         [132, 3],
+         [113, 1],
+         [144, 4],
+         [125, 2]]
 # def my_sort(session):
 uni_session = np.unique(my_test)
-array = np.empty((len(uni_session),2))
+# array = np.empty((len(uni_session),2))
 print(uni_session)
-array[:,0] = uni_session
-for i,id in enumerate(array[:,0]):
+# array[:,0] = uni_session
+# for i,id in enumerate(array[:,0]):
     # array[i,1] = my_dict[id]
-    print(id)
+    # print(id)
 
-print(array)
+
 print(my_dict.values())
+
 # for id in
