@@ -61,4 +61,5 @@ for i,id in enumerate(array[:,0]):
     print(id)
 
 print(array)
+print(my_dict.values())
 # for id in
