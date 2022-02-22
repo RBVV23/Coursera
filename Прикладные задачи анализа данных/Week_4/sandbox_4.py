@@ -68,4 +68,6 @@ for i, id in enumerate(uni_session):
 
 
 # print(my_dict.values())
+# array = array.sort()
 print(array)
+print(np.sort(array, axis=0))
