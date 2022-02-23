@@ -60,7 +60,7 @@ array = [[151, 5],
 uni_session = np.unique(my_test)
 array = np.zeros((len(uni_session),2))
 print(uni_session)
-# array[:,0] = uni_session
+
 for i, id in enumerate(uni_session):
     array[i,0] = id
     array[i,1] = my_dict.setdefault(id, 0)
