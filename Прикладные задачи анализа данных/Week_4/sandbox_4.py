@@ -64,7 +64,6 @@ print(uni_session)
 for i, id in enumerate(uni_session):
     array[i,0] = id
     array[i,1] = my_dict.setdefault(id, 0)
-    # print(id)
 
 
 print(array, '\n')
