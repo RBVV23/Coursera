@@ -23,7 +23,6 @@ import numpy as np
 #         sum_2 += i
 #     return sum_1/sum_2
 #
-#
 # vec_1 = [1, 0, 0, 1]
 # vec_2 = [1, 1, 0, 0]
 #
