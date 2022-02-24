@@ -32,7 +32,6 @@ import numpy as np
 # answer11 = my_AP(vec_2) - my_AP(vec_1)
 # print('answer 1.1 = ', answer11)
 #
-#
 # mass = ['A','B','C','D','E', 'F', 'G', 'H']
 # new_mass = mass
 # l = len(mass) - 1
@@ -42,7 +41,6 @@ import numpy as np
 #         new_mass.pop(l-i)
 #
 # print(new_mass)
-#
 #
 # mama = [0,1,2,3,4,5]
 # # mama.pop((3,5))
