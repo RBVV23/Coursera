@@ -55,13 +55,13 @@ array = [[151, 5],
          [125, 2]]
 # def my_sort(session):
 uni_session = np.unique(my_test)
-array = np.zeros((len(uni_session),2))
+array = np.zeros((len(uni_session), 2))
 print(uni_session)
 
-for i, id in enumerate(uni_session):
-    array[i,0] = id
-    array[i,1] = my_dict.setdefault(id, 0)
 
+for i, id in enumerate(uni_session):
+    array[i, 0] = id
+    array[i, 1] = my_dict.setdefault(id, 0)
 
 print(array, '\n')
 array = array[list(reversed(array[:,1].argsort()))]
