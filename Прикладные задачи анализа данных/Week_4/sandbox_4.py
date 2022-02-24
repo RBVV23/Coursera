@@ -64,6 +64,6 @@ for i, id in enumerate(uni_session):
     array[i, 1] = my_dict.setdefault(id, 0)
 
 print(array, '\n')
-array = array[list(reversed(array[:,1].argsort()))]
+array = array[list(reversed(array[:, 1].argsort()))]
 print(array)
-print(list(reversed(array[:,1].argsort())))
+print(list(reversed(array[:, 1].argsort())))
