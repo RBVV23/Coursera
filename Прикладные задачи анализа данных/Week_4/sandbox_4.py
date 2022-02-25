@@ -47,10 +47,12 @@ import collections
 # print(mama)
 
 
-# my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
-my_test = ['8', '7', '8','9', '10', '99', '23', '99']
-my_dict = collections.Counter()
-print(my_dict)
+my_dict = {'23': 10, '10': 5, '8': 3, '99': 1, '7': 1}
+my_test = ['8', '99', '8', '10', '7', '23']
+# my_dict = collections.Counter()
+# for word in my_test:
+#     my_dict[word] += 1
+# print(my_dict)
 
 
 array = [[151, 5],
