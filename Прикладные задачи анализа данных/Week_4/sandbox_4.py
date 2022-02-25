@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import collections
 
 # print(pd.__version__)
 # print(np.__version__)
@@ -46,8 +47,12 @@ import numpy as np
 # print(mama)
 
 
-my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
-my_test = ['8', '7', '8', '10', '99', '23', '99']
+# my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
+my_test = ['8', '7', '8','9', '10', '99', '23', '99']
+my_dict = collections.Counter()
+print(my_dict)
+
+
 array = [[151, 5],
          [132, 3],
          [113, 1],
@@ -66,4 +71,4 @@ for i, n in enumerate(uni_session):
 print(array, '\n')
 array = array[list(reversed(array[:, 1].argsort()))]
 print(array)
-print(list(reversed(array[:, 1].argsort())))
+
