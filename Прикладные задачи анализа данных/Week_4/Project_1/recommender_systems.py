@@ -97,6 +97,7 @@ for session in range(6,8):
         print(f'\tid: {view}, freq: {view_dict[view]}, order: {n}')
         matrix.append([view, view_dict[view], n])
     print(matrix)
+    print(sorted(matrix, key=lambda param: (-param[1], param[2])))
 
 # print(df.loc[10])
 # print(df.shape[0])

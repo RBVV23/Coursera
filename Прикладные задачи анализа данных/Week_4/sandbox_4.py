@@ -49,10 +49,10 @@ import collections
 
 my_dict = {'23': 10, '10': 5, '8': 3, '99': 1, '7': 1}
 my_test = ['8', '99', '8', '10', '7', '23']
-# my_dict = collections.Counter()
-# for word in my_test:
-#     my_dict[word] += 1
-# print(my_dict)
+my_dict = collections.Counter()
+for word in my_test:
+    my_dict[word] += 1
+print(my_dict)
 
 
 array = [[151, 5],
@@ -66,11 +66,7 @@ array = np.zeros((len(uni_session), 2))
 print(uni_session)
 
 
-for i, n in enumerate(uni_session):
-    array[i, 0] = n
-    array[i, 1] = my_dict.setdefault(n, 0)
-
-print(array, '\n')
-array = array[list(reversed(array[:, 1].argsort()))]
-print(array)
+# print(array, '\n')
+# array = array[list(reversed(array[:, 1].argsort()))]
+# print(array)
 
