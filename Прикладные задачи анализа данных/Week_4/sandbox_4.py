@@ -66,7 +66,5 @@ array = np.zeros((len(uni_session), 2))
 print(uni_session)
 
 
-# print(array, '\n')
-# array = array[list(reversed(array[:, 1].argsort()))]
-# print(array)
+
 
