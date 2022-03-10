@@ -64,7 +64,3 @@ print(my_dict)
 uni_session = np.unique(my_test)
 array = np.zeros((len(uni_session), 2))
 print(uni_session)
-
-
-
-
