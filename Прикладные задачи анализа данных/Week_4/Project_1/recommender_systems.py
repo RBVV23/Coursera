@@ -78,9 +78,12 @@ print('view_dict:')
 print('purchase_dict:')
 purchase_dict.pop('')
 # print(purchase_dict)
+
 # print(data[10])
 # print(df.loc[10].VIEWS)
 # print(df.loc[10].PURCHASES)
+
+
 
 # for session in range(df.shape[0]//10000):
 for session in range(6,8):
@@ -89,12 +92,18 @@ for session in range(6,8):
     purchases = df.loc[session].PURCHASES
     print('\tviews :', views)
     print('\tpurchases: ', purchases)
+    matrix = []
+    for n, view in enumerate(views, start=1):
+        print(f'\tid: {view}, freq: {view_dict[view]}, order: {n}')
+        matrix.append([view, view_dict[view], n])
+    print(matrix)
 
 # print(df.loc[10])
 # print(df.shape[0])
 
-my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
-my_test = ['8', '7','8', '10', '99', '23', '99']
-# def my_sort(session):
-uni_session = np.unique(my_test)
-print(uni_session)
+# my_dict = {'23': 10, '10': 5, '8': 3, '7': 1}
+# my_test = ['8', '7','8', '10', '99', '23', '99']
+# # def my_sort(session):
+# uni_session = np.unique(my_test)
+# print(uni_session)
+

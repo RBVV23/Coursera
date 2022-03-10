@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="2602 2332" />
-    <list id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="">
+    <list default="true" id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="1003 1259">
       <change afterPath="$PROJECT_DIR$/Week_2/Project_1/vgg16_weights.npz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/Project_1/recommender_systems.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week_4/sandbox_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Week_4/sandbox_4.py" afterDir="false" />
     </list>
     <list id="8af9b125-a4e9-4c32-98e9-9ec546d618ee" name="1301 2211" comment="1401 2307" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.sandbox_4">
+  <component name="RunManager" selected="Python.recommender_systems">
     <configuration name="recommender_systems" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Прикладные задачи анализа данных" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.recommender_systems" />
+        <item itemvalue="Python.sandbox_4" />
         <item itemvalue="Python.sandbox_3" />
         <item itemvalue="Python.sandbox_2" />
         <item itemvalue="Python.text_analysis" />
@@ -160,19 +162,12 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fd229e7b-ce3b-4ea5-9023-7f73b902f557" name="Default Changelist" comment="" />
-      <changelist id="5eca1e4a-8825-4671-965b-f7028bb58c10" name="1301 1329" comment="" />
+      <changelist id="" name="1301 1329" comment="" />
       <changelist id="8af9b125-a4e9-4c32-98e9-9ec546d618ee" name="1301 2211" comment="" />
       <created>1639257264580</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639257264580</updated>
-    </task>
-    <task id="LOCAL-00181" summary="2701 1258">
-      <created>1643277516902</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1643277516902</updated>
     </task>
     <task id="LOCAL-00182" summary="2701 1326">
       <created>1643279194612</created>
@@ -510,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645907542703</updated>
     </task>
-    <option name="localTasksCounter" value="230" />
+    <task id="LOCAL-00230" summary="1003 1259">
+      <created>1646906382977</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
+      <option name="project" value="LOCAL" />
+      <updated>1646906382978</updated>
+    </task>
+    <option name="localTasksCounter" value="231" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -526,7 +528,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2202 2208" />
     <MESSAGE value="2202 2219" />
     <MESSAGE value="2202 2230" />
     <MESSAGE value="2202 2242" />
@@ -551,6 +552,7 @@
     <MESSAGE value="2502 1732" />
     <MESSAGE value="2602 2330" />
     <MESSAGE value="2602 2332" />
-    <option name="LAST_COMMIT_MESSAGE" value="2602 2332" />
+    <MESSAGE value="1003 1259" />
+    <option name="LAST_COMMIT_MESSAGE" value="1003 1259" />
   </component>
 </project>
