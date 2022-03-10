@@ -55,11 +55,11 @@ for word in my_test:
 print(my_dict)
 
 
-array = [[151, 5],
-         [132, 3],
-         [113, 1],
-         [144, 4],
-         [125, 2]]
+# array = [[151, 5],
+#          [132, 3],
+#          [113, 1],
+#          [144, 4],
+#          [125, 2]]
 # def my_sort(session):
 uni_session = np.unique(my_test)
 array = np.zeros((len(uni_session), 2))
