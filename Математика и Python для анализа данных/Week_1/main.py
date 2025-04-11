@@ -38,5 +38,5 @@ file_2.close()
 
 list_3 = [x**2 for x in range(101) if (x % 2 == 0) and (x % 3 == 0)]
 print(list_3)
-list_4 = list(map(lambda x: int(x**(0.5)), list_3))
+list_4 = list(map(lambda x: int(x**0.5), list_3))
 print(list_4)
